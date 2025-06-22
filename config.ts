@@ -142,32 +142,51 @@ export const SUPPORTED_EXCHANGES: Record<string, ExchangeConfig> = {
         id: 'mexc',
         name: 'MEXC Global',
         formatSymbol: (commonSymbol) => commonSymbol.toUpperCase(),
-        // Temporarily disable WebSocket due to CORS - use simulation approach
-        getWebSocketUrl: () => null, // 'wss://wbs.mexc.com/ws',
-        getSubscribeMessage: (formattedSymbol) => null,
-        getUnsubscribeMessage: (formattedSymbol) => null,
+        getWebSocketUrl: () => 'wss://wbs.mexc.com/ws',
+        getSubscribeMessage: (formattedSymbol) => JSON.stringify({
+            method: 'SUBSCRIPTION',
+            params: [`spot@public.bookTicker.v3.api@${formattedSymbol}`]
+        }),
+        getUnsubscribeMessage: (formattedSymbol) => JSON.stringify({
+            method: 'UNSUBSCRIPTION', 
+            params: [`spot@public.bookTicker.v3.api@${formattedSymbol}`]
+        }),
         pingIntervalMs: 30000,
-        pingPayload: () => null,
+        pingPayload: () => JSON.stringify({ method: 'PING' }),
         needsSnapshotFlag: false,
         sliceDepth: 20,
         parseMessage: (data, currentBids, currentAsks, _snapshotReceived) => {
-            // Handle simulated snapshot data like Uniswap
-            if (data && data.type === 'mexc_snapshot' && data.bids && data.asks) {
+            // Handle PONG response
+            if (data.method === 'PONG') {
+                return null;
+            }
+            
+            // Handle subscription confirmation
+            if (data.method === 'SUBSCRIPTION') {
+                logger.log('MEXC: Subscription confirmed for', data.params);
+                return null;
+            }
+            
+            // Handle book ticker data
+            if (data.c === 'spot@public.bookTicker.v3.api' && data.d) {
+                const bookData = data.d;
+                if (!bookData.s) return null;
+                
                 const newBids = new Map<string, number>();
                 const newAsks = new Map<string, number>();
                 
-                data.bids.forEach((bid: [string, number]) => {
-                    newBids.set(bid[0], bid[1]);
-                });
-                
-                data.asks.forEach((ask: [string, number]) => {
-                    newAsks.set(ask[0], ask[1]);
-                });
+                // MEXC bookTicker provides best bid/ask only
+                if (bookData.b && bookData.B) {
+                    newBids.set(bookData.b, parseFloat(bookData.B));
+                }
+                if (bookData.a && bookData.A) {
+                    newAsks.set(bookData.a, parseFloat(bookData.A));
+                }
                 
                 return {
                     updatedBids: newBids,
                     updatedAsks: newAsks,
-                    isSnapshot: true
+                    isSnapshot: true // Always snapshot for ticker data
                 };
             }
             return null;
@@ -175,8 +194,6 @@ export const SUPPORTED_EXCHANGES: Record<string, ExchangeConfig> = {
         fetchFeeInfo: fetchMexcFeeInfo,
         fetchFundingRateInfo: fetchMexcFundingRateInfo,
         fetchVolumeInfo: fetchMexcVolumeInfo,
-        // Mark as simulation for now
-        isSimulated: true
     },
     kraken: {
         id: 'kraken',
