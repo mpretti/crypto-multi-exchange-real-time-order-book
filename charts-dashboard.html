@@ -97,6 +97,7 @@
                         <button class="tool-btn" id="analysis-btn">📊 Analysis</button>
                         <button class="tool-btn" id="alerts-btn">🔔 Alerts</button>
                         <button class="tool-btn" id="export-btn">💾 Export</button>
+                        <button class="tool-btn" id="settings-btn">⚙️ Settings</button>
                         <button id="fullscreen-btn" class="tool-btn" title="Fullscreen">⛶</button>
                     </div>
                 </div>
@@ -424,6 +425,92 @@
                                     <span class="label">Volume:</span>
                                     <span class="value" id="volume4">-</span>
                                 </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Side Panel for Chart Controls -->
+            <div class="side-panel" id="side-panel">
+                <div class="side-panel-header">
+                    <h3>🎨 Chart Style</h3>
+                    <button class="close-btn" id="close-side-panel">✕</button>
+                </div>
+                <div class="side-panel-content">
+                    <!-- Chart Theme -->
+                    <div class="control-group">
+                        <label class="control-label">Theme</label>
+                        <select id="chart-theme-select" class="control-select">
+                            <option value="dark">Dark</option>
+                            <option value="light">Light</option>
+                        </select>
+                    </div>
+
+                    <!-- Chart Display Options -->
+                    <div class="control-group">
+                        <label class="control-label">Display Options</label>
+                        <div class="control-checkboxes">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="crosshair-toggle" checked>
+                                <span>Crosshair</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="grid-toggle" checked>
+                                <span>Grid</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="price-scale-toggle" checked>
+                                <span>Price Scale</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="time-scale-toggle" checked>
+                                <span>Time Scale</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Real-time Data Options -->
+                    <div class="control-group">
+                        <label class="control-label">Real-time Data</label>
+                        <div class="control-checkboxes">
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="auto-scale-toggle" checked>
+                                <span>Auto Scale</span>
+                            </label>
+                            <label class="checkbox-label">
+                                <input type="checkbox" id="live-updates-toggle" checked>
+                                <span>Live Updates</span>
+                            </label>
+                        </div>
+                    </div>
+
+                    <!-- Chart Actions -->
+                    <div class="control-group">
+                        <label class="control-label">Actions</label>
+                        <button class="control-btn" id="reset-zoom-btn">🔍 Reset Zoom</button>
+                        <button class="control-btn" id="screenshot-btn">📸 Screenshot</button>
+                    </div>
+
+                    <!-- Market Data -->
+                    <div class="control-group">
+                        <label class="control-label">Market Overview</label>
+                        <div class="market-stats">
+                            <div class="stat-item">
+                                <span class="stat-label">24h Volume:</span>
+                                <span class="stat-value" id="market-volume">Loading...</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Market Cap:</span>
+                                <span class="stat-value" id="market-cap">Loading...</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">Fear & Greed:</span>
+                                <span class="stat-value" id="fear-greed">Loading...</span>
+                            </div>
+                            <div class="stat-item">
+                                <span class="stat-label">BTC Dominance:</span>
+                                <span class="stat-value" id="btc-dominance">Loading...</span>
                             </div>
                         </div>
                     </div>

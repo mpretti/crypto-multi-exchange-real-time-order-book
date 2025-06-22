@@ -1,4 +1,3 @@
-
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -205,55 +204,10 @@ export const SUPPORTED_EXCHANGES: Record<string, ExchangeConfig> = {
             return null;
         }
     },
-    uniswap_simulated: {
-        id: 'uniswap_simulated',
-        name: 'Uniswap (Sim.)',
-        formatSymbol: (commonSymbol) => commonSymbol.toUpperCase(), // e.g., ETHUSDT
-        getWebSocketUrl: (formattedSymbol) => `wss://simulated.dex.feed/${formattedSymbol}`, // Dummy URL, not actually used
-        parseMessage: (data, _currentBids, _currentAsks, _snapshotReceived) => {
-            // This parser expects data to be the snapshot itself, generated in connectToExchange
-            if (data.type === 'snapshot' && data.bids && data.asks) {
-                const newBids = new Map<string, number>();
-                data.bids.forEach((bid: [string, string]) => newBids.set(bid[0], parseFloat(bid[1])));
-                const newAsks = new Map<string, number>();
-                data.asks.forEach((ask: [string, string]) => newAsks.set(ask[0], parseFloat(ask[1])));
-                return { updatedBids: newBids, updatedAsks: newAsks, isSnapshot: true };
-            }
-            return null;
-        },
-        needsSnapshotFlag: false, // It will always be a "snapshot" provided by the simulation
-        sliceDepth: 10, // Simulated, smaller depth
-        fetchFeeInfo: async (formattedSymbol: string): Promise<FeeInfo | null> => {
-            console.log(`Uniswap (Sim.): Simulating fee info fetch for ${formattedSymbol}`);
-            return { makerRate: '0.3%', takerRate: '0.3%', raw: { simulated: true, note: "Typical Uniswap V3 pool fee" } };
-        },
-        fetchFundingRateInfo: async (_formattedSymbol: string): Promise<FundingRateInfo | null> => {
-            // Funding rates are not applicable to spot AMMs
-            return { rate: 'N/A', nextFundingTime: 'N/A', raw: { simulated: true, note: "Funding rates not applicable for spot AMM." } };
-        },
-        fetchVolumeInfo: async (formattedSymbol: string): Promise<VolumeInfo | null> => {
-            console.log(`Uniswap (Sim.): Simulating volume info fetch for ${formattedSymbol}`);
-            let assetVol = 100;
-            let usdVol = 2000000; // Default, e.g. for BTC
-            const upperSymbol = formattedSymbol.toUpperCase();
-
-            if (upperSymbol.includes('ETH')) { assetVol = 500; usdVol = 10000000; }
-            else if (upperSymbol.includes('SOL')) { assetVol = 10000; usdVol = 1500000; }
-            else if (upperSymbol.includes('DOGE')) { assetVol = 5000000; usdVol = 750000; }
-            else if (upperSymbol.includes('ADA')) { assetVol = 2000000; usdVol = 1000000; }
-            else if (upperSymbol.includes('LINK')) { assetVol = 50000; usdVol = 700000; }
-            else if (upperSymbol.includes('XRP')) { assetVol = 3000000; usdVol = 1500000; }
-
-            return {
-                assetVolume: `${assetVol.toLocaleString()} (sim.)`,
-                usdVolume: `${usdVol.toLocaleString()} (sim.)`,
-                raw: { simulated: true, symbol: formattedSymbol }
-            };
-        },
-    }
+    // REMOVED: uniswap_simulated - NO SIMULATION DATA ALLOWED
 };
 
-export const SUPPORTED_EXCHANGES_ORDER = ['binance', 'bybit', 'okx', 'kraken', 'bitget', 'uniswap_simulated'];
+export const SUPPORTED_EXCHANGES_ORDER = ['binance', 'bybit', 'okx', 'kraken', 'bitget'];
 
 export const EXCHANGE_COLORS: Record<string, string> = {
     binance: '#F0B90B',
@@ -261,7 +215,6 @@ export const EXCHANGE_COLORS: Record<string, string> = {
     okx: '#007bff',
     kraken: '#5D40C4',
     bitget: '#00CED1',
-    uniswap_simulated: '#FF007A',
     default: '#777777'
 };
 
@@ -271,5 +224,4 @@ export const EXCHANGE_TAGS: Record<string, string> = {
     okx: 'OKX',
     kraken: 'KRK',
     bitget: 'BGT',
-    uniswap_simulated: 'UNI',
 };

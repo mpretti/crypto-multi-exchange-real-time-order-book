@@ -865,13 +865,16 @@ export function updateIndicators(data: KLineData[]) {
     if (volumeSeries && currentIndicators.has('volume')) {
         const volumeData = data.map(d => {
             const volume = (d as any).volume;
-            const volumeValue = (volume != null && !isNaN(volume) && volume > 0) ? volume : Math.random() * 1000000;
-            return {
-                time: d.time,
-                value: volumeValue,
-                color: d.close > d.open ? '#26a69a' : '#ef5350'
-            };
-        }).filter(d => d.time != null && d.value != null && !isNaN(d.value) && d.value > 0);
+            // ONLY use real volume data - NO simulation/fallback
+            if (volume != null && !isNaN(volume) && volume > 0) {
+                return {
+                    time: d.time,
+                    value: volume,
+                    color: d.close > d.open ? '#26a69a' : '#ef5350'
+                };
+            }
+            return null; // Return null for missing data instead of fake data
+        }).filter(d => d != null && d.time != null && d.value != null && !isNaN(d.value) && d.value > 0);
         
         if (volumeData.length > 0) {
             volumeSeries.setData(volumeData);

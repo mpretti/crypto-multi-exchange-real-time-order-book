@@ -1,0 +1,867 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>📊 Advanced Volume Analytics Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .metric-card {
+            transition: all 0.3s ease;
+        }
+        .metric-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .pulse-animation {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .glow-effect {
+            box-shadow: 0 0 20px rgba(59, 130, 246, 0.3);
+        }
+        .volume-bar {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            height: 4px;
+            border-radius: 2px;
+            transition: width 0.5s ease;
+        }
+        .heatmap-cell {
+            border-radius: 4px;
+            margin: 1px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 0.75rem;
+            font-weight: 600;
+            transition: all 0.2s ease;
+        }
+        .heatmap-cell:hover {
+            transform: scale(1.05);
+            z-index: 10;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+        .whale-alert {
+            animation: whale-pulse 1.5s ease-in-out infinite;
+        }
+        @keyframes whale-pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+        .flow-indicator {
+            position: relative;
+            overflow: hidden;
+        }
+        .flow-indicator::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: flow-animation 2s infinite;
+        }
+        @keyframes flow-animation {
+            0% { left: -100%; }
+            100% { left: 100%; }
+        }
+        .alert-badge {
+            animation: bounce 1s infinite;
+        }
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% { transform: translateY(0); }
+            40%, 43% { transform: translateY(-10px); }
+            70% { transform: translateY(-5px); }
+            90% { transform: translateY(-2px); }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Header -->
+    <header class="glass-effect sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                        📊 Advanced Volume Analytics
+                    </h1>
+                    <div class="pulse-animation w-3 h-3 bg-green-400 rounded-full"></div>
+                </div>
+                
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-2">
+                    <a href="index.html" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors">
+                        📈 Order Book
+                    </a>
+                    <a href="charts-dashboard.html" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors">
+                        📊 Charts
+                    </a>
+                    <a href="volume-dashboard.html" class="px-4 py-2 rounded-lg bg-blue-600 text-white">
+                        📊 Volume
+                    </a>
+                    <a href="trading-pairs-explorer.html" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors">
+                        🔍 Trading Pairs
+                    </a>
+                    <a href="http://localhost:3001/" target="_blank" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors">
+                        📊 Historical Data
+                    </a>
+                </nav>
+
+                <!-- Mobile menu button -->
+                <button class="md:hidden p-2 rounded-lg hover:bg-gray-800" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+        
+        <!-- Mobile Navigation -->
+        <div id="mobile-menu" class="hidden md:hidden bg-gray-800 border-t border-gray-700">
+            <div class="px-4 py-2 space-y-1">
+                <a href="index.html" class="block px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700">📈 Order Book</a>
+                <a href="charts-dashboard.html" class="block px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700">📊 Charts</a>
+                <a href="volume-dashboard.html" class="block px-3 py-2 rounded-md bg-blue-600 text-white">📊 Volume</a>
+                <a href="trading-pairs-explorer.html" class="block px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700">🔍 Trading Pairs</a>
+                <a href="http://localhost:3001/" target="_blank" class="block px-3 py-2 rounded-md text-gray-300 hover:text-white hover:bg-gray-700">📊 Historical Data</a>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Control Panel -->
+        <div class="glass-effect rounded-xl p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-4 flex items-center">
+                <i class="fas fa-sliders-h text-blue-400 mr-2"></i>
+                Analytics Controls
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <!-- Symbol Selection -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Trading Pair</label>
+                    <select id="symbolSelect" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option value="BTCUSDT">BTC/USDT</option>
+                        <option value="ETHUSDT">ETH/USDT</option>
+                        <option value="SOLUSDT">SOL/USDT</option>
+                        <option value="ADAUSDT">ADA/USDT</option>
+                        <option value="DOTUSDT">DOT/USDT</option>
+                    </select>
+                </div>
+
+                <!-- Time Range -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Time Range</label>
+                    <select id="timeRange" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option value="1m">1 Minute</option>
+                        <option value="5m" selected>5 Minutes</option>
+                        <option value="15m">15 Minutes</option>
+                        <option value="1h">1 Hour</option>
+                        <option value="4h">4 Hours</option>
+                        <option value="24h">24 Hours</option>
+                    </select>
+                </div>
+
+                <!-- Analysis Mode -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Analysis Mode</label>
+                    <select id="analysisMode" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option value="realtime">Real-time</option>
+                        <option value="heatmap">Heatmap</option>
+                        <option value="flow">Flow Analysis</option>
+                        <option value="comparison">Cross-Exchange</option>
+                    </select>
+                </div>
+
+                <!-- Auto Refresh -->
+                <div class="flex items-end">
+                    <button id="autoRefreshBtn" onclick="toggleAutoRefresh()" class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                        <i class="fas fa-sync-alt mr-2"></i>
+                        <span id="refreshText">Auto Refresh: ON</span>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Metrics -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- Total Volume -->
+            <div class="metric-card glass-effect rounded-xl p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-400">Total Volume (24h)</p>
+                        <p class="text-2xl font-bold text-white" id="totalVolume">--</p>
+                        <p class="text-sm text-green-400" id="volumeChange">--</p>
+                    </div>
+                    <div class="p-3 bg-blue-600 rounded-lg">
+                        <i class="fas fa-chart-bar text-white text-xl"></i>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="volume-bar" id="volumeBar" style="width: 0%"></div>
+                </div>
+            </div>
+
+            <!-- Active Exchanges -->
+            <div class="metric-card glass-effect rounded-xl p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-400">Active Exchanges</p>
+                        <p class="text-2xl font-bold text-white" id="activeExchanges">--</p>
+                        <p class="text-sm text-blue-400">Real-time data</p>
+                    </div>
+                    <div class="p-3 bg-green-600 rounded-lg">
+                        <i class="fas fa-exchange-alt text-white text-xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Whale Alerts -->
+            <div class="metric-card glass-effect rounded-xl p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-400">Whale Alerts</p>
+                        <p class="text-2xl font-bold text-white" id="whaleAlerts">--</p>
+                        <p class="text-sm text-yellow-400">Large trades detected</p>
+                    </div>
+                    <div class="p-3 bg-yellow-600 rounded-lg">
+                        <i class="fas fa-exclamation-triangle text-white text-xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market Dominance -->
+            <div class="metric-card glass-effect rounded-xl p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-400">Market Dominance</p>
+                        <p class="text-2xl font-bold text-white" id="marketDominance">--</p>
+                        <p class="text-sm text-purple-400" id="dominantExchange">--</p>
+                    </div>
+                    <div class="p-3 bg-purple-600 rounded-lg">
+                        <i class="fas fa-crown text-white text-xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Main Analytics Grid -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <!-- Real-time Volume Chart -->
+            <div class="glass-effect rounded-xl p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-semibold flex items-center">
+                        <i class="fas fa-chart-line text-blue-400 mr-2"></i>
+                        Real-time Volume
+                    </h3>
+                    <div class="flex space-x-2">
+                        <button onclick="resetChart()" class="p-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
+                            <i class="fas fa-redo text-white"></i>
+                        </button>
+                        <button onclick="exportData()" class="p-2 bg-gray-700 hover:bg-gray-600 rounded-lg transition-colors">
+                            <i class="fas fa-download text-white"></i>
+                        </button>
+                    </div>
+                </div>
+                <div class="h-80">
+                    <canvas id="volumeChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Exchange Comparison -->
+            <div class="glass-effect rounded-xl p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-semibold flex items-center">
+                        <i class="fas fa-balance-scale text-green-400 mr-2"></i>
+                        Exchange Comparison
+                    </h3>
+                    <select id="comparisonMetric" class="bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-white text-sm">
+                        <option value="volume">Volume</option>
+                        <option value="trades">Trade Count</option>
+                        <option value="spread">Spread</option>
+                    </select>
+                </div>
+                <div class="h-80">
+                    <canvas id="comparisonChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Volume Heatmap -->
+        <div class="glass-effect rounded-xl p-6 mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-semibold flex items-center">
+                    <i class="fas fa-fire text-red-400 mr-2"></i>
+                    Volume Heatmap
+                </h3>
+                <div class="flex items-center space-x-4">
+                    <select id="heatmapTimeframe" class="bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-white text-sm">
+                        <option value="1h">1 Hour</option>
+                        <option value="4h">4 Hours</option>
+                        <option value="24h" selected>24 Hours</option>
+                    </select>
+                    <div class="flex items-center space-x-2 text-sm">
+                        <span class="text-gray-400">Low</span>
+                        <div class="w-20 h-3 bg-gradient-to-r from-blue-900 via-yellow-500 to-red-500 rounded"></div>
+                        <span class="text-gray-400">High</span>
+                    </div>
+                </div>
+            </div>
+            <div id="volumeHeatmap" class="grid grid-cols-6 gap-1 h-40">
+                <!-- Heatmap cells will be generated here -->
+            </div>
+        </div>
+
+        <!-- Whale Watcher & Alerts -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <!-- Whale Watcher -->
+            <div class="glass-effect rounded-xl p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-semibold flex items-center">
+                        <i class="fas fa-fish text-blue-400 mr-2"></i>
+                        Whale Watcher
+                    </h3>
+                    <select id="whaleThreshold" class="bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-white text-sm">
+                        <option value="50">50+ BTC</option>
+                        <option value="100" selected>100+ BTC</option>
+                        <option value="500">500+ BTC</option>
+                        <option value="1000">1000+ BTC</option>
+                    </select>
+                </div>
+                <div id="whaleTradesContainer" class="space-y-3 max-h-80 overflow-y-auto">
+                    <!-- Whale trades will be populated here -->
+                </div>
+            </div>
+
+            <!-- Volume Alerts -->
+            <div class="glass-effect rounded-xl p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-semibold flex items-center">
+                        <i class="fas fa-bell text-yellow-400 mr-2"></i>
+                        Volume Alerts
+                    </h3>
+                    <button onclick="addAlert()" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg text-sm transition-colors">
+                        <i class="fas fa-plus mr-1"></i>Add Alert
+                    </button>
+                </div>
+                <div id="alertsContainer" class="space-y-3 max-h-80 overflow-y-auto">
+                    <!-- Alerts will be populated here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Flow Analysis -->
+        <div class="glass-effect rounded-xl p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-semibold flex items-center">
+                    <i class="fas fa-water text-cyan-400 mr-2"></i>
+                    Volume Flow Analysis
+                </h3>
+                <div class="flex space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                        <span class="text-sm text-gray-400">Buy Flow</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                        <span class="text-sm text-gray-400">Sell Flow</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Buy Pressure -->
+                <div class="text-center">
+                    <p class="text-sm text-gray-400 mb-2">Buy Pressure</p>
+                    <div class="relative w-24 h-24 mx-auto">
+                        <canvas id="buyPressureChart" width="96" height="96"></canvas>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span id="buyPressureValue" class="text-lg font-bold text-green-400">--</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flow Balance -->
+                <div class="text-center">
+                    <p class="text-sm text-gray-400 mb-2">Flow Balance</p>
+                    <div class="flow-indicator bg-gray-800 rounded-lg h-6 relative overflow-hidden">
+                        <div id="flowBalance" class="h-full bg-gradient-to-r from-red-500 to-green-500 transition-all duration-500" style="width: 50%; margin-left: 25%;"></div>
+                    </div>
+                    <p id="flowBalanceText" class="text-sm text-gray-400 mt-2">Balanced</p>
+                </div>
+
+                <!-- Sell Pressure -->
+                <div class="text-center">
+                    <p class="text-sm text-gray-400 mb-2">Sell Pressure</p>
+                    <div class="relative w-24 h-24 mx-auto">
+                        <canvas id="sellPressureChart" width="96" height="96"></canvas>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span id="sellPressureValue" class="text-lg font-bold text-red-400">--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // Global variables
+        let volumeChart, comparisonChart, buyPressureChart, sellPressureChart;
+        let autoRefreshEnabled = true;
+        let currentSymbol = 'BTCUSDT';
+        let volumeData = [];
+        let whaleAlerts = [];
+        let activeAlerts = [];
+
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', () => {
+            initializeCharts();
+            loadInitialData();
+            setupEventListeners();
+            startDataUpdates();
+            generateHeatmap();
+            loadWhaleData();
+            loadAlerts();
+        });
+
+        function initializeCharts() {
+            // Volume Chart
+            const volumeCtx = document.getElementById('volumeChart').getContext('2d');
+            volumeChart = new Chart(volumeCtx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Volume',
+                        data: [],
+                        borderColor: '#3b82f6',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: {
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                            ticks: { color: '#9ca3af' }
+                        },
+                        y: {
+                            grid: { color: 'rgba(255, 255, 255, 0.1)' },
+                            ticks: { color: '#9ca3af' }
+                        }
+                    }
+                }
+            });
+
+            // Comparison Chart
+            const comparisonCtx = document.getElementById('comparisonChart').getContext('2d');
+            comparisonChart = new Chart(comparisonCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Binance', 'Bybit', 'OKX', 'Kraken', 'Others'],
+                    datasets: [{
+                        data: [40, 25, 15, 10, 10],
+                        backgroundColor: [
+                            '#f59e0b',
+                            '#f97316',
+                            '#3b82f6',
+                            '#8b5cf6',
+                            '#6b7280'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom',
+                            labels: { color: '#9ca3af' }
+                        }
+                    }
+                }
+            });
+
+            // Buy Pressure Chart
+            const buyCtx = document.getElementById('buyPressureChart').getContext('2d');
+            buyPressureChart = new Chart(buyCtx, {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        data: [65, 35],
+                        backgroundColor: ['#10b981', 'rgba(255, 255, 255, 0.1)'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: false,
+                    cutout: '70%',
+                    plugins: { legend: { display: false } }
+                }
+            });
+
+            // Sell Pressure Chart
+            const sellCtx = document.getElementById('sellPressureChart').getContext('2d');
+            sellPressureChart = new Chart(sellCtx, {
+                type: 'doughnut',
+                data: {
+                    datasets: [{
+                        data: [35, 65],
+                        backgroundColor: ['#ef4444', 'rgba(255, 255, 255, 0.1)'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: false,
+                    cutout: '70%',
+                    plugins: { legend: { display: false } }
+                }
+            });
+        }
+
+        function loadInitialData() {
+            // Simulate initial data load
+            updateMetrics({
+                totalVolume: '$2.4B',
+                volumeChange: '+12.5%',
+                activeExchanges: 8,
+                whaleAlerts: 23,
+                marketDominance: '42.3%',
+                dominantExchange: 'Binance'
+            });
+
+            // Generate initial volume data
+            const now = new Date();
+            for (let i = 29; i >= 0; i--) {
+                const time = new Date(now.getTime() - i * 60000);
+                const volume = Math.random() * 1000000 + 500000;
+                volumeData.push({
+                    time: time.toLocaleTimeString(),
+                    volume: volume
+                });
+            }
+            updateVolumeChart();
+        }
+
+        function setupEventListeners() {
+            document.getElementById('symbolSelect').addEventListener('change', (e) => {
+                currentSymbol = e.target.value;
+                refreshData();
+            });
+
+            document.getElementById('timeRange').addEventListener('change', refreshData);
+            document.getElementById('analysisMode').addEventListener('change', updateAnalysisMode);
+            document.getElementById('comparisonMetric').addEventListener('change', updateComparisonChart);
+            document.getElementById('heatmapTimeframe').addEventListener('change', generateHeatmap);
+            document.getElementById('whaleThreshold').addEventListener('change', loadWhaleData);
+        }
+
+        function startDataUpdates() {
+            setInterval(() => {
+                if (autoRefreshEnabled) {
+                    updateRealTimeData();
+                }
+            }, 5000); // Update every 5 seconds
+        }
+
+        function updateRealTimeData() {
+            // Simulate real-time data updates
+            const now = new Date();
+            const newVolume = Math.random() * 1000000 + 500000;
+            
+            volumeData.push({
+                time: now.toLocaleTimeString(),
+                volume: newVolume
+            });
+
+            if (volumeData.length > 30) {
+                volumeData.shift();
+            }
+
+            updateVolumeChart();
+            updateMetrics({
+                totalVolume: formatVolume(newVolume * 24),
+                volumeChange: `${(Math.random() * 20 - 10).toFixed(1)}%`,
+                whaleAlerts: Math.floor(Math.random() * 50),
+                marketDominance: `${(Math.random() * 20 + 30).toFixed(1)}%`
+            });
+
+            // Update volume bar animation
+            const volumeBar = document.getElementById('volumeBar');
+            const percentage = Math.min((newVolume / 1500000) * 100, 100);
+            volumeBar.style.width = `${percentage}%`;
+
+            // Update flow analysis
+            updateFlowAnalysis();
+        }
+
+        function updateVolumeChart() {
+            volumeChart.data.labels = volumeData.map(d => d.time);
+            volumeChart.data.datasets[0].data = volumeData.map(d => d.volume);
+            volumeChart.update('none');
+        }
+
+        function updateMetrics(data) {
+            Object.keys(data).forEach(key => {
+                const element = document.getElementById(key);
+                if (element) {
+                    element.textContent = data[key];
+                    element.classList.add('pulse-animation');
+                    setTimeout(() => element.classList.remove('pulse-animation'), 1000);
+                }
+            });
+        }
+
+        function updateFlowAnalysis() {
+            const buyPressure = Math.random() * 100;
+            const sellPressure = 100 - buyPressure;
+
+            // Update buy pressure chart
+            buyPressureChart.data.datasets[0].data = [buyPressure, 100 - buyPressure];
+            buyPressureChart.update('none');
+            document.getElementById('buyPressureValue').textContent = `${buyPressure.toFixed(0)}%`;
+
+            // Update sell pressure chart
+            sellPressureChart.data.datasets[0].data = [sellPressure, 100 - sellPressure];
+            sellPressureChart.update('none');
+            document.getElementById('sellPressureValue').textContent = `${sellPressure.toFixed(0)}%`;
+
+            // Update flow balance
+            const flowBalance = document.getElementById('flowBalance');
+            const balancePercentage = buyPressure;
+            flowBalance.style.width = `${Math.abs(balancePercentage - 50) * 2}%`;
+            flowBalance.style.marginLeft = `${Math.min(balancePercentage, 50)}%`;
+
+            const flowText = document.getElementById('flowBalanceText');
+            if (balancePercentage > 60) {
+                flowText.textContent = 'Buy Dominant';
+                flowText.className = 'text-sm text-green-400 mt-2';
+            } else if (balancePercentage < 40) {
+                flowText.textContent = 'Sell Dominant';
+                flowText.className = 'text-sm text-red-400 mt-2';
+            } else {
+                flowText.textContent = 'Balanced';
+                flowText.className = 'text-sm text-gray-400 mt-2';
+            }
+        }
+
+        function generateHeatmap() {
+            const container = document.getElementById('volumeHeatmap');
+            container.innerHTML = '';
+
+            const exchanges = ['Binance', 'Bybit', 'OKX', 'Kraken', 'Coinbase', 'Others'];
+            const timeSlots = ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00'];
+
+            exchanges.forEach(exchange => {
+                timeSlots.forEach(time => {
+                    const intensity = Math.random();
+                    const cell = document.createElement('div');
+                    cell.className = 'heatmap-cell';
+                    cell.style.backgroundColor = getHeatmapColor(intensity);
+                    cell.style.height = '30px';
+                    cell.title = `${exchange} at ${time}: ${(intensity * 100).toFixed(1)}%`;
+                    cell.textContent = exchange.slice(0, 3);
+                    container.appendChild(cell);
+                });
+            });
+        }
+
+        function getHeatmapColor(intensity) {
+            const colors = [
+                '#1e3a8a', // Dark blue (low)
+                '#3b82f6', // Blue
+                '#fbbf24', // Yellow
+                '#f59e0b', // Orange
+                '#ef4444'  // Red (high)
+            ];
+            const index = Math.floor(intensity * (colors.length - 1));
+            return colors[index];
+        }
+
+        function loadWhaleData() {
+            const container = document.getElementById('whaleTradesContainer');
+            container.innerHTML = '';
+
+            // Generate mock whale trades
+            for (let i = 0; i < 5; i++) {
+                const trade = {
+                    amount: (Math.random() * 500 + 100).toFixed(2),
+                    exchange: ['Binance', 'Bybit', 'OKX', 'Kraken'][Math.floor(Math.random() * 4)],
+                    type: Math.random() > 0.5 ? 'BUY' : 'SELL',
+                    time: new Date(Date.now() - Math.random() * 3600000).toLocaleTimeString()
+                };
+
+                const tradeElement = document.createElement('div');
+                tradeElement.className = `whale-alert p-3 bg-gray-800 rounded-lg border-l-4 ${trade.type === 'BUY' ? 'border-green-500' : 'border-red-500'}`;
+                tradeElement.innerHTML = `
+                    <div class="flex justify-between items-center">
+                        <div>
+                            <span class="font-bold text-white">${trade.amount} BTC</span>
+                            <span class="text-sm text-gray-400 ml-2">${trade.exchange}</span>
+                        </div>
+                        <div class="text-right">
+                            <div class="text-sm font-medium ${trade.type === 'BUY' ? 'text-green-400' : 'text-red-400'}">${trade.type}</div>
+                            <div class="text-xs text-gray-500">${trade.time}</div>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(tradeElement);
+            }
+        }
+
+        function loadAlerts() {
+            const container = document.getElementById('alertsContainer');
+            container.innerHTML = '';
+
+            const alerts = [
+                { type: 'Volume Spike', message: 'Volume increased 300% in 5 minutes', time: '2 min ago', level: 'high' },
+                { type: 'Whale Movement', message: 'Large BTC transfer detected', time: '5 min ago', level: 'medium' },
+                { type: 'Cross-Exchange', message: 'Arbitrage opportunity detected', time: '8 min ago', level: 'low' }
+            ];
+
+            alerts.forEach(alert => {
+                const alertElement = document.createElement('div');
+                alertElement.className = `p-3 bg-gray-800 rounded-lg border-l-4 ${
+                    alert.level === 'high' ? 'border-red-500' : 
+                    alert.level === 'medium' ? 'border-yellow-500' : 'border-blue-500'
+                }`;
+                alertElement.innerHTML = `
+                    <div class="flex justify-between items-start">
+                        <div>
+                            <div class="font-medium text-white">${alert.type}</div>
+                            <div class="text-sm text-gray-400">${alert.message}</div>
+                        </div>
+                        <div class="text-xs text-gray-500">${alert.time}</div>
+                    </div>
+                `;
+                container.appendChild(alertElement);
+            });
+        }
+
+        function toggleAutoRefresh() {
+            autoRefreshEnabled = !autoRefreshEnabled;
+            const btn = document.getElementById('autoRefreshBtn');
+            const text = document.getElementById('refreshText');
+            
+            if (autoRefreshEnabled) {
+                btn.className = btn.className.replace('bg-gray-600', 'bg-blue-600');
+                text.textContent = 'Auto Refresh: ON';
+            } else {
+                btn.className = btn.className.replace('bg-blue-600', 'bg-gray-600');
+                text.textContent = 'Auto Refresh: OFF';
+            }
+        }
+
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobile-menu');
+            menu.classList.toggle('hidden');
+        }
+
+        function refreshData() {
+            // Simulate data refresh
+            loadInitialData();
+            generateHeatmap();
+            loadWhaleData();
+            showNotification('Data refreshed successfully', 'success');
+        }
+
+        function resetChart() {
+            volumeData = [];
+            loadInitialData();
+            showNotification('Chart reset', 'info');
+        }
+
+        function exportData() {
+            const data = {
+                symbol: currentSymbol,
+                volumeData: volumeData,
+                timestamp: new Date().toISOString()
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `volume-data-${currentSymbol}-${Date.now()}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            showNotification('Data exported successfully', 'success');
+        }
+
+        function addAlert() {
+            // Simple alert creation
+            const alertType = prompt('Alert type (Volume Spike, Whale Movement, etc.):');
+            const threshold = prompt('Threshold value:');
+            
+            if (alertType && threshold) {
+                showNotification(`Alert created: ${alertType} at ${threshold}`, 'success');
+                loadAlerts(); // Refresh alerts display
+            }
+        }
+
+        function updateAnalysisMode() {
+            const mode = document.getElementById('analysisMode').value;
+            showNotification(`Switched to ${mode} mode`, 'info');
+            // Additional mode-specific logic would go here
+        }
+
+        function updateComparisonChart() {
+            const metric = document.getElementById('comparisonMetric').value;
+            showNotification(`Comparison updated to ${metric}`, 'info');
+            // Update chart based on selected metric
+        }
+
+        function formatVolume(volume) {
+            if (volume >= 1e9) return `$${(volume / 1e9).toFixed(1)}B`;
+            if (volume >= 1e6) return `$${(volume / 1e6).toFixed(1)}M`;
+            if (volume >= 1e3) return `$${(volume / 1e3).toFixed(1)}K`;
+            return `$${volume.toFixed(0)}`;
+        }
+
+        function showNotification(message, type) {
+            const notification = document.createElement('div');
+            notification.className = `fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 ${
+                type === 'success' ? 'bg-green-600' :
+                type === 'error' ? 'bg-red-600' :
+                'bg-blue-600'
+            } text-white max-w-sm`;
+            
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-${
+                        type === 'success' ? 'check-circle' :
+                        type === 'error' ? 'exclamation-triangle' :
+                        'info-circle'
+                    } mr-2"></i>
+                    <span>${message}</span>
+                </div>
+            `;
+            
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+    </script>
+</body>
+</html> 

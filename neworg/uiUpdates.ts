@@ -1,4 +1,3 @@
-
 /**
  * @license
  * SPDX-License-Identifier: Apache-2.0
@@ -69,7 +68,6 @@ export function updateSidebarContent() {
                 if (conn.fundingRateInfo) {
                     const rate = typeof conn.fundingRateInfo.rate === 'number' ? `${conn.fundingRateInfo.rate.toFixed(4)}%` : (conn.fundingRateInfo.rate || '--');
                     fundingText = `Rate: ${rate} | Next: ${conn.fundingRateInfo.nextFundingTime || '--'}`;
-                     if (config.id === 'uniswap_simulated') fundingText = `${conn.fundingRateInfo.rate || 'N/A (Spot AMM)'}`;
                 } else if (conn.fundingRateInfo === null) fundingText = 'Error loading funding';
 
                 if (conn.volumeInfo) {
@@ -81,7 +79,7 @@ export function updateSidebarContent() {
                     volumeText = `${selectedAsset}: ${assetVol} | USD: ${usdVolDisplay}`;
                     if (typeof conn.volumeInfo.usdVolume === 'number') {
                         aggregatedUsdVolume += conn.volumeInfo.usdVolume;
-                    } else if (typeof conn.volumeInfo.usdVolume === 'string' && config.id !== 'uniswap_simulated') {
+                    } else if (typeof conn.volumeInfo.usdVolume === 'string') {
                         const parsedVol = parseFloat(conn.volumeInfo.usdVolume.replace(/[^0-9.-]+/g,""));
                         if (!isNaN(parsedVol)) aggregatedUsdVolume += parsedVol;
                     }

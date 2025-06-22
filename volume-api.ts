@@ -292,79 +292,6 @@ export async function fetchBybitHistoricalVolume(symbol: string, days: number = 
 }
 
 /**
- * Generate simulated historical volume data for DEX exchanges and testing
- */
-export function generateSimulatedVolumeData(exchangeId: string, symbol: string, days: number = 30): HistoricalVolumeDataPoint[] {
-    const data: HistoricalVolumeDataPoint[] = [];
-    const now = Date.now();
-    const classification = getAssetClassification(symbol);
-    
-    // Base volumes by asset (simulated)
-    const baseVolumes: Record<string, { asset: number; usd: number; price: number }> = {
-        'BTCUSDT': { asset: 1000, usd: 45000000, price: 45000 },
-        'ETHUSDT': { asset: 15000, usd: 25000000, price: 1666 },
-        'SOLUSDT': { asset: 500000, usd: 12000000, price: 24 },
-        'DOGEUSDT': { asset: 50000000, usd: 3000000, price: 0.06 },
-        'ADAUSDT': { asset: 25000000, usd: 8000000, price: 0.32 },
-        'LINKUSDT': { asset: 800000, usd: 6000000, price: 7.5 },
-        'XRPUSDT': { asset: 20000000, usd: 10000000, price: 0.5 }
-    };
-    
-    // Exchange multipliers (market share simulation)
-    const exchangeMultipliers: Record<string, number> = {
-        'binance': 1.0,
-        'bybit': 0.7,
-        'okx': 0.5,
-        'kraken': 0.3,
-        'bitget': 0.2,
-        'dydx': 0.15,
-        'hyperliquid': 0.1,
-        'vertex': 0.05,
-        'jupiter': 0.08,
-        'uniswap': 0.25
-    };
-    
-    const baseData = baseVolumes[symbol] || baseVolumes['BTCUSDT'];
-    const multiplier = exchangeMultipliers[exchangeId] || 0.1;
-    
-    for (let i = days - 1; i >= 0; i--) {
-        const timestamp = now - (i * 24 * 60 * 60 * 1000);
-        const date = new Date(timestamp);
-        
-        // Add some realistic variation (weekend effects, market cycles)
-        const dayOfWeek = date.getDay();
-        const weekendEffect = (dayOfWeek === 0 || dayOfWeek === 6) ? 0.6 : 1.0;
-        
-        // Market cycle simulation (30-day cycle)
-        const cycleEffect = 0.8 + 0.4 * Math.sin((i / 30) * 2 * Math.PI);
-        
-        // Random daily variation
-        const randomEffect = 0.7 + 0.6 * Math.random();
-        
-        const totalEffect = weekendEffect * cycleEffect * randomEffect * multiplier;
-        
-        // Price simulation with some correlation to volume
-        const priceVariation = 0.95 + 0.1 * Math.random();
-        const price = baseData.price * priceVariation;
-        
-        data.push({
-            date: date.toISOString().split('T')[0],
-            timestamp,
-            assetVolume: Math.round(baseData.asset * totalEffect),
-            usdVolume: Math.round(baseData.usd * totalEffect),
-            priceClose: Math.round(price * 100) / 100,
-            exchangeId,
-            symbol,
-            instrumentType: getInstrumentType(exchangeId, symbol),
-            baseAsset: classification.baseAsset,
-            quoteAsset: classification.quoteAsset
-        });
-    }
-    
-    return data;
-}
-
-/**
  * Fetch historical volume data from all supported exchanges
  */
 export async function fetchAllHistoricalVolumeData(days: number = 30): Promise<HistoricalVolumeDataPoint[]> {
@@ -378,12 +305,6 @@ export async function fetchAllHistoricalVolumeData(days: number = 30): Promise<H
         
         // Bybit
         fetchPromises.push(fetchBybitHistoricalVolume(asset, days));
-        
-        // Generate simulated data for other exchanges
-        const simulatedExchanges = ['okx', 'kraken', 'bitget', 'mexc', 'dydx', 'hyperliquid', 'vertex', 'jupiter', 'uniswap'];
-        for (const exchangeId of simulatedExchanges) {
-            fetchPromises.push(Promise.resolve(generateSimulatedVolumeData(exchangeId, asset, days)));
-        }
     }
     
     try {

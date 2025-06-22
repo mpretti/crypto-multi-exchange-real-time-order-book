@@ -646,6 +646,252 @@ class ChartsDashboard {
 
         // Connection monitoring
         setInterval(() => this.checkConnections(), 30000); // Check every 30 seconds
+        
+        // Chart resize handler
+        window.addEventListener('resize', () => this.handleResize());
+        
+        // Indicator button event listeners
+        document.addEventListener('click', (e) => {
+            const target = e.target as HTMLElement;
+            
+            // Handle indicator button clicks
+            if (target.classList.contains('indicator-btn')) {
+                const indicator = target.dataset.indicator;
+                const chartId = target.dataset.chart;
+                
+                if (indicator && chartId) {
+                    const chartInstance = this.getChartById(chartId);
+                    if (chartInstance) {
+                        this.toggleIndicator(chartInstance, indicator);
+                    }
+                }
+            }
+            
+            // Handle chart mode buttons
+            if (target.classList.contains('chart-mode-btn')) {
+                const mode = target.dataset.mode as typeof this.chartMode;
+                if (mode) {
+                    this.switchChartMode(mode);
+                    
+                    // Update button states
+                    document.querySelectorAll('.chart-mode-btn').forEach(btn => btn.classList.remove('active'));
+                    target.classList.add('active');
+                }
+            }
+        });
+        
+        // Chart mode selector
+        if (this.chartModeSelect) {
+            this.chartModeSelect.addEventListener('change', (e) => {
+                const target = e.target as HTMLSelectElement;
+                const mode = target.value as typeof this.chartMode;
+                this.switchChartMode(mode);
+                this.savePreferencesDebounced();
+            });
+        }
+        
+        // Side panel controls
+        this.setupSidePanelControls();
+    }
+    
+    private setupSidePanelControls() {
+        const settingsBtn = document.getElementById('settings-btn');
+        const sidePanel = document.getElementById('side-panel');
+        const closeSidePanelBtn = document.getElementById('close-side-panel');
+        
+        // Settings button to open side panel
+        if (settingsBtn && sidePanel) {
+            settingsBtn.addEventListener('click', () => {
+                sidePanel.classList.add('open');
+                this.sidePanelVisible = true;
+                this.savePreferencesDebounced();
+            });
+        }
+        
+        // Close side panel button
+        if (closeSidePanelBtn && sidePanel) {
+            closeSidePanelBtn.addEventListener('click', () => {
+                sidePanel.classList.remove('open');
+                this.sidePanelVisible = false;
+                this.savePreferencesDebounced();
+            });
+        }
+        
+        // Chart theme selector
+        const themeSelect = document.getElementById('chart-theme-select') as HTMLSelectElement;
+        if (themeSelect) {
+            themeSelect.addEventListener('change', (e) => {
+                const target = e.target as HTMLSelectElement;
+                this.updateChartTheme(target.value);
+                this.savePreferencesDebounced();
+            });
+        }
+        
+        // Crosshair toggle
+        const crosshairToggle = document.getElementById('crosshair-toggle') as HTMLInputElement;
+        if (crosshairToggle) {
+            crosshairToggle.addEventListener('change', (e) => {
+                const target = e.target as HTMLInputElement;
+                this.toggleCrosshair(target.checked);
+                this.savePreferencesDebounced();
+            });
+        }
+        
+        // Grid toggle
+        const gridToggle = document.getElementById('grid-toggle') as HTMLInputElement;
+        if (gridToggle) {
+            gridToggle.addEventListener('change', (e) => {
+                const target = e.target as HTMLInputElement;
+                this.toggleGrid(target.checked);
+                this.savePreferencesDebounced();
+            });
+        }
+        
+        // Price scale toggle
+        const priceScaleToggle = document.getElementById('price-scale-toggle') as HTMLInputElement;
+        if (priceScaleToggle) {
+            priceScaleToggle.addEventListener('change', (e) => {
+                const target = e.target as HTMLInputElement;
+                this.togglePriceScale(target.checked);
+                this.savePreferencesDebounced();
+            });
+        }
+        
+        // Time scale toggle
+        const timeScaleToggle = document.getElementById('time-scale-toggle') as HTMLInputElement;
+        if (timeScaleToggle) {
+            timeScaleToggle.addEventListener('change', (e) => {
+                const target = e.target as HTMLInputElement;
+                this.toggleTimeScale(target.checked);
+                this.savePreferencesDebounced();
+            });
+        }
+        
+        // Auto scale toggle
+        const autoScaleToggle = document.getElementById('auto-scale-toggle') as HTMLInputElement;
+        if (autoScaleToggle) {
+            autoScaleToggle.addEventListener('change', (e) => {
+                const target = e.target as HTMLInputElement;
+                this.toggleAutoScale(target.checked);
+                this.savePreferencesDebounced();
+            });
+        }
+        
+        // Reset zoom button
+        const resetZoomBtn = document.getElementById('reset-zoom-btn');
+        if (resetZoomBtn) {
+            resetZoomBtn.addEventListener('click', () => {
+                this.resetZoom();
+            });
+        }
+        
+        // Screenshot button
+        const screenshotBtn = document.getElementById('screenshot-btn');
+        if (screenshotBtn) {
+            screenshotBtn.addEventListener('click', () => {
+                this.takeScreenshot();
+            });
+        }
+    }
+    
+    // Chart customization methods
+    private updateChartTheme(theme: string) {
+        const isDark = theme === 'dark';
+        const options = {
+            layout: {
+                background: { color: isDark ? '#1a1a2e' : '#ffffff' },
+                textColor: isDark ? '#ffffff' : '#000000',
+            },
+            grid: {
+                vertLines: { color: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)' },
+                horzLines: { color: isDark ? 'rgba(255, 255, 255, 0.1)' : 'rgba(0, 0, 0, 0.1)' },
+            },
+        };
+        
+        this.activeCharts.forEach(chart => {
+            if (chart.chart) {
+                chart.chart.applyOptions(options);
+            }
+        });
+    }
+    
+    private toggleCrosshair(enabled: boolean) {
+        const options = {
+            crosshair: {
+                mode: enabled ? 1 : 0, // 1 = Normal, 0 = Hidden
+            }
+        };
+        
+        this.activeCharts.forEach(chart => {
+            if (chart.chart) {
+                chart.chart.applyOptions(options);
+            }
+        });
+    }
+    
+    private toggleGrid(enabled: boolean) {
+        const options = {
+            grid: {
+                vertLines: { visible: enabled },
+                horzLines: { visible: enabled },
+            }
+        };
+        
+        this.activeCharts.forEach(chart => {
+            if (chart.chart) {
+                chart.chart.applyOptions(options);
+            }
+        });
+    }
+    
+    private togglePriceScale(enabled: boolean) {
+        const options = {
+            rightPriceScale: { visible: enabled }
+        };
+        
+        this.activeCharts.forEach(chart => {
+            if (chart.chart) {
+                chart.chart.applyOptions(options);
+            }
+        });
+    }
+    
+    private toggleTimeScale(enabled: boolean) {
+        const options = {
+            timeScale: { visible: enabled }
+        };
+        
+        this.activeCharts.forEach(chart => {
+            if (chart.chart) {
+                chart.chart.applyOptions(options);
+            }
+        });
+    }
+    
+    private toggleAutoScale(enabled: boolean) {
+        this.activeCharts.forEach(chart => {
+            if (chart.chart) {
+                const priceScale = chart.chart.priceScale('right');
+                if (enabled) {
+                    priceScale.applyOptions({ autoScale: true });
+                } else {
+                    priceScale.applyOptions({ autoScale: false });
+                }
+            }
+        });
+    }
+    
+    private resetZoom() {
+        this.activeCharts.forEach(chart => {
+            if (chart.chart) {
+                chart.chart.timeScale().fitContent();
+            }
+        });
+    }
+    
+    private takeScreenshot() {
+        // For now, just show a message. Full screenshot functionality would require additional libraries
+        alert('📸 Screenshot functionality coming soon! Use your browser\'s screenshot tools for now.');
     }
 
     private updateTitles() {
@@ -821,6 +1067,14 @@ class ChartsDashboard {
         await this.loadHistoricalData(chartInstance);
         this.connectWebSocket(chartInstance);
         this.updateStats(chartInstance);
+        
+        // Apply saved indicators
+        chartInstance.activeIndicators.forEach(indicator => {
+            this.addIndicator(chartInstance, indicator);
+        });
+        
+        // Update indicator button states
+        this.updateIndicatorButtons(chartInstance);
     }
 
     private async restartCharts() {
@@ -1855,7 +2109,17 @@ class ChartsDashboard {
         document.querySelectorAll(`[data-chart="${chartNum}"]`).forEach(btn => {
             const indicator = (btn as HTMLElement).dataset.indicator;
             if (indicator) {
-                btn.classList.toggle('active', chartInstance.activeIndicators.has(indicator));
+                const isActive = chartInstance.activeIndicators.has(indicator);
+                btn.classList.toggle('active', isActive);
+                
+                // Update button appearance
+                if (isActive) {
+                    (btn as HTMLElement).style.background = 'linear-gradient(135deg, #4facfe 0%, #00f2fe 100%)';
+                    (btn as HTMLElement).style.color = '#000';
+                } else {
+                    (btn as HTMLElement).style.background = 'rgba(255, 255, 255, 0.1)';
+                    (btn as HTMLElement).style.color = '#fff';
+                }
             }
         });
     }
@@ -2286,8 +2550,23 @@ class ChartsDashboard {
             this.sidePanel.style.display = this.sidePanelVisible ? 'block' : 'none';
         }
         
+        // Apply side panel visibility
+        const sidePanel = document.getElementById('side-panel');
+        if (sidePanel) {
+            if (this.sidePanelVisible) {
+                sidePanel.classList.add('open');
+            } else {
+                sidePanel.classList.remove('open');
+            }
+        }
+        
         // Apply chart mode
         this.switchChartMode(this.chartMode);
+        
+        // Update indicator button states for all charts
+        [this.chart1, this.chart2, this.chart3, this.chart4].forEach(chart => {
+            this.updateIndicatorButtons(chart);
+        });
         
         console.log('🎨 UI updated with saved preferences');
     }
