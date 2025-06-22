@@ -156,19 +156,24 @@ export const SUPPORTED_EXCHANGES: Record<string, ExchangeConfig> = {
         needsSnapshotFlag: false,
         sliceDepth: 20,
         parseMessage: (data, currentBids, currentAsks, _snapshotReceived) => {
+            // Debug: Log all MEXC messages to understand the format
+            console.log('MEXC: Raw message received:', data);
+            
             // Handle PONG response
             if (data.method === 'PONG') {
+                console.log('MEXC: PONG received');
                 return null;
             }
             
             // Handle subscription confirmation
             if (data.method === 'SUBSCRIPTION') {
-                logger.log('MEXC: Subscription confirmed for', data.params);
+                console.log('MEXC: Subscription confirmed for', data.params);
                 return null;
             }
             
             // Handle book ticker data
             if (data.c === 'spot@public.bookTicker.v3.api' && data.d) {
+                console.log('MEXC: Book ticker data received:', data.d);
                 const bookData = data.d;
                 if (!bookData.s) return null;
                 
@@ -178,17 +183,23 @@ export const SUPPORTED_EXCHANGES: Record<string, ExchangeConfig> = {
                 // MEXC bookTicker provides best bid/ask only
                 if (bookData.b && bookData.B) {
                     newBids.set(bookData.b, parseFloat(bookData.B));
+                    console.log('MEXC: Added bid:', bookData.b, '@', bookData.B);
                 }
                 if (bookData.a && bookData.A) {
                     newAsks.set(bookData.a, parseFloat(bookData.A));
+                    console.log('MEXC: Added ask:', bookData.a, '@', bookData.A);
                 }
                 
+                console.log('MEXC: Returning update with', newBids.size, 'bids and', newAsks.size, 'asks');
                 return {
                     updatedBids: newBids,
                     updatedAsks: newAsks,
                     isSnapshot: true // Always snapshot for ticker data
                 };
             }
+            
+            // Log unhandled messages
+            console.log('MEXC: Unhandled message type:', data);
             return null;
         },
         fetchFeeInfo: fetchMexcFeeInfo,
