@@ -163,6 +163,16 @@ class DataCollectionController {
         res.status(500).json({ error: error.message });
       }
     });
+
+    // Manual dashboard refresh
+    this.app.post('/api/refresh', async (req, res) => {
+      try {
+        const success = await this.triggerDashboardRefresh('Manual refresh requested');
+        res.json({ success });
+      } catch (error) {
+        res.status(500).json({ error: error.message });
+      }
+    });
   }
 
   setupSocketHandlers() {
@@ -682,7 +692,7 @@ class DataCollectionController {
   }
 
   startPeriodicUpdates() {
-    // Update stats every 30 seconds
+    // Update basic stats every 30 seconds
     setInterval(async () => {
       try {
         const stats = await this.getSystemStats();
@@ -705,6 +715,151 @@ class DataCollectionController {
       
       this.io.emit('collections_update', collections);
     }, 10000);
+
+    // 🚀 NEW: Comprehensive data analysis updates every 2 minutes
+    setInterval(async () => {
+      try {
+        console.log('🔄 Running periodic data analysis update...');
+        const analysis = await this.runDataAnalysis();
+        this.io.emit('analysis_update', analysis);
+        
+        // Also update file browser data
+        const files = await this.getFiles();
+        this.io.emit('files_update', files);
+        
+        console.log('✅ Data analysis update completed');
+      } catch (error) {
+        console.error('Failed to update data analysis:', error);
+      }
+    }, 120000); // Every 2 minutes
+
+    // 🚀 NEW: File system change monitoring (faster updates when actively collecting)
+    this.startFileSystemMonitoring();
+
+    // 🚀 NEW: Collection progress monitoring
+    this.startCollectionProgressMonitoring();
+  }
+
+  startFileSystemMonitoring() {
+    const fs = require('fs');
+    const dataDir = path.join(__dirname, '../data');
+    
+    // Track last known file counts per exchange
+    this.lastFileCounts = {};
+    
+    // Monitor file system changes every 30 seconds during active collections
+    setInterval(async () => {
+      try {
+        if (this.activeCollections.size > 0) {
+          const hasChanges = await this.detectFileSystemChanges();
+          
+          if (hasChanges) {
+            console.log('📁 File system changes detected, updating dashboard...');
+            
+            // Quick stats update
+            const stats = await this.getSystemStats();
+            this.io.emit('stats_update', stats);
+            
+            // Update exchange status
+            const analysis = await this.runDataAnalysis();
+            this.io.emit('exchange_status_update', analysis.exchanges);
+            
+            // Update file browser
+            const files = await this.getFiles();
+            this.io.emit('files_update', files);
+            
+            // Emit change notification
+            this.io.emit('data_change_notification', {
+              message: 'New data files detected! Dashboard updated.',
+              timestamp: Date.now(),
+              type: 'success'
+            });
+          }
+        }
+      } catch (error) {
+        console.error('File system monitoring error:', error);
+      }
+    }, 30000); // Every 30 seconds during active collections
+  }
+
+  async detectFileSystemChanges() {
+    try {
+      const dataDir = path.join(__dirname, '../data');
+      const exchanges = await fs.readdir(dataDir);
+      let hasChanges = false;
+      
+      for (const exchange of exchanges) {
+        const exchangeDir = path.join(dataDir, exchange);
+        try {
+          const stats = await fs.stat(exchangeDir);
+          if (stats.isDirectory()) {
+            const dirStats = await this.calculateDirectoryStats(exchangeDir);
+            const currentCount = dirStats.files;
+            const lastCount = this.lastFileCounts[exchange] || 0;
+            
+            if (currentCount !== lastCount) {
+              console.log(`📈 ${exchange}: ${lastCount} → ${currentCount} files (+${currentCount - lastCount})`);
+              this.lastFileCounts[exchange] = currentCount;
+              hasChanges = true;
+            }
+          }
+        } catch (e) {
+          // Directory doesn't exist or error accessing it
+        }
+      }
+      
+      return hasChanges;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  startCollectionProgressMonitoring() {
+    // Monitor collection progress and emit detailed updates
+    setInterval(() => {
+      this.activeCollections.forEach((collection, collectionId) => {
+        if (collection.status === 'running') {
+          const progress = {
+            collectionId,
+            exchange: collection.exchange,
+            duration: Date.now() - collection.startTime,
+            recentLogs: collection.logs.slice(-5), // Last 5 log entries
+            status: 'running'
+          };
+          
+          this.io.emit('collection_progress', progress);
+        }
+      });
+    }, 15000); // Every 15 seconds
+  }
+
+  // 🚀 NEW: Method to trigger immediate dashboard refresh
+  async triggerDashboardRefresh(reason = 'Manual refresh') {
+    try {
+      console.log(`🔄 Triggering dashboard refresh: ${reason}`);
+      
+      // Get all updated data
+      const [stats, analysis, files] = await Promise.all([
+        this.getSystemStats(),
+        this.runDataAnalysis(),
+        this.getFiles()
+      ]);
+      
+      // Emit all updates simultaneously
+      this.io.emit('full_dashboard_refresh', {
+        stats,
+        analysis,
+        files,
+        timestamp: Date.now(),
+        reason
+      });
+      
+      console.log('✅ Dashboard refresh completed');
+      return true;
+    } catch (error) {
+      console.error('Dashboard refresh failed:', error);
+      return false;
+    }
   }
 
   formatBytes(bytes) {

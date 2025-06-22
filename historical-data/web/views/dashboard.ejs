@@ -161,6 +161,10 @@
                             class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
                         <i class="fas fa-fill-drip mr-2"></i>Fill Data Gaps
                     </button>
+                    <button onclick="refreshDashboard()" 
+                            class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-sync-alt mr-2"></i>Refresh Now
+                    </button>
                 </div>
             </div>
 
@@ -261,6 +265,67 @@
             
             logsContainer.appendChild(logElement);
             logsContainer.scrollTop = logsContainer.scrollHeight;
+        });
+
+        // 🚀 NEW: Real-time analysis updates
+        socket.on('analysis_update', (analysis) => {
+            console.log('📊 Received analysis update:', analysis);
+            displayExchangeStatus(analysis.exchanges || {});
+            displayGapAnalysis(analysis.gaps || {});
+            updateDateCoverageChart(analysis.dateRanges || {});
+            showNotification('Data analysis updated automatically', 'info');
+        });
+
+        // 🚀 NEW: File browser updates
+        socket.on('files_update', (files) => {
+            console.log('📁 Received files update:', files);
+            displayFileBrowser(files);
+            updateFileStatsChart(files);
+        });
+
+        // 🚀 NEW: Exchange status updates (faster than full analysis)
+        socket.on('exchange_status_update', (exchanges) => {
+            console.log('🔄 Received exchange status update:', exchanges);
+            displayExchangeStatus(exchanges);
+        });
+
+        // 🚀 NEW: Data change notifications
+        socket.on('data_change_notification', (notification) => {
+            console.log('📈 Data change detected:', notification.message);
+            showNotification(notification.message, notification.type);
+            
+            // Add visual indicator of live updates
+            const indicator = document.createElement('div');
+            indicator.className = 'fixed top-20 right-4 bg-green-500 text-white px-3 py-1 rounded-full text-sm animate-pulse';
+            indicator.innerHTML = '🔄 Live Update';
+            document.body.appendChild(indicator);
+            
+            setTimeout(() => indicator.remove(), 3000);
+        });
+
+        // 🚀 NEW: Collection progress updates
+        socket.on('collection_progress', (progress) => {
+            console.log('⚡ Collection progress:', progress);
+            updateCollectionProgress(progress);
+        });
+
+        // 🚀 NEW: Full dashboard refresh
+        socket.on('full_dashboard_refresh', (data) => {
+            console.log('🔄 Full dashboard refresh:', data.reason);
+            
+            // Update all sections
+            document.getElementById('total-files').textContent = data.stats.totalFiles.toLocaleString();
+            document.getElementById('total-size').textContent = data.stats.totalSizeFormatted;
+            document.getElementById('active-collectors').textContent = data.stats.activeCollectors;
+            document.getElementById('uptime').textContent = data.stats.uptimeFormatted;
+            
+            displayExchangeStatus(data.analysis.exchanges || {});
+            displayGapAnalysis(data.analysis.gaps || {});
+            updateDateCoverageChart(data.analysis.dateRanges || {});
+            displayFileBrowser(data.files);
+            updateFileStatsChart(data.files);
+            
+            showNotification(`Dashboard refreshed: ${data.reason}`, 'success');
         });
 
         async function loadDataAnalysis() {
@@ -554,19 +619,65 @@
             }
         }
 
+        function updateCollectionProgress(progress) {
+            // Update collection progress indicators
+            const activeCollectionsDiv = document.getElementById('active-collectors');
+            if (activeCollectionsDiv) {
+                // Add pulsing effect to show active collection
+                activeCollectionsDiv.parentElement.parentElement.classList.add('animate-pulse');
+                setTimeout(() => {
+                    activeCollectionsDiv.parentElement.parentElement.classList.remove('animate-pulse');
+                }, 2000);
+            }
+            
+            // Log progress for debugging
+            console.log(`📊 ${progress.exchange} collection running for ${Math.round(progress.duration / 1000)}s`);
+        }
+
+        async function refreshDashboard() {
+            try {
+                showNotification('Refreshing dashboard...', 'info');
+                const response = await fetch('/api/refresh', { method: 'POST' });
+                const result = await response.json();
+                
+                if (result.success) {
+                    showNotification('Dashboard refreshed successfully!', 'success');
+                } else {
+                    showNotification('Refresh failed', 'error');
+                }
+            } catch (error) {
+                showNotification('Error refreshing dashboard', 'error');
+            }
+        }
+
         function showNotification(message, type) {
             const notification = document.createElement('div');
             notification.className = `fixed top-4 right-4 p-4 rounded-lg shadow-lg z-50 ${
                 type === 'success' ? 'bg-green-500' :
                 type === 'error' ? 'bg-red-500' :
-                'bg-blue-500'
-            } text-white`;
-            notification.textContent = message;
+                type === 'info' ? 'bg-blue-500' :
+                'bg-gray-500'
+            } text-white max-w-sm`;
+            
+            notification.innerHTML = `
+                <div class="flex items-center">
+                    <i class="fas fa-${
+                        type === 'success' ? 'check-circle' :
+                        type === 'error' ? 'exclamation-triangle' :
+                        type === 'info' ? 'info-circle' :
+                        'bell'
+                    } mr-2"></i>
+                    <span>${message}</span>
+                </div>
+            `;
             
             document.body.appendChild(notification);
             
+            // Auto-remove after 5 seconds
             setTimeout(() => {
-                notification.remove();
+                notification.style.opacity = '0';
+                notification.style.transform = 'translateX(100%)';
+                setTimeout(() => notification.remove(), 300);
             }, 5000);
         }
     </script>
