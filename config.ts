@@ -142,51 +142,32 @@ export const SUPPORTED_EXCHANGES: Record<string, ExchangeConfig> = {
         id: 'mexc',
         name: 'MEXC Global',
         formatSymbol: (commonSymbol) => commonSymbol.toUpperCase(),
-        getWebSocketUrl: () => 'wss://wbs.mexc.com/ws',
-        getSubscribeMessage: (formattedSymbol) => JSON.stringify({
-            method: 'SUBSCRIPTION',
-            params: [`spot@public.bookTicker.v3.api@${formattedSymbol}`]
-        }),
-        getUnsubscribeMessage: (formattedSymbol) => JSON.stringify({
-            method: 'UNSUBSCRIPTION', 
-            params: [`spot@public.bookTicker.v3.api@${formattedSymbol}`]
-        }),
+        // Temporarily disable WebSocket due to CORS - use simulation approach
+        getWebSocketUrl: () => null, // 'wss://wbs.mexc.com/ws',
+        getSubscribeMessage: (formattedSymbol) => null,
+        getUnsubscribeMessage: (formattedSymbol) => null,
         pingIntervalMs: 30000,
-        pingPayload: () => JSON.stringify({ method: 'PING' }),
+        pingPayload: () => null,
         needsSnapshotFlag: false,
         sliceDepth: 20,
         parseMessage: (data, currentBids, currentAsks, _snapshotReceived) => {
-            // Handle PONG response
-            if (data.method === 'PONG') {
-                return null;
-            }
-            
-            // Handle subscription confirmation
-            if (data.method === 'SUBSCRIPTION') {
-                logger.log('MEXC: Subscription confirmed for', data.params);
-                return null;
-            }
-            
-            // Handle book ticker data
-            if (data.c === 'spot@public.bookTicker.v3.api' && data.d) {
-                const bookData = data.d;
-                if (!bookData.s) return null;
-                
+            // Handle simulated snapshot data like Uniswap
+            if (data && data.type === 'mexc_snapshot' && data.bids && data.asks) {
                 const newBids = new Map<string, number>();
                 const newAsks = new Map<string, number>();
                 
-                // MEXC bookTicker provides best bid/ask only
-                if (bookData.b && bookData.B) {
-                    newBids.set(bookData.b, parseFloat(bookData.B));
-                }
-                if (bookData.a && bookData.A) {
-                    newAsks.set(bookData.a, parseFloat(bookData.A));
-                }
+                data.bids.forEach((bid: [string, number]) => {
+                    newBids.set(bid[0], bid[1]);
+                });
+                
+                data.asks.forEach((ask: [string, number]) => {
+                    newAsks.set(ask[0], ask[1]);
+                });
                 
                 return {
                     updatedBids: newBids,
                     updatedAsks: newAsks,
-                    isSnapshot: true // Always snapshot for ticker data
+                    isSnapshot: true
                 };
             }
             return null;
@@ -194,108 +175,119 @@ export const SUPPORTED_EXCHANGES: Record<string, ExchangeConfig> = {
         fetchFeeInfo: fetchMexcFeeInfo,
         fetchFundingRateInfo: fetchMexcFundingRateInfo,
         fetchVolumeInfo: fetchMexcVolumeInfo,
+        // Mark as simulation for now
+        isSimulated: true
     },
     kraken: {
         id: 'kraken',
         name: 'Kraken',
         formatSymbol: (commonSymbol) => commonSymbol.replace('USDT', '/USD'),
-        getWebSocketUrl: () => 'wss://ws.kraken.com/v2',
+        getWebSocketUrl: () => 'wss://ws.kraken.com',
         getSubscribeMessage: (formattedSymbol) => JSON.stringify({
-            method: 'subscribe',
-            params: {
-                channel: 'book',
-                symbol: [formattedSymbol],
-                depth: 25
-            }
+            event: 'subscribe',
+            pair: [formattedSymbol],
+            subscription: { name: 'book', depth: 25 }
         }),
         getUnsubscribeMessage: (formattedSymbol) => JSON.stringify({
-            method: 'unsubscribe',
-            params: {
-                channel: 'book',
-                symbol: [formattedSymbol]
-            }
+            event: 'unsubscribe',
+            pair: [formattedSymbol],
+            subscription: { name: 'book' }
         }),
         pingIntervalMs: 30000,
-        pingPayload: () => JSON.stringify({ method: 'ping' }),
+        pingPayload: () => JSON.stringify({ event: 'ping' }),
         needsSnapshotFlag: true,
         sliceDepth: 25,
         parseMessage: (data, currentBids, currentAsks, snapshotReceived) => {
             // Handle pong response
-            if (data.method === 'pong') {
+            if (data.event === 'pong') {
                 return null;
             }
             
             // Handle subscription confirmations
-            if (data.method === 'subscribe' && data.result) {
-                console.log('Kraken: Subscription confirmed for:', data.result.channel, data.result.symbol);
+            if (data.event === 'subscriptionStatus' && data.status === 'subscribed') {
+                console.log('Kraken: Subscription confirmed for:', data.subscription.name, data.pair);
                 return null;
             }
             
-            // Handle book data
-            if (data.channel === 'book' && data.type && data.data) {
-                const bookData = data.data[0];
-                if (!bookData) return null;
+            // Handle system status
+            if (data.event === 'systemStatus') {
+                console.log('Kraken: System status:', data.status);
+                return null;
+            }
+            
+            // Handle book data - Kraken v1 sends array format
+            if (Array.isArray(data) && data.length >= 4) {
+                const channelId = data[0];
+                const bookData = data[1];
+                const channelName = data[2];
+                const pair = data[3];
                 
-                let newBids = new Map(currentBids);
-                let newAsks = new Map(currentAsks);
-                let isSnapshot = data.type === 'snapshot';
-
-                if (isSnapshot) {
-                    newBids = new Map<string, number>();
-                    newAsks = new Map<string, number>();
+                if (channelName === 'book-25' && bookData) {
+                    let newBids = new Map(currentBids);
+                    let newAsks = new Map(currentAsks);
+                    let isSnapshot = false;
                     
-                    // Process bids
-                    if (bookData.bids && Array.isArray(bookData.bids)) {
-                        bookData.bids.forEach((bid: { price: string, qty: string }) => {
-                            const quantity = parseFloat(bid.qty);
+                    // Check if this is a snapshot (has both 'as' and 'bs' keys)
+                    if (bookData.as && bookData.bs) {
+                        isSnapshot = true;
+                        newBids = new Map<string, number>();
+                        newAsks = new Map<string, number>();
+                        
+                        // Process bids (bs)
+                        bookData.bs.forEach((bid: [string, string, string]) => {
+                            const price = bid[0];
+                            const quantity = parseFloat(bid[1]);
                             if (quantity > 0) {
-                                newBids.set(bid.price, quantity);
+                                newBids.set(price, quantity);
                             }
                         });
-                    }
-                    
-                    // Process asks
-                    if (bookData.asks && Array.isArray(bookData.asks)) {
-                        bookData.asks.forEach((ask: { price: string, qty: string }) => {
-                            const quantity = parseFloat(ask.qty);
+                        
+                        // Process asks (as)
+                        bookData.as.forEach((ask: [string, string, string]) => {
+                            const price = ask[0];
+                            const quantity = parseFloat(ask[1]);
                             if (quantity > 0) {
-                                newAsks.set(ask.price, quantity);
+                                newAsks.set(price, quantity);
                             }
                         });
+                    } else {
+                        // Handle incremental updates
+                        if (!snapshotReceived) return null;
+                        
+                        // Process bid updates (b)
+                        if (bookData.b) {
+                            bookData.b.forEach((bid: [string, string, string]) => {
+                                const price = bid[0];
+                                const quantity = parseFloat(bid[1]);
+                                if (quantity === 0) {
+                                    newBids.delete(price);
+                                } else {
+                                    newBids.set(price, quantity);
+                                }
+                            });
+                        }
+                        
+                        // Process ask updates (a)
+                        if (bookData.a) {
+                            bookData.a.forEach((ask: [string, string, string]) => {
+                                const price = ask[0];
+                                const quantity = parseFloat(ask[1]);
+                                if (quantity === 0) {
+                                    newAsks.delete(price);
+                                } else {
+                                    newAsks.set(price, quantity);
+                                }
+                            });
+                        }
                     }
-                } else if (data.type === 'update') {
-                    if (!snapshotReceived) return null;
                     
-                    // Handle incremental updates
-                    if (bookData.bids && Array.isArray(bookData.bids)) {
-                        bookData.bids.forEach((bid: { price: string, qty: string }) => {
-                            const quantity = parseFloat(bid.qty);
-                            if (quantity === 0) {
-                                newBids.delete(bid.price);
-                            } else {
-                                newBids.set(bid.price, quantity);
-                            }
-                        });
-                    }
-
-                    if (bookData.asks && Array.isArray(bookData.asks)) {
-                        bookData.asks.forEach((ask: { price: string, qty: string }) => {
-                            const quantity = parseFloat(ask.qty);
-                            if (quantity === 0) {
-                                newAsks.delete(ask.price);
-                            } else {
-                                newAsks.set(ask.price, quantity);
-                            }
-                        });
-                    }
+                    return { 
+                        updatedBids: newBids, 
+                        updatedAsks: newAsks, 
+                        isSnapshot,
+                        channelId: channelId
+                    };
                 }
-                
-                return { 
-                    updatedBids: newBids, 
-                    updatedAsks: newAsks, 
-                    isSnapshot,
-                    timestamp: bookData.timestamp
-                };
             }
             return null;
         }

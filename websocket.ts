@@ -44,6 +44,41 @@ function generateJupiterSnapshot(asset: string) {
     };
 }
 
+// Generate simulated MEXC order book data
+function generateMexcSnapshot(asset: string) {
+    let basePrice = 2000;
+    const upperAsset = asset.toUpperCase();
+    if (upperAsset.startsWith('BTC')) basePrice = 103000;
+    else if (upperAsset.startsWith('ETH')) basePrice = 3800;
+    else if (upperAsset.startsWith('SOL')) basePrice = 220;
+    else if (upperAsset.startsWith('DOGE')) basePrice = 0.32;
+    else if (upperAsset.startsWith('ADA')) basePrice = 1.05;
+    else if (upperAsset.startsWith('LINK')) basePrice = 22;
+    else if (upperAsset.startsWith('XRP')) basePrice = 2.15;
+
+    const assetDecimals = getDecimalPlaces(basePrice);
+    
+    // Simulate MEXC order book with tighter spreads (typical for CEX)
+    const bidSpread = 0.0015; // 0.15% spread
+    const askSpread = 0.0015;
+    
+    return {
+        type: 'mexc_snapshot',
+        bids: [
+            [(basePrice * (1 - bidSpread)).toFixed(assetDecimals), (Math.random() * 10 + 2).toFixed(3)],
+            [(basePrice * (1 - bidSpread * 1.2)).toFixed(assetDecimals), (Math.random() * 15 + 5).toFixed(3)],
+            [(basePrice * (1 - bidSpread * 1.5)).toFixed(assetDecimals), (Math.random() * 20 + 8).toFixed(3)],
+            [(basePrice * (1 - bidSpread * 2)).toFixed(assetDecimals), (Math.random() * 25 + 10).toFixed(3)],
+        ],
+        asks: [
+            [(basePrice * (1 + askSpread)).toFixed(assetDecimals), (Math.random() * 10 + 2).toFixed(3)],
+            [(basePrice * (1 + askSpread * 1.2)).toFixed(assetDecimals), (Math.random() * 15 + 5).toFixed(3)],
+            [(basePrice * (1 + askSpread * 1.5)).toFixed(assetDecimals), (Math.random() * 20 + 8).toFixed(3)],
+            [(basePrice * (1 + askSpread * 2)).toFixed(assetDecimals), (Math.random() * 25 + 10).toFixed(3)],
+        ]
+    };
+}
+
 export async function fetchAuxiliaryDataForExchange(exchangeId: string, formattedSymbol: string) {
     const conn = activeConnections.get(exchangeId);
     if (!conn || !conn.config) return;
@@ -139,6 +174,66 @@ export function connectToExchange(exchangeId: string, asset: string) {
                     [(basePrice * 1.002).toFixed(assetDecimals), (Math.random() * 10 + 2).toFixed(3)],
                 ]
             };
+            const update = config.parseMessage(simulatedSnapshot, new Map(), new Map(), false);
+            if (update) {
+                currentSimConn.bids = applyDepthSlice(update.updatedBids, config.sliceDepth, true);
+                currentSimConn.asks = applyDepthSlice(update.updatedAsks, config.sliceDepth, false);
+                currentSimConn.snapshotReceived = true;
+            }
+            currentSimConn.status = 'connected';
+            console.log(`${config.name}: Simulated connection established for ${asset}.`);
+            fetchAuxiliaryDataForExchange(exchangeId, config.formatSymbol(asset));
+            aggregateAndRenderAll();
+        }, 500);
+        return;
+    }
+
+    // Handle simulated exchanges (MEXC temporarily, Uniswap)
+    if (exchangeId === 'uniswap_simulated' || (config as any).isSimulated) {
+        console.log(`${config.name}: Simulating connection for ${asset}...`);
+        const simConnectionState: ExchangeConnectionState = {
+            ws: null, status: 'connecting', bids: new Map(), asks: new Map(), config,
+            retries: 0, snapshotReceived: true, currentSymbol: asset, auxDataFetched: undefined,
+        };
+        activeConnections.set(exchangeId, simConnectionState);
+        updateOverallConnectionStatus();
+
+        setTimeout(() => {
+            const currentSimConn = activeConnections.get(exchangeId);
+            if (!currentSimConn || currentSimConn.currentSymbol !== asset || currentSimConn.status === 'closing') {
+                console.warn(`${config.name}: Stale or closed simulated connection for ${asset}. Aborting data load.`);
+                return;
+            }
+
+            let simulatedSnapshot;
+            if (exchangeId === 'mexc') {
+                // Use MEXC-specific simulation
+                simulatedSnapshot = generateMexcSnapshot(asset);
+            } else {
+                // Use Uniswap simulation
+                let basePrice = 2000;
+                const upperAsset = asset.toUpperCase();
+                if (upperAsset.startsWith('BTC')) basePrice = 60000;
+                else if (upperAsset.startsWith('SOL')) basePrice = 150;
+                else if (upperAsset.startsWith('DOGE')) basePrice = 0.15;
+                else if (upperAsset.startsWith('ADA')) basePrice = 0.5;
+                else if (upperAsset.startsWith('LINK')) basePrice = 15;
+                else if (upperAsset.startsWith('XRP')) basePrice = 0.5;
+
+                const assetDecimals = getDecimalPlaces(basePrice);
+                simulatedSnapshot = {
+                    type: 'snapshot',
+                    bids: [
+                        [(basePrice * 0.999).toFixed(assetDecimals), (Math.random() * 5 + 1).toFixed(3)],
+                        [(basePrice * 0.998).toFixed(assetDecimals), (Math.random() * 10 + 2).toFixed(3)],
+                    ],
+                    asks: [
+                        [(basePrice * 1.001).toFixed(assetDecimals), (Math.random() * 5 + 1).toFixed(3)],
+                        [(basePrice * 1.002).toFixed(assetDecimals), (Math.random() * 10 + 2).toFixed(3)],
+                    ]
+                };
+            }
+
             const update = config.parseMessage(simulatedSnapshot, new Map(), new Map(), false);
             if (update) {
                 currentSimConn.bids = applyDepthSlice(update.updatedBids, config.sliceDepth, true);
