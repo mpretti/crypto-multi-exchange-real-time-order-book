@@ -24,10 +24,70 @@
             padding: 20px;
         }
 
+        /* Main Header Styles */
+        .main-header {
+            background: rgba(255, 255, 255, 0.95);
+            border-radius: 15px;
+            padding: 20px 30px;
+            margin-bottom: 30px;
+            box-shadow: 0 8px 32px rgba(0,0,0,0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .header-top-row {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 20px;
+        }
+
+        .main-header h1 {
+            font-size: 2rem;
+            margin: 0;
+            color: #333;
+            font-weight: 700;
+        }
+
+        .navigation {
+            display: flex;
+            gap: 20px;
+            align-items: center;
+        }
+
+        .nav-link {
+            padding: 10px 20px;
+            text-decoration: none;
+            color: #666;
+            font-weight: 500;
+            border-radius: 8px;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+        }
+
+        .nav-link:hover {
+            background: rgba(102, 126, 234, 0.1);
+            color: #667eea;
+            transform: translateY(-2px);
+        }
+
+        .nav-link.active {
+            background: #667eea;
+            color: white;
+            font-weight: 600;
+        }
+
         .header {
             text-align: center;
             margin-bottom: 40px;
             color: white;
+        }
+
+        .header h2 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
         }
 
         .header h1 {
@@ -410,45 +470,120 @@
             font-weight: 500;
         }
 
+        /* Mobile Responsive Styles */
         @media (max-width: 768px) {
-            .header h1 {
+            .container {
+                padding: 10px;
+            }
+
+            .main-header {
+                padding: 15px 20px;
+            }
+
+            .header-top-row {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 15px;
+            }
+
+            .main-header h1 {
+                font-size: 1.5rem;
+                text-align: center;
+            }
+
+            .navigation {
+                justify-content: center;
+                flex-wrap: wrap;
+                gap: 10px;
+            }
+
+            .nav-link {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+                text-align: center;
+                min-width: 100px;
+            }
+
+            .header h2 {
                 font-size: 2rem;
             }
-            
-            .stats-grid {
-                grid-template-columns: repeat(2, 1fr);
+
+            .header p {
+                font-size: 1rem;
             }
-            
+
+            .stats-grid {
+                grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+                gap: 15px;
+            }
+
             .filter-grid {
                 grid-template-columns: 1fr;
+                gap: 15px;
             }
-            
+
             .exchange-filters {
                 justify-content: center;
             }
-            
-            .results-header {
-                flex-direction: column;
-                gap: 10px;
-                text-align: center;
+
+            .table-container {
+                font-size: 0.9rem;
             }
-            
-            .pairs-table {
-                font-size: 14px;
-            }
-            
+
             .pairs-table th,
             .pairs-table td {
-                padding: 8px;
+                padding: 8px 4px;
             }
         }
+
+        @media (max-width: 480px) {
+            .main-header h1 {
+                font-size: 1.3rem;
+            }
+
+            .navigation {
+                gap: 8px;
+            }
+
+            .nav-link {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+                min-width: 80px;
+            }
+
+            .header h2 {
+                font-size: 1.8rem;
+            }
+
+            .stat-card {
+                padding: 15px;
+            }
+
+            .stat-number {
+                font-size: 2rem;
+            }
+        }
+
+        /* Styles for futures contract indicators */
     </style>
 </head>
 <body>
     <div class="container">
+        <header class="main-header">
+            <div class="header-top-row">
+                <h1>Trading Pairs Explorer</h1>
+                <nav class="navigation">
+                    <a href="index.html" class="nav-link">← Order Book</a>
+                    <a href="charts-dashboard.html" class="nav-link">Charts</a>
+                    <a href="volume-dashboard.html" class="nav-link">Volume Dashboard</a>
+                    <a href="trading-pairs-explorer.html" class="nav-link active">Trading Pairs</a>
+                </nav>
+            </div>
+        </header>
+
         <div class="header">
-            <h1>🚀 Trading Pairs Explorer</h1>
-            <p>Comprehensive trading pairs data across all supported exchanges</p>
+            <h2>Multi-Exchange Trading Pairs Data</h2>
+            <p>Explore and analyze trading pairs across multiple cryptocurrency exchanges</p>
         </div>
 
         <div class="stats-grid" id="statsGrid">
