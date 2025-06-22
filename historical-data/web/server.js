@@ -131,6 +131,38 @@ class DataCollectionController {
         res.status(500).json({ error: error.message });
       }
     });
+
+    // Custom collection with date range
+    this.app.post('/api/start/custom', async (req, res) => {
+      try {
+        const { exchange, startDate, endDate } = req.body;
+        const collectionId = await this.startCustomCollection(exchange, startDate, endDate);
+        res.json({ success: true, collectionId });
+      } catch (error) {
+        res.status(500).json({ error: error.message });
+      }
+    });
+
+    // Gap filling
+    this.app.post('/api/fill-gaps', async (req, res) => {
+      try {
+        const collectionId = await this.fillAllGaps();
+        res.json({ success: true, collectionId });
+      } catch (error) {
+        res.status(500).json({ error: error.message });
+      }
+    });
+
+    // Fill specific gap
+    this.app.post('/api/fill-gap', async (req, res) => {
+      try {
+        const { exchange, startDate, endDate } = req.body;
+        const collectionId = await this.fillSpecificGap(exchange, startDate, endDate);
+        res.json({ success: true, collectionId });
+      } catch (error) {
+        res.status(500).json({ error: error.message });
+      }
+    });
   }
 
   setupSocketHandlers() {
@@ -320,13 +352,245 @@ class DataCollectionController {
     }
   }
 
+  async startCustomCollection(exchange, startDate, endDate) {
+    try {
+      // Update config temporarily for this collection
+      const config = await this.getConfig();
+      const originalConfig = JSON.parse(JSON.stringify(config)); // Deep copy
+      
+      // Modify config for custom date range
+      config.dateRange.startDate = startDate;
+      config.dateRange.endDate = endDate;
+      
+      // Save temporary config
+      await this.updateConfig(config);
+      
+      // Start collection for specific exchange
+      const collectionId = await this.startCollection(exchange);
+      
+      // Restore original config after a delay
+      setTimeout(async () => {
+        try {
+          await this.updateConfig(originalConfig);
+        } catch (error) {
+          console.error('Failed to restore original config:', error);
+        }
+      }, 5000);
+      
+      return collectionId;
+    } catch (error) {
+      throw new Error(`Failed to start custom collection: ${error.message}`);
+    }
+  }
+
+  async fillAllGaps() {
+    try {
+      // Run analysis first to identify gaps
+      const analysis = await this.runDataAnalysis();
+      
+      // Start collection to fill all identified gaps
+      const collectionId = await this.startCollection();
+      
+      return collectionId;
+    } catch (error) {
+      throw new Error(`Failed to start gap filling: ${error.message}`);
+    }
+  }
+
+  async fillSpecificGap(exchange, startDate, endDate) {
+    try {
+      return await this.startCustomCollection(exchange, startDate, endDate);
+    } catch (error) {
+      throw new Error(`Failed to fill specific gap: ${error.message}`);
+    }
+  }
+
   async runDataAnalysis() {
     try {
-      const analyzer = new DataAnalyzer();
-      await analyzer.run();
-      return analyzer.analysis;
+      // Enhanced data analysis with gap detection
+      const dataDir = path.join(__dirname, '../data');
+      const analysis = {
+        exchanges: {},
+        gaps: { completeness: {}, missing: {} },
+        dateRanges: {},
+        summary: {}
+      };
+
+      // Analyze each exchange
+      const exchanges = ['binance', 'bybit', 'okx', 'kraken', 'coinbase', 'gemini', 'bitget', 'mexc'];
+      
+      for (const exchange of exchanges) {
+        const exchangeDir = path.join(dataDir, exchange);
+        const exchangeData = await this.analyzeExchange(exchangeDir, exchange);
+        analysis.exchanges[exchange] = exchangeData;
+        
+        // Calculate completeness percentage
+        analysis.gaps.completeness[exchange] = exchangeData.completeness || 0;
+        
+        // Identify missing date ranges
+        analysis.gaps.missing[exchange] = exchangeData.missingRanges || [];
+      }
+
+      // Calculate overall date coverage
+      analysis.dateRanges = await this.calculateDateCoverage(dataDir);
+      
+      return analysis;
     } catch (error) {
       throw new Error(`Analysis failed: ${error.message}`);
+    }
+  }
+
+  async analyzeExchange(exchangeDir, exchangeName) {
+    try {
+      const stats = await fs.stat(exchangeDir);
+      if (!stats.isDirectory()) {
+        return { files: 0, coverage: 0, completeness: 0, missingRanges: [] };
+      }
+
+      const dirStats = await this.calculateDirectoryStats(exchangeDir);
+      
+      // Calculate expected vs actual files for completeness
+      const config = await this.getConfig();
+      const startDate = new Date(config.dateRange.startDate);
+      const endDate = new Date(config.dateRange.endDate);
+      const daysDiff = Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+      
+      // Estimate expected files (symbols * data types * timeframes * days)
+      const expectedFiles = config.exchanges[exchangeName]?.symbols?.length || 1 * 
+                           (config.dataTypes?.length || 2) * 
+                           (config.timeframes?.length || 6) * 
+                           daysDiff;
+      
+      const completeness = expectedFiles > 0 ? Math.min(100, (dirStats.files / expectedFiles) * 100) : 0;
+      
+      // Find missing date ranges (simplified)
+      const missingRanges = await this.findMissingDateRanges(exchangeDir, startDate, endDate);
+      
+      return {
+        files: dirStats.files,
+        size: dirStats.size,
+        sizeFormatted: this.formatBytes(dirStats.size),
+        coverage: Math.round(completeness),
+        completeness: Math.round(completeness),
+        missingRanges: missingRanges
+      };
+    } catch (error) {
+      return { files: 0, coverage: 0, completeness: 0, missingRanges: [] };
+    }
+  }
+
+  async findMissingDateRanges(exchangeDir, startDate, endDate) {
+    try {
+      // Simplified gap detection - check for missing daily files
+      const missingRanges = [];
+      const currentDate = new Date(startDate);
+      
+      while (currentDate <= endDate) {
+        const dateStr = currentDate.toISOString().split('T')[0];
+        const hasDataForDate = await this.hasDataForDate(exchangeDir, dateStr);
+        
+        if (!hasDataForDate) {
+          // Find consecutive missing days
+          const rangeStart = dateStr;
+          let rangeEnd = dateStr;
+          
+          // Look ahead for consecutive missing days
+          const nextDate = new Date(currentDate);
+          nextDate.setDate(nextDate.getDate() + 1);
+          
+          while (nextDate <= endDate && !(await this.hasDataForDate(exchangeDir, nextDate.toISOString().split('T')[0]))) {
+            rangeEnd = nextDate.toISOString().split('T')[0];
+            nextDate.setDate(nextDate.getDate() + 1);
+          }
+          
+          missingRanges.push({ start: rangeStart, end: rangeEnd });
+          currentDate.setTime(nextDate.getTime());
+        } else {
+          currentDate.setDate(currentDate.getDate() + 1);
+        }
+      }
+      
+      return missingRanges;
+    } catch (error) {
+      return [];
+    }
+  }
+
+  async hasDataForDate(exchangeDir, dateStr) {
+    try {
+      // Check if any files exist for this date
+      const [year, month] = dateStr.split('-');
+      const monthDir = path.join(exchangeDir, '**', year, month);
+      
+      // Simple check - if month directory exists and has files
+      const symbols = await fs.readdir(exchangeDir);
+      for (const symbol of symbols) {
+        const symbolDir = path.join(exchangeDir, symbol);
+        const symbolStat = await fs.stat(symbolDir);
+        if (symbolStat.isDirectory()) {
+          const dataTypes = await fs.readdir(symbolDir);
+          for (const dataType of dataTypes) {
+            const yearDir = path.join(symbolDir, dataType, year);
+            try {
+              const yearStat = await fs.stat(yearDir);
+              if (yearStat.isDirectory()) {
+                const monthDir = path.join(yearDir, month);
+                const monthStat = await fs.stat(monthDir);
+                if (monthStat.isDirectory()) {
+                  const files = await fs.readdir(monthDir);
+                  if (files.some(f => f.includes(dateStr))) {
+                    return true;
+                  }
+                }
+              }
+            } catch (e) {
+              // Directory doesn't exist, continue
+            }
+          }
+        }
+      }
+      return false;
+    } catch (error) {
+      return false;
+    }
+  }
+
+  async calculateDateCoverage(dataDir) {
+    try {
+      const coverage = {};
+      const exchanges = await fs.readdir(dataDir);
+      
+      for (const exchange of exchanges) {
+        const exchangeDir = path.join(dataDir, exchange);
+        const stat = await fs.stat(exchangeDir);
+        
+        if (stat.isDirectory()) {
+          // Calculate coverage for last 30 days
+          const endDate = new Date();
+          const startDate = new Date(endDate.getTime() - 30 * 24 * 60 * 60 * 1000);
+          
+          let totalDays = 0;
+          let coveredDays = 0;
+          
+          const currentDate = new Date(startDate);
+          while (currentDate <= endDate) {
+            totalDays++;
+            const dateStr = currentDate.toISOString().split('T')[0];
+            
+            if (await this.hasDataForDate(exchangeDir, dateStr)) {
+              coveredDays++;
+            }
+            
+            currentDate.setDate(currentDate.getDate() + 1);
+          }
+          
+          coverage[exchange] = totalDays > 0 ? Math.round((coveredDays / totalDays) * 100) : 0;
+        }
+      }
+      
+      return coverage;
+    } catch (error) {
+      return {};
     }
   }
 
@@ -357,13 +621,36 @@ class DataCollectionController {
   async getFiles(exchange, symbol) {
     try {
       const dataDir = path.join(__dirname, '../data');
-      let targetDir = dataDir;
       
-      if (exchange) {
-        targetDir = path.join(dataDir, exchange);
-        if (symbol) {
-          targetDir = path.join(targetDir, symbol);
+      if (!exchange) {
+        // Return exchange overview
+        const result = {};
+        const exchanges = await fs.readdir(dataDir);
+        
+        for (const exchangeName of exchanges) {
+          const exchangeDir = path.join(dataDir, exchangeName);
+          try {
+            const stats = await fs.stat(exchangeDir);
+            if (stats.isDirectory()) {
+              const dirStats = await this.calculateDirectoryStats(exchangeDir);
+              result[exchangeName] = {
+                totalFiles: dirStats.files,
+                totalSize: dirStats.size,
+                totalSizeFormatted: this.formatBytes(dirStats.size)
+              };
+            }
+          } catch (e) {
+            result[exchangeName] = { totalFiles: 0, totalSize: 0, totalSizeFormatted: '0 Bytes' };
+          }
         }
+        
+        return result;
+      }
+      
+      // Return files for specific exchange
+      let targetDir = path.join(dataDir, exchange);
+      if (symbol) {
+        targetDir = path.join(targetDir, symbol);
       }
 
       const entries = await fs.readdir(targetDir, { withFileTypes: true });
@@ -390,7 +677,7 @@ class DataCollectionController {
         return a.name.localeCompare(b.name);
       });
     } catch (error) {
-      return [];
+      return exchange ? [] : {};
     }
   }
 

@@ -3,11 +3,12 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crypto Historical Data Collection Dashboard</title>
+    <title>📊 Crypto Historical Data Collection Dashboard</title>
     <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
     <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.7.2/socket.io.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
 </head>
 <body class="bg-gray-50 min-h-screen">
     <!-- Header -->
@@ -16,13 +17,17 @@
             <div class="flex justify-between items-center py-4">
                 <div class="flex items-center">
                     <i class="fas fa-database text-blue-600 text-2xl mr-3"></i>
-                    <h1 class="text-2xl font-bold text-gray-900">Historical Data Collection Dashboard</h1>
+                    <h1 class="text-2xl font-bold text-gray-900">📊 Historical Data Collection Dashboard</h1>
                 </div>
                 <div class="flex items-center space-x-4">
                     <div class="flex items-center text-sm text-gray-500">
                         <div class="w-2 h-2 bg-green-400 rounded-full mr-2"></div>
                         <span>System Online</span>
                     </div>
+                    <a href="http://localhost:5173" target="_blank" 
+                       class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-external-link-alt mr-2"></i>Live Trading Dashboard
+                    </a>
                 </div>
             </div>
         </div>
@@ -80,14 +85,61 @@
             </div>
         </div>
 
-        <!-- Control Panel -->
+        <!-- Exchange Coverage Analysis -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <!-- Exchange Status -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4">
+                    <i class="fas fa-exchange-alt text-blue-600 mr-2"></i>
+                    Exchange Coverage
+                </h2>
+                <div id="exchange-status" class="space-y-3">
+                    <!-- Will be populated by JavaScript -->
+                </div>
+            </div>
+
+            <!-- Date Range Coverage -->
+            <div class="bg-white rounded-lg shadow-md p-6">
+                <h2 class="text-xl font-semibold text-gray-900 mb-4">
+                    <i class="fas fa-calendar-alt text-green-600 mr-2"></i>
+                    Date Range Coverage
+                </h2>
+                <canvas id="date-coverage-chart" height="200"></canvas>
+            </div>
+        </div>
+
+        <!-- Gap Analysis -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">
+                <i class="fas fa-search text-red-600 mr-2"></i>
+                Gap Analysis & Missing Data
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-medium text-gray-800 mb-3">🔍 Data Completeness</h3>
+                    <div id="completeness-analysis" class="space-y-2">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium text-gray-800 mb-3">📅 Missing Date Ranges</h3>
+                    <div id="missing-ranges" class="space-y-2">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Data Collection Controls -->
         <div class="bg-white rounded-lg shadow-md p-6 mb-8">
             <h2 class="text-xl font-semibold text-gray-900 mb-4">
                 <i class="fas fa-play-circle text-green-600 mr-2"></i>
-                Collection Controls
+                Data Collection Controls
             </h2>
             
-            <div class="space-y-4">
+            <!-- Quick Actions -->
+            <div class="mb-6">
+                <h3 class="text-lg font-medium text-gray-800 mb-3">⚡ Quick Actions</h3>
                 <div class="flex flex-wrap gap-2">
                     <button onclick="startCollection()" 
                             class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
@@ -105,6 +157,61 @@
                             class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
                         <i class="fas fa-chart-line mr-2"></i>Run Analysis
                     </button>
+                    <button onclick="fillGaps()" 
+                            class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-md text-sm font-medium transition-colors">
+                        <i class="fas fa-fill-drip mr-2"></i>Fill Data Gaps
+                    </button>
+                </div>
+            </div>
+
+            <!-- Custom Collection -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Exchange</label>
+                    <select id="custom-exchange" class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                        <option value="">Select Exchange</option>
+                        <option value="binance">Binance</option>
+                        <option value="bybit">Bybit</option>
+                        <option value="okx">OKX</option>
+                        <option value="kraken">Kraken</option>
+                        <option value="coinbase">Coinbase</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">Start Date</label>
+                    <input type="date" id="custom-start-date" 
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-700 mb-2">End Date</label>
+                    <input type="date" id="custom-end-date" 
+                           class="w-full px-3 py-2 border border-gray-300 rounded-md focus:outline-none focus:ring-2 focus:ring-blue-500">
+                </div>
+            </div>
+            <div class="mt-4">
+                <button onclick="startCustomCollection()" 
+                        class="bg-indigo-600 hover:bg-indigo-700 text-white px-6 py-2 rounded-md text-sm font-medium transition-colors">
+                    <i class="fas fa-rocket mr-2"></i>Start Custom Collection
+                </button>
+            </div>
+        </div>
+
+        <!-- File Browser -->
+        <div class="bg-white rounded-lg shadow-md p-6 mb-8">
+            <h2 class="text-xl font-semibold text-gray-900 mb-4">
+                <i class="fas fa-folder-open text-orange-600 mr-2"></i>
+                Data File Browser
+            </h2>
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                <div>
+                    <h3 class="text-lg font-medium text-gray-800 mb-3">📁 Browse by Exchange</h3>
+                    <div id="file-browser" class="space-y-2 max-h-64 overflow-y-auto">
+                        <!-- Will be populated by JavaScript -->
+                    </div>
+                </div>
+                <div>
+                    <h3 class="text-lg font-medium text-gray-800 mb-3">📊 File Statistics</h3>
+                    <canvas id="file-stats-chart" height="200"></canvas>
                 </div>
             </div>
         </div>
@@ -123,6 +230,21 @@
 
     <script>
         const socket = io();
+        let dataCoverage = {};
+        let fileStats = {};
+        
+        // Initialize on page load
+        document.addEventListener('DOMContentLoaded', async () => {
+            await loadDataAnalysis();
+            await loadFileBrowser();
+            setupCharts();
+            
+            // Set default dates
+            const today = new Date();
+            const weekAgo = new Date(today.getTime() - 7 * 24 * 60 * 60 * 1000);
+            document.getElementById('custom-start-date').value = weekAgo.toISOString().split('T')[0];
+            document.getElementById('custom-end-date').value = today.toISOString().split('T')[0];
+        });
         
         socket.on('stats_update', (stats) => {
             document.getElementById('total-files').textContent = stats.totalFiles.toLocaleString();
@@ -141,6 +263,182 @@
             logsContainer.scrollTop = logsContainer.scrollHeight;
         });
 
+        async function loadDataAnalysis() {
+            try {
+                const response = await fetch('/api/analyze');
+                const analysis = await response.json();
+                
+                displayExchangeStatus(analysis.exchanges || {});
+                displayGapAnalysis(analysis.gaps || {});
+                updateDateCoverageChart(analysis.dateRanges || {});
+            } catch (error) {
+                console.error('Error loading data analysis:', error);
+            }
+        }
+
+        async function loadFileBrowser() {
+            try {
+                const response = await fetch('/api/files');
+                const files = await response.json();
+                
+                displayFileBrowser(files);
+                updateFileStatsChart(files);
+            } catch (error) {
+                console.error('Error loading file browser:', error);
+            }
+        }
+
+        function displayExchangeStatus(exchanges) {
+            const container = document.getElementById('exchange-status');
+            container.innerHTML = '';
+            
+            const exchangeList = ['binance', 'bybit', 'okx', 'kraken', 'coinbase', 'gemini', 'bitget', 'mexc'];
+            
+            exchangeList.forEach(exchange => {
+                const data = exchanges[exchange] || { files: 0, coverage: 0 };
+                const statusColor = data.files > 0 ? 'green' : 'red';
+                const statusIcon = data.files > 0 ? 'check-circle' : 'times-circle';
+                
+                const div = document.createElement('div');
+                div.className = 'flex items-center justify-between p-3 bg-gray-50 rounded-lg';
+                div.innerHTML = `
+                    <div class="flex items-center">
+                        <i class="fas fa-${statusIcon} text-${statusColor}-500 mr-3"></i>
+                        <span class="font-medium capitalize">${exchange}</span>
+                    </div>
+                    <div class="text-sm text-gray-600">
+                        ${data.files} files (${data.coverage}% coverage)
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function displayGapAnalysis(gaps) {
+            const completenessContainer = document.getElementById('completeness-analysis');
+            const missingContainer = document.getElementById('missing-ranges');
+            
+            completenessContainer.innerHTML = '';
+            missingContainer.innerHTML = '';
+            
+            // Display completeness
+            Object.entries(gaps.completeness || {}).forEach(([exchange, percentage]) => {
+                const color = percentage > 80 ? 'green' : percentage > 50 ? 'yellow' : 'red';
+                const div = document.createElement('div');
+                div.className = 'flex items-center justify-between';
+                div.innerHTML = `
+                    <span class="capitalize">${exchange}</span>
+                    <div class="flex items-center">
+                        <div class="w-20 bg-gray-200 rounded-full h-2 mr-2">
+                            <div class="bg-${color}-500 h-2 rounded-full" style="width: ${percentage}%"></div>
+                        </div>
+                        <span class="text-sm font-medium">${percentage}%</span>
+                    </div>
+                `;
+                completenessContainer.appendChild(div);
+            });
+            
+            // Display missing ranges
+            Object.entries(gaps.missing || {}).forEach(([exchange, ranges]) => {
+                ranges.forEach(range => {
+                    const div = document.createElement('div');
+                    div.className = 'text-sm text-gray-600 bg-red-50 p-2 rounded';
+                    div.innerHTML = `
+                        <strong class="capitalize">${exchange}:</strong> 
+                        ${range.start} to ${range.end}
+                        <button onclick="fillSpecificGap('${exchange}', '${range.start}', '${range.end}')" 
+                                class="ml-2 text-blue-600 hover:text-blue-800">
+                            <i class="fas fa-download"></i> Fill
+                        </button>
+                    `;
+                    missingContainer.appendChild(div);
+                });
+            });
+        }
+
+        function displayFileBrowser(files) {
+            const container = document.getElementById('file-browser');
+            container.innerHTML = '';
+            
+            Object.entries(files).forEach(([exchange, exchangeData]) => {
+                const div = document.createElement('div');
+                div.className = 'border rounded-lg p-3 cursor-pointer hover:bg-gray-50';
+                div.onclick = () => toggleExchangeFiles(exchange);
+                
+                div.innerHTML = `
+                    <div class="flex items-center justify-between">
+                        <div class="flex items-center">
+                            <i class="fas fa-folder text-blue-500 mr-2"></i>
+                            <span class="font-medium capitalize">${exchange}</span>
+                        </div>
+                        <span class="text-sm text-gray-500">${exchangeData.totalFiles || 0} files</span>
+                    </div>
+                    <div id="files-${exchange}" class="hidden mt-2 ml-6 space-y-1">
+                        <!-- Files will be loaded here -->
+                    </div>
+                `;
+                container.appendChild(div);
+            });
+        }
+
+        function setupCharts() {
+            // Date coverage chart will be set up when data is loaded
+            // File stats chart will be set up when data is loaded
+        }
+
+        function updateDateCoverageChart(dateRanges) {
+            const ctx = document.getElementById('date-coverage-chart').getContext('2d');
+            
+            new Chart(ctx, {
+                type: 'line',
+                data: {
+                    labels: Object.keys(dateRanges),
+                    datasets: [{
+                        label: 'Data Coverage %',
+                        data: Object.values(dateRanges),
+                        borderColor: 'rgb(59, 130, 246)',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        fill: true
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            beginAtZero: true,
+                            max: 100
+                        }
+                    }
+                }
+            });
+        }
+
+        function updateFileStatsChart(files) {
+            const ctx = document.getElementById('file-stats-chart').getContext('2d');
+            
+            const labels = Object.keys(files);
+            const data = labels.map(exchange => files[exchange].totalFiles || 0);
+            
+            new Chart(ctx, {
+                type: 'doughnut',
+                data: {
+                    labels: labels.map(l => l.charAt(0).toUpperCase() + l.slice(1)),
+                    datasets: [{
+                        data: data,
+                        backgroundColor: [
+                            '#3B82F6', '#10B981', '#F59E0B', '#EF4444',
+                            '#8B5CF6', '#06B6D4', '#F97316', '#84CC16'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false
+                }
+            });
+        }
+
         async function startCollection(exchange = null) {
             try {
                 const url = exchange ? `/api/start/${exchange}` : '/api/start';
@@ -155,13 +453,104 @@
             }
         }
 
+        async function startCustomCollection() {
+            const exchange = document.getElementById('custom-exchange').value;
+            const startDate = document.getElementById('custom-start-date').value;
+            const endDate = document.getElementById('custom-end-date').value;
+            
+            if (!exchange || !startDate || !endDate) {
+                showNotification('Please fill in all fields', 'error');
+                return;
+            }
+            
+            try {
+                const response = await fetch('/api/start/custom', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ exchange, startDate, endDate })
+                });
+                
+                const result = await response.json();
+                if (result.success) {
+                    showNotification(`Custom collection started for ${exchange}`, 'success');
+                }
+            } catch (error) {
+                showNotification('Error starting custom collection', 'error');
+            }
+        }
+
         async function runAnalysis() {
             try {
                 showNotification('Starting data analysis...', 'info');
                 const response = await fetch('/api/analyze');
+                await loadDataAnalysis(); // Refresh the analysis display
                 showNotification('Data analysis completed', 'success');
             } catch (error) {
                 showNotification('Analysis failed', 'error');
+            }
+        }
+
+        async function fillGaps() {
+            try {
+                showNotification('Starting gap filling process...', 'info');
+                const response = await fetch('/api/fill-gaps', { method: 'POST' });
+                const result = await response.json();
+                
+                if (result.success) {
+                    showNotification('Gap filling started', 'success');
+                    await loadDataAnalysis(); // Refresh analysis
+                }
+            } catch (error) {
+                showNotification('Error starting gap filling', 'error');
+            }
+        }
+
+        async function fillSpecificGap(exchange, startDate, endDate) {
+            try {
+                const response = await fetch('/api/fill-gap', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({ exchange, startDate, endDate })
+                });
+                
+                const result = await response.json();
+                if (result.success) {
+                    showNotification(`Filling gap for ${exchange}`, 'success');
+                }
+            } catch (error) {
+                showNotification('Error filling gap', 'error');
+            }
+        }
+
+        function toggleExchangeFiles(exchange) {
+            const filesDiv = document.getElementById(`files-${exchange}`);
+            filesDiv.classList.toggle('hidden');
+            
+            if (!filesDiv.classList.contains('hidden') && filesDiv.children.length === 0) {
+                // Load files for this exchange
+                loadExchangeFiles(exchange);
+            }
+        }
+
+        async function loadExchangeFiles(exchange) {
+            try {
+                const response = await fetch(`/api/files/${exchange}`);
+                const files = await response.json();
+                
+                const container = document.getElementById(`files-${exchange}`);
+                container.innerHTML = '';
+                
+                files.forEach(file => {
+                    const div = document.createElement('div');
+                    div.className = 'text-sm text-gray-600 flex items-center justify-between';
+                    div.innerHTML = `
+                        <span><i class="fas fa-file text-gray-400 mr-1"></i>${file.name}</span>
+                        <span class="text-xs">${file.size}</span>
+                    `;
+                    container.appendChild(div);
+                });
+            } catch (error) {
+                console.error('Error loading exchange files:', error);
             }
         }
 
