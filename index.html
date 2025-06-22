@@ -115,8 +115,8 @@
                     <button id="logging-settings-btn" class="settings-btn" title="Configure logging filters">⚙️</button>
                 </div>
             </div>
-            <div id="connection-status-summary">
-                <!-- Connection statuses will be populated here by JS -->
+            <div id="connection-status-summary" class="connection-summary">
+                <!-- Essential connection info will be populated here by JS -->
             </div>
             <div id="exchange-legend" class="exchange-pills">
                 <div class="exchange-header">
@@ -159,6 +159,13 @@
                         <input type="checkbox" name="exchange" value="bitget" style="display: none;">
                         <span class="pill-indicator"></span>
                         <span class="pill-name">Bitget</span>
+                        <span class="pill-status"></span>
+                    </div>
+                    
+                    <div class="exchange-pill" data-exchange="mexc" data-active="false">
+                        <input type="checkbox" name="exchange" value="mexc" style="display: none;">
+                        <span class="pill-indicator"></span>
+                        <span class="pill-name">MEXC Global</span>
                         <span class="pill-status"></span>
                     </div>
                     
@@ -362,6 +369,11 @@
                             <input type="checkbox" id="log-exchange-bitget" checked>
                             <span class="checkmark"></span>
                             Bitget
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="log-exchange-mexc" checked>
+                            <span class="checkmark"></span>
+                            MEXC
                         </label>
                         <label class="checkbox-label">
                             <input type="checkbox" id="log-exchange-coinbase" checked>

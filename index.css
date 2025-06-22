@@ -560,6 +560,11 @@ header h1 {
     --exchange-color-rgb: 0, 206, 209;
 }
 
+.exchange-pill[data-exchange="mexc"] {
+    --exchange-color: #1E88E5;
+    --exchange-color-rgb: 30, 136, 229;
+}
+
 .exchange-pill[data-exchange="uniswap_simulated"] {
     --exchange-color: #FF007A;
     --exchange-color-rgb: 255, 0, 122;
@@ -757,24 +762,43 @@ header h1 {
 
 
 
-#connection-status-summary {
+/* Connection Summary - Clean and Essential */
+.connection-summary {
     display: flex;
-    gap: 8px;
-    flex-wrap: wrap;
     justify-content: center;
-    margin-top: 5px;
+    align-items: center;
+    gap: 20px;
+    margin: 10px 0;
+    padding: 8px 16px;
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
 }
 
-.connection-item {
-    font-size: 0.8em;
-    padding: 3px 8px;
-    border-radius: 4px;
-    white-space: nowrap;
+.connection-stat {
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.9em;
+    color: #e0e0e0;
 }
 
-.status-connecting { background-color: #4a4a4a; color: #ccc; }
-.status-connected { background-color: #28a745; color: white; }
-.status-disconnected { background-color: #777; color: #ddd; }
+.connection-stat .stat-value {
+    font-weight: 600;
+    color: #fff;
+}
+
+.connection-stat.connected .stat-value {
+    color: #28a745;
+}
+
+.connection-stat.error .stat-value {
+    color: #dc3545;
+}
+
+.connection-stat.connecting .stat-value {
+    color: #ffa500;
+}
 .status-error { background-color: #dc3545; color: white; }
 .status-disabled { background-color: #333; color: #888; }
 
