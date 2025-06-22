@@ -1,7 +1,7 @@
 {
   "general": {
-    "startDate": "2020-01-01",
-    "endDate": "2025-01-01",
+    "startDate": "2024-06-20",
+    "endDate": "2024-06-22",
     "basePairs": ["BTCUSDT", "ETHUSDT", "SOLUSDT", "ADAUSDT", "DOTUSDT"],
     "dataTypes": ["trades", "klines", "orderbook", "funding"],
     "outputFormat": "parquet",
@@ -124,7 +124,7 @@
     }
   },
   "storage": {
-    "baseDir": "./historical-data/data",
+    "baseDir": "./data",
     "structure": "{exchange}/{symbol}/{dataType}/{year}/{month}",
     "fileNaming": "{exchange}_{symbol}_{dataType}_{interval}_{date}.{format}",
     "compression": true,
@@ -133,7 +133,7 @@
   },
   "logging": {
     "level": "INFO",
-    "logDir": "./historical-data/logs",
+    "logDir": "./logs",
     "logRotation": true,
     "maxLogSize": "100MB",
     "keepLogs": 30
