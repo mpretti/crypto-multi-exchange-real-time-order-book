@@ -28,13 +28,44 @@ interface ExchangeConfig {
 interface ChartInstance {
     chart: any;
     series: Map<string, any>; // Map of exchange -> series
-    volumeSeries: Map<string, any>; // Map of exchange -> volume series  
+    volumeSeries: Map<string, any>; // Map of exchange -> volume series
+    indicatorSeries: Map<string, any>; // Map of indicator -> series
     container: HTMLElement;
     websockets: Map<string, WebSocket>; // Map of exchange -> websocket
     lastCandles: Map<string, KLineData>; // Map of exchange -> last candle
     openPrices: Map<string, number>; // Map of exchange -> open price
     timeframe: string;
     chartId: string;
+    activeIndicators: Set<string>;
+    technicalData: TechnicalData;
+    historicalPrices: number[]; // For technical analysis
+}
+
+interface TechnicalData {
+    rsi: number;
+    macd: { macd: number; signal: number; histogram: number };
+    bollinger: { upper: number; middle: number; lower: number; percentage: number };
+    volatility: number;
+    ma20: number;
+    ma50: number;
+}
+
+interface Alert {
+    id: string;
+    type: 'price' | 'volume' | 'rsi' | 'macd';
+    condition: 'above' | 'below' | 'crosses';
+    value: number;
+    asset: string;
+    active: boolean;
+    triggered: boolean;
+    createdAt: Date;
+}
+
+interface MarketData {
+    volume24h: string;
+    marketCap: string;
+    fearGreedIndex: string;
+    btcDominance: string;
 }
 
 interface TimeframeConfig {
@@ -44,21 +75,130 @@ interface TimeframeConfig {
     scaleFormat: string;
 }
 
+// Technical Analysis Utilities
+class TechnicalAnalysis {
+    static calculateRSI(prices: number[], period: number = 14): number {
+        if (prices.length < period + 1) return 50;
+        
+        let gains = 0;
+        let losses = 0;
+        
+        for (let i = 1; i <= period; i++) {
+            const change = prices[i] - prices[i - 1];
+            if (change > 0) gains += change;
+            else losses -= change;
+        }
+        
+        const avgGain = gains / period;
+        const avgLoss = losses / period;
+        
+        if (avgLoss === 0) return 100;
+        
+        const rs = avgGain / avgLoss;
+        return 100 - (100 / (1 + rs));
+    }
+    
+    static calculateMACD(prices: number[], fastPeriod: number = 12, slowPeriod: number = 26, signalPeriod: number = 9) {
+        if (prices.length < slowPeriod) return { macd: 0, signal: 0, histogram: 0 };
+        
+        const ema12 = this.calculateEMA(prices, fastPeriod);
+        const ema26 = this.calculateEMA(prices, slowPeriod);
+        const macd = ema12 - ema26;
+        
+        // For simplicity, using SMA instead of EMA for signal line
+        const macdLine = [macd];
+        const signal = this.calculateSMA(macdLine, 1);
+        const histogram = macd - signal;
+        
+        return { macd, signal, histogram };
+    }
+    
+    static calculateBollingerBands(prices: number[], period: number = 20, multiplier: number = 2) {
+        if (prices.length < period) return { upper: 0, middle: 0, lower: 0, percentage: 0 };
+        
+        const sma = this.calculateSMA(prices.slice(-period), period);
+        const variance = prices.slice(-period).reduce((sum, price) => sum + Math.pow(price - sma, 2), 0) / period;
+        const stdDev = Math.sqrt(variance);
+        
+        const upper = sma + (multiplier * stdDev);
+        const lower = sma - (multiplier * stdDev);
+        const currentPrice = prices[prices.length - 1];
+        const percentage = ((currentPrice - lower) / (upper - lower)) * 100;
+        
+        return { upper, middle: sma, lower, percentage };
+    }
+    
+    static calculateSMA(prices: number[], period: number): number {
+        if (prices.length < period) return prices[prices.length - 1] || 0;
+        const sum = prices.slice(-period).reduce((a, b) => a + b, 0);
+        return sum / period;
+    }
+    
+    static calculateEMA(prices: number[], period: number): number {
+        if (prices.length < period) return prices[prices.length - 1] || 0;
+        
+        const multiplier = 2 / (period + 1);
+        let ema = prices[0];
+        
+        for (let i = 1; i < prices.length; i++) {
+            ema = (prices[i] * multiplier) + (ema * (1 - multiplier));
+        }
+        
+        return ema;
+    }
+    
+    static calculateVolatility(prices: number[], period: number = 20): number {
+        if (prices.length < period) return 0;
+        
+        const returns = [];
+        for (let i = 1; i < prices.length; i++) {
+            returns.push(Math.log(prices[i] / prices[i - 1]));
+        }
+        
+        const mean = returns.reduce((a, b) => a + b, 0) / returns.length;
+        const variance = returns.reduce((sum, ret) => sum + Math.pow(ret - mean, 2), 0) / returns.length;
+        
+        return Math.sqrt(variance) * Math.sqrt(252) * 100; // Annualized volatility
+    }
+}
+
 class ChartsDashboard {
     private selectedAsset: string = 'BTCUSDT';
     private selectedExchange: string = 'binance';
     private overlayMode: boolean = false;
     private selectedOverlayExchanges: Set<string> = new Set(['binance']);
+    private chartMode: 'dual' | 'single' | 'quad' | 'comparison' = 'dual';
     private chart1!: ChartInstance;
     private chart2!: ChartInstance;
+    private chart3!: ChartInstance;
+    private chart4!: ChartInstance;
+    private activeCharts: ChartInstance[] = [];
+    
+    // Advanced Features
+    private alerts: Alert[] = [];
+    private marketData: MarketData = { volume24h: 'Loading...', marketCap: 'Loading...', fearGreedIndex: 'Loading...', btcDominance: 'Loading...' };
+    private sidePanelVisible: boolean = false;
+    private fullscreenMode: boolean = false;
     
     // DOM Elements
     private assetSelect!: HTMLSelectElement;
     private exchangeSelect!: HTMLSelectElement;
+    private chartModeSelect!: HTMLSelectElement;
     private overlayModeToggle!: HTMLInputElement;
     private overlayExchangesDiv!: HTMLElement;
     private timeframe1Select!: HTMLSelectElement;
     private timeframe2Select!: HTMLSelectElement;
+    private timeframe3Select!: HTMLSelectElement;
+    private timeframe4Select!: HTMLSelectElement;
+    
+    // Tool Elements
+    private analysisBtn!: HTMLButtonElement;
+    private alertsBtn!: HTMLButtonElement;
+    private exportBtn!: HTMLButtonElement;
+    private fullscreenBtn!: HTMLButtonElement;
+    private sidePanel!: HTMLElement;
+    private alertModal!: HTMLElement;
+    private analysisModal!: HTMLElement;
     
     // Timeframe configurations
     private timeframeConfigs: Record<string, TimeframeConfig> = {
@@ -298,47 +438,119 @@ class ChartsDashboard {
     };
 
     constructor() {
-        console.log('ChartsDashboard initializing...');
         this.initializeDOM();
+        this.loadUserPreferences(); // Load saved preferences first
         this.setupEventListeners();
-        this.updateTitles();
         this.waitForLightweightChartsAndStart();
         
-        // Add a simple connectivity test
-        setTimeout(() => this.runConnectivityTest(), 5000);
+        // Initialize advanced features
+        this.loadAlertsFromStorage();
+        this.fetchMarketData();
+        
+        // Request notification permission
+        if ('Notification' in window && Notification.permission === 'default') {
+            Notification.requestPermission();
+        }
+        
+        // Update market data every 5 minutes
+        setInterval(() => this.fetchMarketData(), 5 * 60 * 1000);
+        
+        // Set initial active charts
+        this.activeCharts = [this.chart1, this.chart2];
+        
+        // Save preferences when page unloads
+        window.addEventListener('beforeunload', () => {
+            this.saveUserPreferences();
+        });
+        
+        // Auto-save preferences every 30 seconds
+        setInterval(() => this.saveUserPreferences(), 30000);
     }
 
     private initializeDOM() {
+        // Get DOM elements
         this.assetSelect = document.getElementById('asset-select') as HTMLSelectElement;
         this.exchangeSelect = document.getElementById('exchange-select') as HTMLSelectElement;
+        this.chartModeSelect = document.getElementById('chart-mode-select') as HTMLSelectElement;
         this.overlayModeToggle = document.getElementById('overlay-mode') as HTMLInputElement;
-        this.overlayExchangesDiv = document.getElementById('overlay-exchanges')!;
+        this.overlayExchangesDiv = document.getElementById('overlay-exchanges') as HTMLElement;
         this.timeframe1Select = document.getElementById('timeframe1-select') as HTMLSelectElement;
         this.timeframe2Select = document.getElementById('timeframe2-select') as HTMLSelectElement;
-
+        this.timeframe3Select = document.getElementById('timeframe3-select') as HTMLSelectElement;
+        this.timeframe4Select = document.getElementById('timeframe4-select') as HTMLSelectElement;
+        
+        // Advanced UI elements
+        this.analysisBtn = document.getElementById('analysis-btn') as HTMLButtonElement;
+        this.alertsBtn = document.getElementById('alerts-btn') as HTMLButtonElement;
+        this.exportBtn = document.getElementById('export-btn') as HTMLButtonElement;
+        this.fullscreenBtn = document.getElementById('fullscreen-btn') as HTMLButtonElement;
+        this.sidePanel = document.getElementById('side-panel') as HTMLElement;
+        this.alertModal = document.getElementById('alert-modal') as HTMLElement;
+        this.analysisModal = document.getElementById('analysis-modal') as HTMLElement;
+        
         // Initialize chart instances
         this.chart1 = {
             chart: null,
             series: new Map(),
             volumeSeries: new Map(),
+            indicatorSeries: new Map(),
             container: document.getElementById('chart1-container')!,
             websockets: new Map(),
             lastCandles: new Map(),
             openPrices: new Map(),
             timeframe: '1m',
-            chartId: '1'
+            chartId: '1',
+            activeIndicators: new Set(),
+            technicalData: { rsi: 0, macd: { macd: 0, signal: 0, histogram: 0 }, bollinger: { upper: 0, middle: 0, lower: 0, percentage: 0 }, volatility: 0, ma20: 0, ma50: 0 },
+            historicalPrices: []
         };
 
         this.chart2 = {
             chart: null,
             series: new Map(),
             volumeSeries: new Map(),
+            indicatorSeries: new Map(),
             container: document.getElementById('chart2-container')!,
             websockets: new Map(),
             lastCandles: new Map(),
             openPrices: new Map(),
             timeframe: '5m',
-            chartId: '2'
+            chartId: '2',
+            activeIndicators: new Set(),
+            technicalData: { rsi: 0, macd: { macd: 0, signal: 0, histogram: 0 }, bollinger: { upper: 0, middle: 0, lower: 0, percentage: 0 }, volatility: 0, ma20: 0, ma50: 0 },
+            historicalPrices: []
+        };
+        
+        this.chart3 = {
+            chart: null,
+            series: new Map(),
+            volumeSeries: new Map(),
+            indicatorSeries: new Map(),
+            container: document.getElementById('chart3-container')!,
+            websockets: new Map(),
+            lastCandles: new Map(),
+            openPrices: new Map(),
+            timeframe: '15m',
+            chartId: '3',
+            activeIndicators: new Set(),
+            technicalData: { rsi: 0, macd: { macd: 0, signal: 0, histogram: 0 }, bollinger: { upper: 0, middle: 0, lower: 0, percentage: 0 }, volatility: 0, ma20: 0, ma50: 0 },
+            historicalPrices: []
+        };
+        
+        this.chart4 = {
+            chart: null,
+            series: new Map(),
+            volumeSeries: new Map(),
+            indicatorSeries: new Map(),
+            container: document.getElementById('chart4-container')!,
+            websockets: new Map(),
+            lastCandles: new Map(),
+            openPrices: new Map(),
+            timeframe: '1h',
+            chartId: '4',
+            activeIndicators: new Set(),
+            technicalData: { rsi: 0, macd: { macd: 0, signal: 0, histogram: 0 }, bollinger: { upper: 0, middle: 0, lower: 0, percentage: 0 }, volatility: 0, ma20: 0, ma50: 0 },
+            historicalPrices: []
         };
     }
 
@@ -349,6 +561,7 @@ class ChartsDashboard {
             this.selectedAsset = target.value;
             this.updateTitles();
             this.restartCharts();
+            this.savePreferencesDebounced(); // Save preferences
         });
 
         // Exchange selector (only allow working exchanges)
@@ -362,6 +575,7 @@ class ChartsDashboard {
                 if (!this.overlayMode) {
                     this.restartCharts();
                 }
+                this.savePreferencesDebounced(); // Save preferences
             } else {
                 console.warn(`⚠️ Exchange ${target.value} is not working, staying with ${this.selectedExchange}`);
                 target.value = this.selectedExchange; // Reset to current working exchange
@@ -375,6 +589,7 @@ class ChartsDashboard {
             this.overlayExchangesDiv.style.display = this.overlayMode ? 'block' : 'none';
             this.updateTitles();
             this.restartCharts();
+            this.savePreferencesDebounced(); // Save preferences
         });
 
         // Overlay exchanges checkboxes (only allow working exchanges)
@@ -415,6 +630,7 @@ class ChartsDashboard {
             this.chart1.timeframe = target.value;
             this.updateTitles();
             this.restartChart(this.chart1);
+            this.savePreferencesDebounced(); // Save preferences
         });
 
         this.timeframe2Select.addEventListener('change', (e) => {
@@ -422,6 +638,7 @@ class ChartsDashboard {
             this.chart2.timeframe = target.value;
             this.updateTitles();
             this.restartChart(this.chart2);
+            this.savePreferencesDebounced(); // Save preferences
         });
 
         // Window resize
@@ -678,6 +895,12 @@ class ChartsDashboard {
                             if (historicalData.length > 0) {
                                 chartInstance.lastCandles.set(exchangeId, historicalData[historicalData.length - 1]);
                                 chartInstance.openPrices.set(exchangeId, historicalData[0].open);
+                                
+                                // Update historical prices for technical analysis
+                                chartInstance.historicalPrices = historicalData.map(candle => candle.close);
+                                
+                                // Update technical analysis
+                                this.updateTechnicalAnalysis(chartInstance);
                             }
                             
                             console.log(`✅ Added ${historicalData.length} candles for ${exchangeId}`);
@@ -766,6 +989,12 @@ class ChartsDashboard {
                         if (historicalData.length > 0) {
                             chartInstance.lastCandles.set(this.selectedExchange, historicalData[historicalData.length - 1]);
                             chartInstance.openPrices.set(this.selectedExchange, historicalData[0].open);
+                            
+                            // Update historical prices for technical analysis
+                            chartInstance.historicalPrices = historicalData.map(candle => candle.close);
+                            
+                            // Update technical analysis
+                            this.updateTechnicalAnalysis(chartInstance);
                         }
                         
                         // Fit content to show all data
@@ -1182,28 +1411,27 @@ class ChartsDashboard {
     }
 
     private updateStats(chartInstance: ChartInstance) {
-        const chartId = chartInstance.chartId;
+        // Get the latest candle data for stats
+        const lastCandles = Array.from(chartInstance.lastCandles.values());
+        const openPrices = Array.from(chartInstance.openPrices.values());
         
-        if (this.overlayMode) {
-            // Calculate stats for overlay mode - use primary exchange for main stats
-            const primaryExchange = Array.from(this.selectedOverlayExchanges)[0];
-            const lastCandle = chartInstance.lastCandles.get(primaryExchange);
-            if (lastCandle) {
-                this.updateStatsDisplay(chartId, lastCandle, chartInstance.openPrices.get(primaryExchange) || lastCandle.open);
+        if (lastCandles.length > 0 && openPrices.length > 0) {
+            const lastCandle = lastCandles[0]; // Use first exchange's data for stats
+            const openPrice = openPrices[0];
+            
+            this.updateStatsDisplay(chartInstance.chartId, lastCandle, openPrice);
+            
+            // Update technical analysis if we have enough historical data
+            if (chartInstance.historicalPrices.length >= 50) {
+                this.updateTechnicalAnalysis(chartInstance);
             }
-        } else {
-            // Calculate stats for single exchange
-            const lastCandle = chartInstance.lastCandles.get(this.selectedExchange);
-            if (lastCandle) {
-                this.updateStatsDisplay(chartId, lastCandle, chartInstance.openPrices.get(this.selectedExchange) || lastCandle.open);
-            }
+            
+            // Check alerts
+            this.checkAlerts(chartInstance);
         }
         
-        // Update last update time
-        const lastUpdateElement = document.getElementById('last-update');
-        if (lastUpdateElement) {
-            lastUpdateElement.textContent = new Date().toLocaleTimeString();
-        }
+        // Schedule next update
+        setTimeout(() => this.updateStats(chartInstance), 1000);
     }
     
     private updateStatsDisplay(chartId: string, lastCandle: KLineData, openPrice: number) {
@@ -1312,6 +1540,804 @@ class ChartsDashboard {
         console.log('Chart 1 websockets:', this.chart1?.websockets.size || 0);
         console.log('Chart 2 websockets:', this.chart2?.websockets.size || 0);
         console.log('=== End Connectivity Test ===');
+    }
+
+    // Market Data Methods
+    private async fetchMarketData() {
+        try {
+            // Simulate market data fetching (in real implementation, use actual APIs)
+            this.marketData = {
+                volume24h: '$' + (Math.random() * 100 + 50).toFixed(1) + 'B',
+                marketCap: '$' + (Math.random() * 500 + 1000).toFixed(1) + 'B',
+                fearGreedIndex: Math.floor(Math.random() * 100).toString(),
+                btcDominance: (Math.random() * 10 + 45).toFixed(1) + '%'
+            };
+            
+            this.updateMarketDataDisplay();
+        } catch (error) {
+            console.error('Error fetching market data:', error);
+        }
+    }
+    
+    private updateMarketDataDisplay() {
+        const elements = {
+            'market-volume': this.marketData.volume24h,
+            'market-cap': this.marketData.marketCap,
+            'fear-greed': this.marketData.fearGreedIndex,
+            'btc-dominance': this.marketData.btcDominance
+        };
+        
+        Object.entries(elements).forEach(([id, value]) => {
+            const element = document.getElementById(id);
+            if (element) element.textContent = value;
+        });
+    }
+    
+    // Alert Management
+    private addAlert(type: Alert['type'], condition: Alert['condition'], value: number) {
+        const alert: Alert = {
+            id: Date.now().toString(),
+            type,
+            condition,
+            value,
+            asset: this.selectedAsset,
+            active: true,
+            triggered: false,
+            createdAt: new Date()
+        };
+        
+        this.alerts.push(alert);
+        this.updateAlertsDisplay();
+        this.saveAlertsToStorage();
+    }
+    
+    private removeAlert(alertId: string) {
+        this.alerts = this.alerts.filter(alert => alert.id !== alertId);
+        this.updateAlertsDisplay();
+        this.saveAlertsToStorage();
+    }
+    
+    private checkAlerts(chartInstance: ChartInstance) {
+        const lastCandle = Array.from(chartInstance.lastCandles.values())[0];
+        if (!lastCandle) return;
+        
+        this.alerts.forEach(alert => {
+            if (!alert.active || alert.triggered) return;
+            
+            let currentValue = 0;
+            switch (alert.type) {
+                case 'price':
+                    currentValue = lastCandle.close;
+                    break;
+                case 'volume':
+                    currentValue = lastCandle.volume;
+                    break;
+                case 'rsi':
+                    currentValue = chartInstance.technicalData.rsi;
+                    break;
+                case 'macd':
+                    currentValue = chartInstance.technicalData.macd.macd;
+                    break;
+            }
+            
+            let triggered = false;
+            switch (alert.condition) {
+                case 'above':
+                    triggered = currentValue > alert.value;
+                    break;
+                case 'below':
+                    triggered = currentValue < alert.value;
+                    break;
+                case 'crosses':
+                    // Simplified crossing logic
+                    triggered = Math.abs(currentValue - alert.value) < (alert.value * 0.001);
+                    break;
+            }
+            
+            if (triggered) {
+                alert.triggered = true;
+                this.triggerAlert(alert);
+            }
+        });
+    }
+    
+    private triggerAlert(alert: Alert) {
+        // Show notification
+        if (Notification.permission === 'granted') {
+            new Notification(`${alert.type.toUpperCase()} Alert`, {
+                body: `${alert.asset} ${alert.type} is ${alert.condition} ${alert.value}`,
+                icon: '/favicon.ico'
+            });
+        }
+        
+        // Visual alert
+        this.showAlertNotification(alert);
+    }
+    
+    private showAlertNotification(alert: Alert) {
+        const notification = document.createElement('div');
+        notification.className = 'alert-notification';
+        notification.innerHTML = `
+            <div class="alert-content">
+                <strong>🔔 ${alert.type.toUpperCase()} Alert</strong>
+                <p>${alert.asset} ${alert.type} is ${alert.condition} ${alert.value}</p>
+            </div>
+            <button class="alert-close">✕</button>
+        `;
+        
+        document.body.appendChild(notification);
+        
+        // Auto remove after 5 seconds
+        setTimeout(() => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        }, 5000);
+        
+        // Manual close
+        notification.querySelector('.alert-close')?.addEventListener('click', () => {
+            if (notification.parentNode) {
+                notification.parentNode.removeChild(notification);
+            }
+        });
+    }
+    
+    private updateAlertsDisplay() {
+        const alertsList = document.getElementById('alerts-list');
+        if (!alertsList) return;
+        
+        alertsList.innerHTML = this.alerts.map(alert => `
+            <div class="alert-item ${alert.triggered ? 'triggered' : ''}">
+                <div class="alert-info">
+                    <span class="alert-type">${alert.type.toUpperCase()}</span>
+                    <span class="alert-condition">${alert.condition} ${alert.value}</span>
+                    <span class="alert-asset">${alert.asset}</span>
+                </div>
+                <button class="alert-remove" data-id="${alert.id}">Remove</button>
+            </div>
+        `).join('');
+        
+        // Add remove event listeners
+        alertsList.querySelectorAll('.alert-remove').forEach(btn => {
+            btn.addEventListener('click', (e) => {
+                const alertId = (e.target as HTMLElement).dataset.id;
+                if (alertId) this.removeAlert(alertId);
+            });
+        });
+    }
+    
+    private saveAlertsToStorage() {
+        localStorage.setItem('chartDashboardAlerts', JSON.stringify(this.alerts));
+    }
+    
+    private loadAlertsFromStorage() {
+        const stored = localStorage.getItem('chartDashboardAlerts');
+        if (stored) {
+            this.alerts = JSON.parse(stored);
+            this.updateAlertsDisplay();
+        }
+    }
+    
+    // Technical Analysis Methods
+    private updateTechnicalAnalysis(chartInstance: ChartInstance) {
+        if (chartInstance.historicalPrices.length < 50) return;
+        
+        const prices = chartInstance.historicalPrices;
+        
+        chartInstance.technicalData = {
+            rsi: TechnicalAnalysis.calculateRSI(prices),
+            macd: TechnicalAnalysis.calculateMACD(prices),
+            bollinger: TechnicalAnalysis.calculateBollingerBands(prices),
+            volatility: TechnicalAnalysis.calculateVolatility(prices),
+            ma20: TechnicalAnalysis.calculateSMA(prices, 20),
+            ma50: TechnicalAnalysis.calculateSMA(prices, 50)
+        };
+        
+        this.updateTechnicalDisplay(chartInstance);
+    }
+    
+    private updateTechnicalDisplay(chartInstance: ChartInstance) {
+        const chartId = chartInstance.chartId;
+        const tech = chartInstance.technicalData;
+        
+        const elements = {
+            [`rsi${chartId}`]: tech.rsi.toFixed(1),
+            [`macd${chartId}`]: tech.macd.macd.toFixed(4),
+            [`bb${chartId}`]: tech.bollinger.percentage.toFixed(1) + '%',
+            [`volatility${chartId}`]: tech.volatility.toFixed(1) + '%'
+        };
+        
+        Object.entries(elements).forEach(([id, value]) => {
+            const element = document.getElementById(id);
+            if (element) element.textContent = value;
+        });
+    }
+    
+    // Chart Mode Management
+    private switchChartMode(mode: typeof this.chartMode) {
+        this.chartMode = mode;
+        const chartsGrid = document.getElementById('charts-grid');
+        if (!chartsGrid) return;
+        
+        // Remove existing mode classes
+        chartsGrid.className = 'charts-grid';
+        
+        // Hide all charts first
+        [1, 2, 3, 4].forEach(i => {
+            const section = document.getElementById(`chart${i}-section`);
+            if (section) section.style.display = 'none';
+        });
+        
+        switch (mode) {
+            case 'single':
+                chartsGrid.classList.add('single-mode');
+                document.getElementById('chart1-section')!.style.display = 'flex';
+                this.activeCharts = [this.chart1];
+                break;
+            case 'dual':
+                document.getElementById('chart1-section')!.style.display = 'flex';
+                document.getElementById('chart2-section')!.style.display = 'flex';
+                this.activeCharts = [this.chart1, this.chart2];
+                break;
+            case 'quad':
+                chartsGrid.classList.add('quad-mode');
+                [1, 2, 3, 4].forEach(i => {
+                    document.getElementById(`chart${i}-section`)!.style.display = 'flex';
+                });
+                this.activeCharts = [this.chart1, this.chart2, this.chart3, this.chart4];
+                break;
+            case 'comparison':
+                chartsGrid.classList.add('comparison-mode');
+                document.getElementById('chart1-section')!.style.display = 'flex';
+                this.activeCharts = [this.chart1];
+                break;
+        }
+        
+        // Resize charts after mode change
+        setTimeout(() => this.handleResize(), 100);
+        
+        // Save preferences when chart mode changes
+        this.savePreferencesDebounced();
+    }
+    
+    // Indicator Management
+    private toggleIndicator(chartInstance: ChartInstance, indicator: string) {
+        if (chartInstance.activeIndicators.has(indicator)) {
+            this.removeIndicator(chartInstance, indicator);
+        } else {
+            this.addIndicator(chartInstance, indicator);
+        }
+        
+        // Save preferences when indicators change
+        this.savePreferencesDebounced();
+    }
+    
+    private addIndicator(chartInstance: ChartInstance, indicator: string) {
+        if (!chartInstance.chart) return;
+        
+        chartInstance.activeIndicators.add(indicator);
+        
+        switch (indicator) {
+            case 'volume':
+                this.addVolumeIndicator(chartInstance);
+                break;
+            case 'ma':
+                this.addMovingAverageIndicator(chartInstance);
+                break;
+            case 'bollinger':
+                this.addBollingerBandsIndicator(chartInstance);
+                break;
+            case 'rsi':
+                this.addRSIIndicator(chartInstance);
+                break;
+            case 'macd':
+                this.addMACDIndicator(chartInstance);
+                break;
+        }
+        
+        this.updateIndicatorButtons(chartInstance);
+    }
+    
+    private removeIndicator(chartInstance: ChartInstance, indicator: string) {
+        chartInstance.activeIndicators.delete(indicator);
+        
+        const series = chartInstance.indicatorSeries.get(indicator);
+        if (series && chartInstance.chart) {
+            chartInstance.chart.removeSeries(series);
+            chartInstance.indicatorSeries.delete(indicator);
+        }
+        
+        this.updateIndicatorButtons(chartInstance);
+    }
+    
+    private updateIndicatorButtons(chartInstance: ChartInstance) {
+        const chartNum = chartInstance.chartId;
+        document.querySelectorAll(`[data-chart="${chartNum}"]`).forEach(btn => {
+            const indicator = (btn as HTMLElement).dataset.indicator;
+            if (indicator) {
+                btn.classList.toggle('active', chartInstance.activeIndicators.has(indicator));
+            }
+        });
+    }
+    
+    // Export Functionality
+    private exportChartData() {
+        const data = {
+            asset: this.selectedAsset,
+            exchange: this.selectedExchange,
+            timestamp: new Date().toISOString(),
+            charts: this.activeCharts.map(chart => ({
+                timeframe: chart.timeframe,
+                technicalData: chart.technicalData,
+                lastCandle: Array.from(chart.lastCandles.values())[0]
+            })),
+            alerts: this.alerts,
+            marketData: this.marketData
+        };
+        
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = `chart-data-${this.selectedAsset}-${Date.now()}.json`;
+        document.body.appendChild(a);
+        a.click();
+        document.body.removeChild(a);
+        URL.revokeObjectURL(url);
+    }
+    
+    // Fullscreen Management
+    private toggleFullscreen() {
+        this.fullscreenMode = !this.fullscreenMode;
+        const chartsContainer = document.getElementById('charts-container');
+        
+        if (this.fullscreenMode) {
+            chartsContainer?.requestFullscreen?.();
+            document.body.classList.add('fullscreen-mode');
+        } else {
+            document.exitFullscreen?.();
+            document.body.classList.remove('fullscreen-mode');
+        }
+    }
+
+    // Indicator Implementation Methods
+    private addVolumeIndicator(chartInstance: ChartInstance) {
+        if (!chartInstance.chart) return;
+        
+        const volumeSeries = chartInstance.chart.addHistogramSeries({
+            color: '#26a69a',
+            priceFormat: {
+                type: 'volume',
+            },
+            priceScaleId: 'volume',
+            scaleMargins: {
+                top: 0.8,
+                bottom: 0,
+            },
+        });
+        
+        chartInstance.indicatorSeries.set('volume', volumeSeries);
+        
+        // Add existing volume data if available
+        const exchangeId = this.overlayMode ? Array.from(this.selectedOverlayExchanges)[0] : this.selectedExchange;
+        const existingVolumeSeries = chartInstance.volumeSeries.get(exchangeId);
+        if (existingVolumeSeries) {
+            // Copy data from existing volume series
+            // This is a simplified approach - in practice you'd maintain the data separately
+        }
+    }
+    
+    private addMovingAverageIndicator(chartInstance: ChartInstance) {
+        if (!chartInstance.chart || chartInstance.historicalPrices.length < 50) return;
+        
+        const ma20Series = chartInstance.chart.addLineSeries({
+            color: '#FF6B6B',
+            lineWidth: 2,
+            title: 'MA20',
+        });
+        
+        const ma50Series = chartInstance.chart.addLineSeries({
+            color: '#4ECDC4',
+            lineWidth: 2,
+            title: 'MA50',
+        });
+        
+        chartInstance.indicatorSeries.set('ma20', ma20Series);
+        chartInstance.indicatorSeries.set('ma50', ma50Series);
+        
+        // Calculate and set MA data
+        this.updateMovingAverages(chartInstance);
+    }
+    
+    private addBollingerBandsIndicator(chartInstance: ChartInstance) {
+        if (!chartInstance.chart || chartInstance.historicalPrices.length < 20) return;
+        
+        const upperBandSeries = chartInstance.chart.addLineSeries({
+            color: '#9C27B0',
+            lineWidth: 1,
+            lineStyle: 2, // Dashed
+            title: 'BB Upper',
+        });
+        
+        const lowerBandSeries = chartInstance.chart.addLineSeries({
+            color: '#9C27B0',
+            lineWidth: 1,
+            lineStyle: 2, // Dashed
+            title: 'BB Lower',
+        });
+        
+        const middleBandSeries = chartInstance.chart.addLineSeries({
+            color: '#9C27B0',
+            lineWidth: 1,
+            title: 'BB Middle',
+        });
+        
+        chartInstance.indicatorSeries.set('bb_upper', upperBandSeries);
+        chartInstance.indicatorSeries.set('bb_lower', lowerBandSeries);
+        chartInstance.indicatorSeries.set('bb_middle', middleBandSeries);
+        
+        this.updateBollingerBands(chartInstance);
+    }
+    
+    private addRSIIndicator(chartInstance: ChartInstance) {
+        if (!chartInstance.chart || chartInstance.historicalPrices.length < 14) return;
+        
+        const rsiSeries = chartInstance.chart.addLineSeries({
+            color: '#FF9800',
+            lineWidth: 2,
+            title: 'RSI',
+            priceScaleId: 'rsi',
+        });
+        
+        // Set RSI scale
+        chartInstance.chart.priceScale('rsi').applyOptions({
+            scaleMargins: {
+                top: 0.1,
+                bottom: 0.1,
+            },
+            borderVisible: false,
+        });
+        
+        chartInstance.indicatorSeries.set('rsi', rsiSeries);
+        this.updateRSI(chartInstance);
+    }
+    
+    private addMACDIndicator(chartInstance: ChartInstance) {
+        if (!chartInstance.chart || chartInstance.historicalPrices.length < 26) return;
+        
+        const macdSeries = chartInstance.chart.addLineSeries({
+            color: '#2196F3',
+            lineWidth: 2,
+            title: 'MACD',
+            priceScaleId: 'macd',
+        });
+        
+        const signalSeries = chartInstance.chart.addLineSeries({
+            color: '#FF5722',
+            lineWidth: 2,
+            title: 'Signal',
+            priceScaleId: 'macd',
+        });
+        
+        const histogramSeries = chartInstance.chart.addHistogramSeries({
+            color: '#4CAF50',
+            title: 'Histogram',
+            priceScaleId: 'macd',
+        });
+        
+        chartInstance.indicatorSeries.set('macd', macdSeries);
+        chartInstance.indicatorSeries.set('macd_signal', signalSeries);
+        chartInstance.indicatorSeries.set('macd_histogram', histogramSeries);
+        
+        this.updateMACD(chartInstance);
+    }
+    
+    // Indicator Update Methods
+    private updateMovingAverages(chartInstance: ChartInstance) {
+        const prices = chartInstance.historicalPrices;
+        if (prices.length < 50) return;
+        
+        const ma20Series = chartInstance.indicatorSeries.get('ma20');
+        const ma50Series = chartInstance.indicatorSeries.get('ma50');
+        
+        if (ma20Series && ma50Series) {
+            const currentTime = Math.floor(Date.now() / 1000);
+            const ma20Value = TechnicalAnalysis.calculateSMA(prices, 20);
+            const ma50Value = TechnicalAnalysis.calculateSMA(prices, 50);
+            
+            ma20Series.update({ time: currentTime, value: ma20Value });
+            ma50Series.update({ time: currentTime, value: ma50Value });
+        }
+    }
+    
+    private updateBollingerBands(chartInstance: ChartInstance) {
+        const prices = chartInstance.historicalPrices;
+        if (prices.length < 20) return;
+        
+        const bb = TechnicalAnalysis.calculateBollingerBands(prices);
+        const currentTime = Math.floor(Date.now() / 1000);
+        
+        const upperSeries = chartInstance.indicatorSeries.get('bb_upper');
+        const middleSeries = chartInstance.indicatorSeries.get('bb_middle');
+        const lowerSeries = chartInstance.indicatorSeries.get('bb_lower');
+        
+        if (upperSeries && middleSeries && lowerSeries) {
+            upperSeries.update({ time: currentTime, value: bb.upper });
+            middleSeries.update({ time: currentTime, value: bb.middle });
+            lowerSeries.update({ time: currentTime, value: bb.lower });
+        }
+    }
+    
+    private updateRSI(chartInstance: ChartInstance) {
+        const prices = chartInstance.historicalPrices;
+        if (prices.length < 14) return;
+        
+        const rsiSeries = chartInstance.indicatorSeries.get('rsi');
+        if (rsiSeries) {
+            const rsiValue = TechnicalAnalysis.calculateRSI(prices);
+            const currentTime = Math.floor(Date.now() / 1000);
+            rsiSeries.update({ time: currentTime, value: rsiValue });
+        }
+    }
+    
+    private updateMACD(chartInstance: ChartInstance) {
+        const prices = chartInstance.historicalPrices;
+        if (prices.length < 26) return;
+        
+        const macd = TechnicalAnalysis.calculateMACD(prices);
+        const currentTime = Math.floor(Date.now() / 1000);
+        
+        const macdSeries = chartInstance.indicatorSeries.get('macd');
+        const signalSeries = chartInstance.indicatorSeries.get('macd_signal');
+        const histogramSeries = chartInstance.indicatorSeries.get('macd_histogram');
+        
+        if (macdSeries && signalSeries && histogramSeries) {
+            macdSeries.update({ time: currentTime, value: macd.macd });
+            signalSeries.update({ time: currentTime, value: macd.signal });
+            histogramSeries.update({ time: currentTime, value: macd.histogram });
+        }
+    }
+    
+    // Helper method to get chart instance by ID
+    private getChartById(chartId: string): ChartInstance | null {
+        switch (chartId) {
+            case '1': return this.chart1;
+            case '2': return this.chart2;
+            case '3': return this.chart3;
+            case '4': return this.chart4;
+            default: return null;
+        }
+    }
+
+    // User Preferences Persistence
+    private saveUserPreferences() {
+        try {
+            const preferences = {
+                selectedAsset: this.selectedAsset,
+                selectedExchange: this.selectedExchange,
+                overlayMode: this.overlayMode,
+                selectedOverlayExchanges: Array.from(this.selectedOverlayExchanges),
+                chartMode: this.chartMode,
+                timeframes: {
+                    chart1: this.chart1.timeframe,
+                    chart2: this.chart2.timeframe,
+                    chart3: this.chart3.timeframe,
+                    chart4: this.chart4.timeframe
+                },
+                activeIndicators: {
+                    chart1: Array.from(this.chart1.activeIndicators),
+                    chart2: Array.from(this.chart2.activeIndicators),
+                    chart3: Array.from(this.chart3.activeIndicators),
+                    chart4: Array.from(this.chart4.activeIndicators)
+                },
+                sidePanelVisible: this.sidePanelVisible,
+                lastSaved: new Date().toISOString()
+            };
+            
+            localStorage.setItem('chartsDashboardPreferences', JSON.stringify(preferences));
+            console.log('💾 User preferences saved successfully');
+            
+            // Show save confirmation
+            this.showPreferencesStatus('Preferences Saved!', 'saved');
+            
+        } catch (error) {
+            console.error('❌ Failed to save user preferences:', error);
+            this.showPreferencesStatus('Save Failed!', 'error');
+        }
+    }
+    
+    private showPreferencesStatus(message: string, type: 'saved' | 'error' | 'saving' = 'saved') {
+        const statusElement = document.getElementById('preferences-status');
+        if (!statusElement) return;
+        
+        statusElement.textContent = message;
+        statusElement.className = `preferences-status show ${type}`;
+        
+        // Hide after 2 seconds
+        setTimeout(() => {
+            statusElement.classList.remove('show');
+        }, 2000);
+    }
+    
+    private loadUserPreferences() {
+        try {
+            const stored = localStorage.getItem('chartsDashboardPreferences');
+            if (!stored) {
+                console.log('📝 No saved preferences found, using defaults');
+                return;
+            }
+            
+            const preferences = JSON.parse(stored);
+            console.log('📂 Loading saved user preferences:', preferences);
+            
+            // Restore basic settings
+            if (preferences.selectedAsset) {
+                this.selectedAsset = preferences.selectedAsset;
+            }
+            
+            if (preferences.selectedExchange) {
+                // Verify the exchange is still valid/working
+                const workingExchanges = ['binance', 'bybit', 'okx'];
+                if (workingExchanges.includes(preferences.selectedExchange)) {
+                    this.selectedExchange = preferences.selectedExchange;
+                } else {
+                    console.warn(`⚠️ Saved exchange ${preferences.selectedExchange} is no longer working, using default`);
+                }
+            }
+            
+            if (typeof preferences.overlayMode === 'boolean') {
+                this.overlayMode = preferences.overlayMode;
+            }
+            
+            if (preferences.selectedOverlayExchanges && Array.isArray(preferences.selectedOverlayExchanges)) {
+                // Filter to only working exchanges
+                const workingExchanges = ['binance', 'bybit', 'okx'];
+                const validOverlayExchanges = preferences.selectedOverlayExchanges.filter(
+                    (exchange: string) => workingExchanges.includes(exchange)
+                );
+                
+                if (validOverlayExchanges.length > 0) {
+                    this.selectedOverlayExchanges = new Set(validOverlayExchanges);
+                } else {
+                    this.selectedOverlayExchanges = new Set(['binance']); // Default fallback
+                }
+            }
+            
+            if (preferences.chartMode) {
+                this.chartMode = preferences.chartMode;
+            }
+            
+            // Restore timeframes
+            if (preferences.timeframes) {
+                if (preferences.timeframes.chart1) this.chart1.timeframe = preferences.timeframes.chart1;
+                if (preferences.timeframes.chart2) this.chart2.timeframe = preferences.timeframes.chart2;
+                if (preferences.timeframes.chart3) this.chart3.timeframe = preferences.timeframes.chart3;
+                if (preferences.timeframes.chart4) this.chart4.timeframe = preferences.timeframes.chart4;
+            }
+            
+            // Restore active indicators
+            if (preferences.activeIndicators) {
+                if (preferences.activeIndicators.chart1) {
+                    this.chart1.activeIndicators = new Set(preferences.activeIndicators.chart1);
+                }
+                if (preferences.activeIndicators.chart2) {
+                    this.chart2.activeIndicators = new Set(preferences.activeIndicators.chart2);
+                }
+                if (preferences.activeIndicators.chart3) {
+                    this.chart3.activeIndicators = new Set(preferences.activeIndicators.chart3);
+                }
+                if (preferences.activeIndicators.chart4) {
+                    this.chart4.activeIndicators = new Set(preferences.activeIndicators.chart4);
+                }
+            }
+            
+            if (typeof preferences.sidePanelVisible === 'boolean') {
+                this.sidePanelVisible = preferences.sidePanelVisible;
+            }
+            
+            console.log('✅ User preferences loaded successfully');
+            
+            // Apply the loaded preferences to the UI
+            this.applyPreferencesToUI();
+            
+        } catch (error) {
+            console.error('❌ Failed to load user preferences:', error);
+            console.log('🔄 Using default settings');
+        }
+    }
+    
+    private applyPreferencesToUI() {
+        // Update UI elements to reflect loaded preferences
+        if (this.assetSelect) {
+            this.assetSelect.value = this.selectedAsset;
+        }
+        
+        if (this.exchangeSelect) {
+            this.exchangeSelect.value = this.selectedExchange;
+        }
+        
+        if (this.overlayModeToggle) {
+            this.overlayModeToggle.checked = this.overlayMode;
+        }
+        
+        if (this.overlayExchangesDiv) {
+            this.overlayExchangesDiv.style.display = this.overlayMode ? 'block' : 'none';
+            
+            // Update overlay exchange checkboxes
+            const checkboxes = this.overlayExchangesDiv.querySelectorAll('input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                const input = checkbox as HTMLInputElement;
+                input.checked = this.selectedOverlayExchanges.has(input.value);
+            });
+        }
+        
+        if (this.chartModeSelect) {
+            this.chartModeSelect.value = this.chartMode;
+        }
+        
+        // Update timeframe selectors
+        if (this.timeframe1Select) this.timeframe1Select.value = this.chart1.timeframe;
+        if (this.timeframe2Select) this.timeframe2Select.value = this.chart2.timeframe;
+        if (this.timeframe3Select) this.timeframe3Select.value = this.chart3.timeframe;
+        if (this.timeframe4Select) this.timeframe4Select.value = this.chart4.timeframe;
+        
+        // Update side panel visibility
+        if (this.sidePanel) {
+            this.sidePanel.style.display = this.sidePanelVisible ? 'block' : 'none';
+        }
+        
+        // Apply chart mode
+        this.switchChartMode(this.chartMode);
+        
+        console.log('🎨 UI updated with saved preferences');
+    }
+    
+    // Enhanced method to save preferences when settings change
+    private savePreferencesDebounced = this.debounce(() => {
+        this.saveUserPreferences();
+    }, 1000);
+    
+    private debounce(func: Function, wait: number) {
+        let timeout: NodeJS.Timeout;
+        return function executedFunction(...args: any[]) {
+            const later = () => {
+                clearTimeout(timeout);
+                func(...args);
+            };
+            clearTimeout(timeout);
+            timeout = setTimeout(later, wait);
+        };
+    }
+    
+    // Method to reset all preferences
+    private resetUserPreferences() {
+        try {
+            localStorage.removeItem('chartsDashboardPreferences');
+            console.log('🗑️ User preferences reset');
+            
+            // Reset to defaults
+            this.selectedAsset = 'BTCUSDT';
+            this.selectedExchange = 'binance';
+            this.overlayMode = false;
+            this.selectedOverlayExchanges = new Set(['binance']);
+            this.chartMode = 'dual';
+            this.chart1.timeframe = '1m';
+            this.chart2.timeframe = '5m';
+            this.chart3.timeframe = '15m';
+            this.chart4.timeframe = '1h';
+            this.sidePanelVisible = false;
+            
+            // Clear all active indicators
+            [this.chart1, this.chart2, this.chart3, this.chart4].forEach(chart => {
+                chart.activeIndicators.clear();
+            });
+            
+            this.applyPreferencesToUI();
+            this.restartCharts();
+            
+        } catch (error) {
+            console.error('❌ Failed to reset preferences:', error);
+        }
     }
 }
 

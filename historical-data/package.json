@@ -1,0 +1,52 @@
+{
+  "name": "crypto-historical-data-collector",
+  "version": "1.0.0",
+  "description": "Comprehensive historical data collection system for multiple cryptocurrency exchanges",
+  "main": "scripts/run-all-collectors.js",
+  "scripts": {
+    "start": "node scripts/run-all-collectors.js",
+    "web": "node web/server.js",
+    "collect:all": "node scripts/run-all-collectors.js",
+    "collect:binance": "node scripts/run-all-collectors.js binance",
+    "collect:bybit": "node scripts/run-all-collectors.js bybit",
+    "test:binance": "node scripts/binance-collector.js",
+    "test:bybit": "node scripts/bybit-collector.js",
+    "analyze": "node scripts/data-analyzer.js",
+    "help": "node scripts/run-all-collectors.js --help"
+  },
+  "keywords": [
+    "cryptocurrency",
+    "historical-data",
+    "binance",
+    "bybit",
+    "okx",
+    "kraken",
+    "data-collection",
+    "trading",
+    "klines",
+    "ohlcv"
+  ],
+  "author": "Crypto Multi-Exchange Order Book Team",
+  "license": "MIT",
+  "dependencies": {
+    "axios": "^1.6.0",
+    "express": "^4.18.0",
+    "socket.io": "^4.7.0",
+    "ejs": "^3.1.0"
+  },
+  "devDependencies": {
+    "nodemon": "^3.0.0"
+  },
+  "engines": {
+    "node": ">=16.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/yourusername/crypto-multi-exchange-real-time-order-book.git",
+    "directory": "historical-data"
+  },
+  "bugs": {
+    "url": "https://github.com/yourusername/crypto-multi-exchange-real-time-order-book/issues"
+  },
+  "homepage": "https://github.com/yourusername/crypto-multi-exchange-real-time-order-book#readme"
+} 

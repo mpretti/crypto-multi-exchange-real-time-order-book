@@ -1,0 +1,240 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Collection Stats</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+        }
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            overflow: hidden;
+        }
+        .header {
+            background: #2d3748;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            padding: 20px;
+        }
+        .stat-card {
+            background: #f7fafc;
+            border: 1px solid #e2e8f0;
+            border-radius: 8px;
+            padding: 20px;
+            text-align: center;
+            transition: transform 0.2s;
+        }
+        .stat-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+        .stat-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #2d3748;
+            margin: 10px 0;
+        }
+        .stat-label {
+            color: #718096;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        .controls {
+            padding: 20px;
+            border-top: 1px solid #e2e8f0;
+            text-align: center;
+        }
+        .btn {
+            background: #4299e1;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            margin: 0 5px;
+            cursor: pointer;
+            transition: background 0.2s;
+        }
+        .btn:hover {
+            background: #3182ce;
+        }
+        .btn.success {
+            background: #48bb78;
+        }
+        .btn.success:hover {
+            background: #38a169;
+        }
+        .status {
+            padding: 10px;
+            margin: 10px 0;
+            border-radius: 5px;
+            text-align: center;
+        }
+        .status.success {
+            background: #c6f6d5;
+            color: #22543d;
+        }
+        .status.error {
+            background: #fed7d7;
+            color: #742a2a;
+        }
+        .logs {
+            background: #1a202c;
+            color: #e2e8f0;
+            padding: 15px;
+            margin: 20px;
+            border-radius: 5px;
+            font-family: 'Monaco', 'Menlo', monospace;
+            font-size: 0.8rem;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📊 Historical Data Collection Stats</h1>
+            <p>Real-time monitoring dashboard</p>
+        </div>
+
+        <div class="stats-grid">
+            <div class="stat-card">
+                <div class="stat-label">Total Files</div>
+                <div class="stat-value" id="total-files">--</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Storage Used</div>
+                <div class="stat-value" id="total-size">--</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">Active Collections</div>
+                <div class="stat-value" id="active-collectors">--</div>
+            </div>
+            <div class="stat-card">
+                <div class="stat-label">System Uptime</div>
+                <div class="stat-value" id="uptime">--</div>
+            </div>
+        </div>
+
+        <div class="controls">
+            <h3>Collection Controls</h3>
+            <button class="btn success" onclick="startCollection()">🚀 Start All</button>
+            <button class="btn" onclick="startCollection('binance')">🟡 Binance</button>
+            <button class="btn" onclick="startCollection('bybit')">🟠 Bybit</button>
+            <button class="btn" onclick="runAnalysis()">📊 Analyze</button>
+            
+            <div id="status" class="status" style="display: none;"></div>
+        </div>
+
+        <div class="logs" id="logs">
+            <div>📡 Connecting to monitoring system...</div>
+        </div>
+    </div>
+
+    <script>
+        let logCount = 0;
+
+        async function updateStats() {
+            try {
+                const response = await fetch('/api/stats');
+                const stats = await response.json();
+                
+                document.getElementById('total-files').textContent = stats.totalFiles.toLocaleString();
+                document.getElementById('total-size').textContent = stats.totalSizeFormatted;
+                document.getElementById('active-collectors').textContent = stats.activeCollectors;
+                document.getElementById('uptime').textContent = stats.uptimeFormatted;
+                
+                addLog(`📊 Stats updated: ${stats.totalFiles} files, ${stats.totalSizeFormatted}`);
+                
+            } catch (error) {
+                addLog(`❌ Error updating stats: ${error.message}`);
+            }
+        }
+
+        async function startCollection(exchange = null) {
+            try {
+                const url = exchange ? `/api/start/${exchange}` : '/api/start';
+                const response = await fetch(url, { method: 'POST' });
+                const result = await response.json();
+                
+                if (result.success) {
+                    showStatus(`✅ Collection started${exchange ? ` for ${exchange}` : ''}`, 'success');
+                    addLog(`🚀 Started collection${exchange ? ` for ${exchange}` : ' for all exchanges'}`);
+                } else {
+                    showStatus('❌ Failed to start collection', 'error');
+                }
+            } catch (error) {
+                showStatus('❌ Error starting collection', 'error');
+                addLog(`❌ Collection start error: ${error.message}`);
+            }
+        }
+
+        async function runAnalysis() {
+            try {
+                showStatus('🔍 Starting data analysis...', 'success');
+                addLog('🔍 Starting comprehensive data analysis...');
+                
+                const response = await fetch('/api/analyze');
+                showStatus('✅ Data analysis completed', 'success');
+                addLog('✅ Data analysis completed successfully');
+            } catch (error) {
+                showStatus('❌ Analysis failed', 'error');
+                addLog(`❌ Analysis error: ${error.message}`);
+            }
+        }
+
+        function showStatus(message, type) {
+            const statusEl = document.getElementById('status');
+            statusEl.textContent = message;
+            statusEl.className = `status ${type}`;
+            statusEl.style.display = 'block';
+            
+            setTimeout(() => {
+                statusEl.style.display = 'none';
+            }, 5000);
+        }
+
+        function addLog(message) {
+            const logsEl = document.getElementById('logs');
+            const timestamp = new Date().toLocaleTimeString();
+            const logLine = document.createElement('div');
+            logLine.textContent = `[${timestamp}] ${message}`;
+            
+            logsEl.appendChild(logLine);
+            logsEl.scrollTop = logsEl.scrollHeight;
+            
+            // Keep only last 20 log entries
+            logCount++;
+            if (logCount > 20) {
+                logsEl.removeChild(logsEl.firstChild);
+                logCount--;
+            }
+        }
+
+        // Initialize
+        document.addEventListener('DOMContentLoaded', () => {
+            addLog('🌐 Dashboard initialized');
+            updateStats();
+            setInterval(updateStats, 30000);
+            addLog('⏰ Auto-refresh enabled (30s intervals)');
+        });
+    </script>
+</body>
+</html>

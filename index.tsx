@@ -9,7 +9,8 @@ import {
     setMaxCumulativeTotal, setMaxIndividualQuantity, currentChartInterval,
     chart, klineSeries, klineWebSocket, feeAdjustedPricing, setFeeAdjustedPricing,
     smallOrderFilterEnabled, minOrderSizeUsd, minOrderSizeAsset,
-    setSmallOrderFilterEnabled, setMinOrderSizeUsd, setMinOrderSizeAsset
+    setSmallOrderFilterEnabled, setMinOrderSizeUsd, setMinOrderSizeAsset,
+    loadUserPreferences, saveUserPreferencesDebounced
 } from './state';
 import { logger, enableGlobalConsoleFiltering, LogFilters } from './utils';
 import {
@@ -396,7 +397,11 @@ function initializeLoggingControls(loggingToggle: HTMLInputElement, loggingSetti
 
 // --- Event Listeners & Initialization ---
 function initializeApp() {
-    assetSelect.value = selectedAsset; 
+    // Load user preferences first
+    loadUserPreferences();
+    console.log('📂 Loaded user preferences - selectedAsset:', selectedAsset, 'selectedExchanges:', [...selectedExchanges]);
+    
+    assetSelect.value = selectedAsset;
     // Initialize exchange pills
     const exchangePills = exchangeLegendDiv.querySelectorAll<HTMLDivElement>('.exchange-pill');
     exchangePills.forEach(pill => {
@@ -414,6 +419,11 @@ function initializeApp() {
     bidsTitle.textContent = `BIDS (${isAggregatedView ? 'Aggregated' : 'Individual'})`;
     asksTitle.textContent = `ASKS (${isAggregatedView ? 'Aggregated' : 'Individual'})`;
 
+    // Apply loaded preferences to UI elements
+    if (feeAdjustedToggle) {
+        feeAdjustedToggle.checked = feeAdjustedPricing;
+    }
+
     selectedExchanges.forEach(exchangeId => connectToExchange(exchangeId, selectedAsset));
     updateOverallConnectionStatus();
 
@@ -424,6 +434,7 @@ function initializeApp() {
             setSelectedAsset(newAsset);
             reconnectToAllSelectedExchanges(newAsset);
             updateChartForAssetAndInterval(newAsset, currentChartInterval);
+            saveUserPreferencesDebounced(); // Save preferences
         }
     });
 
@@ -457,6 +468,7 @@ function initializeApp() {
                 
                 updateOverallConnectionStatus(); 
                 aggregateAndRenderAll(); 
+                saveUserPreferencesDebounced(); // Save preferences
             }
         }
     });
@@ -468,6 +480,7 @@ function initializeApp() {
         asksTitle.textContent = `ASKS (${isAggregatedView ? 'Aggregated' : 'Individual'})`;
         clearOrderBookDisplay();
         aggregateAndRenderAll();
+        saveUserPreferencesDebounced(); // Save preferences
     });
 
     toggleSidebarBtn.addEventListener('click', toggleSidebar);
@@ -518,6 +531,7 @@ function initializeApp() {
             // Trigger order book update with new pricing and legend update
             aggregateAndRenderAll();
             updateFeeLegend();
+            saveUserPreferencesDebounced(); // Save preferences
         });
     }
 
@@ -541,6 +555,7 @@ function initializeApp() {
             filterSettings.style.display = target.checked ? 'flex' : 'none';
             logger.log(`Small order filter: ${target.checked ? 'ON' : 'OFF'}`);
             aggregateAndRenderAll();
+            saveUserPreferencesDebounced(); // Save preferences
         });
         
         // Update minimum USD value
@@ -552,6 +567,7 @@ function initializeApp() {
             if (smallOrderFilterEnabled) {
                 aggregateAndRenderAll();
             }
+            saveUserPreferencesDebounced(); // Save preferences
         });
         
         // Update minimum asset value
@@ -563,6 +579,7 @@ function initializeApp() {
             if (smallOrderFilterEnabled) {
                 aggregateAndRenderAll();
             }
+            saveUserPreferencesDebounced(); // Save preferences
         });
     }
 
@@ -653,6 +670,11 @@ function initializeApp() {
         } else {
           logger.log("Tab became hidden.");
         }
+    });
+
+    // Save preferences when user leaves the page
+    window.addEventListener('beforeunload', () => {
+        saveUserPreferencesDebounced();
     });
 }
 

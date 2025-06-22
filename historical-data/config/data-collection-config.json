@@ -1,0 +1,147 @@
+{
+  "general": {
+    "startDate": "2020-01-01",
+    "endDate": "2025-01-01",
+    "basePairs": ["BTCUSDT", "ETHUSDT", "SOLUSDT", "ADAUSDT", "DOTUSDT"],
+    "dataTypes": ["trades", "klines", "orderbook", "funding"],
+    "outputFormat": "parquet",
+    "compression": "gzip",
+    "maxRetries": 3,
+    "rateLimitDelay": 1000,
+    "chunkSize": "1day",
+    "parallelDownloads": 2
+  },
+  "exchanges": {
+    "binance": {
+      "enabled": true,
+      "apiUrl": "https://api.binance.com",
+      "dataTypes": ["trades", "klines", "orderbook", "funding"],
+      "klineIntervals": ["1m", "5m", "15m", "1h", "4h", "1d"],
+      "minInterval": "1m",
+      "maxRequestsPerMinute": 1200,
+      "symbols": ["BTCUSDT", "ETHUSDT", "SOLUSDT", "ADAUSDT", "DOTUSDT", "AVAXUSDT", "MATICUSDT"],
+      "futures": true,
+      "spot": true
+    },
+    "bybit": {
+      "enabled": true,
+      "apiUrl": "https://api.bybit.com",
+      "dataTypes": ["trades", "klines", "orderbook", "funding"],
+      "klineIntervals": ["1", "5", "15", "60", "240", "D"],
+      "minInterval": "1",
+      "maxRequestsPerMinute": 600,
+      "symbols": ["BTCUSDT", "ETHUSDT", "SOLUSDT", "ADAUSDT", "DOTUSDT"],
+      "futures": true,
+      "spot": true
+    },
+    "okx": {
+      "enabled": true,
+      "apiUrl": "https://www.okx.com",
+      "dataTypes": ["trades", "klines", "orderbook", "funding"],
+      "klineIntervals": ["1m", "5m", "15m", "1H", "4H", "1D"],
+      "minInterval": "1m",
+      "maxRequestsPerMinute": 600,
+      "symbols": ["BTC-USDT", "ETH-USDT", "SOL-USDT", "ADA-USDT", "DOT-USDT"],
+      "futures": true,
+      "spot": true
+    },
+    "kraken": {
+      "enabled": true,
+      "apiUrl": "https://api.kraken.com",
+      "dataTypes": ["trades", "klines"],
+      "klineIntervals": ["1", "5", "15", "60", "240", "1440"],
+      "minInterval": "1",
+      "maxRequestsPerMinute": 180,
+      "symbols": ["XBTUSD", "ETHUSD", "SOLUSD", "ADAUSD", "DOTUSD"],
+      "futures": false,
+      "spot": true
+    },
+    "bitget": {
+      "enabled": true,
+      "apiUrl": "https://api.bitget.com",
+      "dataTypes": ["trades", "klines", "funding"],
+      "klineIntervals": ["1m", "5m", "15m", "1h", "4h", "1d"],
+      "minInterval": "1m",
+      "maxRequestsPerMinute": 600,
+      "symbols": ["BTCUSDT", "ETHUSDT", "SOLUSDT", "ADAUSDT", "DOTUSDT"],
+      "futures": true,
+      "spot": true
+    },
+    "mexc": {
+      "enabled": true,
+      "apiUrl": "https://api.mexc.com",
+      "dataTypes": ["trades", "klines"],
+      "klineIntervals": ["1m", "5m", "15m", "1h", "4h", "1d"],
+      "minInterval": "1m",
+      "maxRequestsPerMinute": 1200,
+      "symbols": ["BTCUSDT", "ETHUSDT", "SOLUSDT", "ADAUSDT", "DOTUSDT"],
+      "futures": true,
+      "spot": true
+    },
+    "gemini": {
+      "enabled": true,
+      "apiUrl": "https://api.gemini.com",
+      "dataTypes": ["trades", "klines"],
+      "klineIntervals": ["1m", "5m", "15m", "30m", "1h", "6h", "1d"],
+      "minInterval": "1m",
+      "maxRequestsPerMinute": 600,
+      "symbols": ["BTCUSD", "ETHUSD"],
+      "futures": false,
+      "spot": true
+    },
+    "coinbase": {
+      "enabled": true,
+      "apiUrl": "https://api.exchange.coinbase.com",
+      "dataTypes": ["trades", "klines"],
+      "klineIntervals": ["60", "300", "900", "3600", "21600", "86400"],
+      "minInterval": "60",
+      "maxRequestsPerMinute": 600,
+      "symbols": ["BTC-USD", "ETH-USD", "SOL-USD", "ADA-USD", "DOT-USD"],
+      "futures": false,
+      "spot": true
+    },
+    "dydx": {
+      "enabled": true,
+      "apiUrl": "https://api.dydx.exchange",
+      "dataTypes": ["trades", "klines", "funding"],
+      "klineIntervals": ["1MIN", "5MINS", "15MINS", "1HOUR", "4HOURS", "1DAY"],
+      "minInterval": "1MIN",
+      "maxRequestsPerMinute": 175,
+      "symbols": ["BTC-USD", "ETH-USD", "SOL-USD"],
+      "futures": true,
+      "spot": false
+    },
+    "hyperliquid": {
+      "enabled": true,
+      "apiUrl": "https://api.hyperliquid.xyz",
+      "dataTypes": ["trades", "klines", "funding"],
+      "klineIntervals": ["1m", "5m", "15m", "1h", "4h", "1d"],
+      "minInterval": "1m",
+      "maxRequestsPerMinute": 1200,
+      "symbols": ["BTC", "ETH", "SOL"],
+      "futures": true,
+      "spot": false
+    }
+  },
+  "storage": {
+    "baseDir": "./historical-data/data",
+    "structure": "{exchange}/{symbol}/{dataType}/{year}/{month}",
+    "fileNaming": "{exchange}_{symbol}_{dataType}_{interval}_{date}.{format}",
+    "compression": true,
+    "checksums": true,
+    "metadata": true
+  },
+  "logging": {
+    "level": "INFO",
+    "logDir": "./historical-data/logs",
+    "logRotation": true,
+    "maxLogSize": "100MB",
+    "keepLogs": 30
+  },
+  "monitoring": {
+    "progressTracking": true,
+    "errorReporting": true,
+    "estimatedCompletion": true,
+    "dataQualityChecks": true
+  }
+} 
