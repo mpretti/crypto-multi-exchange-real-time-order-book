@@ -171,7 +171,7 @@ export const EXCHANGE_INSTRUMENT_TYPES: Record<string, Record<string, Instrument
         'LINKUSDT': 'perpetual',
         'XRPUSDT': 'perpetual'
     },
-    'uniswap_simulated': {
+    'uniswap': {
         'BTCUSDT': 'amm_spot',
         'ETHUSDT': 'amm_spot',
         'SOLUSDT': 'amm_spot',
@@ -321,7 +321,7 @@ export function generateSimulatedVolumeData(exchangeId: string, symbol: string, 
         'hyperliquid': 0.1,
         'vertex': 0.05,
         'jupiter': 0.08,
-        'uniswap_simulated': 0.25
+        'uniswap': 0.25
     };
     
     const baseData = baseVolumes[symbol] || baseVolumes['BTCUSDT'];
@@ -380,7 +380,7 @@ export async function fetchAllHistoricalVolumeData(days: number = 30): Promise<H
         fetchPromises.push(fetchBybitHistoricalVolume(asset, days));
         
         // Generate simulated data for other exchanges
-        const simulatedExchanges = ['okx', 'kraken', 'bitget', 'mexc', 'dydx', 'hyperliquid', 'vertex', 'jupiter', 'uniswap_simulated'];
+        const simulatedExchanges = ['okx', 'kraken', 'bitget', 'mexc', 'dydx', 'hyperliquid', 'vertex', 'jupiter', 'uniswap'];
         for (const exchangeId of simulatedExchanges) {
             fetchPromises.push(Promise.resolve(generateSimulatedVolumeData(exchangeId, asset, days)));
         }

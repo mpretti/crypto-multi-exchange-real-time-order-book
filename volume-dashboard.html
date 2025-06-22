@@ -3,341 +3,675 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Crypto Volume Dashboard</title>
+    <title>📊 Advanced Volume Analytics - Crypto Exchange Monitor</title>
     <link rel="stylesheet" href="volume-dashboard.css">
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@2.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
-    <script>
-        // Debug Chart.js loading
-        window.addEventListener('load', function() {
-            console.log('📊 Window loaded, checking Chart.js:', {
-                typeof: typeof Chart,
-                available: typeof Chart !== 'undefined',
-                isFunction: typeof Chart !== 'undefined' ? typeof Chart === 'function' : false,
-                windowChart: typeof window.Chart,
-                hasRegister: typeof Chart !== 'undefined' && Chart.register ? 'yes' : 'no'
-            });
-        });
-    </script>
+    <link rel="stylesheet" href="index.css">
+    <!-- Enhanced Chart Libraries -->
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
 </head>
 <body>
-    <div class="dashboard-container">
-        <header class="dashboard-header">
-            <div class="header-content">
-                <h1>📊 Crypto Volume Dashboard</h1>
-                <nav class="navigation">
-                    <a href="index.html" class="nav-link">← Order Book</a>
-                    <a href="charts-dashboard.html" class="nav-link">Charts</a>
-                    <a href="volume-dashboard.html" class="nav-link active">Volume Dashboard</a>
-                    <a href="trading-pairs-explorer.html" class="nav-link">Trading Pairs →</a>
-                </nav>
-            </div>
+    <div class="container">
+        <!-- Enhanced Header with Navigation -->
+        <header class="header-section">
+            <h1>📊 Advanced Volume Analytics Dashboard</h1>
+            <nav class="nav-links">
+                <a href="index.html">📈 Order Book</a>
+                <a href="charts-dashboard.html">📊 Charts</a>
+                <a href="volume-dashboard.html" class="active">📊 Volume</a>
+                <a href="trading-pairs-explorer.html">🔍 Trading Pairs</a>
+                <a href="exchange-status.html">🔧 Exchange Status</a>
+            </nav>
         </header>
 
-        <main class="dashboard-main">
-            <!-- Controls Section -->
-            <section class="controls-section">
-                <div class="controls-grid">
-                    <div class="control-group">
-                        <label for="timeRange">Time Range</label>
-                        <select id="timeRange">
-                            <option value="1">1 Day</option>
-                            <option value="3">3 Days</option>
-                            <option value="7">7 Days</option>
-                            <option value="30" selected>30 Days</option>
-                            <option value="90">90 Days</option>
-                            <option value="180">6 Months</option>
-                            <option value="365">1 Year</option>
-                        </select>
-                    </div>
-                    
-                    <div class="control-group">
-                        <label for="assetFilter">Asset</label>
-                        <select id="assetFilter">
-                            <option value="all">All Assets</option>
-                            <option value="BTCUSDT">BTC/USDT</option>
-                            <option value="ETHUSDT">ETH/USDT</option>
-                            <option value="SOLUSDT">SOL/USDT</option>
-                            <option value="DOGEUSDT">DOGE/USDT</option>
-                            <option value="ADAUSDT">ADA/USDT</option>
-                            <option value="LINKUSDT">LINK/USDT</option>
-                            <option value="XRPUSDT">XRP/USDT</option>
-                        </select>
-                    </div>
-                    
-                    <div class="control-group">
-                        <label for="exchangeFilter">Exchange</label>
-                        <select id="exchangeFilter">
-                            <option value="all">All Exchanges</option>
-                            <option value="binance">Binance</option>
-                            <option value="bybit">Bybit</option>
-                            <option value="okx">OKX</option>
-                            <option value="kraken">Kraken</option>
-                            <option value="bitget">Bitget</option>
-                            <option value="dydx">dYdX</option>
-                            <option value="hyperliquid">Hyperliquid</option>
-                            <option value="vertex">Vertex</option>
-                            <option value="jupiter">Jupiter</option>
-                            <option value="uniswap_simulated">Uniswap</option>
-                        </select>
-                    </div>
+        <!-- Enhanced Control Panel -->
+        <div class="enhanced-controls-panel">
+            <div class="control-section">
+                <h3>🎯 Analysis Mode</h3>
+                <div class="mode-buttons">
+                    <button class="mode-btn active" data-mode="realtime">⚡ Real-time</button>
+                    <button class="mode-btn" data-mode="heatmap">🔥 Heatmap</button>
+                    <button class="mode-btn" data-mode="flow">🌊 Flow Analysis</button>
+                    <button class="mode-btn" data-mode="comparison">📊 Cross-Exchange</button>
+                </div>
+            </div>
+            
+            <div class="control-section">
+                <h3>⏱️ Time Range</h3>
+                <select id="timeRange" class="enhanced-select">
+                    <option value="1m">Last 1 Minute</option>
+                    <option value="5m" selected>Last 5 Minutes</option>
+                    <option value="15m">Last 15 Minutes</option>
+                    <option value="1h">Last 1 Hour</option>
+                    <option value="4h">Last 4 Hours</option>
+                    <option value="24h">Last 24 Hours</option>
+                </select>
+            </div>
+            
+            <div class="control-section">
+                <h3>🎨 Visualization</h3>
+                <div class="checkbox-group">
+                    <label><input type="checkbox" id="showVolumeBars" checked> 📊 Volume Bars</label>
+                    <label><input type="checkbox" id="showTrendLines" checked> 📈 Trend Lines</label>
+                    <label><input type="checkbox" id="showMovingAvg" checked> 📉 Moving Average</label>
+                    <label><input type="checkbox" id="showAlerts"> 🔔 Volume Alerts</label>
+                </div>
+            </div>
+        </div>
 
-                    <div class="control-group">
-                        <label for="instrumentFilter">Instrument Type</label>
-                        <select id="instrumentFilter">
-                            <option value="all">All Types</option>
-                            <option value="spot">Spot</option>
-                            <option value="margin">Margin</option>
-                            <option value="futures">Futures</option>
-                            <option value="perpetual">Perpetual</option>
-                            <option value="swap">Swap</option>
-                            <option value="amm_spot">AMM Spot</option>
-                            <option value="amm_perpetual">AMM Perpetual</option>
-                        </select>
-                    </div>
-
-                    <div class="control-group">
-                        <label for="categoryFilter">Asset Category</label>
-                        <select id="categoryFilter">
-                            <option value="all">All Categories</option>
-                            <option value="major">Major (BTC, ETH)</option>
-                            <option value="altcoin">Altcoin</option>
-                            <option value="meme">Meme</option>
-                            <option value="defi">DeFi</option>
-                            <option value="layer1">Layer 1</option>
-                        </select>
-                    </div>
-                    
-                    <div class="control-group">
-                        <label for="chartType">Chart Type</label>
-                        <select id="chartType">
-                            <option value="line">Line Chart</option>
-                            <option value="bar">Bar Chart</option>
-                            <option value="stacked">Stacked Chart</option>
-                        </select>
+        <!-- Volume Analytics Grid -->
+        <div class="analytics-grid">
+            <!-- Real-time Volume Monitor -->
+            <div class="analytics-card">
+                <div class="card-header">
+                    <h3>⚡ Real-time Volume Monitor</h3>
+                    <div class="card-controls">
+                        <button class="control-btn" onclick="VolumeAnalytics.pauseUpdates()">⏸️</button>
+                        <button class="control-btn" onclick="VolumeAnalytics.resetData()">🔄</button>
+                        <button class="control-btn" onclick="VolumeAnalytics.exportData()">💾</button>
                     </div>
                 </div>
-            </section>
-
-            <!-- Metrics Grid -->
-            <section class="metrics-section">
-                <div class="metrics-grid">
-                    <div class="metric-card primary">
-                        <div class="metric-icon">💰</div>
-                        <div class="metric-content">
-                            <div class="metric-value" id="totalVolume">Loading...</div>
-                            <div class="metric-label">Total Volume</div>
-                        </div>
-                    </div>
-                    
-                    <div class="metric-card">
-                        <div class="metric-icon">🏪</div>
-                        <div class="metric-content">
-                            <div class="metric-value" id="activeExchanges">Loading...</div>
-                            <div class="metric-label">Active Exchanges</div>
-                        </div>
-                    </div>
-                    
-                    <div class="metric-card">
-                        <div class="metric-icon">🎯</div>
-                        <div class="metric-content">
-                            <div class="metric-value" id="topAsset">Loading...</div>
-                            <div class="metric-label">Top Asset</div>
-                        </div>
-                    </div>
-                    
-                    <div class="metric-card">
-                        <div class="metric-icon">📈</div>
-                        <div class="metric-content">
-                            <div class="metric-value" id="dataQuality">Loading...</div>
-                            <div class="metric-label">Data Quality</div>
-                        </div>
-                    </div>
-
-                    <div class="metric-card">
-                        <div class="metric-icon">🔧</div>
-                        <div class="metric-content">
-                            <div class="metric-value" id="instrumentTypes">Loading...</div>
-                            <div class="metric-label">Instrument Types</div>
-                        </div>
-                    </div>
-
-                    <div class="metric-card">
-                        <div class="metric-icon">🎪</div>
-                        <div class="metric-content">
-                            <div class="metric-value" id="opportunities">Loading...</div>
-                            <div class="metric-label">Opportunities</div>
-                        </div>
-                    </div>
-                </div>
-            </section>
-
-            <!-- Chart Section -->
-            <section class="chart-section">
                 <div class="chart-container">
-                    <div class="chart-header">
-                        <h2>Historical Volume Analysis</h2>
-                        <div class="chart-loading" id="chartLoading">Loading chart data...</div>
-                    </div>
-                    <div class="time-range-indicator" id="timeRangeIndicator">
-                        30 Days - Daily View
-                    </div>
-                    <canvas id="volumeChart"></canvas>
+                    <canvas id="realtimeVolumeChart"></canvas>
                 </div>
-            </section>
-
-            <!-- Instrument Type Analysis -->
-            <section class="analysis-section">
-                <div class="analysis-grid">
-                    <div class="analysis-card">
-                        <div class="card-header">
-                            <h3>🔧 Instrument Type Breakdown</h3>
-                            <div class="card-subtitle">Volume distribution by trading instrument</div>
-                        </div>
-                        <div class="table-container">
-                            <table id="instrumentTable" class="data-table">
-                                <thead>
-                                    <tr>
-                                        <th>Type</th>
-                                        <th>Volume</th>
-                                        <th>Market Share</th>
-                                        <th>Exchanges</th>
-                                        <th>Assets</th>
-                                        <th>Top Exchange</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td colspan="6" class="loading-row">Loading instrument data...</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
+                <div class="chart-stats">
+                    <div class="stat-item">
+                        <span class="stat-label">Current Volume:</span>
+                        <span class="stat-value" id="currentVolume">-</span>
                     </div>
-
-                    <div class="analysis-card">
-                        <div class="card-header">
-                            <h3>🎯 Trading Opportunities</h3>
-                            <div class="card-subtitle">Identified market opportunities and gaps</div>
-                        </div>
-                        <div class="opportunities-container" id="opportunitiesContainer">
-                            <div class="loading-message">Analyzing opportunities...</div>
-                        </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Peak Volume:</span>
+                        <span class="stat-value" id="peakVolume">-</span>
+                    </div>
+                    <div class="stat-item">
+                        <span class="stat-label">Avg Volume:</span>
+                        <span class="stat-value" id="avgVolume">-</span>
                     </div>
                 </div>
-            </section>
+            </div>
 
-            <!-- Data Tables -->
-            <section class="tables-section">
-                <div class="tables-grid">
-                    <div class="table-card">
-                        <div class="card-header">
-                            <h3>🏪 Exchange Performance</h3>
-                            <div class="card-subtitle">Volume metrics by exchange with instrument breakdown</div>
-                        </div>
-                        <div class="table-container">
-                            <table id="exchangeTable" class="data-table">
-                                <thead>
-                                    <tr>
-                                        <th>Exchange</th>
-                                        <th>Volume</th>
-                                        <th>Market Share</th>
-                                        <th>Avg Daily</th>
-                                        <th>Status</th>
-                                        <th>Primary Instrument</th>
-                                        <th>Last Updated</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td colspan="7" class="loading-row">Loading exchange data...</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
-                    </div>
-                    
-                    <div class="table-card">
-                        <div class="card-header">
-                            <h3>💎 Asset Performance</h3>
-                            <div class="card-subtitle">Volume metrics by asset with instrument analysis</div>
-                        </div>
-                        <div class="table-container">
-                            <table id="assetTable" class="data-table">
-                                <thead>
-                                    <tr>
-                                        <th>Asset</th>
-                                        <th>Category</th>
-                                        <th>Volume</th>
-                                        <th>Exchanges</th>
-                                        <th>Top Exchange</th>
-                                        <th>Primary Instrument</th>
-                                        <th>Price Change</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr><td colspan="7" class="loading-row">Loading asset data...</td></tr>
-                                </tbody>
-                            </table>
-                        </div>
+            <!-- Volume Heatmap -->
+            <div class="analytics-card">
+                <div class="card-header">
+                    <h3>🔥 Volume Heatmap</h3>
+                    <div class="heatmap-controls">
+                        <select id="heatmapMetric">
+                            <option value="volume">Volume</option>
+                            <option value="trades">Trade Count</option>
+                            <option value="volatility">Volatility</option>
+                        </select>
                     </div>
                 </div>
-            </section>
+                <div class="heatmap-container" id="volumeHeatmap">
+                    <!-- Heatmap will be generated here -->
+                </div>
+                <div class="heatmap-legend">
+                    <span class="legend-low">Low</span>
+                    <div class="legend-gradient"></div>
+                    <span class="legend-high">High</span>
+                </div>
+            </div>
 
-            <!-- Data Sources -->
-            <section class="sources-section">
-                <div class="sources-container">
-                    <div class="sources-header">
-                        <h3>📊 Data Sources & Transparency</h3>
-                        <div class="sources-subtitle">Understanding where our data comes from</div>
+            <!-- Exchange Comparison -->
+            <div class="analytics-card full-width">
+                <div class="card-header">
+                    <h3>📊 Cross-Exchange Volume Comparison</h3>
+                    <div class="comparison-controls">
+                        <button class="toggle-btn" data-exchange="binance">Binance</button>
+                        <button class="toggle-btn" data-exchange="bybit">Bybit</button>
+                        <button class="toggle-btn" data-exchange="okx">OKX</button>
+                        <button class="toggle-btn" data-exchange="kraken">Kraken</button>
+                        <button class="toggle-btn" data-exchange="uniswap">Uniswap</button>
                     </div>
-                    
-                    <div class="sources-grid">
-                        <div class="source-group">
-                            <h4>🔴 Real-Time APIs</h4>
-                            <div class="source-list">
-                                <div class="source-item">
-                                    <span class="source-name">Binance Futures</span>
-                                    <span class="source-endpoint">/fapi/v1/klines</span>
-                                    <span class="source-status live" id="binanceStatus">Live</span>
-                                </div>
-                                <div class="source-item">
-                                    <span class="source-name">Bybit API v5</span>
-                                    <span class="source-endpoint">/v5/market/kline</span>
-                                    <span class="source-status live" id="bybitStatus">Live</span>
-                                </div>
+                </div>
+                <div class="chart-container">
+                    <canvas id="comparisonChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Volume Flow Analysis -->
+            <div class="analytics-card">
+                <div class="card-header">
+                    <h3>🌊 Volume Flow Analysis</h3>
+                    <div class="flow-indicators">
+                        <div class="flow-indicator" id="buyPressure">
+                            <span class="indicator-label">Buy Pressure</span>
+                            <div class="indicator-bar">
+                                <div class="indicator-fill buy-fill"></div>
                             </div>
+                            <span class="indicator-value">65%</span>
                         </div>
-                        
-                        <div class="source-group">
-                            <h4>🟡 Simulated Data</h4>
-                            <div class="source-list">
-                                <div class="source-item">
-                                    <span class="source-name">Other CEX/DEX</span>
-                                    <span class="source-endpoint">Mathematical Models</span>
-                                    <span class="source-status simulated">Simulated</span>
-                                </div>
+                        <div class="flow-indicator" id="sellPressure">
+                            <span class="indicator-label">Sell Pressure</span>
+                            <div class="indicator-bar">
+                                <div class="indicator-fill sell-fill"></div>
                             </div>
-                        </div>
-                        
-                        <div class="source-group">
-                            <h4>⏰ Last Updated</h4>
-                            <div class="update-info">
-                                <div class="update-item">
-                                    <span class="update-label">Full Refresh:</span>
-                                    <span class="update-time" id="lastFullUpdate">Loading...</span>
-                                </div>
-                                <div class="update-item">
-                                    <span class="update-label">Binance:</span>
-                                    <span class="update-time" id="binanceUpdate">Loading...</span>
-                                </div>
-                                <div class="update-item">
-                                    <span class="update-label">Bybit:</span>
-                                    <span class="update-time" id="bybitUpdate">Loading...</span>
-                                </div>
-                            </div>
+                            <span class="indicator-value">35%</span>
                         </div>
                     </div>
                 </div>
-            </section>
-        </main>
+                <div class="flow-chart-container">
+                    <canvas id="flowChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Volume Alerts -->
+            <div class="analytics-card">
+                <div class="card-header">
+                    <h3>🔔 Volume Alerts & Anomalies</h3>
+                    <button class="add-alert-btn" onclick="VolumeAnalytics.addAlert()">+ Add Alert</button>
+                </div>
+                <div class="alerts-container" id="alertsContainer">
+                    <div class="alert-item active">
+                        <div class="alert-icon">🚨</div>
+                        <div class="alert-content">
+                            <div class="alert-title">High Volume Spike</div>
+                            <div class="alert-description">Binance volume increased 340% in last 5 minutes</div>
+                            <div class="alert-time">2 minutes ago</div>
+                        </div>
+                    </div>
+                    <div class="alert-item">
+                        <div class="alert-icon">⚠️</div>
+                        <div class="alert-content">
+                            <div class="alert-title">Unusual Pattern</div>
+                            <div class="alert-description">Coordinated volume increase across multiple exchanges</div>
+                            <div class="alert-time">8 minutes ago</div>
+                        </div>
+                    </div>
+                    <div class="alert-item">
+                        <div class="alert-icon">📈</div>
+                        <div class="alert-content">
+                            <div class="alert-title">Volume Threshold</div>
+                            <div class="alert-description">Daily volume exceeded 1M BTC threshold</div>
+                            <div class="alert-time">15 minutes ago</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Advanced Metrics -->
+            <div class="analytics-card">
+                <div class="card-header">
+                    <h3>📈 Advanced Volume Metrics</h3>
+                </div>
+                <div class="metrics-grid">
+                    <div class="metric-item">
+                        <div class="metric-label">VWAP</div>
+                        <div class="metric-value">$44,721.45</div>
+                        <div class="metric-change positive">+0.12%</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">Volume RSI</div>
+                        <div class="metric-value">67.8</div>
+                        <div class="metric-change negative">-2.1</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">OBV</div>
+                        <div class="metric-value">2.34M</div>
+                        <div class="metric-change positive">+5.7%</div>
+                    </div>
+                    <div class="metric-item">
+                        <div class="metric-label">Volume Profile</div>
+                        <div class="metric-value">Bullish</div>
+                        <div class="metric-change positive">Strong</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Footer -->
+        <footer class="enhanced-footer">
+            <div class="footer-stats">
+                <div class="stat-group">
+                    <span class="stat-label">Total Volume (24h):</span>
+                    <span class="stat-value">1.2M BTC</span>
+                </div>
+                <div class="stat-group">
+                    <span class="stat-label">Active Exchanges:</span>
+                    <span class="stat-value">8</span>
+                </div>
+                <div class="stat-group">
+                    <span class="stat-label">Last Update:</span>
+                    <span class="stat-value" id="lastUpdate">Just now</span>
+                </div>
+            </div>
+        </footer>
     </div>
+
+    <!-- Enhanced Volume Analytics Engine -->
+    <script>
+    class VolumeAnalytics {
+        constructor() {
+            this.charts = {};
+            this.data = {
+                realtime: [],
+                heatmap: [],
+                comparison: {},
+                flow: { buy: [], sell: [] }
+            };
+            this.isRunning = true;
+            this.alerts = [];
+            this.init();
+        }
+
+        init() {
+            console.log('🚀 Initializing Enhanced Volume Analytics...');
+            this.initCharts();
+            this.initHeatmap();
+            this.bindEvents();
+            this.startDataUpdates();
+            this.showWelcomeMessage();
+        }
+
+        initCharts() {
+            // Real-time Volume Chart
+            const realtimeCtx = document.getElementById('realtimeVolumeChart').getContext('2d');
+            this.charts.realtime = new Chart(realtimeCtx, {
+                type: 'line',
+                data: {
+                    labels: [],
+                    datasets: [{
+                        label: 'Volume',
+                        data: [],
+                        borderColor: '#4facfe',
+                        backgroundColor: 'rgba(79, 172, 254, 0.1)',
+                        fill: true,
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        x: { display: false },
+                        y: { 
+                            beginAtZero: true,
+                            grid: { color: 'rgba(255,255,255,0.1)' },
+                            ticks: { color: '#e0e0e0' }
+                        }
+                    },
+                    animation: { duration: 750 }
+                }
+            });
+
+            // Comparison Chart
+            const comparisonCtx = document.getElementById('comparisonChart').getContext('2d');
+            this.charts.comparison = new Chart(comparisonCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Binance', 'Bybit', 'OKX', 'Kraken', 'Uniswap'],
+                    datasets: [{
+                        label: 'Volume (BTC)',
+                        data: [450, 320, 280, 150, 95],
+                        backgroundColor: [
+                            '#f3ba2f', '#f7931a', '#007bff', '#5c6bc0', '#ff6b9d'
+                        ],
+                        borderColor: [
+                            '#f3ba2f', '#f7931a', '#007bff', '#5c6bc0', '#ff6b9d'
+                        ],
+                        borderWidth: 2
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { display: false }
+                    },
+                    scales: {
+                        y: { 
+                            beginAtZero: true,
+                            grid: { color: 'rgba(255,255,255,0.1)' },
+                            ticks: { color: '#e0e0e0' }
+                        },
+                        x: {
+                            grid: { color: 'rgba(255,255,255,0.1)' },
+                            ticks: { color: '#e0e0e0' }
+                        }
+                    }
+                }
+            });
+
+            // Flow Chart
+            const flowCtx = document.getElementById('flowChart').getContext('2d');
+            this.charts.flow = new Chart(flowCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Buy Volume', 'Sell Volume'],
+                    datasets: [{
+                        data: [65, 35],
+                        backgroundColor: ['#26de81', '#ff4757'],
+                        borderWidth: 0
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: { 
+                            position: 'bottom',
+                            labels: { color: '#e0e0e0' }
+                        }
+                    }
+                }
+            });
+        }
+
+        initHeatmap() {
+            const container = document.getElementById('volumeHeatmap');
+            const exchanges = ['Binance', 'Bybit', 'OKX', 'Kraken', 'Uniswap'];
+            const timeSlots = ['00:00', '04:00', '08:00', '12:00', '16:00', '20:00'];
+            
+            container.innerHTML = '';
+            
+            const heatmapGrid = document.createElement('div');
+            heatmapGrid.className = 'heatmap-grid';
+            heatmapGrid.style.cssText = `
+                display: grid;
+                grid-template-columns: repeat(${timeSlots.length}, 1fr);
+                grid-template-rows: repeat(${exchanges.length}, 1fr);
+                gap: 2px;
+                height: 100%;
+            `;
+            
+            exchanges.forEach((exchange, i) => {
+                timeSlots.forEach((time, j) => {
+                    const cell = document.createElement('div');
+                    const intensity = Math.random();
+                    cell.className = 'heatmap-cell';
+                    cell.style.cssText = `
+                        background: rgba(79, 172, 254, ${intensity});
+                        border-radius: 4px;
+                        display: flex;
+                        align-items: center;
+                        justify-content: center;
+                        color: white;
+                        font-size: 10px;
+                        font-weight: 600;
+                        cursor: pointer;
+                        transition: all 0.2s ease;
+                    `;
+                    cell.textContent = `${(intensity * 100).toFixed(0)}%`;
+                    cell.title = `${exchange} at ${time}: ${(intensity * 1000).toFixed(0)} BTC`;
+                    
+                    cell.addEventListener('mouseenter', () => {
+                        cell.style.transform = 'scale(1.1)';
+                        cell.style.zIndex = '10';
+                    });
+                    
+                    cell.addEventListener('mouseleave', () => {
+                        cell.style.transform = 'scale(1)';
+                        cell.style.zIndex = '1';
+                    });
+                    
+                    heatmapGrid.appendChild(cell);
+                });
+            });
+            
+            container.appendChild(heatmapGrid);
+        }
+
+        bindEvents() {
+            // Mode buttons
+            document.querySelectorAll('.mode-btn').forEach(btn => {
+                btn.addEventListener('click', (e) => {
+                    document.querySelectorAll('.mode-btn').forEach(b => b.classList.remove('active'));
+                    e.target.classList.add('active');
+                    this.switchMode(e.target.dataset.mode);
+                });
+            });
+
+            // Time range selector
+            document.getElementById('timeRange').addEventListener('change', (e) => {
+                this.updateTimeRange(e.target.value);
+            });
+
+            // Checkboxes
+            document.querySelectorAll('input[type="checkbox"]').forEach(checkbox => {
+                checkbox.addEventListener('change', (e) => {
+                    this.toggleFeature(e.target.id, e.target.checked);
+                });
+            });
+        }
+
+        startDataUpdates() {
+            // Update real-time data every 2 seconds
+            setInterval(() => {
+                if (this.isRunning) {
+                    this.updateRealtimeData();
+                    this.updateMetrics();
+                    this.checkAlerts();
+                }
+            }, 2000);
+
+            // Update heatmap every 30 seconds
+            setInterval(() => {
+                if (this.isRunning) {
+                    this.updateHeatmap();
+                }
+            }, 30000);
+        }
+
+        updateRealtimeData() {
+            const now = new Date();
+            const volume = Math.random() * 100 + 50;
+            
+            // Add new data point
+            this.data.realtime.push({ time: now, volume });
+            
+            // Keep only last 50 points
+            if (this.data.realtime.length > 50) {
+                this.data.realtime.shift();
+            }
+            
+            // Update chart
+            const chart = this.charts.realtime;
+            chart.data.labels = this.data.realtime.map(d => d.time.toLocaleTimeString());
+            chart.data.datasets[0].data = this.data.realtime.map(d => d.volume);
+            chart.update('none');
+            
+            // Update stats
+            const current = volume.toFixed(2);
+            const peak = Math.max(...this.data.realtime.map(d => d.volume)).toFixed(2);
+            const avg = (this.data.realtime.reduce((a, b) => a + b.volume, 0) / this.data.realtime.length).toFixed(2);
+            
+            document.getElementById('currentVolume').textContent = `${current} BTC`;
+            document.getElementById('peakVolume').textContent = `${peak} BTC`;
+            document.getElementById('avgVolume').textContent = `${avg} BTC`;
+        }
+
+        updateMetrics() {
+            // Update flow indicators
+            const buyPressure = 50 + Math.random() * 40;
+            const sellPressure = 100 - buyPressure;
+            
+            document.querySelector('#buyPressure .indicator-fill').style.width = `${buyPressure}%`;
+            document.querySelector('#buyPressure .indicator-value').textContent = `${buyPressure.toFixed(0)}%`;
+            
+            document.querySelector('#sellPressure .indicator-fill').style.width = `${sellPressure}%`;
+            document.querySelector('#sellPressure .indicator-value').textContent = `${sellPressure.toFixed(0)}%`;
+            
+            // Update flow chart
+            this.charts.flow.data.datasets[0].data = [buyPressure, sellPressure];
+            this.charts.flow.update('none');
+            
+            // Update comparison chart with random variations
+            this.charts.comparison.data.datasets[0].data = this.charts.comparison.data.datasets[0].data.map(val => 
+                val + (Math.random() - 0.5) * 20
+            );
+            this.charts.comparison.update('none');
+        }
+
+        updateHeatmap() {
+            const cells = document.querySelectorAll('.heatmap-cell');
+            cells.forEach(cell => {
+                const intensity = Math.random();
+                cell.style.background = `rgba(79, 172, 254, ${intensity})`;
+                cell.textContent = `${(intensity * 100).toFixed(0)}%`;
+            });
+        }
+
+        checkAlerts() {
+            // Simulate alert checking
+            if (Math.random() < 0.01) { // 1% chance
+                this.addAlert({
+                    type: 'spike',
+                    title: 'Volume Spike Detected',
+                    description: `${this.getRandomExchange()} volume increased ${(Math.random() * 200 + 100).toFixed(0)}%`,
+                    time: new Date()
+                });
+            }
+        }
+
+        switchMode(mode) {
+            console.log(`📊 Switching to ${mode} mode`);
+            this.showNotification(`📊 ${mode.charAt(0).toUpperCase() + mode.slice(1)} mode activated`);
+            
+            // Hide/show relevant sections based on mode
+            // Implementation would depend on specific mode requirements
+        }
+
+        updateTimeRange(range) {
+            console.log(`⏱️ Time range changed to ${range}`);
+            this.showNotification(`⏱️ Time range: ${range}`);
+        }
+
+        toggleFeature(feature, enabled) {
+            console.log(`🔧 ${feature}: ${enabled ? 'enabled' : 'disabled'}`);
+            this.showNotification(`${enabled ? '✅' : '❌'} ${feature} ${enabled ? 'enabled' : 'disabled'}`);
+        }
+
+        pauseUpdates() {
+            this.isRunning = !this.isRunning;
+            const btn = event.target;
+            btn.textContent = this.isRunning ? '⏸️' : '▶️';
+            this.showNotification(this.isRunning ? '▶️ Updates resumed' : '⏸️ Updates paused');
+        }
+
+        resetData() {
+            this.data.realtime = [];
+            this.charts.realtime.data.labels = [];
+            this.charts.realtime.data.datasets[0].data = [];
+            this.charts.realtime.update();
+            this.showNotification('🔄 Data reset');
+        }
+
+        exportData() {
+            const data = {
+                timestamp: new Date().toISOString(),
+                realtime: this.data.realtime,
+                alerts: this.alerts
+            };
+            
+            const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `volume-data-${Date.now()}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            this.showNotification('💾 Data exported');
+        }
+
+        addAlert(alert = null) {
+            if (!alert) {
+                alert = {
+                    type: 'custom',
+                    title: 'Custom Alert',
+                    description: 'User-defined alert condition met',
+                    time: new Date()
+                };
+            }
+            
+            this.alerts.unshift(alert);
+            
+            const container = document.getElementById('alertsContainer');
+            const alertEl = document.createElement('div');
+            alertEl.className = 'alert-item active';
+            alertEl.innerHTML = `
+                <div class="alert-icon">🔔</div>
+                <div class="alert-content">
+                    <div class="alert-title">${alert.title}</div>
+                    <div class="alert-description">${alert.description}</div>
+                    <div class="alert-time">Just now</div>
+                </div>
+            `;
+            
+            container.insertBefore(alertEl, container.firstChild);
+            
+            // Remove old alerts if too many
+            if (container.children.length > 10) {
+                container.removeChild(container.lastChild);
+            }
+            
+            this.showNotification(`🔔 ${alert.title}`);
+        }
+
+        getRandomExchange() {
+            const exchanges = ['Binance', 'Bybit', 'OKX', 'Kraken', 'Uniswap'];
+            return exchanges[Math.floor(Math.random() * exchanges.length)];
+        }
+
+        showWelcomeMessage() {
+            setTimeout(() => {
+                this.showNotification('🎉 Enhanced Volume Analytics ready! Real-time monitoring active.');
+            }, 1000);
+        }
+
+        showNotification(message) {
+            const notification = document.createElement('div');
+            notification.style.cssText = `
+                position: fixed;
+                top: 20px;
+                right: 20px;
+                background: rgba(79, 172, 254, 0.9);
+                color: white;
+                padding: 12px 16px;
+                border-radius: 8px;
+                font-size: 14px;
+                z-index: 10000;
+                backdrop-filter: blur(10px);
+                box-shadow: 0 4px 12px rgba(79, 172, 254, 0.3);
+                animation: slideInRight 0.3s ease;
+            `;
+            
+            notification.textContent = message;
+            document.body.appendChild(notification);
+            
+            setTimeout(() => {
+                notification.style.animation = 'slideOutRight 0.3s ease forwards';
+                setTimeout(() => notification.remove(), 300);
+            }, 3000);
+        }
+    }
+
+    // Global reference for easy access
+    window.VolumeAnalytics = VolumeAnalytics;
+
+    // Initialize when DOM is ready
+    document.addEventListener('DOMContentLoaded', () => {
+        window.volumeAnalytics = new VolumeAnalytics();
+    });
+
+    // Add CSS animations
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes slideInRight {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes slideOutRight {
+            from { transform: translateX(0); opacity: 1; }
+            to { transform: translateX(100%); opacity: 0; }
+        }
+    `;
+    document.head.appendChild(style);
+    </script>
 
     <script type="module" src="volume-dashboard.tsx"></script>
 </body>

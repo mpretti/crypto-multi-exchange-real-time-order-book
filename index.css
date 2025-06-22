@@ -799,6 +799,36 @@ header h1 {
 .connection-stat.connecting .stat-value {
     color: #ffa500;
 }
+
+/* Navigation Links */
+.nav-links {
+    display: flex;
+    gap: 12px;
+    margin-top: 12px;
+}
+
+.nav-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 8px 16px;
+    background: rgba(79, 172, 254, 0.1);
+    border: 1px solid rgba(79, 172, 254, 0.3);
+    border-radius: 8px;
+    color: #4facfe;
+    text-decoration: none;
+    font-size: 0.9em;
+    font-weight: 500;
+    transition: all 0.3s ease;
+}
+
+.nav-link:hover {
+    background: rgba(79, 172, 254, 0.2);
+    border-color: rgba(79, 172, 254, 0.5);
+    transform: translateY(-2px);
+    color: #fff;
+}
+
 .status-error { background-color: #dc3545; color: white; }
 .status-disabled { background-color: #333; color: #888; }
 
@@ -1549,4 +1579,352 @@ header h1 {
     .logging-checkboxes.exchange-checkboxes {
         grid-template-columns: 1fr;
     }
+}
+
+/* Enhanced Chart Controls */
+.chart-controls-panel {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(20, 20, 30, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 16px;
+    min-width: 280px;
+    max-height: 80vh;
+    overflow-y: auto;
+    z-index: 1000;
+    backdrop-filter: blur(10px);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+    transition: all 0.3s ease;
+}
+
+.chart-controls-panel:hover {
+    background: rgba(25, 25, 35, 0.98);
+    box-shadow: 0 12px 48px rgba(0, 0, 0, 0.4);
+}
+
+.chart-controls-section {
+    margin-bottom: 20px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.chart-controls-section:last-child {
+    border-bottom: none;
+    margin-bottom: 0;
+}
+
+.chart-controls-section h4 {
+    color: #e0e0e0;
+    font-size: 14px;
+    font-weight: 600;
+    margin: 0 0 12px 0;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.chart-mode-btn {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #a0a0a0;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    margin-right: 8px;
+    margin-bottom: 6px;
+    display: inline-block;
+}
+
+.chart-mode-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+.chart-mode-btn.active {
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+    color: white;
+    border-color: transparent;
+    font-weight: 600;
+}
+
+.chart-controls-section label {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 8px;
+    color: #b0b0b0;
+    font-size: 13px;
+    cursor: pointer;
+    transition: color 0.2s ease;
+}
+
+.chart-controls-section label:hover {
+    color: #e0e0e0;
+}
+
+.chart-controls-section input[type="checkbox"] {
+    width: 16px;
+    height: 16px;
+    accent-color: #4facfe;
+    cursor: pointer;
+}
+
+.chart-controls-section select {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 13px;
+    margin-bottom: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.chart-controls-section select:focus {
+    outline: none;
+    border-color: #4facfe;
+    background: rgba(255, 255, 255, 0.08);
+}
+
+.chart-controls-section select option {
+    background: #2a2a2a;
+    color: #e0e0e0;
+}
+
+#reset-zoom {
+    background: linear-gradient(45deg, #ff6b6b, #ff8e8e);
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    width: 100%;
+}
+
+#reset-zoom:hover {
+    background: linear-gradient(45deg, #ff5252, #ff7979);
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(255, 107, 107, 0.3);
+}
+
+/* Enhanced Chart Container */
+#chart-section-container {
+    position: relative;
+    background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+#chart-container {
+    position: relative;
+    background: transparent;
+}
+
+/* Indicator Labels */
+.indicator-label {
+    position: absolute;
+    top: 10px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.7);
+    color: #e0e0e0;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 11px;
+    font-weight: 500;
+    z-index: 100;
+    pointer-events: none;
+}
+
+/* Chart Loading States */
+.chart-loading {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #4facfe;
+    font-size: 14px;
+    font-weight: 600;
+    z-index: 200;
+}
+
+.chart-loading::after {
+    content: '';
+    width: 20px;
+    height: 20px;
+    border: 2px solid rgba(79, 172, 254, 0.3);
+    border-top: 2px solid #4facfe;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+    display: inline-block;
+    margin-left: 8px;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Enhanced Timeframe Selector */
+#chart-timeframe-selector {
+    background: rgba(255, 255, 255, 0.02);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding: 12px 16px;
+    display: flex;
+    gap: 8px;
+    align-items: center;
+}
+
+#chart-timeframe-selector button {
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    color: #a0a0a0;
+    padding: 6px 12px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+#chart-timeframe-selector button:hover {
+    background: rgba(255, 255, 255, 0.1);
+    color: #e0e0e0;
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
+#chart-timeframe-selector button.active {
+    background: linear-gradient(45deg, #4facfe, #00f2fe);
+    color: white;
+    border-color: transparent;
+    font-weight: 600;
+    box-shadow: 0 2px 8px rgba(79, 172, 254, 0.3);
+}
+
+/* Chart Stats Overlay */
+.chart-stats-overlay {
+    position: absolute;
+    top: 50px;
+    left: 10px;
+    background: rgba(0, 0, 0, 0.8);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 8px;
+    padding: 12px;
+    color: #e0e0e0;
+    font-size: 12px;
+    z-index: 100;
+    min-width: 200px;
+}
+
+.chart-stats-row {
+    display: flex;
+    justify-content: space-between;
+    margin-bottom: 4px;
+}
+
+.chart-stats-label {
+    color: #a0a0a0;
+}
+
+.chart-stats-value {
+    color: #e0e0e0;
+    font-weight: 600;
+}
+
+.chart-stats-value.positive {
+    color: #00ff88;
+}
+
+.chart-stats-value.negative {
+    color: #ff4444;
+}
+
+/* Mobile Responsiveness */
+@media (max-width: 768px) {
+    .chart-controls-panel {
+        position: fixed;
+        top: 10px;
+        right: 10px;
+        left: 10px;
+        max-height: 60vh;
+        min-width: auto;
+    }
+    
+    .chart-mode-btn {
+        display: block;
+        width: 100%;
+        margin-right: 0;
+        text-align: center;
+    }
+    
+    .chart-stats-overlay {
+        position: relative;
+        margin: 10px;
+        left: 0;
+        top: 0;
+    }
+}
+
+/* Chart Toggle Button */
+.chart-controls-toggle {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    background: rgba(79, 172, 254, 0.9);
+    border: none;
+    color: white;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
+    cursor: pointer;
+    z-index: 1001;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 18px;
+    transition: all 0.2s ease;
+    box-shadow: 0 4px 12px rgba(79, 172, 254, 0.3);
+}
+
+.chart-controls-toggle:hover {
+    background: rgba(79, 172, 254, 1);
+    transform: scale(1.1);
+    box-shadow: 0 6px 20px rgba(79, 172, 254, 0.4);
+}
+
+.chart-controls-panel.collapsed {
+    transform: translateX(calc(100% + 20px));
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Scrollbar for controls panel */
+.chart-controls-panel::-webkit-scrollbar {
+    width: 6px;
+}
+
+.chart-controls-panel::-webkit-scrollbar-track {
+    background: rgba(255, 255, 255, 0.05);
+    border-radius: 3px;
+}
+
+.chart-controls-panel::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
+}
+
+.chart-controls-panel::-webkit-scrollbar-thumb:hover {
+    background: rgba(255, 255, 255, 0.3);
 }

@@ -9,6 +9,48 @@ import { applyDepthSlice, getDecimalPlaces } from './utils';
 import { updateOverallConnectionStatus, updateSidebarContent, clearOrderBookDisplay } from './uiUpdates';
 import { aggregateAndRenderAll } from './index'; // index.tsx exports this
 import type { ExchangeConnectionState } from './types';
+
+// Enhanced tracking for status dashboard
+export const exchangeStats = new Map();
+
+function initializeExchangeStats(exchangeId: string) {
+    if (!exchangeStats.has(exchangeId)) {
+        exchangeStats.set(exchangeId, {
+            connectionTime: null,
+            lastMessageTime: null,
+            lastMessageContent: null,
+            messageCount: 0,
+            errorCount: 0,
+            retryCount: 0,
+            latencyHistory: [],
+            dataRateHistory: [],
+            lastError: null,
+            lastErrorTime: null,
+            pingLatency: 0,
+            reconnectAttempts: 0
+        });
+    }
+}
+
+function updateExchangeStats(exchangeId: string, update: any) {
+    const stats = exchangeStats.get(exchangeId);
+    if (stats) {
+        Object.assign(stats, update);
+        
+        // Broadcast to status dashboard if available
+        try {
+            if (window.parent && window.parent !== window) {
+                window.parent.postMessage({
+                    type: 'exchange-stats-update',
+                    exchangeId,
+                    stats: { ...stats }
+                }, '*');
+            }
+        } catch (e) {
+            // Ignore if can't access parent
+        }
+    }
+}
 import { updateChartForAssetAndInterval } from './charts';
 
 // Generate simulated Jupiter swap data
@@ -98,7 +140,7 @@ export async function fetchAuxiliaryDataForExchange(exchangeId: string, formatte
     } finally {
         conn.auxDataFetched = true;
         if (conn.status === 'fetching_aux_data') { // Only revert if still in this state
-            conn.status = conn.ws || config.id === 'uniswap_simulated' ? 'connected' : 'disconnected';
+            conn.status = conn.ws || config.id === 'uniswap' ? 'connected' : 'disconnected';
         }
         updateSidebarContent();
         updateOverallConnectionStatus();
@@ -112,6 +154,9 @@ export function connectToExchange(exchangeId: string, asset: string) {
         console.error(`Unsupported exchange: ${exchangeId}`);
         return;
     }
+
+    // Initialize stats tracking
+    initializeExchangeStats(exchangeId);
 
     let connectionState = activeConnections.get(exchangeId);
     if (connectionState?.ws && connectionState.status !== 'disconnected' && connectionState.status !== 'error') {
@@ -138,7 +183,7 @@ export function connectToExchange(exchangeId: string, asset: string) {
 
 
     // Handle simulated exchanges (MEXC temporarily, Uniswap)
-    if (exchangeId === 'uniswap_simulated' || (config as any).isSimulated) {
+    if (exchangeId === 'uniswap' || (config as any).isSimulated) {
         console.log(`${config.name}: Simulating connection for ${asset}...`);
         const simConnectionState: ExchangeConnectionState = {
             ws: null, status: 'connecting', bids: new Map(), asks: new Map(), config,
@@ -159,7 +204,7 @@ export function connectToExchange(exchangeId: string, asset: string) {
                 // Use MEXC-specific simulation
                 simulatedSnapshot = generateMexcSnapshot(asset);
                 console.log(`${config.name}: Generated MEXC simulation data:`, simulatedSnapshot);
-            } else if (exchangeId === 'uniswap_simulated') {
+            } else if (exchangeId === 'uniswap') {
                 // Use Uniswap simulation
                 let basePrice = 2000;
                 const upperAsset = asset.toUpperCase();
@@ -199,6 +244,14 @@ export function connectToExchange(exchangeId: string, asset: string) {
             
             currentSimConn.status = 'connected';
             console.log(`${config.name}: Simulated connection established for ${asset}.`);
+            
+            // Update stats
+            updateExchangeStats(exchangeId, {
+                connectionTime: Date.now(),
+                lastMessageTime: Date.now(),
+                lastMessageContent: 'Simulated connection established'
+            });
+            
             fetchAuxiliaryDataForExchange(exchangeId, config.formatSymbol(asset));
             aggregateAndRenderAll();
         }, 500);
@@ -347,7 +400,7 @@ export function connectToExchange(exchangeId: string, asset: string) {
                  if (lowerCaseMsg === 'ping' && (config.id === 'bitget' || config.id === 'okx')) {
                     if (newWs.readyState === WebSocket.OPEN) newWs.send('pong'); return;
                 }
-                if (lowerCaseMsg === 'pong' && config.id === 'bybit') return;
+                if (lowerCaseMsg === 'pong' && (config.id === 'bybit' || config.id === 'okx')) return;
 
                 try { parsedJson = JSON.parse(messageData); } catch (e) {
                     console.error(`${config.name}: Error parsing string message to JSON:`, messageData, e); return;

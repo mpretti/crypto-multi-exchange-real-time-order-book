@@ -83,7 +83,7 @@ export function updateSidebarContent() {
                 if (conn.fundingRateInfo) {
                     const rate = typeof conn.fundingRateInfo.rate === 'number' ? `${conn.fundingRateInfo.rate.toFixed(4)}%` : (conn.fundingRateInfo.rate || '--');
                     fundingText = `Rate: ${rate} | Next: ${conn.fundingRateInfo.nextFundingTime || '--'}`;
-                     if (config.id === 'uniswap_simulated') fundingText = `${conn.fundingRateInfo.rate || 'N/A (Spot AMM)'}`;
+                     if (config.id === 'uniswap') fundingText = `${conn.fundingRateInfo.rate || 'N/A (Spot AMM)'}`;
                 } else if (conn.fundingRateInfo === null) fundingText = 'Error loading funding';
 
                 if (conn.volumeInfo) {
@@ -95,7 +95,7 @@ export function updateSidebarContent() {
                     volumeText = `${selectedAsset}: ${assetVol} | USD: ${usdVolDisplay}`;
                     if (typeof conn.volumeInfo.usdVolume === 'number') {
                         aggregatedUsdVolume += conn.volumeInfo.usdVolume;
-                    } else if (typeof conn.volumeInfo.usdVolume === 'string' && config.id !== 'uniswap_simulated') {
+                    } else if (typeof conn.volumeInfo.usdVolume === 'string' && config.id !== 'uniswap') {
                         const parsedVol = parseFloat(conn.volumeInfo.usdVolume.replace(/[^0-9.-]+/g,""));
                         if (!isNaN(parsedVol)) aggregatedUsdVolume += parsedVol;
                     }
@@ -246,7 +246,7 @@ export function updateSpread(bids: OrderBookEntry[], asks: OrderBookEntry[]) {
         } else {
             // In aggregated view, find exchanges with best prices
             activeConnections.forEach(conn => {
-                if (conn.status === 'connected' && (conn.config.id === 'uniswap_simulated' || !conn.config.needsSnapshotFlag || conn.snapshotReceived)) {
+                if (conn.status === 'connected' && (conn.config.id === 'uniswap' || !conn.config.needsSnapshotFlag || conn.snapshotReceived)) {
                     if (conn.bids.size > 0) {
                         const connBestBidPrice = Math.max(...Array.from(conn.bids.keys()).map(p => parseFloat(p)));
                         if (Math.abs(connBestBidPrice - bestBid) < 0.01) {
@@ -300,35 +300,52 @@ export function updateSpread(bids: OrderBookEntry[], asks: OrderBookEntry[]) {
 
 
 export function updateOverallConnectionStatus() {
-    let summaryHtml = '';
+    let connectedCount = 0;
+    let connectingCount = 0;
+    let errorCount = 0;
+    let totalSelected = 0;
+    
     SUPPORTED_EXCHANGES_ORDER_WITH_DEX.forEach(exchangeId => {
         const config = SUPPORTED_EXCHANGES_WITH_DEX[exchangeId];
         const conn = activeConnections.get(exchangeId);
-        let statusText = 'N/A'; let statusClass = 'status-disabled';
         let pillStatus = 'disabled';
         
         if (selectedExchanges.has(exchangeId)) {
-            statusClass = 'status-disconnected';
+            totalSelected++;
             pillStatus = 'disconnected';
+            
             if (conn) {
-                statusText = conn.status.charAt(0).toUpperCase() + conn.status.slice(1);
-                 if (conn.status === 'fetching_aux_data') {
-                    statusText = "Syncing Stats..."; statusClass = 'status-connecting'; pillStatus = 'connecting';
-                } else if(conn.config.needsSnapshotFlag && conn.status === 'connected' && !conn.snapshotReceived && conn.config.id !== 'uniswap_simulated') {
-                    statusText = "Snapshot..."; statusClass = 'status-connecting'; pillStatus = 'connecting';
+                if (conn.status === 'fetching_aux_data') {
+                    connectingCount++;
+                    pillStatus = 'connecting';
+                } else if(conn.config.needsSnapshotFlag && conn.status === 'connected' && !conn.snapshotReceived && conn.config.id !== 'uniswap') {
+                    connectingCount++;
+                    pillStatus = 'connecting';
                 } else {
                     switch (conn.status) {
-                        case 'connected': statusClass = 'status-connected'; pillStatus = 'connected'; break;
-                        case 'connecting': statusClass = 'status-connecting'; pillStatus = 'connecting'; break;
-                        case 'error': statusClass = 'status-error'; pillStatus = 'error'; break;
-                        case 'closing': statusClass = 'status-disconnected'; statusText = 'Closing'; pillStatus = 'disconnected'; break;
-                        case 'disconnected': statusClass = 'status-disconnected'; pillStatus = 'disconnected'; break;
+                        case 'connected': 
+                            connectedCount++; 
+                            pillStatus = 'connected'; 
+                            break;
+                        case 'connecting': 
+                            connectingCount++; 
+                            pillStatus = 'connecting'; 
+                            break;
+                        case 'error': 
+                            errorCount++; 
+                            pillStatus = 'error'; 
+                            break;
+                        case 'closing': 
+                        case 'disconnected': 
+                            pillStatus = 'disconnected'; 
+                            break;
                     }
                 }
-            } else { statusText = 'Pending'; statusClass = 'status-connecting'; pillStatus = 'connecting'; }
-        } else { statusText = 'Disabled'; statusClass = 'status-disabled'; pillStatus = 'disabled'; }
-        
-        summaryHtml += `<span class="connection-item ${statusClass}" title="${config.name} - ${statusText}">${config.name}: ${statusText}</span>`;
+            } else { 
+                connectingCount++; 
+                pillStatus = 'connecting'; 
+            }
+        }
         
         // Update pill status
         const pill = document.querySelector(`.exchange-pill[data-exchange="${exchangeId}"]`) as HTMLDivElement;
@@ -336,6 +353,42 @@ export function updateOverallConnectionStatus() {
             updatePillStatus(pill, pillStatus);
         }
     });
+    
+    // Generate clean summary with essential info
+    let summaryHtml = `
+        <div class="connection-stat">
+            <span>Selected:</span>
+            <span class="stat-value">${totalSelected}</span>
+        </div>
+    `;
+    
+    if (connectedCount > 0) {
+        summaryHtml += `
+            <div class="connection-stat connected">
+                <span>🟢 Connected:</span>
+                <span class="stat-value">${connectedCount}</span>
+            </div>
+        `;
+    }
+    
+    if (connectingCount > 0) {
+        summaryHtml += `
+            <div class="connection-stat connecting">
+                <span>🟡 Connecting:</span>
+                <span class="stat-value">${connectingCount}</span>
+            </div>
+        `;
+    }
+    
+    if (errorCount > 0) {
+        summaryHtml += `
+            <div class="connection-stat error">
+                <span>🔴 Errors:</span>
+                <span class="stat-value">${errorCount}</span>
+            </div>
+        `;
+    }
+    
     connectionStatusSummaryEl.innerHTML = summaryHtml;
     updateSidebarContent(); // Update sidebar as connection status might affect its content
 }
