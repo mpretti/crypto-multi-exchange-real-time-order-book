@@ -1,0 +1,3507 @@
+{
+  "exchange": "Bybit",
+  "count": 500,
+  "lastUpdated": "2025-06-21T21:26:37.013Z",
+  "pairs": [
+    {
+      "symbol": "1000000BABYDOGEUSDT",
+      "baseCoin": "1000000BABYDOGE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "1000000CHEEMSUSDT",
+      "baseCoin": "1000000CHEEMS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "1000000MOGUSDT",
+      "baseCoin": "1000000MOG",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "1000000PEIPEIUSDT",
+      "baseCoin": "1000000PEIPEI",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "10000COQUSDT",
+      "baseCoin": "10000COQ",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "10000ELONUSDT",
+      "baseCoin": "10000ELON",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "10000LADYSUSDT",
+      "baseCoin": "10000LADYS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "10000QUBICUSDT",
+      "baseCoin": "10000QUBIC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "10000SATSUSDT",
+      "baseCoin": "10000SATS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "10000WENUSDT",
+      "baseCoin": "10000WEN",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "10000WHYUSDT",
+      "baseCoin": "10000WHY",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "1000APUUSDT",
+      "baseCoin": "1000APU",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "1000BONKPERP",
+      "baseCoin": "1000BONK",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "1000BONKUSDT",
+      "baseCoin": "1000BONK",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "1000BTTUSDT",
+      "baseCoin": "1000BTT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "1000CATSUSDT",
+      "baseCoin": "1000CATS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "1000CATUSDT",
+      "baseCoin": "1000CAT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "1000FLOKIUSDT",
+      "baseCoin": "1000FLOKI",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "1000LUNCUSDT",
+      "baseCoin": "1000LUNC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "1000NEIROCTOUSDT",
+      "baseCoin": "1000NEIROCTO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "1000PEPEPERP",
+      "baseCoin": "1000PEPE",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "1000PEPEUSDT",
+      "baseCoin": "1000PEPE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "1000RATSUSDT",
+      "baseCoin": "1000RATS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "1000TOSHIUSDT",
+      "baseCoin": "1000TOSHI",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "1000TURBOUSDT",
+      "baseCoin": "1000TURBO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "1000XECUSDT",
+      "baseCoin": "1000XEC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "1000XUSDT",
+      "baseCoin": "1000X",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "1INCHUSDT",
+      "baseCoin": "1INCH",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "A8USDT",
+      "baseCoin": "A8",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AAVEPERP",
+      "baseCoin": "AAVE",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AAVEUSDT",
+      "baseCoin": "AAVE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ACEUSDT",
+      "baseCoin": "ACE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ACHUSDT",
+      "baseCoin": "ACH",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ACTUSDT",
+      "baseCoin": "ACT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ACXUSDT",
+      "baseCoin": "ACX",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ADAUSDT",
+      "baseCoin": "ADA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AERGOUSDT",
+      "baseCoin": "AERGO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AEROUSDT",
+      "baseCoin": "AERO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AEVOPERP",
+      "baseCoin": "AEVO",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AEVOUSDT",
+      "baseCoin": "AEVO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AGIUSDT",
+      "baseCoin": "AGI",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AGLDUSDT",
+      "baseCoin": "AGLD",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AGTUSDT",
+      "baseCoin": "AGT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AI16ZUSDT",
+      "baseCoin": "AI16Z",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AIOZUSDT",
+      "baseCoin": "AIOZ",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AIUSDT",
+      "baseCoin": "AI",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AIXBTUSDT",
+      "baseCoin": "AIXBT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AKTUSDT",
+      "baseCoin": "AKT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ALCHUSDT",
+      "baseCoin": "ALCH",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ALEOUSDT",
+      "baseCoin": "ALEO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ALGOUSDT",
+      "baseCoin": "ALGO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ALICEUSDT",
+      "baseCoin": "ALICE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ALPHAUSDT",
+      "baseCoin": "ALPHA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ALTUSDT",
+      "baseCoin": "ALT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ALUUSDT",
+      "baseCoin": "ALU",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "baseCoin": "ANIME",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ANKRUSDT",
+      "baseCoin": "ANKR",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "APEUSDT",
+      "baseCoin": "APE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "API3USDT",
+      "baseCoin": "API3",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "APTUSDT",
+      "baseCoin": "APT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ARBPERP",
+      "baseCoin": "ARB",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ARBUSDT",
+      "baseCoin": "ARB",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ARCUSDT",
+      "baseCoin": "ARC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ARKMUSDT",
+      "baseCoin": "ARKM",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ARKUSDT",
+      "baseCoin": "ARK",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ARPAUSDT",
+      "baseCoin": "ARPA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ARUSDT",
+      "baseCoin": "AR",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ASTRUSDT",
+      "baseCoin": "ASTR",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ATAUSDT",
+      "baseCoin": "ATA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ATHUSDT",
+      "baseCoin": "ATH",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ATOMUSDT",
+      "baseCoin": "ATOM",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AUCTIONUSDT",
+      "baseCoin": "AUCTION",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AUDIOUSDT",
+      "baseCoin": "AUDIO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AUSDT",
+      "baseCoin": "A",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AVAAIUSDT",
+      "baseCoin": "AVAAI",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AVAILUSDT",
+      "baseCoin": "AVAIL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AVAUSDT",
+      "baseCoin": "AVA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "baseCoin": "AVAX",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AVLUSDT",
+      "baseCoin": "AVL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AWEUSDT",
+      "baseCoin": "AWE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AXLUSDT",
+      "baseCoin": "AXL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "AXSUSDT",
+      "baseCoin": "AXS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "B2USDT",
+      "baseCoin": "B2",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "B3USDT",
+      "baseCoin": "B3",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BABYUSDT",
+      "baseCoin": "BABY",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BADGERUSDT",
+      "baseCoin": "BADGER",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BAKEUSDT",
+      "baseCoin": "BAKE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BALUSDT",
+      "baseCoin": "BAL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BANANAS31USDT",
+      "baseCoin": "BANANAS31",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BANANAUSDT",
+      "baseCoin": "BANANA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BANDUSDT",
+      "baseCoin": "BAND",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BANKUSDT",
+      "baseCoin": "BANK",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BANUSDT",
+      "baseCoin": "BAN",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BATUSDT",
+      "baseCoin": "BAT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BBUSDT",
+      "baseCoin": "BB",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BCHPERP",
+      "baseCoin": "BCH",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BCHUSDT",
+      "baseCoin": "BCH",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BDXNUSDT",
+      "baseCoin": "BDXN",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BEAMUSDT",
+      "baseCoin": "BEAM",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BELUSDT",
+      "baseCoin": "BEL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BERAUSDT",
+      "baseCoin": "BERA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BICOUSDT",
+      "baseCoin": "BICO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BIGTIMEUSDT",
+      "baseCoin": "BIGTIME",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BIOUSDT",
+      "baseCoin": "BIO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BLASTUSDT",
+      "baseCoin": "BLAST",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "baseCoin": "BLUR",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BMTUSDT",
+      "baseCoin": "BMT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BNBPERP",
+      "baseCoin": "BNB",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BNBUSDT",
+      "baseCoin": "BNB",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BNTUSDT",
+      "baseCoin": "BNT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BOBAUSDT",
+      "baseCoin": "BOBA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BOMEUSDT",
+      "baseCoin": "BOME",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BRETTUSDT",
+      "baseCoin": "BRETT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BROCCOLIUSDT",
+      "baseCoin": "BROCCOLI",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BRUSDT",
+      "baseCoin": "BR",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BSVUSDT",
+      "baseCoin": "BSV",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BSWUSDT",
+      "baseCoin": "BSW",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BTC-26DEC25",
+      "baseCoin": "BTC",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "BTC-26SEP25",
+      "baseCoin": "BTC",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "BTC-27JUN25",
+      "baseCoin": "BTC",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "BTCPERP",
+      "baseCoin": "BTC",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "baseCoin": "BTC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "BTCUSDT-04JUL25",
+      "baseCoin": "BTC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "BTCUSDT-11JUL25",
+      "baseCoin": "BTC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "BTCUSDT-25JUL25",
+      "baseCoin": "BTC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "BTCUSDT-26DEC25",
+      "baseCoin": "BTC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "BTCUSDT-26SEP25",
+      "baseCoin": "BTC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "BTCUSDT-27JUN25",
+      "baseCoin": "BTC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "BTCUSDT-27MAR26",
+      "baseCoin": "BTC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "BTCUSDT-29AUG25",
+      "baseCoin": "BTC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "BUSDT",
+      "baseCoin": "B",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "C98USDT",
+      "baseCoin": "C98",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CAKEUSDT",
+      "baseCoin": "CAKE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CARVUSDT",
+      "baseCoin": "CARV",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CATIUSDT",
+      "baseCoin": "CATI",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CELOUSDT",
+      "baseCoin": "CELO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CELRUSDT",
+      "baseCoin": "CELR",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CETUSUSDT",
+      "baseCoin": "CETUS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CFXUSDT",
+      "baseCoin": "CFX",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CGPTUSDT",
+      "baseCoin": "CGPT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CHESSUSDT",
+      "baseCoin": "CHESS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CHILLGUYUSDT",
+      "baseCoin": "CHILLGUY",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CHRUSDT",
+      "baseCoin": "CHR",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CHZUSDT",
+      "baseCoin": "CHZ",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CKBUSDT",
+      "baseCoin": "CKB",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CLANKERUSDT",
+      "baseCoin": "CLANKER",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CLOUDUSDT",
+      "baseCoin": "CLOUD",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "COMPUSDT",
+      "baseCoin": "COMP",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "COOKIEUSDT",
+      "baseCoin": "COOKIE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "COOKUSDT",
+      "baseCoin": "COOK",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "COREUSDT",
+      "baseCoin": "CORE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "COSUSDT",
+      "baseCoin": "COS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "COTIUSDT",
+      "baseCoin": "COTI",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "COWUSDT",
+      "baseCoin": "COW",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CPOOLUSDT",
+      "baseCoin": "CPOOL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CROUSDT",
+      "baseCoin": "CRO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CRVPERP",
+      "baseCoin": "CRV",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CRVUSDT",
+      "baseCoin": "CRV",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CTCUSDT",
+      "baseCoin": "CTC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CTKUSDT",
+      "baseCoin": "CTK",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CTSIUSDT",
+      "baseCoin": "CTSI",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CUDISUSDT",
+      "baseCoin": "CUDIS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CVCUSDT",
+      "baseCoin": "CVC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CVXUSDT",
+      "baseCoin": "CVX",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "CYBERUSDT",
+      "baseCoin": "CYBER",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "DARKUSDT",
+      "baseCoin": "DARK",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "DASHUSDT",
+      "baseCoin": "DASH",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "DBRUSDT",
+      "baseCoin": "DBR",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "DEEPUSDT",
+      "baseCoin": "DEEP",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "DEGENUSDT",
+      "baseCoin": "DEGEN",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "DENTUSDT",
+      "baseCoin": "DENT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "baseCoin": "DEXE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "DGBUSDT",
+      "baseCoin": "DGB",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "DODOUSDT",
+      "baseCoin": "DODO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "DOGEPERP",
+      "baseCoin": "DOGE",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "baseCoin": "DOGE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "DOGSUSDT",
+      "baseCoin": "DOGS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "DOGUSDT",
+      "baseCoin": "DOG",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "DOODUSDT",
+      "baseCoin": "DOOD",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "DOTPERP",
+      "baseCoin": "DOT",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "DOTUSDT",
+      "baseCoin": "DOT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "DRIFTUSDT",
+      "baseCoin": "DRIFT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "DUCKUSDT",
+      "baseCoin": "DUCK",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "DUSKUSDT",
+      "baseCoin": "DUSK",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "DYDXUSDT",
+      "baseCoin": "DYDX",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "DYMUSDT",
+      "baseCoin": "DYM",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "EDUUSDT",
+      "baseCoin": "EDU",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "EGLDUSDT",
+      "baseCoin": "EGLD",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "EIGENUSDT",
+      "baseCoin": "EIGEN",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ELXUSDT",
+      "baseCoin": "ELX",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ENAPERP",
+      "baseCoin": "ENA",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ENAUSDT",
+      "baseCoin": "ENA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ENJUSDT",
+      "baseCoin": "ENJ",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ENSUSDT",
+      "baseCoin": "ENS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "EPICUSDT",
+      "baseCoin": "EPIC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "EPTUSDT",
+      "baseCoin": "EPT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ETCPERP",
+      "baseCoin": "ETC",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ETCUSDT",
+      "baseCoin": "ETC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ETH-26DEC25",
+      "baseCoin": "ETH",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "ETH-26SEP25",
+      "baseCoin": "ETH",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "ETH-27JUN25",
+      "baseCoin": "ETH",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "ETHBTCUSDT",
+      "baseCoin": "ETHBTC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ETHFIPERP",
+      "baseCoin": "ETHFI",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ETHFIUSDT",
+      "baseCoin": "ETHFI",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ETHPERP",
+      "baseCoin": "ETH",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ETHUSDT",
+      "baseCoin": "ETH",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ETHUSDT-04JUL25",
+      "baseCoin": "ETH",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "ETHUSDT-11JUL25",
+      "baseCoin": "ETH",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "ETHUSDT-25JUL25",
+      "baseCoin": "ETH",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "ETHUSDT-26DEC25",
+      "baseCoin": "ETH",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "ETHUSDT-26SEP25",
+      "baseCoin": "ETH",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "ETHUSDT-27JUN25",
+      "baseCoin": "ETH",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "ETHUSDT-27MAR26",
+      "baseCoin": "ETH",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "ETHUSDT-29AUG25",
+      "baseCoin": "ETH",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "ETHWUSDT",
+      "baseCoin": "ETHW",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "FARTCOINUSDT",
+      "baseCoin": "FARTCOIN",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "FBUSDT",
+      "baseCoin": "FB",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "FHEUSDT",
+      "baseCoin": "FHE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "FIDAUSDT",
+      "baseCoin": "FIDA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "FILUSDT",
+      "baseCoin": "FIL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "FIOUSDT",
+      "baseCoin": "FIO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "FLMUSDT",
+      "baseCoin": "FLM",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "FLOCKUSDT",
+      "baseCoin": "FLOCK",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "FLOWUSDT",
+      "baseCoin": "FLOW",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "FLRUSDT",
+      "baseCoin": "FLR",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "FLUXUSDT",
+      "baseCoin": "FLUX",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "FORMUSDT",
+      "baseCoin": "FORM",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "FORTHUSDT",
+      "baseCoin": "FORTH",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "FTNUSDT",
+      "baseCoin": "FTN",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "FUELUSDT",
+      "baseCoin": "FUEL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "FUSDT",
+      "baseCoin": "F",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "FWOGUSDT",
+      "baseCoin": "FWOG",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "FXSUSDT",
+      "baseCoin": "FXS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "GALAUSDT",
+      "baseCoin": "GALA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "GASUSDT",
+      "baseCoin": "GAS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "GIGAUSDT",
+      "baseCoin": "GIGA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "GLMRUSDT",
+      "baseCoin": "GLMR",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "GLMUSDT",
+      "baseCoin": "GLM",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "GMTUSDT",
+      "baseCoin": "GMT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "GMXUSDT",
+      "baseCoin": "GMX",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "GNOUSDT",
+      "baseCoin": "GNO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "GOATUSDT",
+      "baseCoin": "GOAT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "GODSUSDT",
+      "baseCoin": "GODS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "GORKUSDT",
+      "baseCoin": "GORK",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "GPSUSDT",
+      "baseCoin": "GPS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "GRASSUSDT",
+      "baseCoin": "GRASS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "GRIFFAINUSDT",
+      "baseCoin": "GRIFFAIN",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "GRTUSDT",
+      "baseCoin": "GRT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "GTCUSDT",
+      "baseCoin": "GTC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "GUNUSDT",
+      "baseCoin": "GUN",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "GUSDT",
+      "baseCoin": "G",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "HAEDALUSDT",
+      "baseCoin": "HAEDAL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "HBARUSDT",
+      "baseCoin": "HBAR",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "HEIUSDT",
+      "baseCoin": "HEI",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "HFTUSDT",
+      "baseCoin": "HFT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "HIFIUSDT",
+      "baseCoin": "HIFI",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "HIGHUSDT",
+      "baseCoin": "HIGH",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "HIPPOUSDT",
+      "baseCoin": "HIPPO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "HIVEUSDT",
+      "baseCoin": "HIVE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "HMSTRUSDT",
+      "baseCoin": "HMSTR",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "HNTUSDT",
+      "baseCoin": "HNT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "HOMEUSDT",
+      "baseCoin": "HOME",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "HOOKUSDT",
+      "baseCoin": "HOOK",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "HOTUSDT",
+      "baseCoin": "HOT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "HPOS10IUSDT",
+      "baseCoin": "HPOS10I",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "HUMAUSDT",
+      "baseCoin": "HUMA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "HYPEPERP",
+      "baseCoin": "HYPE",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "HYPERUSDT",
+      "baseCoin": "HYPER",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "HYPEUSDT",
+      "baseCoin": "HYPE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ICPUSDT",
+      "baseCoin": "ICP",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ICXUSDT",
+      "baseCoin": "ICX",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "IDEXUSDT",
+      "baseCoin": "IDEX",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "IDUSDT",
+      "baseCoin": "ID",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ILVUSDT",
+      "baseCoin": "ILV",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "IMXUSDT",
+      "baseCoin": "IMX",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "INITUSDT",
+      "baseCoin": "INIT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "INJUSDT",
+      "baseCoin": "INJ",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "IOSTUSDT",
+      "baseCoin": "IOST",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "IOTAUSDT",
+      "baseCoin": "IOTA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "IOTXUSDT",
+      "baseCoin": "IOTX",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "IOUSDT",
+      "baseCoin": "IO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "IPUSDT",
+      "baseCoin": "IP",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "JASMYUSDT",
+      "baseCoin": "JASMY",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "JELLYJELLYUSDT",
+      "baseCoin": "JELLYJELLY",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "JOEUSDT",
+      "baseCoin": "JOE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "JSTUSDT",
+      "baseCoin": "JST",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "JTOUSDT",
+      "baseCoin": "JTO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "JUPUSDT",
+      "baseCoin": "JUP",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "JUSDT",
+      "baseCoin": "J",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "KAIAUSDT",
+      "baseCoin": "KAIA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "KAITOUSDT",
+      "baseCoin": "KAITO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "KASUSDT",
+      "baseCoin": "KAS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "KAVAUSDT",
+      "baseCoin": "KAVA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "KDAUSDT",
+      "baseCoin": "KDA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "KERNELUSDT",
+      "baseCoin": "KERNEL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "KMNOUSDT",
+      "baseCoin": "KMNO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "KNCUSDT",
+      "baseCoin": "KNC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "KOMAUSDT",
+      "baseCoin": "KOMA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "KSMUSDT",
+      "baseCoin": "KSM",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "L3USDT",
+      "baseCoin": "L3",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "LAUNCHCOINUSDT",
+      "baseCoin": "LAUNCHCOIN",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "LAUSDT",
+      "baseCoin": "LA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "LDOUSDT",
+      "baseCoin": "LDO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "LEVERUSDT",
+      "baseCoin": "LEVER",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "LINKPERP",
+      "baseCoin": "LINK",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "LINKUSDT",
+      "baseCoin": "LINK",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "LISTAUSDT",
+      "baseCoin": "LISTA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "LOOKSUSDT",
+      "baseCoin": "LOOKS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "LPTUSDT",
+      "baseCoin": "LPT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "LQTYUSDT",
+      "baseCoin": "LQTY",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "LRCUSDT",
+      "baseCoin": "LRC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "baseCoin": "LSK",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "LTCPERP",
+      "baseCoin": "LTC",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "LTCUSDT",
+      "baseCoin": "LTC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "LUMIAUSDT",
+      "baseCoin": "LUMIA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "LUNA2USDT",
+      "baseCoin": "LUNA2",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MAGICUSDT",
+      "baseCoin": "MAGIC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MAJORUSDT",
+      "baseCoin": "MAJOR",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MANAUSDT",
+      "baseCoin": "MANA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MANTAUSDT",
+      "baseCoin": "MANTA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MASAUSDT",
+      "baseCoin": "MASA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MASKUSDT",
+      "baseCoin": "MASK",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MAVIAUSDT",
+      "baseCoin": "MAVIA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MAVUSDT",
+      "baseCoin": "MAV",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MBLUSDT",
+      "baseCoin": "MBL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MBOXUSDT",
+      "baseCoin": "MBOX",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MDTUSDT",
+      "baseCoin": "MDT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MELANIAUSDT",
+      "baseCoin": "MELANIA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MEMEUSDT",
+      "baseCoin": "MEME",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MERLUSDT",
+      "baseCoin": "MERL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "METISUSDT",
+      "baseCoin": "METIS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MEUSDT",
+      "baseCoin": "ME",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MEWUSDT",
+      "baseCoin": "MEW",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MICHIUSDT",
+      "baseCoin": "MICHI",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MILKUSDT",
+      "baseCoin": "MILK",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MINAUSDT",
+      "baseCoin": "MINA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MKRUSDT",
+      "baseCoin": "MKR",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MLNUSDT",
+      "baseCoin": "MLN",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MNTPERP",
+      "baseCoin": "MNT",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MNTUSDT",
+      "baseCoin": "MNT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MOBILEUSDT",
+      "baseCoin": "MOBILE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MOCAUSDT",
+      "baseCoin": "MOCA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MOODENGUSDT",
+      "baseCoin": "MOODENG",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MORPHOUSDT",
+      "baseCoin": "MORPHO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MOVEUSDT",
+      "baseCoin": "MOVE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MOVRUSDT",
+      "baseCoin": "MOVR",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MTLUSDT",
+      "baseCoin": "MTL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MUBARAKUSDT",
+      "baseCoin": "MUBARAK",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MVLUSDT",
+      "baseCoin": "MVL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MYRIAUSDT",
+      "baseCoin": "MYRIA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "MYROUSDT",
+      "baseCoin": "MYRO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "NCUSDT",
+      "baseCoin": "NC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "NEARUSDT",
+      "baseCoin": "NEAR",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "NEIROETHUSDT",
+      "baseCoin": "NEIROETH",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "NEOUSDT",
+      "baseCoin": "NEO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "NFPUSDT",
+      "baseCoin": "NFP",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "NILUSDT",
+      "baseCoin": "NIL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "NKNUSDT",
+      "baseCoin": "NKN",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "NMRUSDT",
+      "baseCoin": "NMR",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "NOTPERP",
+      "baseCoin": "NOT",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "NOTUSDT",
+      "baseCoin": "NOT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "NSUSDT",
+      "baseCoin": "NS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "NTRNUSDT",
+      "baseCoin": "NTRN",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "NXPCUSDT",
+      "baseCoin": "NXPC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "OBOLUSDT",
+      "baseCoin": "OBOL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "OBTUSDT",
+      "baseCoin": "OBT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "OGNUSDT",
+      "baseCoin": "OGN",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "OGUSDT",
+      "baseCoin": "OG",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "OLUSDT",
+      "baseCoin": "OL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "OMNIUSDT",
+      "baseCoin": "OMNI",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "OMUSDT",
+      "baseCoin": "OM",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ONDOPERP",
+      "baseCoin": "ONDO",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ONDOUSDT",
+      "baseCoin": "ONDO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "baseCoin": "ONE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "baseCoin": "ONG",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ONTUSDT",
+      "baseCoin": "ONT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "OPPERP",
+      "baseCoin": "OP",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "OPUSDT",
+      "baseCoin": "OP",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ORBSUSDT",
+      "baseCoin": "ORBS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ORCAUSDT",
+      "baseCoin": "ORCA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ORDERUSDT",
+      "baseCoin": "ORDER",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ORDIPERP",
+      "baseCoin": "ORDI",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ORDIUSDT",
+      "baseCoin": "ORDI",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "OSMOUSDT",
+      "baseCoin": "OSMO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "OXTUSDT",
+      "baseCoin": "OXT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PARTIUSDT",
+      "baseCoin": "PARTI",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PAXGUSDT",
+      "baseCoin": "PAXG",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PEAQUSDT",
+      "baseCoin": "PEAQ",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PENDLEUSDT",
+      "baseCoin": "PENDLE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PENGUUSDT",
+      "baseCoin": "PENGU",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PEOPLEUSDT",
+      "baseCoin": "PEOPLE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PERPUSDT",
+      "baseCoin": "PERP",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PHAUSDT",
+      "baseCoin": "PHA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PHBUSDT",
+      "baseCoin": "PHB",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PIPPINUSDT",
+      "baseCoin": "PIPPIN",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PIXELUSDT",
+      "baseCoin": "PIXEL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PLUMEUSDT",
+      "baseCoin": "PLUME",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PNUTUSDT",
+      "baseCoin": "PNUT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "POLPERP",
+      "baseCoin": "POL",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "POLUSDT",
+      "baseCoin": "POL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "POLYXUSDT",
+      "baseCoin": "POLYX",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PONKEUSDT",
+      "baseCoin": "PONKE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "POPCATPERP",
+      "baseCoin": "POPCAT",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "POPCATUSDT",
+      "baseCoin": "POPCAT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PORTALUSDT",
+      "baseCoin": "PORTAL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "POWRUSDT",
+      "baseCoin": "POWR",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PRAIUSDT",
+      "baseCoin": "PRAI",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PRCLUSDT",
+      "baseCoin": "PRCL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PRIMEUSDT",
+      "baseCoin": "PRIME",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PROMPTUSDT",
+      "baseCoin": "PROMPT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PROMUSDT",
+      "baseCoin": "PROM",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PUFFERUSDT",
+      "baseCoin": "PUFFER",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PUMPBTCUSDT",
+      "baseCoin": "PUMPBTC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PUNDIXUSDT",
+      "baseCoin": "PUNDIX",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PYRUSDT",
+      "baseCoin": "PYR",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "PYTHUSDT",
+      "baseCoin": "PYTH",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "QIUSDT",
+      "baseCoin": "QI",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "QNTUSDT",
+      "baseCoin": "QNT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "QTUMUSDT",
+      "baseCoin": "QTUM",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "QUICKUSDT",
+      "baseCoin": "QUICK",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "RADUSDT",
+      "baseCoin": "RAD",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "RAREUSDT",
+      "baseCoin": "RARE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "RAYDIUMUSDT",
+      "baseCoin": "RAYDIUM",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "RDNTUSDT",
+      "baseCoin": "RDNT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "REDUSDT",
+      "baseCoin": "RED",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "RENDERUSDT",
+      "baseCoin": "RENDER",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "REQUSDT",
+      "baseCoin": "REQ",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "RESOLVUSDT",
+      "baseCoin": "RESOLV",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "REXUSDT",
+      "baseCoin": "REX",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "REZUSDT",
+      "baseCoin": "REZ",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "RFCUSDT",
+      "baseCoin": "RFC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "RIFUSDT",
+      "baseCoin": "RIF",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "RLCUSDT",
+      "baseCoin": "RLC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ROAMUSDT",
+      "baseCoin": "ROAM",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "RONINUSDT",
+      "baseCoin": "RONIN",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "ROSEUSDT",
+      "baseCoin": "ROSE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "RPLUSDT",
+      "baseCoin": "RPL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "RSRUSDT",
+      "baseCoin": "RSR",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "RSS3USDT",
+      "baseCoin": "RSS3",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "RUNEUSDT",
+      "baseCoin": "RUNE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "baseCoin": "RVN",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SAFEUSDT",
+      "baseCoin": "SAFE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SAGAUSDT",
+      "baseCoin": "SAGA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SANDUSDT",
+      "baseCoin": "SAND",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SAROSUSDT",
+      "baseCoin": "SAROS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SCAUSDT",
+      "baseCoin": "SCA",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SCRTUSDT",
+      "baseCoin": "SCRT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SCRUSDT",
+      "baseCoin": "SCR",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SCUSDT",
+      "baseCoin": "SC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SDUSDT",
+      "baseCoin": "SD",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SEIUSDT",
+      "baseCoin": "SEI",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SENDUSDT",
+      "baseCoin": "SEND",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SERAPHUSDT",
+      "baseCoin": "SERAPH",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SFPUSDT",
+      "baseCoin": "SFP",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SHELLUSDT",
+      "baseCoin": "SHELL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SHIB1000PERP",
+      "baseCoin": "SHIB1000",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SHIB1000USDT",
+      "baseCoin": "SHIB1000",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SIGNUSDT",
+      "baseCoin": "SIGN",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SIRENUSDT",
+      "baseCoin": "SIREN",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SKATEUSDT",
+      "baseCoin": "SKATE",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SKLUSDT",
+      "baseCoin": "SKL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SKYAIUSDT",
+      "baseCoin": "SKYAI",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SLERFUSDT",
+      "baseCoin": "SLERF",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SLFUSDT",
+      "baseCoin": "SLF",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SLPUSDT",
+      "baseCoin": "SLP",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SNTUSDT",
+      "baseCoin": "SNT",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SNXUSDT",
+      "baseCoin": "SNX",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SOLAYERUSDT",
+      "baseCoin": "SOLAYER",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SOLOUSDT",
+      "baseCoin": "SOLO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SOLPERP",
+      "baseCoin": "SOL",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SOLUSDT",
+      "baseCoin": "SOL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SOLUSDT-04JUL25",
+      "baseCoin": "SOL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "SOLUSDT-11JUL25",
+      "baseCoin": "SOL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "SOLUSDT-25JUL25",
+      "baseCoin": "SOL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "SOLUSDT-27JUN25",
+      "baseCoin": "SOL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearFutures"
+    },
+    {
+      "symbol": "SOLVUSDT",
+      "baseCoin": "SOLV",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SONICUSDT",
+      "baseCoin": "SONIC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "baseCoin": "SOON",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SOPHUSDT",
+      "baseCoin": "SOPH",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SPECUSDT",
+      "baseCoin": "SPEC",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SPELLUSDT",
+      "baseCoin": "SPELL",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SPKUSDT",
+      "baseCoin": "SPK",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SPXUSDT",
+      "baseCoin": "SPX",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SQDUSDT",
+      "baseCoin": "SQD",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SSVUSDT",
+      "baseCoin": "SSV",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "STEEMUSDT",
+      "baseCoin": "STEEM",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "STGUSDT",
+      "baseCoin": "STG",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "STORJUSDT",
+      "baseCoin": "STORJ",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "STOUSDT",
+      "baseCoin": "STO",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "STRKPERP",
+      "baseCoin": "STRK",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "STRKUSDT",
+      "baseCoin": "STRK",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "STXUSDT",
+      "baseCoin": "STX",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SUIPERP",
+      "baseCoin": "SUI",
+      "quoteCoin": "USDC",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SUIUSDT",
+      "baseCoin": "SUI",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SUNDOGUSDT",
+      "baseCoin": "SUNDOG",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SUNUSDT",
+      "baseCoin": "SUN",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SUPERUSDT",
+      "baseCoin": "SUPER",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SUSDT",
+      "baseCoin": "S",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SUSHIUSDT",
+      "baseCoin": "SUSHI",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    },
+    {
+      "symbol": "SWARMSUSDT",
+      "baseCoin": "SWARMS",
+      "quoteCoin": "USDT",
+      "status": "Trading",
+      "contractType": "LinearPerpetual"
+    }
+  ]
+}

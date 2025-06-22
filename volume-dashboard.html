@@ -1,0 +1,344 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Crypto Volume Dashboard</title>
+    <link rel="stylesheet" href="volume-dashboard.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@3.9.1/dist/chart.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns@2.0.0/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script>
+        // Debug Chart.js loading
+        window.addEventListener('load', function() {
+            console.log('📊 Window loaded, checking Chart.js:', {
+                typeof: typeof Chart,
+                available: typeof Chart !== 'undefined',
+                isFunction: typeof Chart !== 'undefined' ? typeof Chart === 'function' : false,
+                windowChart: typeof window.Chart,
+                hasRegister: typeof Chart !== 'undefined' && Chart.register ? 'yes' : 'no'
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="dashboard-container">
+        <header class="dashboard-header">
+            <div class="header-content">
+                <h1>📊 Crypto Volume Dashboard</h1>
+                <nav class="navigation">
+                    <a href="index.html" class="nav-link">← Order Book</a>
+                    <a href="charts-dashboard.html" class="nav-link">Charts</a>
+                    <a href="volume-dashboard.html" class="nav-link active">Volume Dashboard</a>
+                    <a href="trading-pairs-explorer.html" class="nav-link">Trading Pairs →</a>
+                </nav>
+            </div>
+        </header>
+
+        <main class="dashboard-main">
+            <!-- Controls Section -->
+            <section class="controls-section">
+                <div class="controls-grid">
+                    <div class="control-group">
+                        <label for="timeRange">Time Range</label>
+                        <select id="timeRange">
+                            <option value="1">1 Day</option>
+                            <option value="3">3 Days</option>
+                            <option value="7">7 Days</option>
+                            <option value="30" selected>30 Days</option>
+                            <option value="90">90 Days</option>
+                            <option value="180">6 Months</option>
+                            <option value="365">1 Year</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="assetFilter">Asset</label>
+                        <select id="assetFilter">
+                            <option value="all">All Assets</option>
+                            <option value="BTCUSDT">BTC/USDT</option>
+                            <option value="ETHUSDT">ETH/USDT</option>
+                            <option value="SOLUSDT">SOL/USDT</option>
+                            <option value="DOGEUSDT">DOGE/USDT</option>
+                            <option value="ADAUSDT">ADA/USDT</option>
+                            <option value="LINKUSDT">LINK/USDT</option>
+                            <option value="XRPUSDT">XRP/USDT</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="exchangeFilter">Exchange</label>
+                        <select id="exchangeFilter">
+                            <option value="all">All Exchanges</option>
+                            <option value="binance">Binance</option>
+                            <option value="bybit">Bybit</option>
+                            <option value="okx">OKX</option>
+                            <option value="kraken">Kraken</option>
+                            <option value="bitget">Bitget</option>
+                            <option value="dydx">dYdX</option>
+                            <option value="hyperliquid">Hyperliquid</option>
+                            <option value="vertex">Vertex</option>
+                            <option value="jupiter">Jupiter</option>
+                            <option value="uniswap_simulated">Uniswap</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="instrumentFilter">Instrument Type</label>
+                        <select id="instrumentFilter">
+                            <option value="all">All Types</option>
+                            <option value="spot">Spot</option>
+                            <option value="margin">Margin</option>
+                            <option value="futures">Futures</option>
+                            <option value="perpetual">Perpetual</option>
+                            <option value="swap">Swap</option>
+                            <option value="amm_spot">AMM Spot</option>
+                            <option value="amm_perpetual">AMM Perpetual</option>
+                        </select>
+                    </div>
+
+                    <div class="control-group">
+                        <label for="categoryFilter">Asset Category</label>
+                        <select id="categoryFilter">
+                            <option value="all">All Categories</option>
+                            <option value="major">Major (BTC, ETH)</option>
+                            <option value="altcoin">Altcoin</option>
+                            <option value="meme">Meme</option>
+                            <option value="defi">DeFi</option>
+                            <option value="layer1">Layer 1</option>
+                        </select>
+                    </div>
+                    
+                    <div class="control-group">
+                        <label for="chartType">Chart Type</label>
+                        <select id="chartType">
+                            <option value="line">Line Chart</option>
+                            <option value="bar">Bar Chart</option>
+                            <option value="stacked">Stacked Chart</option>
+                        </select>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Metrics Grid -->
+            <section class="metrics-section">
+                <div class="metrics-grid">
+                    <div class="metric-card primary">
+                        <div class="metric-icon">💰</div>
+                        <div class="metric-content">
+                            <div class="metric-value" id="totalVolume">Loading...</div>
+                            <div class="metric-label">Total Volume</div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-icon">🏪</div>
+                        <div class="metric-content">
+                            <div class="metric-value" id="activeExchanges">Loading...</div>
+                            <div class="metric-label">Active Exchanges</div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-icon">🎯</div>
+                        <div class="metric-content">
+                            <div class="metric-value" id="topAsset">Loading...</div>
+                            <div class="metric-label">Top Asset</div>
+                        </div>
+                    </div>
+                    
+                    <div class="metric-card">
+                        <div class="metric-icon">📈</div>
+                        <div class="metric-content">
+                            <div class="metric-value" id="dataQuality">Loading...</div>
+                            <div class="metric-label">Data Quality</div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon">🔧</div>
+                        <div class="metric-content">
+                            <div class="metric-value" id="instrumentTypes">Loading...</div>
+                            <div class="metric-label">Instrument Types</div>
+                        </div>
+                    </div>
+
+                    <div class="metric-card">
+                        <div class="metric-icon">🎪</div>
+                        <div class="metric-content">
+                            <div class="metric-value" id="opportunities">Loading...</div>
+                            <div class="metric-label">Opportunities</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Chart Section -->
+            <section class="chart-section">
+                <div class="chart-container">
+                    <div class="chart-header">
+                        <h2>Historical Volume Analysis</h2>
+                        <div class="chart-loading" id="chartLoading">Loading chart data...</div>
+                    </div>
+                    <div class="time-range-indicator" id="timeRangeIndicator">
+                        30 Days - Daily View
+                    </div>
+                    <canvas id="volumeChart"></canvas>
+                </div>
+            </section>
+
+            <!-- Instrument Type Analysis -->
+            <section class="analysis-section">
+                <div class="analysis-grid">
+                    <div class="analysis-card">
+                        <div class="card-header">
+                            <h3>🔧 Instrument Type Breakdown</h3>
+                            <div class="card-subtitle">Volume distribution by trading instrument</div>
+                        </div>
+                        <div class="table-container">
+                            <table id="instrumentTable" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Type</th>
+                                        <th>Volume</th>
+                                        <th>Market Share</th>
+                                        <th>Exchanges</th>
+                                        <th>Assets</th>
+                                        <th>Top Exchange</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td colspan="6" class="loading-row">Loading instrument data...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <div class="analysis-card">
+                        <div class="card-header">
+                            <h3>🎯 Trading Opportunities</h3>
+                            <div class="card-subtitle">Identified market opportunities and gaps</div>
+                        </div>
+                        <div class="opportunities-container" id="opportunitiesContainer">
+                            <div class="loading-message">Analyzing opportunities...</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Tables -->
+            <section class="tables-section">
+                <div class="tables-grid">
+                    <div class="table-card">
+                        <div class="card-header">
+                            <h3>🏪 Exchange Performance</h3>
+                            <div class="card-subtitle">Volume metrics by exchange with instrument breakdown</div>
+                        </div>
+                        <div class="table-container">
+                            <table id="exchangeTable" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Exchange</th>
+                                        <th>Volume</th>
+                                        <th>Market Share</th>
+                                        <th>Avg Daily</th>
+                                        <th>Status</th>
+                                        <th>Primary Instrument</th>
+                                        <th>Last Updated</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td colspan="7" class="loading-row">Loading exchange data...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                    
+                    <div class="table-card">
+                        <div class="card-header">
+                            <h3>💎 Asset Performance</h3>
+                            <div class="card-subtitle">Volume metrics by asset with instrument analysis</div>
+                        </div>
+                        <div class="table-container">
+                            <table id="assetTable" class="data-table">
+                                <thead>
+                                    <tr>
+                                        <th>Asset</th>
+                                        <th>Category</th>
+                                        <th>Volume</th>
+                                        <th>Exchanges</th>
+                                        <th>Top Exchange</th>
+                                        <th>Primary Instrument</th>
+                                        <th>Price Change</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr><td colspan="7" class="loading-row">Loading asset data...</td></tr>
+                                </tbody>
+                            </table>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Data Sources -->
+            <section class="sources-section">
+                <div class="sources-container">
+                    <div class="sources-header">
+                        <h3>📊 Data Sources & Transparency</h3>
+                        <div class="sources-subtitle">Understanding where our data comes from</div>
+                    </div>
+                    
+                    <div class="sources-grid">
+                        <div class="source-group">
+                            <h4>🔴 Real-Time APIs</h4>
+                            <div class="source-list">
+                                <div class="source-item">
+                                    <span class="source-name">Binance Futures</span>
+                                    <span class="source-endpoint">/fapi/v1/klines</span>
+                                    <span class="source-status live" id="binanceStatus">Live</span>
+                                </div>
+                                <div class="source-item">
+                                    <span class="source-name">Bybit API v5</span>
+                                    <span class="source-endpoint">/v5/market/kline</span>
+                                    <span class="source-status live" id="bybitStatus">Live</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="source-group">
+                            <h4>🟡 Simulated Data</h4>
+                            <div class="source-list">
+                                <div class="source-item">
+                                    <span class="source-name">Other CEX/DEX</span>
+                                    <span class="source-endpoint">Mathematical Models</span>
+                                    <span class="source-status simulated">Simulated</span>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <div class="source-group">
+                            <h4>⏰ Last Updated</h4>
+                            <div class="update-info">
+                                <div class="update-item">
+                                    <span class="update-label">Full Refresh:</span>
+                                    <span class="update-time" id="lastFullUpdate">Loading...</span>
+                                </div>
+                                <div class="update-item">
+                                    <span class="update-label">Binance:</span>
+                                    <span class="update-time" id="binanceUpdate">Loading...</span>
+                                </div>
+                                <div class="update-item">
+                                    <span class="update-label">Bybit:</span>
+                                    <span class="update-time" id="bybitUpdate">Loading...</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </main>
+    </div>
+
+    <script type="module" src="volume-dashboard.tsx"></script>
+</body>
+</html> 

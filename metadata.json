@@ -1,0 +1,6 @@
+{
+  "name": "Crypto Multi-Exchange Real-Time Order Book",
+  "description": "Displays an aggregated real-time Level 2 order book from multiple cryptocurrency exchanges (Binance, Bybit) for selected perpetual contracts.",
+  "requestFramePermissions": [],
+  "prompt": ""
+}

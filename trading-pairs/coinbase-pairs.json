@@ -1,0 +1,3115 @@
+{
+  "exchange": "Coinbase",
+  "count": 444,
+  "lastUpdated": "2025-06-21T21:27:20.123Z",
+  "pairs": [
+    {
+      "symbol": "VELO-USD",
+      "baseCurrency": "VELO",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "B3-USD",
+      "baseCurrency": "B3",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "XLM-USD",
+      "baseCurrency": "XLM",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ATOM-GBP",
+      "baseCurrency": "ATOM",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "EIGEN-USD",
+      "baseCurrency": "EIGEN",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SHIB-USDT",
+      "baseCurrency": "SHIB",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "PLU-USD",
+      "baseCurrency": "PLU",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ATOM-USD",
+      "baseCurrency": "ATOM",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "APE-USD",
+      "baseCurrency": "APE",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AERO-USD",
+      "baseCurrency": "AERO",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AAVE-BTC",
+      "baseCurrency": "AAVE",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AVAX-USD",
+      "baseCurrency": "AVAX",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ENA-USD",
+      "baseCurrency": "ENA",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CRV-EUR",
+      "baseCurrency": "CRV",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "NMR-USD",
+      "baseCurrency": "NMR",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BNT-USD",
+      "baseCurrency": "BNT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MASK-GBP",
+      "baseCurrency": "MASK",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MINA-USD",
+      "baseCurrency": "MINA",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "APE-USDT",
+      "baseCurrency": "APE",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "METIS-USD",
+      "baseCurrency": "METIS",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "DOT-GBP",
+      "baseCurrency": "DOT",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BICO-USD",
+      "baseCurrency": "BICO",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "XRP-USDT",
+      "baseCurrency": "XRP",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "1INCH-USD",
+      "baseCurrency": "1INCH",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "STX-USD",
+      "baseCurrency": "STX",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CGLD-GBP",
+      "baseCurrency": "CGLD",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "00-USD",
+      "baseCurrency": "00",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "RNDR-USDT",
+      "baseCurrency": "RNDR",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SNX-GBP",
+      "baseCurrency": "SNX",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "FOX-USD",
+      "baseCurrency": "FOX",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "XTZ-USD",
+      "baseCurrency": "XTZ",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SAFE-USD",
+      "baseCurrency": "SAFE",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MOBILE-USD",
+      "baseCurrency": "MOBILE",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ALCX-USD",
+      "baseCurrency": "ALCX",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CRO-USD",
+      "baseCurrency": "CRO",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ALICE-USD",
+      "baseCurrency": "ALICE",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ROSE-USD",
+      "baseCurrency": "ROSE",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "FLOW-USD",
+      "baseCurrency": "FLOW",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ANKR-GBP",
+      "baseCurrency": "ANKR",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "LRC-USDT",
+      "baseCurrency": "LRC",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "WAXL-USD",
+      "baseCurrency": "WAXL",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "JASMY-USDT",
+      "baseCurrency": "JASMY",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MASK-USDT",
+      "baseCurrency": "MASK",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MUSE-USD",
+      "baseCurrency": "MUSE",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "REZ-USD",
+      "baseCurrency": "REZ",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "LA-USD",
+      "baseCurrency": "LA",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CGLD-EUR",
+      "baseCurrency": "CGLD",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SOL-EUR",
+      "baseCurrency": "SOL",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ILV-USD",
+      "baseCurrency": "ILV",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "KERNEL-USD",
+      "baseCurrency": "KERNEL",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SOL-BTC",
+      "baseCurrency": "SOL",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "DIA-USD",
+      "baseCurrency": "DIA",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "STX-USDT",
+      "baseCurrency": "STX",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "GRT-USD",
+      "baseCurrency": "GRT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ENS-USDT",
+      "baseCurrency": "ENS",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "KRL-USD",
+      "baseCurrency": "KRL",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "STORJ-USD",
+      "baseCurrency": "STORJ",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SHIB-EUR",
+      "baseCurrency": "SHIB",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "USDT-USDC",
+      "baseCurrency": "USDT",
+      "quoteCurrency": "USDC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ADA-BTC",
+      "baseCurrency": "ADA",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AAVE-EUR",
+      "baseCurrency": "AAVE",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "PENGU-USD",
+      "baseCurrency": "PENGU",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BERA-USD",
+      "baseCurrency": "BERA",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SOL-GBP",
+      "baseCurrency": "SOL",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ZORA-USD",
+      "baseCurrency": "ZORA",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MNDE-USD",
+      "baseCurrency": "MNDE",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "IP-USD",
+      "baseCurrency": "IP",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "VTHO-USD",
+      "baseCurrency": "VTHO",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "RAD-USD",
+      "baseCurrency": "RAD",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ZETA-USD",
+      "baseCurrency": "ZETA",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "HNT-USD",
+      "baseCurrency": "HNT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MATIC-EUR",
+      "baseCurrency": "MATIC",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BCH-USD",
+      "baseCurrency": "BCH",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ZK-USD",
+      "baseCurrency": "ZK",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AIOZ-USD",
+      "baseCurrency": "AIOZ",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AAVE-USD",
+      "baseCurrency": "AAVE",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "TNSR-USD",
+      "baseCurrency": "TNSR",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ADA-USD",
+      "baseCurrency": "ADA",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "COW-USD",
+      "baseCurrency": "COW",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MATIC-USDT",
+      "baseCurrency": "MATIC",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "REQ-USD",
+      "baseCurrency": "REQ",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "IOTX-USD",
+      "baseCurrency": "IOTX",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "JASMY-USD",
+      "baseCurrency": "JASMY",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "HONEY-USD",
+      "baseCurrency": "HONEY",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MKR-USD",
+      "baseCurrency": "MKR",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "APT-USD",
+      "baseCurrency": "APT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ETC-BTC",
+      "baseCurrency": "ETC",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "LINK-USDT",
+      "baseCurrency": "LINK",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "VVV-USD",
+      "baseCurrency": "VVV",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BTC-USDT",
+      "baseCurrency": "BTC",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ARPA-USD",
+      "baseCurrency": "ARPA",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "PEPE-USD",
+      "baseCurrency": "PEPE",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BAT-BTC",
+      "baseCurrency": "BAT",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "HBAR-USD",
+      "baseCurrency": "HBAR",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ICP-USDT",
+      "baseCurrency": "ICP",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CHZ-EUR",
+      "baseCurrency": "CHZ",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "COTI-USD",
+      "baseCurrency": "COTI",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "LRC-BTC",
+      "baseCurrency": "LRC",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "TURBO-USD",
+      "baseCurrency": "TURBO",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "LOKA-USD",
+      "baseCurrency": "LOKA",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ALEO-USD",
+      "baseCurrency": "ALEO",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MANTLE-USD",
+      "baseCurrency": "MANTLE",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AST-USD",
+      "baseCurrency": "AST",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ADA-GBP",
+      "baseCurrency": "ADA",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "TRAC-USD",
+      "baseCurrency": "TRAC",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BCH-GBP",
+      "baseCurrency": "BCH",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "WCFG-USD",
+      "baseCurrency": "WCFG",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ICP-GBP",
+      "baseCurrency": "ICP",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MAGIC-USD",
+      "baseCurrency": "MAGIC",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SHIB-USD",
+      "baseCurrency": "SHIB",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "LTC-GBP",
+      "baseCurrency": "LTC",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BLUR-USD",
+      "baseCurrency": "BLUR",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "USDT-GBP",
+      "baseCurrency": "USDT",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ALGO-USD",
+      "baseCurrency": "ALGO",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "FIS-USD",
+      "baseCurrency": "FIS",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "RENDER-USD",
+      "baseCurrency": "RENDER",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "INDEX-USD",
+      "baseCurrency": "INDEX",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "UNI-GBP",
+      "baseCurrency": "UNI",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "LINK-BTC",
+      "baseCurrency": "LINK",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "PENDLE-USD",
+      "baseCurrency": "PENDLE",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CHZ-USD",
+      "baseCurrency": "CHZ",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "XRP-USD",
+      "baseCurrency": "XRP",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "IO-USD",
+      "baseCurrency": "IO",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "OCEAN-USD",
+      "baseCurrency": "OCEAN",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "KAVA-USD",
+      "baseCurrency": "KAVA",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MATIC-BTC",
+      "baseCurrency": "MATIC",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "LTC-EUR",
+      "baseCurrency": "LTC",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ETH-EUR",
+      "baseCurrency": "ETH",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "DIMO-USD",
+      "baseCurrency": "DIMO",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "PAX-USD",
+      "baseCurrency": "PAX",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "UMA-USD",
+      "baseCurrency": "UMA",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "DOT-USD",
+      "baseCurrency": "DOT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CBETH-USD",
+      "baseCurrency": "CBETH",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BADGER-USD",
+      "baseCurrency": "BADGER",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ZETACHAIN-USD",
+      "baseCurrency": "ZETACHAIN",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "G-USD",
+      "baseCurrency": "G",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "DNT-USD",
+      "baseCurrency": "DNT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CRO-EUR",
+      "baseCurrency": "CRO",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SWELL-USD",
+      "baseCurrency": "SWELL",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "PYTH-USD",
+      "baseCurrency": "PYTH",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AURORA-USD",
+      "baseCurrency": "AURORA",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SKL-USD",
+      "baseCurrency": "SKL",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "LSETH-USD",
+      "baseCurrency": "LSETH",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "PAXG-USD",
+      "baseCurrency": "PAXG",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ARKM-USD",
+      "baseCurrency": "ARKM",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "VARA-USD",
+      "baseCurrency": "VARA",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ALGO-EUR",
+      "baseCurrency": "ALGO",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "STRK-USD",
+      "baseCurrency": "STRK",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MKR-BTC",
+      "baseCurrency": "MKR",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BAL-USD",
+      "baseCurrency": "BAL",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ROSE-USDT",
+      "baseCurrency": "ROSE",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "GHST-USD",
+      "baseCurrency": "GHST",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "KNC-USD",
+      "baseCurrency": "KNC",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SPELL-USD",
+      "baseCurrency": "SPELL",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ATH-USD",
+      "baseCurrency": "ATH",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "RED-USD",
+      "baseCurrency": "RED",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "XRP-EUR",
+      "baseCurrency": "XRP",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CLANKER-USD",
+      "baseCurrency": "CLANKER",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "L3-USD",
+      "baseCurrency": "L3",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BONK-USD",
+      "baseCurrency": "BONK",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "EOS-USD",
+      "baseCurrency": "EOS",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "UNI-EUR",
+      "baseCurrency": "UNI",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BTC-GBP",
+      "baseCurrency": "BTC",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "1INCH-EUR",
+      "baseCurrency": "1INCH",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "VOXEL-USD",
+      "baseCurrency": "VOXEL",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "VET-USD",
+      "baseCurrency": "VET",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "LINK-USD",
+      "baseCurrency": "LINK",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AVAX-EUR",
+      "baseCurrency": "AVAX",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SOL-ETH",
+      "baseCurrency": "SOL",
+      "quoteCurrency": "ETH",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "APE-EUR",
+      "baseCurrency": "APE",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "NEAR-USD",
+      "baseCurrency": "NEAR",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AXS-USD",
+      "baseCurrency": "AXS",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ANKR-USD",
+      "baseCurrency": "ANKR",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BTRST-USD",
+      "baseCurrency": "BTRST",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BCH-BTC",
+      "baseCurrency": "BCH",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "KEYCAT-USD",
+      "baseCurrency": "KEYCAT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "HIGH-USD",
+      "baseCurrency": "HIGH",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BAND-USD",
+      "baseCurrency": "BAND",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SPA-USD",
+      "baseCurrency": "SPA",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BCH-EUR",
+      "baseCurrency": "BCH",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AUDIO-USD",
+      "baseCurrency": "AUDIO",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ENS-USD",
+      "baseCurrency": "ENS",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "DOT-USDT",
+      "baseCurrency": "DOT",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "DOGE-GBP",
+      "baseCurrency": "DOGE",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "YFI-USD",
+      "baseCurrency": "YFI",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "TOSHI-USD",
+      "baseCurrency": "TOSHI",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ETH-GBP",
+      "baseCurrency": "ETH",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "USDC-EUR",
+      "baseCurrency": "USDC",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "RNDR-EUR",
+      "baseCurrency": "RNDR",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SXT-USD",
+      "baseCurrency": "SXT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CTX-USD",
+      "baseCurrency": "CTX",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "COMP-BTC",
+      "baseCurrency": "COMP",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "DOGE-USDT",
+      "baseCurrency": "DOGE",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "IMX-USD",
+      "baseCurrency": "IMX",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ETC-EUR",
+      "baseCurrency": "ETC",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AVT-USD",
+      "baseCurrency": "AVT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SWFTC-USD",
+      "baseCurrency": "SWFTC",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "XCN-USD",
+      "baseCurrency": "XCN",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SHDW-USD",
+      "baseCurrency": "SHDW",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "TIA-USD",
+      "baseCurrency": "TIA",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "EURC-USDC",
+      "baseCurrency": "EURC",
+      "quoteCurrency": "USDC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "NKN-USD",
+      "baseCurrency": "NKN",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SUSHI-USD",
+      "baseCurrency": "SUSHI",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CBETH-ETH",
+      "baseCurrency": "CBETH",
+      "quoteCurrency": "ETH",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "RNDR-USD",
+      "baseCurrency": "RNDR",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BLAST-USD",
+      "baseCurrency": "BLAST",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "DOGE-EUR",
+      "baseCurrency": "DOGE",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "GRT-GBP",
+      "baseCurrency": "GRT",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "GLM-USD",
+      "baseCurrency": "GLM",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SEI-USD",
+      "baseCurrency": "SEI",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "GODS-USD",
+      "baseCurrency": "GODS",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "OXT-USD",
+      "baseCurrency": "OXT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "FX-USD",
+      "baseCurrency": "FX",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "COOKIE-USD",
+      "baseCurrency": "COOKIE",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "INJ-USD",
+      "baseCurrency": "INJ",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "LINK-ETH",
+      "baseCurrency": "LINK",
+      "quoteCurrency": "ETH",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ABT-USD",
+      "baseCurrency": "ABT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ADA-EUR",
+      "baseCurrency": "ADA",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ZEN-USD",
+      "baseCurrency": "ZEN",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SUPER-USD",
+      "baseCurrency": "SUPER",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "FIL-USD",
+      "baseCurrency": "FIL",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "FLOW-USDT",
+      "baseCurrency": "FLOW",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MOG-USD",
+      "baseCurrency": "MOG",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "FLR-USD",
+      "baseCurrency": "FLR",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CELR-USD",
+      "baseCurrency": "CELR",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BTC-USD",
+      "baseCurrency": "BTC",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ATOM-EUR",
+      "baseCurrency": "ATOM",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "DASH-BTC",
+      "baseCurrency": "DASH",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AAVE-GBP",
+      "baseCurrency": "AAVE",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SHIB-GBP",
+      "baseCurrency": "SHIB",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "GMT-USDT",
+      "baseCurrency": "GMT",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "FIL-BTC",
+      "baseCurrency": "FIL",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "A8-USD",
+      "baseCurrency": "A8",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "GNO-USD",
+      "baseCurrency": "GNO",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ETC-GBP",
+      "baseCurrency": "ETC",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "UNI-BTC",
+      "baseCurrency": "UNI",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CVC-USD",
+      "baseCurrency": "CVC",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "KAITO-USD",
+      "baseCurrency": "KAITO",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "OMNI-USD",
+      "baseCurrency": "OMNI",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CVX-USD",
+      "baseCurrency": "CVX",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "APT-USDT",
+      "baseCurrency": "APT",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "LSETH-ETH",
+      "baseCurrency": "LSETH",
+      "quoteCurrency": "ETH",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "1INCH-GBP",
+      "baseCurrency": "1INCH",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "POPCAT-USD",
+      "baseCurrency": "POPCAT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SUKU-USD",
+      "baseCurrency": "SUKU",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CRV-BTC",
+      "baseCurrency": "CRV",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ICP-USD",
+      "baseCurrency": "ICP",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "DEGEN-USD",
+      "baseCurrency": "DEGEN",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "GRT-EUR",
+      "baseCurrency": "GRT",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SD-USD",
+      "baseCurrency": "SD",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "GMT-USD",
+      "baseCurrency": "GMT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ADA-ETH",
+      "baseCurrency": "ADA",
+      "quoteCurrency": "ETH",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "NEON-USD",
+      "baseCurrency": "NEON",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "FORTH-USD",
+      "baseCurrency": "FORTH",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SUI-USD",
+      "baseCurrency": "SUI",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "PERP-USD",
+      "baseCurrency": "PERP",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "XTZ-GBP",
+      "baseCurrency": "XTZ",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ETH-USDT",
+      "baseCurrency": "ETH",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MINA-USDT",
+      "baseCurrency": "MINA",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SYRUP-USD",
+      "baseCurrency": "SYRUP",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "EOS-BTC",
+      "baseCurrency": "EOS",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CORECHAIN-USD",
+      "baseCurrency": "CORECHAIN",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "YFI-BTC",
+      "baseCurrency": "YFI",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "LRDS-USD",
+      "baseCurrency": "LRDS",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "LINK-GBP",
+      "baseCurrency": "LINK",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "GFI-USD",
+      "baseCurrency": "GFI",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "GTC-USD",
+      "baseCurrency": "GTC",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "XTZ-BTC",
+      "baseCurrency": "XTZ",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BAT-USD",
+      "baseCurrency": "BAT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BTC-EUR",
+      "baseCurrency": "BTC",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "PNUT-USD",
+      "baseCurrency": "PNUT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BOBA-USD",
+      "baseCurrency": "BOBA",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "TRUMP-USD",
+      "baseCurrency": "TRUMP",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "OP-USD",
+      "baseCurrency": "OP",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MSOL-USD",
+      "baseCurrency": "MSOL",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "PROMPT-USD",
+      "baseCurrency": "PROMPT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MANA-EUR",
+      "baseCurrency": "MANA",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SQD-USD",
+      "baseCurrency": "SQD",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "STG-USD",
+      "baseCurrency": "STG",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SAND-USDT",
+      "baseCurrency": "SAND",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AKT-USD",
+      "baseCurrency": "AKT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "TAO-USD",
+      "baseCurrency": "TAO",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ACS-USD",
+      "baseCurrency": "ACS",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "LDO-USD",
+      "baseCurrency": "LDO",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "QNT-USDT",
+      "baseCurrency": "QNT",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AGLD-USD",
+      "baseCurrency": "AGLD",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SEAM-USD",
+      "baseCurrency": "SEAM",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MANA-USD",
+      "baseCurrency": "MANA",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ASM-USD",
+      "baseCurrency": "ASM",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ONDO-USD",
+      "baseCurrency": "ONDO",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AVAX-USDT",
+      "baseCurrency": "AVAX",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MASK-USD",
+      "baseCurrency": "MASK",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "QI-USD",
+      "baseCurrency": "QI",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ME-USD",
+      "baseCurrency": "ME",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "WELL-USD",
+      "baseCurrency": "WELL",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "WIF-USD",
+      "baseCurrency": "WIF",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ETH-USD",
+      "baseCurrency": "ETH",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SNX-USD",
+      "baseCurrency": "SNX",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BAT-ETH",
+      "baseCurrency": "BAT",
+      "quoteCurrency": "ETH",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ENS-EUR",
+      "baseCurrency": "ENS",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CAKE-USD",
+      "baseCurrency": "CAKE",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "KARRAT-USD",
+      "baseCurrency": "KARRAT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SYN-USD",
+      "baseCurrency": "SYN",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "RLC-USD",
+      "baseCurrency": "RLC",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CRO-USDT",
+      "baseCurrency": "CRO",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ICP-BTC",
+      "baseCurrency": "ICP",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "COMP-USD",
+      "baseCurrency": "COMP",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CRV-USD",
+      "baseCurrency": "CRV",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "FIL-EUR",
+      "baseCurrency": "FIL",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "KSM-USD",
+      "baseCurrency": "KSM",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "LRC-USD",
+      "baseCurrency": "LRC",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ETH-DAI",
+      "baseCurrency": "ETH",
+      "quoteCurrency": "DAI",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ELA-USD",
+      "baseCurrency": "ELA",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MDT-USD",
+      "baseCurrency": "MDT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ETH-BTC",
+      "baseCurrency": "ETH",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "NCT-USD",
+      "baseCurrency": "NCT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "RARE-USD",
+      "baseCurrency": "RARE",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "DOGE-USD",
+      "baseCurrency": "DOGE",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "XLM-EUR",
+      "baseCurrency": "XLM",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SOL-USD",
+      "baseCurrency": "SOL",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "HFT-USD",
+      "baseCurrency": "HFT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "USDC-GBP",
+      "baseCurrency": "USDC",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "LTC-USD",
+      "baseCurrency": "LTC",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "LINK-EUR",
+      "baseCurrency": "LINK",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "XLM-USDT",
+      "baseCurrency": "XLM",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "TIME-USD",
+      "baseCurrency": "TIME",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "XTZ-EUR",
+      "baseCurrency": "XTZ",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "FAI-USD",
+      "baseCurrency": "FAI",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "RBN-USD",
+      "baseCurrency": "RBN",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "HOME-USD",
+      "baseCurrency": "HOME",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CLV-USD",
+      "baseCurrency": "CLV",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MINA-EUR",
+      "baseCurrency": "MINA",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CHZ-USDT",
+      "baseCurrency": "CHZ",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SPK-USD",
+      "baseCurrency": "SPK",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "USDT-USD",
+      "baseCurrency": "USDT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ALGO-GBP",
+      "baseCurrency": "ALGO",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "XLM-BTC",
+      "baseCurrency": "XLM",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "QNT-USD",
+      "baseCurrency": "QNT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "JTO-USD",
+      "baseCurrency": "JTO",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "OGN-USD",
+      "baseCurrency": "OGN",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "XYO-USD",
+      "baseCurrency": "XYO",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "FET-USDT",
+      "baseCurrency": "FET",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "DOGINME-USD",
+      "baseCurrency": "DOGINME",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ETC-USD",
+      "baseCurrency": "ETC",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SHPING-USD",
+      "baseCurrency": "SHPING",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AERGO-USD",
+      "baseCurrency": "AERGO",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ATOM-USDT",
+      "baseCurrency": "ATOM",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "FARTCOIN-USD",
+      "baseCurrency": "FARTCOIN",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ICP-EUR",
+      "baseCurrency": "ICP",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MASK-EUR",
+      "baseCurrency": "MASK",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "DOT-BTC",
+      "baseCurrency": "DOT",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "EOS-EUR",
+      "baseCurrency": "EOS",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AMP-USD",
+      "baseCurrency": "AMP",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "NEAR-USDT",
+      "baseCurrency": "NEAR",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "USDT-EUR",
+      "baseCurrency": "USDT",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "GIGA-USD",
+      "baseCurrency": "GIGA",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AUCTION-USD",
+      "baseCurrency": "AUCTION",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "LTC-BTC",
+      "baseCurrency": "LTC",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "GST-USD",
+      "baseCurrency": "GST",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BLZ-USD",
+      "baseCurrency": "BLZ",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "OSMO-USD",
+      "baseCurrency": "OSMO",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AVAX-BTC",
+      "baseCurrency": "AVAX",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CTSI-USD",
+      "baseCurrency": "CTSI",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "LPT-USD",
+      "baseCurrency": "LPT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AXS-EUR",
+      "baseCurrency": "AXS",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ETHFI-USD",
+      "baseCurrency": "ETHFI",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "FET-USD",
+      "baseCurrency": "FET",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SOL-USDT",
+      "baseCurrency": "SOL",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "EGLD-USD",
+      "baseCurrency": "EGLD",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "DRIFT-USD",
+      "baseCurrency": "DRIFT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AXL-USD",
+      "baseCurrency": "AXL",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "OP-USDT",
+      "baseCurrency": "OP",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "POL-USD",
+      "baseCurrency": "POL",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "PRCL-USD",
+      "baseCurrency": "PRCL",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ORCA-USD",
+      "baseCurrency": "ORCA",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MATIC-USD",
+      "baseCurrency": "MATIC",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ZEC-USD",
+      "baseCurrency": "ZEC",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SNX-EUR",
+      "baseCurrency": "SNX",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MLN-USD",
+      "baseCurrency": "MLN",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ANKR-EUR",
+      "baseCurrency": "ANKR",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AXS-BTC",
+      "baseCurrency": "AXS",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "GRT-BTC",
+      "baseCurrency": "GRT",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "DASH-USD",
+      "baseCurrency": "DASH",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "API3-USD",
+      "baseCurrency": "API3",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "PRIME-USD",
+      "baseCurrency": "PRIME",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "RPL-USD",
+      "baseCurrency": "RPL",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "EDGE-USD",
+      "baseCurrency": "EDGE",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MATH-USD",
+      "baseCurrency": "MATH",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "RONIN-USD",
+      "baseCurrency": "RONIN",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ALT-USD",
+      "baseCurrency": "ALT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "DEXT-USD",
+      "baseCurrency": "DEXT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BIGTIME-USD",
+      "baseCurrency": "BIGTIME",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "DAI-USD",
+      "baseCurrency": "DAI",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ERN-USD",
+      "baseCurrency": "ERN",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "IDEX-USD",
+      "baseCurrency": "IDEX",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "PYR-USD",
+      "baseCurrency": "PYR",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "BAT-EUR",
+      "baseCurrency": "BAT",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CRV-GBP",
+      "baseCurrency": "CRV",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "PRO-USD",
+      "baseCurrency": "PRO",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "RSR-USD",
+      "baseCurrency": "RSR",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "UNI-USD",
+      "baseCurrency": "UNI",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CGLD-USD",
+      "baseCurrency": "CGLD",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ALEPH-USD",
+      "baseCurrency": "ALEPH",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ATOM-BTC",
+      "baseCurrency": "ATOM",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SNX-BTC",
+      "baseCurrency": "SNX",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "POND-USD",
+      "baseCurrency": "POND",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "RARI-USD",
+      "baseCurrency": "RARI",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "HBAR-USDT",
+      "baseCurrency": "HBAR",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "TRU-USD",
+      "baseCurrency": "TRU",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MANA-ETH",
+      "baseCurrency": "MANA",
+      "quoteCurrency": "ETH",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ZRX-USD",
+      "baseCurrency": "ZRX",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "FARM-USD",
+      "baseCurrency": "FARM",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "INV-USD",
+      "baseCurrency": "INV",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "FIDA-USD",
+      "baseCurrency": "FIDA",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "LCX-USD",
+      "baseCurrency": "LCX",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "POLS-USD",
+      "baseCurrency": "POLS",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MORPHO-USD",
+      "baseCurrency": "MORPHO",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "PNG-USD",
+      "baseCurrency": "PNG",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "AXS-USDT",
+      "baseCurrency": "AXS",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ALGO-BTC",
+      "baseCurrency": "ALGO",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "TRB-USD",
+      "baseCurrency": "TRB",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "PIRATE-USD",
+      "baseCurrency": "PIRATE",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "FLOKI-USD",
+      "baseCurrency": "FLOKI",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "DOGE-BTC",
+      "baseCurrency": "DOGE",
+      "quoteCurrency": "BTC",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ZRO-USD",
+      "baseCurrency": "ZRO",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "WLD-USD",
+      "baseCurrency": "WLD",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "IMX-USDT",
+      "baseCurrency": "IMX",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "POWR-USD",
+      "baseCurrency": "POWR",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "FORT-USD",
+      "baseCurrency": "FORT",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "DOT-EUR",
+      "baseCurrency": "DOT",
+      "quoteCurrency": "EUR",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ACH-USD",
+      "baseCurrency": "ACH",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "HOPR-USD",
+      "baseCurrency": "HOPR",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "FIL-GBP",
+      "baseCurrency": "FIL",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MATIC-GBP",
+      "baseCurrency": "MATIC",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ARB-USD",
+      "baseCurrency": "ARB",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "PUNDIX-USD",
+      "baseCurrency": "PUNDIX",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "SAND-USD",
+      "baseCurrency": "SAND",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ACX-USD",
+      "baseCurrency": "ACX",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "T-USD",
+      "baseCurrency": "T",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "C98-USD",
+      "baseCurrency": "C98",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "MOODENG-USD",
+      "baseCurrency": "MOODENG",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "LQTY-USD",
+      "baseCurrency": "LQTY",
+      "quoteCurrency": "USD",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "ADA-USDT",
+      "baseCurrency": "ADA",
+      "quoteCurrency": "USDT",
+      "status": "online",
+      "tradingDisabled": false
+    },
+    {
+      "symbol": "CHZ-GBP",
+      "baseCurrency": "CHZ",
+      "quoteCurrency": "GBP",
+      "status": "online",
+      "tradingDisabled": false
+    }
+  ]
+}

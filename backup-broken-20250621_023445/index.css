@@ -1,0 +1,591 @@
+
+body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+    background-color: #121212;
+    color: #e0e0e0;
+    display: flex; /* Helps manage sidebar interaction */
+    min-height: 100vh;
+    font-size: 14px;
+    overflow-x: hidden; /* Prevent horizontal scrollbars from sidebar animation */
+}
+
+/* Pulse animation for arbitrage opportunities */
+@keyframes pulse {
+    0% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.8; transform: scale(1.05); }
+    100% { opacity: 1; transform: scale(1); }
+}
+
+#info-sidebar {
+    position: fixed;
+    left: -320px; /* Start off-screen, width + some padding */
+    top: 0;
+    width: 300px;
+    height: 100%;
+    background-color: #1e1e1e;
+    border-right: 1px solid #333;
+    box-shadow: 2px 0 10px rgba(0,0,0,0.3);
+    z-index: 1000;
+    transition: left 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+}
+
+#info-sidebar.open {
+    left: 0;
+}
+
+.sidebar-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    border-bottom: 1px solid #333;
+    background-color: #2a2a2a;
+    gap: 10px; /* Add gap for buttons */
+}
+
+.sidebar-header h2 {
+    margin: 0;
+    font-size: 1.2em;
+    color: #fff;
+    flex-grow: 1; /* Allow title to take space */
+}
+
+#refresh-sidebar-stats-btn {
+    background: none;
+    border: 1px solid #555;
+    color: #ccc;
+    font-size: 0.9em;
+    padding: 4px 8px;
+    border-radius: 4px;
+    cursor: pointer;
+    white-space: nowrap;
+}
+#refresh-sidebar-stats-btn:hover {
+    background-color: #383838;
+    color: #fff;
+    border-color: #666;
+}
+
+
+#close-sidebar-btn {
+    background: none;
+    border: none;
+    color: #aaa;
+    font-size: 1.8em;
+    cursor: pointer;
+    padding: 0 5px;
+}
+#close-sidebar-btn:hover {
+    color: #fff;
+}
+
+.sidebar-content {
+    padding: 15px;
+    overflow-y: auto;
+    flex-grow: 1;
+}
+.sidebar-content::-webkit-scrollbar { width: 6px; }
+.sidebar-content::-webkit-scrollbar-track { background: #2a2a2a; border-radius: 3px; }
+.sidebar-content::-webkit-scrollbar-thumb { background: #555; border-radius: 3px; }
+.sidebar-content::-webkit-scrollbar-thumb:hover { background: #777; }
+
+
+.sidebar-content section {
+    margin-bottom: 20px;
+}
+
+.sidebar-content h3 {
+    font-size: 1em;
+    color: #00bcd4; /* Accent color for sidebar section titles */
+    margin-top: 0;
+    margin-bottom: 8px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #383838;
+}
+
+.sidebar-item {
+    font-size: 0.9em;
+    padding: 4px 0;
+    color: #ccc;
+    word-wrap: break-word;
+}
+.sidebar-item strong {
+    color: #e0e0e0;
+}
+.sidebar-item.summary strong {
+    color: #00bcd4;
+}
+#fees-content p, #funding-content p, #volume-content p { /* Placeholder/loading text */
+    font-style: italic;
+    color: #888;
+    font-size: 0.9em;
+}
+
+
+.container {
+    width: 100%;
+    max-width: 1300px; /* Max width of main content */
+    padding: 15px;
+    box-sizing: border-box;
+    margin-left: 0; /* Default */
+    transition: margin-left 0.3s ease-in-out;
+    flex-grow: 1; /* Allow container to take up space */
+    display: flex;
+    flex-direction: column;
+}
+
+body.sidebar-active .container {
+    /* Adjust margin when sidebar is open, depends on viewport width and preference */
+    /* margin-left: 300px; */ /* Example: Push content by sidebar width */
+}
+
+
+header {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    align-items: stretch;
+    margin-bottom: 15px;
+    padding-bottom: 10px;
+    border-bottom: 1px solid #333;
+}
+
+.header-top-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+header h1 {
+    font-size: 1.5em;
+    margin: 0;
+    color: #ffffff;
+    text-align: center;
+    flex-grow: 1; /* Allow h1 to take space so button can be on the side */
+}
+
+#toggle-sidebar-btn {
+    background-color: #333;
+    color: #e0e0e0;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 0.9em;
+    margin-left: 10px; /* Space from h1 if on same line visual */
+}
+#toggle-sidebar-btn:hover {
+    background-color: #444;
+}
+
+
+.controls {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+}
+
+.controls > div {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+#exchange-selector, #dex-selector {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    flex-wrap: wrap;
+}
+
+#dex-selector {
+    border-left: 1px solid #444;
+    padding-left: 15px;
+    margin-left: 10px;
+}
+
+#exchange-selector span, .view-mode-selector span:first-child {
+    font-weight: bold;
+}
+
+#exchange-selector label {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+    font-size: 0.9em;
+    cursor: pointer;
+}
+
+#asset-select {
+    padding: 8px 12px;
+    border-radius: 4px;
+    border: 1px solid #444;
+    background-color: #2a2a2a;
+    color: #e0e0e0;
+    font-size: 0.9em;
+}
+
+.view-mode-selector {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+#view-mode-label {
+    font-size: 0.9em;
+    min-width: 70px;
+}
+.toggle-switch {
+    position: relative;
+    display: inline-block;
+    width: 44px;
+    height: 24px;
+}
+.toggle-switch input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+.slider {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #555;
+    transition: .4s;
+    border-radius: 24px;
+}
+.slider:before {
+    position: absolute;
+    content: "";
+    height: 18px;
+    width: 18px;
+    left: 3px;
+    bottom: 3px;
+    background-color: white;
+    transition: .4s;
+    border-radius: 50%;
+}
+input:checked + .slider {
+    background-color: #26de81;
+}
+input:checked + .slider:before {
+    transform: translateX(20px);
+}
+
+
+#connection-status-summary {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 5px;
+}
+
+.connection-item {
+    font-size: 0.8em;
+    padding: 3px 8px;
+    border-radius: 4px;
+    white-space: nowrap;
+}
+
+.status-connecting { background-color: #4a4a4a; color: #ccc; }
+.status-connected { background-color: #28a745; color: white; }
+.status-disconnected { background-color: #777; color: #ddd; }
+.status-error { background-color: #dc3545; color: white; }
+.status-disabled { background-color: #333; color: #888; }
+
+
+.spread-container {
+    text-align: center;
+    margin-bottom: 15px;
+    font-size: 1.2em;
+    padding: 10px;
+    background-color: #1e1e1e;
+    border-radius: 4px;
+}
+
+.spread-container h2 {
+    margin: 0;
+    font-weight: normal;
+}
+
+#spread-value {
+    font-weight: bold;
+}
+
+.order-book-container {
+    display: flex;
+    gap: 15px;
+    width: 100%;
+    /* flex-grow: 1; Let chart define its own height */
+    min-height: 300px; /* Ensure order book has some minimum height */
+}
+
+.order-book-column {
+    flex: 1;
+    background-color: #1e1e1e;
+    border-radius: 4px;
+    padding: 10px;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+}
+
+.order-book-column h3 {
+    text-align: center;
+    margin-top: 0;
+    margin-bottom: 10px;
+    font-size: 1.1em;
+    color: #ffffff;
+    border-bottom: 1px solid #333;
+    padding-bottom: 8px;
+}
+
+.order-book-header {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    font-weight: bold;
+    font-size: 0.8em;
+    padding: 5px 8px;
+    color: #aaa;
+    border-bottom: 1px solid #2a2a2a;
+    gap: 5px;
+}
+
+#bids-column .order-book-header .total-header { text-align: right; }
+#bids-column .order-book-header .quantity-header { text-align: right; }
+#bids-column .order-book-header .price-header { text-align: right; }
+
+#asks-column .order-book-header .price-header { text-align: left; }
+#asks-column .order-book-header .quantity-header { text-align: right; }
+#asks-column .order-book-header .total-header { text-align: right; }
+
+
+.order-book-list {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    /* max-height: 65vh; Remove fixed max-height, let flexbox handle it */
+    overflow-y: auto;
+    font-size: 0.9em;
+    flex-grow: 1;
+}
+
+.order-book-list::-webkit-scrollbar { width: 8px; }
+.order-book-list::-webkit-scrollbar-track { background: #2a2a2a; border-radius: 4px; }
+.order-book-list::-webkit-scrollbar-thumb { background: #555; border-radius: 4px; }
+.order-book-list::-webkit-scrollbar-thumb:hover { background: #777; }
+
+
+.order-book-row {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    padding: 4px 8px;
+    border-bottom: 1px solid #2a2a2a;
+    position: relative;
+    overflow: hidden;
+}
+
+.order-book-row:last-child {
+    border-bottom: none;
+}
+
+.order-book-row span {
+    z-index: 1;
+    position: relative;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.order-book-row .price { color: #e0e0e0; display: flex; align-items: center; }
+.order-book-row-bid .price { color: #26de81; }
+.order-book-row-ask .price { color: #ff4757; }
+
+.order-book-row .quantity { text-align: right; color: #ccc;}
+.order-book-row .total { text-align: right; color: #aaa;}
+
+#bids-list .order-book-row .total    { text-align: right;}
+#bids-list .order-book-row .quantity { text-align: right;}
+#bids-list .order-book-row .price    { text-align: right; justify-content: flex-end;}
+
+#asks-list .order-book-row .price    { text-align: left; justify-content: flex-start;}
+#asks-list .order-book-row .quantity { text-align: right;}
+#asks-list .order-book-row .total    { text-align: right;}
+
+.exchange-tag {
+    font-size: 0.75em;
+    padding: 1px 4px;
+    border-radius: 3px;
+    color: #000;
+    margin-right: 5px;
+    font-weight: bold;
+}
+#asks-list .order-book-row .price .exchange-tag {
+    margin-right: 5px;
+    margin-left: 0;
+}
+#bids-list .order-book-row .price .exchange-tag {
+    margin-left: 5px;
+    margin-right: 0;
+    order: -1;
+}
+
+
+.depth-bar {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    opacity: 0.15;
+    z-index: 0;
+    transition: width 0.1s linear;
+}
+
+.order-book-row-bid .depth-bar {
+    right: 0;
+    background-color: #26de81;
+}
+
+.order-book-row-ask .depth-bar {
+    left: 0;
+    background-color: #ff4757;
+}
+
+/* Chart Section Styles */
+#chart-section-container {
+    margin-top: 20px;
+    background-color: #1e1e1e;
+    border-radius: 4px;
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+}
+
+#chart-timeframe-selector {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 10px;
+}
+
+#chart-timeframe-selector button {
+    padding: 6px 12px;
+    font-size: 0.85em;
+    background-color: #333;
+    color: #ccc;
+    border: 1px solid #444;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.2s, color 0.2s;
+}
+
+#chart-timeframe-selector button:hover {
+    background-color: #444;
+    color: #fff;
+}
+
+#chart-timeframe-selector button.active {
+    background-color: #007bff;
+    color: white;
+    border-color: #0056b3;
+}
+
+#chart-container {
+    width: 100%;
+    height: 400px; /* Or use aspect-ratio if supported and desired */
+    min-height: 300px;
+}
+
+
+/* Responsive adjustments */
+@media (max-width: 1024px) { /* Adjust breakpoint for sidebar overlap */
+    body.sidebar-active .container {
+        margin-left: 0; /* Sidebar overlays on smaller screens */
+    }
+     .order-book-list {
+        max-height: 50vh; /* Adjust for mid-size screens */
+    }
+}
+
+@media (max-width: 768px) {
+    .header-top-row {
+        /* flex-direction: column; Align items vertically if needed */
+        /* align-items: flex-start; */
+    }
+    header h1 {
+        font-size: 1.3em;
+        text-align: left; /* Or center if toggle button is below */
+    }
+    #toggle-sidebar-btn {
+         /* Adjust if needed for smaller screens */
+    }
+    .controls {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .controls > div, #exchange-selector, .view-mode-selector {
+        justify-content: center;
+        width: 100%;
+    }
+    .order-book-container {
+        flex-direction: column;
+        min-height: auto; /* Allow shrinking on mobile */
+    }
+    .order-book-column {
+        margin-bottom: 15px;
+    }
+    .order-book-list {
+        max-height: 40vh; /* Adjust for smaller screens */
+    }
+    .spread-container { font-size: 1em; }
+    #chart-container {
+        height: 300px;
+    }
+}
+
+@media (max-width: 480px) {
+    body { font-size: 13px; }
+    #info-sidebar {
+        width: 260px; /* Make sidebar a bit smaller */
+        left: -280px;
+    }
+    .sidebar-header {
+        padding: 8px 10px;
+        gap: 5px;
+    }
+    .sidebar-header h2 {
+        font-size: 1.1em;
+    }
+    #refresh-sidebar-stats-btn {
+        font-size: 0.8em;
+        padding: 3px 6px;
+    }
+    #close-sidebar-btn {
+        font-size: 1.6em;
+    }
+
+    header h1 { font-size: 1.2em; }
+    #asset-select { font-size: 0.85em; padding: 6px 10px;}
+    .order-book-header { font-size: 0.75em; }
+    .order-book-list { font-size: 0.85em; max-height: 35vh; }
+    .connection-item { font-size: 0.75em; padding: 2px 6px;}
+    .exchange-tag { font-size: 0.7em; padding: 1px 3px; margin-right: 3px;}
+    #bids-list .order-book-row .price .exchange-tag { margin-left: 3px;}
+    #chart-timeframe-selector button { padding: 5px 10px; font-size: 0.8em; }
+    #chart-container {
+        height: 250px;
+    }
+}
+/* Ensure equal column widths in grid */
+.order-book-header span, .order-book-row span {
+    flex-grow: 1;
+}

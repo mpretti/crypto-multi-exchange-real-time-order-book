@@ -1,0 +1,55 @@
+{
+  "exchange": "Jupiter (Simulated)",
+  "count": 8,
+  "lastUpdated": "2025-06-21T21:29:47.568Z",
+  "pairs": [
+    {
+      "symbol": "SOL/USDC",
+      "baseAsset": "SOL",
+      "quoteAsset": "USDC",
+      "type": "dex"
+    },
+    {
+      "symbol": "SOL/USDT",
+      "baseAsset": "SOL",
+      "quoteAsset": "USDT",
+      "type": "dex"
+    },
+    {
+      "symbol": "RAY/SOL",
+      "baseAsset": "RAY",
+      "quoteAsset": "SOL",
+      "type": "dex"
+    },
+    {
+      "symbol": "SRM/SOL",
+      "baseAsset": "SRM",
+      "quoteAsset": "SOL",
+      "type": "dex"
+    },
+    {
+      "symbol": "MNGO/SOL",
+      "baseAsset": "MNGO",
+      "quoteAsset": "SOL",
+      "type": "dex"
+    },
+    {
+      "symbol": "ORCA/SOL",
+      "baseAsset": "ORCA",
+      "quoteAsset": "SOL",
+      "type": "dex"
+    },
+    {
+      "symbol": "STEP/SOL",
+      "baseAsset": "STEP",
+      "quoteAsset": "SOL",
+      "type": "dex"
+    },
+    {
+      "symbol": "FIDA/SOL",
+      "baseAsset": "FIDA",
+      "quoteAsset": "SOL",
+      "type": "dex"
+    }
+  ]
+}

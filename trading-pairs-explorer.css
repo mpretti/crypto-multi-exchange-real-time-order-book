@@ -1,0 +1,324 @@
+/* Trading Pairs Explorer - Advanced Styling */
+
+:root {
+    --primary-gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    --secondary-gradient: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    --success-gradient: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+    --card-bg: rgba(255, 255, 255, 0.95);
+    --card-shadow: 0 8px 32px rgba(0,0,0,0.1);
+    --border-radius: 15px;
+    --transition: all 0.3s ease;
+}
+
+/* Custom scrollbar */
+.table-container::-webkit-scrollbar {
+    width: 8px;
+}
+
+.table-container::-webkit-scrollbar-track {
+    background: #f1f1f1;
+    border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb {
+    background: #c1c1c1;
+    border-radius: 4px;
+}
+
+.table-container::-webkit-scrollbar-thumb:hover {
+    background: #a8a8a8;
+}
+
+/* Enhanced animations */
+@keyframes fadeInUp {
+    from {
+        opacity: 0;
+        transform: translateY(30px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+@keyframes pulse {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.05);
+    }
+}
+
+.stat-card {
+    animation: fadeInUp 0.6s ease forwards;
+}
+
+.stat-card:nth-child(1) { animation-delay: 0.1s; }
+.stat-card:nth-child(2) { animation-delay: 0.2s; }
+.stat-card:nth-child(3) { animation-delay: 0.3s; }
+.stat-card:nth-child(4) { animation-delay: 0.4s; }
+
+/* Enhanced hover effects */
+.exchange-chip {
+    position: relative;
+    overflow: hidden;
+}
+
+.exchange-chip::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s;
+}
+
+.exchange-chip:hover::before {
+    left: 100%;
+}
+
+/* Advanced table styling */
+.pairs-table tr {
+    transition: var(--transition);
+}
+
+.pairs-table tr:hover {
+    background: linear-gradient(90deg, #f8f9fa, #e9ecef, #f8f9fa);
+    transform: scale(1.01);
+}
+
+/* Loading animation */
+.loading {
+    position: relative;
+}
+
+.loading::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 20px;
+    height: 20px;
+    margin: -10px 0 0 -10px;
+    border: 2px solid #f3f3f3;
+    border-top: 2px solid #667eea;
+    border-radius: 50%;
+    animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+/* Volume cell styling */
+.volume-cell {
+    font-family: 'Monaco', 'Menlo', monospace;
+    text-align: right;
+    min-width: 140px;
+}
+
+.volume-data {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-end;
+    gap: 2px;
+}
+
+.volume-amount {
+    font-weight: bold;
+    font-size: 0.95em;
+}
+
+.volume-amount.high {
+    color: #16a34a;
+}
+
+.volume-amount.medium {
+    color: #ea580c;
+}
+
+.volume-amount.low {
+    color: #6b7280;
+}
+
+.volume-meta {
+    font-size: 0.75em;
+    color: #6b7280;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.volume-timeframe {
+    background: rgba(99, 102, 241, 0.1);
+    color: #6366f1;
+    padding: 1px 4px;
+    border-radius: 3px;
+    font-weight: 500;
+}
+
+.volume-updated {
+    color: #9ca3af;
+}
+
+.volume-loading {
+    color: #6b7280;
+    font-style: italic;
+    font-size: 0.85em;
+}
+
+.volume-error {
+    color: #dc2626;
+    font-size: 0.85em;
+}
+
+/* Enhanced exchange badges */
+.exchange-badge {
+    position: relative;
+    overflow: hidden;
+    text-shadow: 0 1px 2px rgba(0,0,0,0.2);
+}
+
+.exchange-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+    transition: left 0.3s;
+}
+
+.exchange-badge:hover::before {
+    left: 100%;
+}
+
+/* Responsive grid improvements */
+@media (max-width: 1200px) {
+    .top-pairs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (max-width: 768px) {
+    .top-pairs-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .pairs-table th:nth-child(3),
+    .pairs-table td:nth-child(3) {
+        display: none;
+    }
+}
+
+@media (max-width: 640px) {
+    .pairs-table th:nth-child(4),
+    .pairs-table td:nth-child(4) {
+        display: none;
+    }
+}
+
+@media (max-width: 480px) {
+    .pairs-table th:nth-child(2),
+    .pairs-table td:nth-child(2),
+    .pairs-table th:nth-child(6),
+    .pairs-table td:nth-child(6) {
+        display: none;
+    }
+}
+
+/* Dark mode support */
+@media (prefers-color-scheme: dark) {
+    body {
+        background: linear-gradient(135deg, #2d1b69 0%, #11998e 100%);
+    }
+    
+    .stat-card,
+    .controls,
+    .results-container,
+    .top-pairs {
+        background: rgba(30, 30, 30, 0.95);
+        color: #e0e0e0;
+    }
+    
+    .pairs-table th {
+        background: #1a1a1a;
+        color: #e0e0e0;
+    }
+    
+    .pairs-table tr:hover {
+        background: linear-gradient(90deg, #2a2a2a, #3a3a3a, #2a2a2a);
+    }
+    
+    .filter-group input,
+    .filter-group select {
+        background: #2a2a2a;
+        color: #e0e0e0;
+        border-color: #555;
+    }
+    
+    .exchange-chip {
+        background: #2a2a2a;
+        border-color: #555;
+        color: #e0e0e0;
+    }
+    
+    .volume-amount.high {
+        color: #22c55e !important;
+    }
+    
+    .volume-amount.medium {
+        color: #f97316 !important;
+    }
+    
+    .volume-amount.low {
+        color: #9ca3af !important;
+    }
+    
+    .volume-timeframe {
+        background: rgba(99, 102, 241, 0.2) !important;
+        color: #a5b4fc !important;
+    }
+    
+    .volume-updated {
+        color: #6b7280 !important;
+    }
+    
+    .top-pair-item {
+        background: #2a2a2a;
+        color: #e0e0e0;
+    }
+}
+
+/* Print styles */
+@media print {
+    body {
+        background: white !important;
+        color: black !important;
+    }
+    
+    .controls,
+    .header {
+        display: none;
+    }
+    
+    .results-container {
+        box-shadow: none;
+        border: 1px solid #ccc;
+    }
+    
+    .pairs-table {
+        font-size: 12px;
+    }
+    
+    .exchange-badge {
+        background: #f0f0f0 !important;
+        color: black !important;
+        border: 1px solid #ccc;
+    }
+} 

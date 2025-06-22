@@ -1,0 +1,91 @@
+{
+  "exchange": "Kraken",
+  "count": 14,
+  "lastUpdated": "2025-06-21T21:27:10.083Z",
+  "pairs": [
+    {
+      "symbol": "PI_XBTUSD",
+      "underlying": "rr_xbtusd",
+      "tradeable": true,
+      "type": "futures_inverse"
+    },
+    {
+      "symbol": "PI_ETHUSD",
+      "underlying": "rr_ethusd",
+      "tradeable": true,
+      "type": "futures_inverse"
+    },
+    {
+      "symbol": "PI_LTCUSD",
+      "underlying": "rr_ltcusd",
+      "tradeable": true,
+      "type": "futures_inverse"
+    },
+    {
+      "symbol": "PI_XRPUSD",
+      "underlying": "rr_xrpusd",
+      "tradeable": true,
+      "type": "futures_inverse"
+    },
+    {
+      "symbol": "FI_XBTUSD_250627",
+      "underlying": "rr_xbtusd",
+      "tradeable": true,
+      "type": "futures_inverse"
+    },
+    {
+      "symbol": "FI_ETHUSD_250627",
+      "underlying": "rr_ethusd",
+      "tradeable": true,
+      "type": "futures_inverse"
+    },
+    {
+      "symbol": "FI_XBTUSD_250926",
+      "underlying": "rr_xbtusd",
+      "tradeable": true,
+      "type": "futures_inverse"
+    },
+    {
+      "symbol": "FI_ETHUSD_250926",
+      "underlying": "rr_ethusd",
+      "tradeable": true,
+      "type": "futures_inverse"
+    },
+    {
+      "symbol": "FI_LTCUSD_250627",
+      "underlying": "rr_ltcusd",
+      "tradeable": true,
+      "type": "futures_inverse"
+    },
+    {
+      "symbol": "FI_XRPUSD_250627",
+      "underlying": "rr_xrpusd",
+      "tradeable": true,
+      "type": "futures_inverse"
+    },
+    {
+      "symbol": "FI_XRPUSD_250926",
+      "underlying": "rr_xrpusd",
+      "tradeable": true,
+      "type": "futures_inverse"
+    },
+    {
+      "symbol": "FI_XBTUSD_251226",
+      "underlying": "rr_xbtusd",
+      "tradeable": true,
+      "type": "futures_inverse"
+    },
+    {
+      "symbol": "FI_LTCUSD_250926",
+      "underlying": "rr_ltcusd",
+      "tradeable": true,
+      "type": "futures_inverse"
+    },
+    {
+      "symbol": "FI_ETHUSD_251226",
+      "underlying": "rr_ethusd",
+      "tradeable": true,
+      "type": "futures_inverse"
+    }
+  ]
+}

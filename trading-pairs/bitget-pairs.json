@@ -1,0 +1,5565 @@
+{
+  "exchange": "Bitget",
+  "count": 794,
+  "lastUpdated": "2025-06-21T21:27:18.468Z",
+  "pairs": [
+    {
+      "symbol": "LUMIAUSDT",
+      "baseCoin": "LUMIA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GOATUSDT",
+      "baseCoin": "GOAT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ENAEUR",
+      "baseCoin": "ENA",
+      "quoteCoin": "EUR",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TONEUR",
+      "baseCoin": "TON",
+      "quoteCoin": "EUR",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SXRPSUSDT",
+      "baseCoin": "SXRP",
+      "quoteCoin": "SUSDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SHIBEUR",
+      "baseCoin": "SHIB",
+      "quoteCoin": "EUR",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WLDEUR",
+      "baseCoin": "WLD",
+      "quoteCoin": "EUR",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DBRUSDT",
+      "baseCoin": "DBR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ACTUSDT",
+      "baseCoin": "ACT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GRASSUSDT",
+      "baseCoin": "GRASS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NEIROCTOEUR",
+      "baseCoin": "NEIROCTO",
+      "quoteCoin": "EUR",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SUIEUR",
+      "baseCoin": "SUI",
+      "quoteCoin": "EUR",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TRXUSDT",
+      "baseCoin": "TRX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "XUSDT",
+      "baseCoin": "X",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LINKUSDT",
+      "baseCoin": "LINK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ONDOEUR",
+      "baseCoin": "ONDO",
+      "quoteCoin": "EUR",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "UNIUSDT",
+      "baseCoin": "UNI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SUSHIUSDT",
+      "baseCoin": "SUSHI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "COMPUSDT",
+      "baseCoin": "COMP",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SCREUR",
+      "baseCoin": "SCR",
+      "quoteCoin": "EUR",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AAVEUSDT",
+      "baseCoin": "AAVE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SCRUSDT",
+      "baseCoin": "SCR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "YFIUSDT",
+      "baseCoin": "YFI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NEAREUR",
+      "baseCoin": "NEAR",
+      "quoteCoin": "EUR",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "baseCoin": "DOGE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CHZUSDT",
+      "baseCoin": "CHZ",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PNUTUSDT",
+      "baseCoin": "PNUT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SWELLUSDT",
+      "baseCoin": "SWELL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WEETHETH",
+      "baseCoin": "WEETH",
+      "quoteCoin": "ETH",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LUCEUSDT",
+      "baseCoin": "LUCE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FUSEUSDT",
+      "baseCoin": "FUSE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BANUSDT",
+      "baseCoin": "BAN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NFPUSDT",
+      "baseCoin": "NFP",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NSUSDT",
+      "baseCoin": "NS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "HIPPOUSDT",
+      "baseCoin": "HIPPO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PEPECOINUSDT",
+      "baseCoin": "PEPECOIN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FARTCOINUSDT",
+      "baseCoin": "FARTCOIN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PEAQUSDT",
+      "baseCoin": "PEAQ",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MVUSDT",
+      "baseCoin": "MV",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BTCWUSD",
+      "baseCoin": "BTC",
+      "quoteCoin": "WUSD",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MOBILEUSDT",
+      "baseCoin": "MOBILE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SWCHUSDT",
+      "baseCoin": "SWCH",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AIUSDT",
+      "baseCoin": "AI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SOLUSDE",
+      "baseCoin": "SOL",
+      "quoteCoin": "USDE",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SNEKUSDT",
+      "baseCoin": "SNEK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "RIFSOLUSDT",
+      "baseCoin": "RIFSOL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "OORTUSDT",
+      "baseCoin": "OORT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SOLOUSDT",
+      "baseCoin": "SOLO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "XAIUSDT",
+      "baseCoin": "XAI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FISUSDT",
+      "baseCoin": "FIS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ELAUSDT",
+      "baseCoin": "ELA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BONEUSDT",
+      "baseCoin": "BONE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "RDNTUSDT",
+      "baseCoin": "RDNT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SAROSUSDT",
+      "baseCoin": "SAROS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MANTAUSDT",
+      "baseCoin": "MANTA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PONKEUSDT",
+      "baseCoin": "PONKE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PROPSUSDT",
+      "baseCoin": "PROPS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "UPCUSDT",
+      "baseCoin": "UPC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ORAIUSDT",
+      "baseCoin": "ORAI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "IOSTUSDT",
+      "baseCoin": "IOST",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "COREUSDT",
+      "baseCoin": "CORE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ALTUSDT",
+      "baseCoin": "ALT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ONDOUSDT",
+      "baseCoin": "ONDO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WIFUSDT",
+      "baseCoin": "WIF",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AVAUSDT",
+      "baseCoin": "AVA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "THEUSDT",
+      "baseCoin": "THE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CHESSUSDT",
+      "baseCoin": "CHESS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ORNJUSDT",
+      "baseCoin": "ORNJ",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "JUPUSDT",
+      "baseCoin": "JUP",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DMAILUSDT",
+      "baseCoin": "DMAIL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "baseCoin": "BLUR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "API3USDT",
+      "baseCoin": "API3",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "XAUTUSDT",
+      "baseCoin": "XAUT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "RAREUSDT",
+      "baseCoin": "RARE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TRUUSDT",
+      "baseCoin": "TRU",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BIZAUSDT",
+      "baseCoin": "BIZA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "USDCEUR",
+      "baseCoin": "USDC",
+      "quoteCoin": "EUR",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "VRUSDT",
+      "baseCoin": "VR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FIREUSDT",
+      "baseCoin": "FIRE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CFXUSDT",
+      "baseCoin": "CFX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ZETAUSDT",
+      "baseCoin": "ZETA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MDTUSDT",
+      "baseCoin": "MDT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "COREUMUSDT",
+      "baseCoin": "COREUM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "VELODROMEUSDT",
+      "baseCoin": "VELODROME",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DYMUSDT",
+      "baseCoin": "DYM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MAVIAUSDT",
+      "baseCoin": "MAVIA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NAVXUSDT",
+      "baseCoin": "NAVX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TRACUSDT",
+      "baseCoin": "TRAC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LQTYUSDT",
+      "baseCoin": "LQTY",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "STRKUSDT",
+      "baseCoin": "STRK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ASTOUSDT",
+      "baseCoin": "ASTO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WLDUSDC",
+      "baseCoin": "WLD",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "HTXUSDT",
+      "baseCoin": "HTX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NEOUSDT",
+      "baseCoin": "NEO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FLMUSDT",
+      "baseCoin": "FLM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PIXELUSDT",
+      "baseCoin": "PIXEL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PRIMEUSDT",
+      "baseCoin": "PRIME",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ELONUSDT",
+      "baseCoin": "ELON",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "VAIUSDT",
+      "baseCoin": "VAI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ASTRUSDT",
+      "baseCoin": "ASTR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "VELOUSDT",
+      "baseCoin": "VELO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "STXUSDT",
+      "baseCoin": "STX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FONUSDT",
+      "baseCoin": "FON",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TRXETH",
+      "baseCoin": "TRX",
+      "quoteCoin": "ETH",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LTCETH",
+      "baseCoin": "LTC",
+      "quoteCoin": "ETH",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GFALUSDT",
+      "baseCoin": "GFAL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "RJVUSDT",
+      "baseCoin": "RJV",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "RONUSDT",
+      "baseCoin": "RON",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "XEMUSDT",
+      "baseCoin": "XEM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ZENUSDT",
+      "baseCoin": "ZEN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LOOKSUSDT",
+      "baseCoin": "LOOKS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PEOPLEUSDT",
+      "baseCoin": "PEOPLE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "METISUSDT",
+      "baseCoin": "METIS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ACAUSDT",
+      "baseCoin": "ACA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ALPHAUSDT",
+      "baseCoin": "ALPHA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BABYDOGEUSDT",
+      "baseCoin": "BABYDOGE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "JUVUSDT",
+      "baseCoin": "JUV",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "KAIAUSDT",
+      "baseCoin": "KAIA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "USDCUSDT",
+      "baseCoin": "USDC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AUDIOUSDT",
+      "baseCoin": "AUDIO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "C98USDT",
+      "baseCoin": "C98",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TLOSUSDT",
+      "baseCoin": "TLOS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ILVUSDT",
+      "baseCoin": "ILV",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WEMIXUSDT",
+      "baseCoin": "WEMIX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "RSS3USDT",
+      "baseCoin": "RSS3",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ARPAUSDT",
+      "baseCoin": "ARPA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DUSKUSDT",
+      "baseCoin": "DUSK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WOOUSDT",
+      "baseCoin": "WOO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FTTUSDT",
+      "baseCoin": "FTT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WINUSDT",
+      "baseCoin": "WIN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SUNUSDT",
+      "baseCoin": "SUN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PSTAKEUSDT",
+      "baseCoin": "PSTAKE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ARUSDT",
+      "baseCoin": "AR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PERPUSDT",
+      "baseCoin": "PERP",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LUNAUSDT",
+      "baseCoin": "LUNA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GMTUSDT",
+      "baseCoin": "GMT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SDUSDT",
+      "baseCoin": "SD",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MAGICUSDT",
+      "baseCoin": "MAGIC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "KSMUSDT",
+      "baseCoin": "KSM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "APEUSDT",
+      "baseCoin": "APE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "POKTUSDT",
+      "baseCoin": "POKT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "XDCUSDT",
+      "baseCoin": "XDC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ADAUSDT",
+      "baseCoin": "ADA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "EGLDUSDT",
+      "baseCoin": "EGLD",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "STGUSDT",
+      "baseCoin": "STG",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "RUNEUSDT",
+      "baseCoin": "RUNE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "COWUSDT",
+      "baseCoin": "COW",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "RAYUSDT",
+      "baseCoin": "RAY",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BSWUSDT",
+      "baseCoin": "BSW",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DODOUSDT",
+      "baseCoin": "DODO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ORCAUSDT",
+      "baseCoin": "ORCA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MORPHOUSDT",
+      "baseCoin": "MORPHO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BTCUSDE",
+      "baseCoin": "BTC",
+      "quoteCoin": "USDE",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ETHUSDE",
+      "baseCoin": "ETH",
+      "quoteCoin": "USDE",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CHEEMSUSDT",
+      "baseCoin": "CHEEMS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ZRCUSDT",
+      "baseCoin": "ZRC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MEMEFIUSDT",
+      "baseCoin": "MEMEFI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AIXBTUSDT",
+      "baseCoin": "AIXBT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CLANKERUSDT",
+      "baseCoin": "CLANKER",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CHILLGUYUSDT",
+      "baseCoin": "CHILLGUY",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MAJORUSDT",
+      "baseCoin": "MAJOR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MGTUSDT",
+      "baseCoin": "MGT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FUSDT",
+      "baseCoin": "F",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "OMUSDT",
+      "baseCoin": "OM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "XIONUSDT",
+      "baseCoin": "XION",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "HBARUSDT",
+      "baseCoin": "HBAR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ALCHUSDT",
+      "baseCoin": "ALCH",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "KOMAUSDT",
+      "baseCoin": "KOMA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MOZUSDT",
+      "baseCoin": "MOZ",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MEUSDT",
+      "baseCoin": "ME",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BGSCUSDT",
+      "baseCoin": "BGSC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MOVEUSDT",
+      "baseCoin": "MOVE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ARCUSDT",
+      "baseCoin": "ARC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "HOLDCOINUSDT",
+      "baseCoin": "HOLDCOIN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GRIFFAINUSDT",
+      "baseCoin": "GRIFFAIN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "HYPEUSDT",
+      "baseCoin": "HYPE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "REXUSDT",
+      "baseCoin": "REX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ISLANDUSDT",
+      "baseCoin": "ISLAND",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "USUALUSDT",
+      "baseCoin": "USUAL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PENGUUSDT",
+      "baseCoin": "PENGU",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "VANAUSDT",
+      "baseCoin": "VANA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ALGOUSDT",
+      "baseCoin": "ALGO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TOMAUSDT",
+      "baseCoin": "TOMA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "EARNMUSDT",
+      "baseCoin": "EARNM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FUELUSDT",
+      "baseCoin": "FUEL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SONICUSDT",
+      "baseCoin": "SONIC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BIOUSDT",
+      "baseCoin": "BIO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SWARMSUSDT",
+      "baseCoin": "SWARMS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ZEREBROUSDT",
+      "baseCoin": "ZEREBRO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BLUEUSDT",
+      "baseCoin": "BLUE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WEETHUSDT",
+      "baseCoin": "WEETH",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PHAUSDT",
+      "baseCoin": "PHA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AI16ZUSDT",
+      "baseCoin": "AI16Z",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GPSUSDT",
+      "baseCoin": "GPS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SOLVUSDT",
+      "baseCoin": "SOLV",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TREATUSDT",
+      "baseCoin": "TREAT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PIPPINUSDT",
+      "baseCoin": "PIPPIN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DUSDT",
+      "baseCoin": "D",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BUZZUSDT",
+      "baseCoin": "BUZZ",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "U2UUSDT",
+      "baseCoin": "U2U",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "XTERUSDT",
+      "baseCoin": "XTER",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "HIVEUSDT",
+      "baseCoin": "HIVE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SUSDT",
+      "baseCoin": "S",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MELANIAUSDT",
+      "baseCoin": "MELANIA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TRUMPUSDT",
+      "baseCoin": "TRUMP",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AVAAIUSDT",
+      "baseCoin": "AVAAI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FARMUSDT",
+      "baseCoin": "FARM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NCUSDT",
+      "baseCoin": "NC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "VERTUSDT",
+      "baseCoin": "VERT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MXNAUSDT",
+      "baseCoin": "MXNA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DUCKUSDT",
+      "baseCoin": "DUCK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ONDOUSDC",
+      "baseCoin": "ONDO",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "USDSUSDT",
+      "baseCoin": "USDS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "VINEUSDT",
+      "baseCoin": "VINE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "baseCoin": "ANIME",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SKYUSDT",
+      "baseCoin": "SKY",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MDOGSUSDT",
+      "baseCoin": "MDOGS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "YULIUSDT",
+      "baseCoin": "YULI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "VTHOUSDT",
+      "baseCoin": "VTHO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "JUSDT",
+      "baseCoin": "J",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PLUMEUSDT",
+      "baseCoin": "PLUME",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TRUMPUSDC",
+      "baseCoin": "TRUMP",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ANLOGUSDT",
+      "baseCoin": "ANLOG",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "JELLYJELLYUSDT",
+      "baseCoin": "JELLYJELLY",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "INJUSDC",
+      "baseCoin": "INJ",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PHAUSDC",
+      "baseCoin": "PHA",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "RENDERUSDC",
+      "baseCoin": "RENDER",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PORTALUSDT",
+      "baseCoin": "PORTAL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "XLMUSDC",
+      "baseCoin": "XLM",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ICEUSDT",
+      "baseCoin": "ICE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "UFDUSDT",
+      "baseCoin": "UFD",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TAOUSDC",
+      "baseCoin": "TAO",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FETUSDC",
+      "baseCoin": "FET",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MLUSDT",
+      "baseCoin": "ML",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PEPEUSDC",
+      "baseCoin": "PEPE",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SUIUSDC",
+      "baseCoin": "SUI",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MAPOUSDT",
+      "baseCoin": "MAPO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NESSUSDT",
+      "baseCoin": "NESS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SOLBTC",
+      "baseCoin": "SOL",
+      "quoteCoin": "BTC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AVAXBTC",
+      "baseCoin": "AVAX",
+      "quoteCoin": "BTC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ORDIBTC",
+      "baseCoin": "ORDI",
+      "quoteCoin": "BTC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ALGOUSDC",
+      "baseCoin": "ALGO",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "POLUSDC",
+      "baseCoin": "POL",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FETBTC",
+      "baseCoin": "FET",
+      "quoteCoin": "BTC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "USDEUSDC",
+      "baseCoin": "USDE",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ICPUSDC",
+      "baseCoin": "ICP",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WENUSDT",
+      "baseCoin": "WEN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BERAUSDT",
+      "baseCoin": "BERA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "KLVUSDT",
+      "baseCoin": "KLV",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AEVOUSDT",
+      "baseCoin": "AEVO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "IDUSDT",
+      "baseCoin": "ID",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SCAUSDT",
+      "baseCoin": "SCA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ARBUSDT",
+      "baseCoin": "ARB",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TAOUSDT",
+      "baseCoin": "TAO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ETHFIUSDT",
+      "baseCoin": "ETHFI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BOMEUSDT",
+      "baseCoin": "BOME",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BRETTUSDT",
+      "baseCoin": "BRETT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CGPTUSDT",
+      "baseCoin": "CGPT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CREOUSDT",
+      "baseCoin": "CREO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PENDLEUSDT",
+      "baseCoin": "PENDLE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "STETHUSDT",
+      "baseCoin": "STETH",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AIDOGEUSDT",
+      "baseCoin": "AIDOGE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PEPEUSDT",
+      "baseCoin": "PEPE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ZKJUSDT",
+      "baseCoin": "ZKJ",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BGBEUR",
+      "baseCoin": "BGB",
+      "quoteCoin": "EUR",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BGBBRL",
+      "baseCoin": "BGB",
+      "quoteCoin": "BRL",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SLERFUSDT",
+      "baseCoin": "SLERF",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TOMIUSDT",
+      "baseCoin": "TOMI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ALEUSDT",
+      "baseCoin": "ALE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MCUSDT",
+      "baseCoin": "MC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MVLUSDT",
+      "baseCoin": "MVL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SUIUSDT",
+      "baseCoin": "SUI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DEGENUSDT",
+      "baseCoin": "DEGEN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TURBOUSDT",
+      "baseCoin": "TURBO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "KASUSDT",
+      "baseCoin": "KAS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PCIUSDT",
+      "baseCoin": "PCI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GFIUSDT",
+      "baseCoin": "GFI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ORDIUSDT",
+      "baseCoin": "ORDI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CATBOYUSDT",
+      "baseCoin": "CATBOY",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AEROUSDT",
+      "baseCoin": "AERO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LADYSUSDT",
+      "baseCoin": "LADYS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LYXUSDT",
+      "baseCoin": "LYX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "USDEUSDT",
+      "baseCoin": "USDE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PROPCUSDT",
+      "baseCoin": "PROPC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "OSMOUSDT",
+      "baseCoin": "OSMO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ZILUSDT",
+      "baseCoin": "ZIL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MAVUSDT",
+      "baseCoin": "MAV",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AURORAUSDT",
+      "baseCoin": "AURORA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NEXOUSDT",
+      "baseCoin": "NEXO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AMPUSDT",
+      "baseCoin": "AMP",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LPTUSDT",
+      "baseCoin": "LPT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PEPE2USDT",
+      "baseCoin": "PEPE2",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PAXGUSDT",
+      "baseCoin": "PAXG",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TELUSDT",
+      "baseCoin": "TEL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BGBETH",
+      "baseCoin": "BGB",
+      "quoteCoin": "ETH",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BGBBTC",
+      "baseCoin": "BGB",
+      "quoteCoin": "BTC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NFTUSDT",
+      "baseCoin": "NFT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TUSDUSDT",
+      "baseCoin": "TUSD",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BTTUSDT",
+      "baseCoin": "BTT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GLMUSDT",
+      "baseCoin": "GLM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NYMUSDT",
+      "baseCoin": "NYM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GSTUSDT",
+      "baseCoin": "GST",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "VTUSDT",
+      "baseCoin": "VT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FLUXUSDT",
+      "baseCoin": "FLUX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ROSEUSDT",
+      "baseCoin": "ROSE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NEARUSDT",
+      "baseCoin": "NEAR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DAIUSDT",
+      "baseCoin": "DAI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "HNTUSDT",
+      "baseCoin": "HNT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WAXPUSDT",
+      "baseCoin": "WAXP",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GALFANUSDT",
+      "baseCoin": "GALFAN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BTCUSDC",
+      "baseCoin": "BTC",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ENJUSDT",
+      "baseCoin": "ENJ",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MANAUSDT",
+      "baseCoin": "MANA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "XRPUSDT",
+      "baseCoin": "XRP",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "baseCoin": "BTC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ETHUSDT",
+      "baseCoin": "ETH",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ETHBTC",
+      "baseCoin": "ETH",
+      "quoteCoin": "BTC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LTCUSDT",
+      "baseCoin": "LTC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BCHUSDT",
+      "baseCoin": "BCH",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ETHUSDC",
+      "baseCoin": "ETH",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "XRPUSDC",
+      "baseCoin": "XRP",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ADAUSDC",
+      "baseCoin": "ADA",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SOLUSDC",
+      "baseCoin": "SOL",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LTCUSDC",
+      "baseCoin": "LTC",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LINKUSDC",
+      "baseCoin": "LINK",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DOTUSDC",
+      "baseCoin": "DOT",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ETCUSDT",
+      "baseCoin": "ETC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SHIBUSDT",
+      "baseCoin": "SHIB",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "1INCHUSDT",
+      "baseCoin": "1INCH",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MKRUSDT",
+      "baseCoin": "MKR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "UMAUSDT",
+      "baseCoin": "UMA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ZRXUSDT",
+      "baseCoin": "ZRX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DOGEUSDC",
+      "baseCoin": "DOGE",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BCHUSDC",
+      "baseCoin": "BCH",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LUNCUSDT",
+      "baseCoin": "LUNC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "USTCUSDT",
+      "baseCoin": "USTC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SXPUSDT",
+      "baseCoin": "SXP",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "OPUSDT",
+      "baseCoin": "OP",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BGBUSDC",
+      "baseCoin": "BGB",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LRCUSDT",
+      "baseCoin": "LRC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BALUSDT",
+      "baseCoin": "BAL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BNTUSDT",
+      "baseCoin": "BNT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CRVUSDT",
+      "baseCoin": "CRV",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BATUSDT",
+      "baseCoin": "BAT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "STORJUSDT",
+      "baseCoin": "STORJ",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SNXUSDT",
+      "baseCoin": "SNX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DAIUSDC",
+      "baseCoin": "DAI",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FILUSDC",
+      "baseCoin": "FIL",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "QTUMUSDT",
+      "baseCoin": "QTUM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LTCBTC",
+      "baseCoin": "LTC",
+      "quoteCoin": "BTC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "XRPBTC",
+      "baseCoin": "XRP",
+      "quoteCoin": "BTC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "OMGUSDT",
+      "baseCoin": "OMG",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "KNCUSDT",
+      "baseCoin": "KNC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BANDUSDT",
+      "baseCoin": "BAND",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GRTUSDT",
+      "baseCoin": "GRT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "JOEUSDT",
+      "baseCoin": "JOE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "QUICKUSDT",
+      "baseCoin": "QUICK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NKNUSDT",
+      "baseCoin": "NKN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WBTCUSDT",
+      "baseCoin": "WBTC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "RLCUSDT",
+      "baseCoin": "RLC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "OGNUSDT",
+      "baseCoin": "OGN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CAKEUSDT",
+      "baseCoin": "CAKE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BNBUSDT",
+      "baseCoin": "BNB",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CHRUSDT",
+      "baseCoin": "CHR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ANKRUSDT",
+      "baseCoin": "ANKR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "RSRUSDT",
+      "baseCoin": "RSR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "JSTUSDT",
+      "baseCoin": "JST",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ICPUSDT",
+      "baseCoin": "ICP",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ETCBTC",
+      "baseCoin": "ETC",
+      "quoteCoin": "BTC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LINKBTC",
+      "baseCoin": "LINK",
+      "quoteCoin": "BTC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TRXBTC",
+      "baseCoin": "TRX",
+      "quoteCoin": "BTC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AAVEBTC",
+      "baseCoin": "AAVE",
+      "quoteCoin": "BTC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DOGEBTC",
+      "baseCoin": "DOGE",
+      "quoteCoin": "BTC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MASKUSDT",
+      "baseCoin": "MASK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TSTBSCUSDT",
+      "baseCoin": "TSTBSC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BROCCOLIUSDT",
+      "baseCoin": "BROCCOLI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PIUSDT",
+      "baseCoin": "PI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SHELLUSDT",
+      "baseCoin": "SHELL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SOLUSDT",
+      "baseCoin": "SOL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "IPUSDT",
+      "baseCoin": "IP",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "HEIUSDT",
+      "baseCoin": "HEI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CRVBTC",
+      "baseCoin": "CRV",
+      "quoteCoin": "BTC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LAYERUSDT",
+      "baseCoin": "LAYER",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "JAILSTOOLUSDT",
+      "baseCoin": "JAILSTOOL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ZOOUSDT",
+      "baseCoin": "ZOO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BGSOLUSDT",
+      "baseCoin": "BGSOL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "KAITOUSDT",
+      "baseCoin": "KAITO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TAPSUSDT",
+      "baseCoin": "TAPS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "REDUSDT",
+      "baseCoin": "RED",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ROAMUSDT",
+      "baseCoin": "ROAM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FILUSDT",
+      "baseCoin": "FIL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DEUSDUSDT",
+      "baseCoin": "DEUSD",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CELOUSDT",
+      "baseCoin": "CELO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ABUSDT",
+      "baseCoin": "AB",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BGBUSDT",
+      "baseCoin": "BGB",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MEMHASHUSDT",
+      "baseCoin": "MEMHASH",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "YGGUSDT",
+      "baseCoin": "YGG",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LDOUSDT",
+      "baseCoin": "LDO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "OIKUSDT",
+      "baseCoin": "OIK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LVVAUSDT",
+      "baseCoin": "LVVA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BMTUSDT",
+      "baseCoin": "BMT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MINTUSDT",
+      "baseCoin": "MINT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ELXUSDT",
+      "baseCoin": "ELX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FORMUSDT",
+      "baseCoin": "FORM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BRUSDT",
+      "baseCoin": "BR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TUTUSDT",
+      "baseCoin": "TUT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PAWSUSDT",
+      "baseCoin": "PAWS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MUBARAKUSDT",
+      "baseCoin": "MUBARAK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BANANAS31USDT",
+      "baseCoin": "BANANAS31",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "IMTUSDT",
+      "baseCoin": "IMT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PARTIUSDT",
+      "baseCoin": "PARTI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NILUSDT",
+      "baseCoin": "NIL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BUBBUSDT",
+      "baseCoin": "BUBB",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SIRENUSDT",
+      "baseCoin": "SIREN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GUNUSDT",
+      "baseCoin": "GUN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GHIBLIUSDT",
+      "baseCoin": "GHIBLI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "KILOUSDT",
+      "baseCoin": "KILO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WALUSDT",
+      "baseCoin": "WAL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PROMPTUSDT",
+      "baseCoin": "PROMPT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FHEUSDT",
+      "baseCoin": "FHE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BABYUSDT",
+      "baseCoin": "BABY",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "RFCUSDT",
+      "baseCoin": "RFC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "STOUSDT",
+      "baseCoin": "STO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PUMPBTCUSDT",
+      "baseCoin": "PUMPBTC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BAIUSDT",
+      "baseCoin": "BAI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GMUSDT",
+      "baseCoin": "GM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WCTUSDT",
+      "baseCoin": "WCT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "KERNELUSDT",
+      "baseCoin": "KERNEL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MILKUSDT",
+      "baseCoin": "MILK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DEEPUSDT",
+      "baseCoin": "DEEP",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DOLOUSDT",
+      "baseCoin": "DOLO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "INITUSDT",
+      "baseCoin": "INIT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ZORAUSDT",
+      "baseCoin": "ZORA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "HYPERUSDT",
+      "baseCoin": "HYPER",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "EPTUSDT",
+      "baseCoin": "EPT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BANKUSDT",
+      "baseCoin": "BANK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DARKUSDT",
+      "baseCoin": "DARK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "HAEDALUSDT",
+      "baseCoin": "HAEDAL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SIGNUSDT",
+      "baseCoin": "SIGN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LAUNCHCOINUSDT",
+      "baseCoin": "LAUNCHCOIN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "RDACUSDT",
+      "baseCoin": "RDAC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DOODUSDT",
+      "baseCoin": "DOOD",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SHMUSDT",
+      "baseCoin": "SHM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SXTUSDT",
+      "baseCoin": "SXT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SYRUPUSDT",
+      "baseCoin": "SYRUP",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MYXUSDT",
+      "baseCoin": "MYX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "OBOLUSDT",
+      "baseCoin": "OBOL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GORKUSDT",
+      "baseCoin": "GORK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "HOUSEUSDT",
+      "baseCoin": "HOUSE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MAIUSDT",
+      "baseCoin": "MAI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DOGEUSD1",
+      "baseCoin": "DOGE",
+      "quoteCoin": "USD1",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "HUMAUSDT",
+      "baseCoin": "HUMA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "USD1USDT",
+      "baseCoin": "USD1",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "USD1USDC",
+      "baseCoin": "USD1",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "baseCoin": "SOON",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BUSDT",
+      "baseCoin": "B",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AWEUSDT",
+      "baseCoin": "AWE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NXPCUSDT",
+      "baseCoin": "NXPC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PRAIUSDT",
+      "baseCoin": "PRAI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SKYAIUSDT",
+      "baseCoin": "SKYAI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LABUBUUSDT",
+      "baseCoin": "LABUBU",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "RLUSDUSDT",
+      "baseCoin": "RLUSD",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BUSD1",
+      "baseCoin": "B",
+      "quoteCoin": "USD1",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MEWUSDT",
+      "baseCoin": "MEW",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WUSDT",
+      "baseCoin": "W",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SOPHUSDC",
+      "baseCoin": "SOPH",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "IAGUSDT",
+      "baseCoin": "IAG",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SOPHUSDT",
+      "baseCoin": "SOPH",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AUSDT",
+      "baseCoin": "A",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BTCUSD1",
+      "baseCoin": "BTC",
+      "quoteCoin": "USD1",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ENAUSDT",
+      "baseCoin": "ENA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SOLUSD1",
+      "baseCoin": "SOL",
+      "quoteCoin": "USD1",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "XRPUSD1",
+      "baseCoin": "XRP",
+      "quoteCoin": "USD1",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MASAUSDT",
+      "baseCoin": "MASA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SAGAUSDT",
+      "baseCoin": "SAGA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CUDISUSDT",
+      "baseCoin": "CUDIS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TNSRUSDT",
+      "baseCoin": "TNSR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WNZUSDT",
+      "baseCoin": "WNZ",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LAUSDT",
+      "baseCoin": "LA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "RWAUSDT",
+      "baseCoin": "RWA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BDXNUSDT",
+      "baseCoin": "BDXN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MOEWUSDT",
+      "baseCoin": "MOEW",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FLOCKUSDT",
+      "baseCoin": "FLOCK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "OMNI1USDT",
+      "baseCoin": "OMNI1",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PRCLUSDT",
+      "baseCoin": "PRCL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MASUSDT",
+      "baseCoin": "MAS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "0X0USDT",
+      "baseCoin": "0X0",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SAFEUSDT",
+      "baseCoin": "SAFE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "APUUSDT",
+      "baseCoin": "APU",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ALPHUSDT",
+      "baseCoin": "ALPH",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MERLUSDT",
+      "baseCoin": "MERL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CKBUSDT",
+      "baseCoin": "CKB",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AQTUSDT",
+      "baseCoin": "AQT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ARKMUSDT",
+      "baseCoin": "ARKM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BITCOINUSDT",
+      "baseCoin": "BITCOIN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "UNIBOTUSDT",
+      "baseCoin": "UNIBOT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MOGUSDT",
+      "baseCoin": "MOG",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SIXUSDT",
+      "baseCoin": "SIX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "KUBUSDT",
+      "baseCoin": "KUB",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ZBCNUSDT",
+      "baseCoin": "ZBCN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WLDUSDT",
+      "baseCoin": "WLD",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MXUSDT",
+      "baseCoin": "MX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LNDXUSDT",
+      "baseCoin": "LNDX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ZEROLENDUSDT",
+      "baseCoin": "ZEROLEND",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "KMNOUSDT",
+      "baseCoin": "KMNO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "REZUSDT",
+      "baseCoin": "REZ",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AZITUSDT",
+      "baseCoin": "AZIT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SDEXUSDT",
+      "baseCoin": "SDEX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BBUSDT",
+      "baseCoin": "BB",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ZENTUSDT",
+      "baseCoin": "ZENT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ALUSDT",
+      "baseCoin": "AL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TONUSDC",
+      "baseCoin": "TON",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "OPUSDC",
+      "baseCoin": "OP",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ENAUSDC",
+      "baseCoin": "ENA",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ARBUSDC",
+      "baseCoin": "ARB",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BADUSDT",
+      "baseCoin": "BAD",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SEIUSDT",
+      "baseCoin": "SEI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NOTUSDT",
+      "baseCoin": "NOT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DRIFTUSDT",
+      "baseCoin": "DRIFT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "VIRTUALUSDT",
+      "baseCoin": "VIRTUAL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GAME2USDT",
+      "baseCoin": "GAME2",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CYBERUSDT",
+      "baseCoin": "CYBER",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FTNUSDT",
+      "baseCoin": "FTN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TETUSDT",
+      "baseCoin": "TET",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WSDMUSDT",
+      "baseCoin": "WSDM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "XLMUSDT",
+      "baseCoin": "XLM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AITECHUSDT",
+      "baseCoin": "AITECH",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GOMININGUSDT",
+      "baseCoin": "GOMINING",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "VETUSDT",
+      "baseCoin": "VET",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NUTSUSDT",
+      "baseCoin": "NUTS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MAXEXCHANGEUSDT",
+      "baseCoin": "MAXEXCHANGE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BANANAUSDT",
+      "baseCoin": "BANANA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MCADEUSDT",
+      "baseCoin": "MCADE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PYUSDUSDT",
+      "baseCoin": "PYUSD",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CBKUSDT",
+      "baseCoin": "CBK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CRETAUSDT",
+      "baseCoin": "CRETA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BIGTIMEUSDT",
+      "baseCoin": "BIGTIME",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "STRAXUSDT",
+      "baseCoin": "STRAX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ORBSUSDT",
+      "baseCoin": "ORBS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BNBUSDC",
+      "baseCoin": "BNB",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TRXUSDC",
+      "baseCoin": "TRX",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "XRPEUR",
+      "baseCoin": "XRP",
+      "quoteCoin": "EUR",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SFPUSDT",
+      "baseCoin": "SFP",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NEARUSDC",
+      "baseCoin": "NEAR",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SOLEUR",
+      "baseCoin": "SOL",
+      "quoteCoin": "EUR",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BSVUSDT",
+      "baseCoin": "BSV",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AVAXUSDC",
+      "baseCoin": "AVAX",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PPTUSDT",
+      "baseCoin": "PPT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "UNIUSDC",
+      "baseCoin": "UNI",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GASUSDT",
+      "baseCoin": "GAS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LATUSDT",
+      "baseCoin": "LAT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AAVEUSDC",
+      "baseCoin": "AAVE",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SYSUSDT",
+      "baseCoin": "SYS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "XETAUSDT",
+      "baseCoin": "XETA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DAOUSDT",
+      "baseCoin": "DAO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CSPRUSDT",
+      "baseCoin": "CSPR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ZIGUSDT",
+      "baseCoin": "ZIG",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PSGUSDT",
+      "baseCoin": "PSG",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ACMUSDT",
+      "baseCoin": "ACM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BARUSDT",
+      "baseCoin": "BAR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PORTOUSDT",
+      "baseCoin": "PORTO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LAZIOUSDT",
+      "baseCoin": "LAZIO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SANTOSUSDT",
+      "baseCoin": "SANTOS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ASRUSDT",
+      "baseCoin": "ASR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ATMUSDT",
+      "baseCoin": "ATM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "INTERUSDT",
+      "baseCoin": "INTER",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AFCUSDT",
+      "baseCoin": "AFC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SWEATUSDT",
+      "baseCoin": "SWEAT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ETHWUSDT",
+      "baseCoin": "ETHW",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FETUSDT",
+      "baseCoin": "FET",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AERGOUSDT",
+      "baseCoin": "AERGO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AUCTIONUSDT",
+      "baseCoin": "AUCTION",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ACHUSDT",
+      "baseCoin": "ACH",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ALPINEUSDT",
+      "baseCoin": "ALPINE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BADGERUSDT",
+      "baseCoin": "BADGER",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BICOUSDT",
+      "baseCoin": "BICO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BAKEUSDT",
+      "baseCoin": "BAKE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BELUSDT",
+      "baseCoin": "BEL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CTSIUSDT",
+      "baseCoin": "CTSI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CVCUSDT",
+      "baseCoin": "CVC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "KDAUSDT",
+      "baseCoin": "KDA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ELFUSDT",
+      "baseCoin": "ELF",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FLOWUSDT",
+      "baseCoin": "FLOW",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GHSTUSDT",
+      "baseCoin": "GHST",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GNOUSDT",
+      "baseCoin": "GNO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GTCUSDT",
+      "baseCoin": "GTC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GLMRUSDT",
+      "baseCoin": "GLMR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "IDOLUSDT",
+      "baseCoin": "IDOL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "RESOLVUSDT",
+      "baseCoin": "RESOLV",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "HOMEUSDT",
+      "baseCoin": "HOME",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "B2USDT",
+      "baseCoin": "B2",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SKATEUSDT",
+      "baseCoin": "SKATE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FLYUSDT",
+      "baseCoin": "FLY",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "baseCoin": "RVN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BOMBUSDT",
+      "baseCoin": "BOMB",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SPKUSDT",
+      "baseCoin": "SPK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TAGUSDT",
+      "baseCoin": "TAG",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BRICUSDT",
+      "baseCoin": "BRIC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MATUSDT",
+      "baseCoin": "MAT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ARUSDC",
+      "baseCoin": "AR",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FLOKIUSDC",
+      "baseCoin": "FLOKI",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DOGUSDT",
+      "baseCoin": "DOG",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MINAUSDC",
+      "baseCoin": "MINA",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SHIBUSDC",
+      "baseCoin": "SHIB",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "APTUSDC",
+      "baseCoin": "APT",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WUSDUSDT",
+      "baseCoin": "WUSD",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TAIKOUSDT",
+      "baseCoin": "TAIKO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "POLYXUSDT",
+      "baseCoin": "POLYX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LTCEUR",
+      "baseCoin": "LTC",
+      "quoteCoin": "EUR",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PEPEEUR",
+      "baseCoin": "PEPE",
+      "quoteCoin": "EUR",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "STXUSDC",
+      "baseCoin": "STX",
+      "quoteCoin": "USDC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BEAMUSDT",
+      "baseCoin": "BEAM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "IOUSDT",
+      "baseCoin": "IO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ULTIUSDT",
+      "baseCoin": "ULTI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GHXUSDT",
+      "baseCoin": "GHX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "POLUSDT",
+      "baseCoin": "POL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TIAUSDT",
+      "baseCoin": "TIA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MEMEUSDT",
+      "baseCoin": "MEME",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MBLUSDT",
+      "baseCoin": "MBL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ZKUSDT",
+      "baseCoin": "ZK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "COOKIEUSDT",
+      "baseCoin": "COOKIE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PIRATEUSDT",
+      "baseCoin": "PIRATE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "T2T2USDT",
+      "baseCoin": "T2T2",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ATHUSDT",
+      "baseCoin": "ATH",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SATSUSDT",
+      "baseCoin": "SATS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "HIFIUSDT",
+      "baseCoin": "HIFI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GROKUSDT",
+      "baseCoin": "GROK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BLASTUSDT",
+      "baseCoin": "BLAST",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ZROUSDT",
+      "baseCoin": "ZRO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LISTAUSDT",
+      "baseCoin": "LISTA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LNQUSDT",
+      "baseCoin": "LNQ",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NAKAUSDT",
+      "baseCoin": "NAKA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NPCUSDT",
+      "baseCoin": "NPC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NTRNUSDT",
+      "baseCoin": "NTRN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "RATSUSDT",
+      "baseCoin": "RATS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DOGEEUR",
+      "baseCoin": "DOGE",
+      "quoteCoin": "EUR",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AVAXEUR",
+      "baseCoin": "AVAX",
+      "quoteCoin": "EUR",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WELLUSDT",
+      "baseCoin": "WELL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "QUBICUSDT",
+      "baseCoin": "QUBIC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LINKEUR",
+      "baseCoin": "LINK",
+      "quoteCoin": "EUR",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SWGTUSDT",
+      "baseCoin": "SWGT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ADAEUR",
+      "baseCoin": "ADA",
+      "quoteCoin": "EUR",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PYTHUSDT",
+      "baseCoin": "PYTH",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ROOTUSDT",
+      "baseCoin": "ROOT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "VRTXUSDT",
+      "baseCoin": "VRTX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SKLUSDT",
+      "baseCoin": "SKL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "XTZUSDT",
+      "baseCoin": "XTZ",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NEXAUSDT",
+      "baseCoin": "NEXA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "UXLINKUSDT",
+      "baseCoin": "UXLINK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PIXFIUSDT",
+      "baseCoin": "PIXFI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MOCAUSDT",
+      "baseCoin": "MOCA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ANYONEUSDT",
+      "baseCoin": "ANYONE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "VICUSDT",
+      "baseCoin": "VIC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MYROUSDT",
+      "baseCoin": "MYRO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WOLFUSDT",
+      "baseCoin": "WOLF",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "HOLDUSDT",
+      "baseCoin": "HOLD",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FIDAUSDT",
+      "baseCoin": "FIDA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MYRIAUSDT",
+      "baseCoin": "MYRIA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ACXUSDT",
+      "baseCoin": "ACX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AVAILUSDT",
+      "baseCoin": "AVAIL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ZKLUSDT",
+      "baseCoin": "ZKL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "VOXELUSDT",
+      "baseCoin": "VOXEL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GUSDT",
+      "baseCoin": "G",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "RIFUSDT",
+      "baseCoin": "RIF",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CLOUDUSDT",
+      "baseCoin": "CLOUD",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ARKUSDT",
+      "baseCoin": "ARK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "A8USDT",
+      "baseCoin": "A8",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "baseCoin": "LSK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "VANRYUSDT",
+      "baseCoin": "VANRY",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GSWIFTUSDT",
+      "baseCoin": "GSWIFT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CETUSUSDT",
+      "baseCoin": "CETUS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "JTOUSDT",
+      "baseCoin": "JTO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SAMOUSDT",
+      "baseCoin": "SAMO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CTCUSDT",
+      "baseCoin": "CTC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LMWRUSDT",
+      "baseCoin": "LMWR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "baseCoin": "ONE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SSVUSDT",
+      "baseCoin": "SSV",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AXLUSDT",
+      "baseCoin": "AXL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "IDEXUSDT",
+      "baseCoin": "IDEX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "INJUSDT",
+      "baseCoin": "INJ",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "IOTXUSDT",
+      "baseCoin": "IOTX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "IQUSDT",
+      "baseCoin": "IQ",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ALEXUSDT",
+      "baseCoin": "ALEX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MBXUSDT",
+      "baseCoin": "MBX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ACEUSDT",
+      "baseCoin": "ACE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ARGUSDT",
+      "baseCoin": "ARG",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ALUUSDT",
+      "baseCoin": "ALU",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "COQUSDT",
+      "baseCoin": "COQ",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GMXUSDT",
+      "baseCoin": "GMX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LEVERUSDT",
+      "baseCoin": "LEVER",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "LOKAUSDT",
+      "baseCoin": "LOKA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MTLUSDT",
+      "baseCoin": "MTL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MINAUSDT",
+      "baseCoin": "MINA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NMRUSDT",
+      "baseCoin": "NMR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "OXTUSDT",
+      "baseCoin": "OXT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "OGUSDT",
+      "baseCoin": "OG",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "POWRUSDT",
+      "baseCoin": "POWR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PYRUSDT",
+      "baseCoin": "PYR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PUNDIXUSDT",
+      "baseCoin": "PUNDIX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PONDUSDT",
+      "baseCoin": "POND",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PROMUSDT",
+      "baseCoin": "PROM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PHBUSDT",
+      "baseCoin": "PHB",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "QKCUSDT",
+      "baseCoin": "QKC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "QNTUSDT",
+      "baseCoin": "QNT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ROUTEUSDT",
+      "baseCoin": "ROUTE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "APTUSDT",
+      "baseCoin": "APT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SNTUSDT",
+      "baseCoin": "SNT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SUPERUSDT",
+      "baseCoin": "SUPER",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SYNUSDT",
+      "baseCoin": "SYN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TUSDT",
+      "baseCoin": "T",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TRBUSDT",
+      "baseCoin": "TRB",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TWTUSDT",
+      "baseCoin": "TWT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WAVESUSDT",
+      "baseCoin": "WAVES",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "XCNUSDT",
+      "baseCoin": "XCN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "XPRUSDT",
+      "baseCoin": "XPR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "RADUSDT",
+      "baseCoin": "RAD",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "HFTUSDT",
+      "baseCoin": "HFT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "USDTBRL",
+      "baseCoin": "USDT",
+      "quoteCoin": "BRL",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BTCBRL",
+      "baseCoin": "BTC",
+      "quoteCoin": "BRL",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ETHBRL",
+      "baseCoin": "ETH",
+      "quoteCoin": "BRL",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ONTUSDT",
+      "baseCoin": "ONT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "baseCoin": "ONG",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "HOOKUSDT",
+      "baseCoin": "HOOK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AGLDUSDT",
+      "baseCoin": "AGLD",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "KAVAUSDT",
+      "baseCoin": "KAVA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DYDXUSDT",
+      "baseCoin": "DYDX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "OASUSDT",
+      "baseCoin": "OAS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CELRUSDT",
+      "baseCoin": "CELR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GEARUSDT",
+      "baseCoin": "GEAR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "RACAUSDT",
+      "baseCoin": "RACA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BONKUSDT",
+      "baseCoin": "BONK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MBOXUSDT",
+      "baseCoin": "MBOX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AXSUSDT",
+      "baseCoin": "AXS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "HIGHUSDT",
+      "baseCoin": "HIGH",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GNSUSDT",
+      "baseCoin": "GNS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "USDTEUR",
+      "baseCoin": "USDT",
+      "quoteCoin": "EUR",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BTCEUR",
+      "baseCoin": "BTC",
+      "quoteCoin": "EUR",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SLPUSDT",
+      "baseCoin": "SLP",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GALAUSDT",
+      "baseCoin": "GALA",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ETHEUR",
+      "baseCoin": "ETH",
+      "quoteCoin": "EUR",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SANDUSDT",
+      "baseCoin": "SAND",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ALICEUSDT",
+      "baseCoin": "ALICE",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TLMUSDT",
+      "baseCoin": "TLM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "RPLUSDT",
+      "baseCoin": "RPL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "GODSUSDT",
+      "baseCoin": "GODS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DOTUSDT",
+      "baseCoin": "DOT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ATOMUSDT",
+      "baseCoin": "ATOM",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "IMXUSDT",
+      "baseCoin": "IMX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MOVRUSDT",
+      "baseCoin": "MOVR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ENSUSDT",
+      "baseCoin": "ENS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WILDUSDT",
+      "baseCoin": "WILD",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "baseCoin": "AVAX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CROUSDT",
+      "baseCoin": "CRO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "XRPETH",
+      "baseCoin": "XRP",
+      "quoteCoin": "ETH",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ATOMBTC",
+      "baseCoin": "ATOM",
+      "quoteCoin": "BTC",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "JASMYUSDT",
+      "baseCoin": "JASMY",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "TONUSDT",
+      "baseCoin": "TON",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CVXUSDT",
+      "baseCoin": "CVX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SPELLUSDT",
+      "baseCoin": "SPELL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "HOTUSDT",
+      "baseCoin": "HOT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "COTIUSDT",
+      "baseCoin": "COTI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FXSUSDT",
+      "baseCoin": "FXS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DENTUSDT",
+      "baseCoin": "DENT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FLOKIUSDT",
+      "baseCoin": "FLOKI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "FILETH",
+      "baseCoin": "FIL",
+      "quoteCoin": "ETH",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WHYUSDT",
+      "baseCoin": "WHY",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WIFEUR",
+      "baseCoin": "WIF",
+      "quoteCoin": "EUR",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "RENDERUSDT",
+      "baseCoin": "RENDER",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "L3USDT",
+      "baseCoin": "L3",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MAXUSDT",
+      "baseCoin": "MAX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NEIROETHUSDT",
+      "baseCoin": "NEIROETH",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DTECUSDT",
+      "baseCoin": "DTEC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "AINUSDT",
+      "baseCoin": "AIN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "WUFUSDT",
+      "baseCoin": "WUF",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ICXUSDT",
+      "baseCoin": "ICX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NMTUSDT",
+      "baseCoin": "NMT",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "DOGSUSDT",
+      "baseCoin": "DOGS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SUNDOGUSDT",
+      "baseCoin": "SUNDOG",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CECUSDT",
+      "baseCoin": "CEC",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MAKUSDT",
+      "baseCoin": "MAK",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CPOOLUSDT",
+      "baseCoin": "CPOOL",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "BRNUSDT",
+      "baseCoin": "BRN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "SLFUSDT",
+      "baseCoin": "SLF",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ORDERUSDT",
+      "baseCoin": "ORDER",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "EGPUSDT",
+      "baseCoin": "EGP",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CATIUSDT",
+      "baseCoin": "CATI",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "NEIROCTOUSDT",
+      "baseCoin": "NEIROCTO",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "ZCXUSDT",
+      "baseCoin": "ZCX",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "HMSTRUSDT",
+      "baseCoin": "HMSTR",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "PUFFERUSDT",
+      "baseCoin": "PUFFER",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CARVUSDT",
+      "baseCoin": "CARV",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "CATSUSDT",
+      "baseCoin": "CATS",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "EIGENUSDT",
+      "baseCoin": "EIGEN",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    },
+    {
+      "symbol": "MOODENGUSDT",
+      "baseCoin": "MOODENG",
+      "quoteCoin": "USDT",
+      "status": "online",
+      "symbolType": "spot"
+    }
+  ]
+}

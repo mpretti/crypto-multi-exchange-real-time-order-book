@@ -1,0 +1,1897 @@
+{
+  "exchange": "OKX",
+  "count": 270,
+  "lastUpdated": "2025-06-21T21:26:38.477Z",
+  "pairs": [
+    {
+      "symbol": "BTC-USD-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ETH-USD-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "SOL-USD-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "TON-USD-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "DOGE-USD-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "XRP-USD-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ADA-USD-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ALGO-USD-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ATOM-USD-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "AVAX-USD-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "BCH-USD-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "DOT-USD-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ETC-USD-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "FIL-USD-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "LINK-USD-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "LTC-USD-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "OP-USD-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "SAND-USD-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "SUI-USD-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "TRX-USD-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "UNI-USD-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "XLM-USD-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "BTC-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ETH-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "SOL-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "TON-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "DOGE-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "XRP-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "PI-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "PEPE-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "TRUMP-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "SPK-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "1INCH-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "A-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "AAVE-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ACE-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ACH-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ACT-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ADA-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "AEVO-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "AGLD-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "AI16Z-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "AIDOGE-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "AIXBT-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ALCH-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ALGO-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ALPHA-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ANIME-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "APE-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "API3-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "APT-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "AR-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ARB-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ARC-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ARKM-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ATH-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ATOM-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "AUCTION-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "AVAX-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "AVAAI-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "AXS-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "BABY-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "BADGER-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "BAL-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "BAND-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "BAT-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "BCH-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "BERA-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "BICO-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "BIGTIME-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "BIO-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "BLUR-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "BNB-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "BNT-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "BOME-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "BONK-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "BRETT-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "CAT-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "CATI-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "CELO-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "CETUS-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "CFX-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "CHZ-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "COMP-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "COOKIE-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "CORE-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "CRO-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "CRV-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "CSPR-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "CTC-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "CVC-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "CVX-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "DEGEN-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "DGB-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "DOGS-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "DOG-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "DOOD-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "DOT-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "DUCK-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "DYDX-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "EGLD-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "EIGEN-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ENJ-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ENS-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ETC-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ETHW-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ETHFI-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "FARTCOIN-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "FIL-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "FLM-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "FLOKI-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "FLOW-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "FXS-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "GALA-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "GAS-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "GLM-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "GMT-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "GMX-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "GOAT-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "GODS-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "GPS-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "GRASS-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "GRIFFAIN-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "GRT-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "HBAR-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "HMSTR-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "HOME-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "HUMA-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "HYPE-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ICP-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ICX-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ID-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "IMX-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "INIT-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "INJ-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "IOST-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "IOTA-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "IP-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "JELLYJELLY-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "JOE-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "JST-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "JTO-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "JUP-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "KAITO-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "KMNO-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "KNC-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "KSM-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "LA-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "LAUNCHCOIN-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "LAYER-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "LDO-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "LINK-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "LOOKS-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "LPT-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "LQTY-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "LRC-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "LSK-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "LTC-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "LUNA-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "LUNC-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "MAGIC-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "MAJOR-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "MANA-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "MASK-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ME-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "MEME-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "MERL-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "METIS-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "MEW-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "MINA-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "MKR-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "MOODENG-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "MORPHO-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "MOVE-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "MUBARAK-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "NC-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "NEAR-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "NEIROETH-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "NEIRO-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "NEO-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "NIL-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "NMR-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "NOT-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "NXPC-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "OL-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "OM-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ONDO-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ONE-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ONT-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "OP-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ORBS-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ORDI-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "PARTI-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "PENGU-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "PEOPLE-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "PERP-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "PIPPIN-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "PLUME-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "PNUT-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "POL-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "POPCAT-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "PRCL-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "PROMPT-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "PYTH-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "QTUM-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "RAY-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "RDNT-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "RENDER-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "RESOLV-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "RSR-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "RVN-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "S-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "SAND-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "SATS-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "SCR-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "SHELL-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "SHIB-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "SIGN-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "SLERF-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "SLP-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "SNX-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "SOLV-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "SONIC-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "SOON-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "SOPH-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "SSV-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "STORJ-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "STRK-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "STX-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "SUI-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "SUSHI-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "SWARMS-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "T-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "TAO-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "THETA-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "TIA-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "TNSR-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "TRB-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "TRX-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "TURBO-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "UMA-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "UNI-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "USDC-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "USTC-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "UXLINK-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "VANA-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "VINE-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "VIRTUAL-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "W-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "WAL-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "WAXP-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "WCT-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "WIF-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "WLD-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "WOO-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "XAUT-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "XCH-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "XLM-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "XTZ-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "YFI-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "YGG-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ZENT-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ZEREBRO-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ZETA-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ZIL-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ZK-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ZRO-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ZRX-USDT-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "BTC-USDC-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    },
+    {
+      "symbol": "ETH-USDC-SWAP",
+      "baseCcy": "",
+      "quoteCcy": "",
+      "state": "live",
+      "instType": "SWAP"
+    }
+  ]
+}

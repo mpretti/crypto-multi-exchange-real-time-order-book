@@ -1,0 +1,997 @@
+{
+  "exchange": "Gemini",
+  "count": 198,
+  "lastUpdated": "2025-06-21T21:27:21.579Z",
+  "pairs": [
+    {
+      "symbol": "AAVEGUSD",
+      "baseAsset": "AAVEG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "AAVEUSD",
+      "baseAsset": "AAVE",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "ALIGUSD",
+      "baseAsset": "ALIG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "ALIUSD",
+      "baseAsset": "ALI",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "AMPGUSD",
+      "baseAsset": "AMPG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "AMPUSD",
+      "baseAsset": "AMP",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "ANKRGUSD",
+      "baseAsset": "ANKRG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "ANKRUSD",
+      "baseAsset": "ANKR",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "APEGUSD",
+      "baseAsset": "APEG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "APEUSD",
+      "baseAsset": "APE",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "API3GUSD",
+      "baseAsset": "API3G",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "API3USD",
+      "baseAsset": "API3",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "ARBGUSD",
+      "baseAsset": "ARBG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "ARBUSD",
+      "baseAsset": "ARB",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "ATOMGUSD",
+      "baseAsset": "ATOMG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "ATOMUSD",
+      "baseAsset": "ATOM",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "AVAXGUSD",
+      "baseAsset": "AVAXG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "AVAXGUSDPERP",
+      "baseAsset": "AVAXGUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "AVAXUSD",
+      "baseAsset": "AVAX",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "BATGUSD",
+      "baseAsset": "BATG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "BATUSD",
+      "baseAsset": "BAT",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "BCHGUSD",
+      "baseAsset": "BCHG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "BCHGUSDPERP",
+      "baseAsset": "BCHGUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "BCHUSD",
+      "baseAsset": "BCH",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "BNBGUSDPERP",
+      "baseAsset": "BNBGUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "BOMEGUSD",
+      "baseAsset": "BOMEG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "BOMEUSD",
+      "baseAsset": "BOME",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "BONKGUSD",
+      "baseAsset": "BONKG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "BONKGUSDPERP",
+      "baseAsset": "BONKGUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "BONKUSD",
+      "baseAsset": "BONK",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "BTCEUR",
+      "baseAsset": "BTC",
+      "quoteAsset": "EUR"
+    },
+    {
+      "symbol": "BTCGBP",
+      "baseAsset": "BTC",
+      "quoteAsset": "GBP"
+    },
+    {
+      "symbol": "BTCGUSD",
+      "baseAsset": "BTCG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "BTCGUSDPERP",
+      "baseAsset": "BTCGUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "BTCSGD",
+      "baseAsset": "BTC",
+      "quoteAsset": "SGD"
+    },
+    {
+      "symbol": "BTCUSD",
+      "baseAsset": "BTC",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "BTCUSDT",
+      "baseAsset": "BTCU",
+      "quoteAsset": "SDT"
+    },
+    {
+      "symbol": "CHILLGUYGUSD",
+      "baseAsset": "CHILLGUYG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "CHILLGUYUSD",
+      "baseAsset": "CHILLGUY",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "CHZGUSD",
+      "baseAsset": "CHZG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "CHZUSD",
+      "baseAsset": "CHZ",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "COMPGUSD",
+      "baseAsset": "COMPG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "COMPUSD",
+      "baseAsset": "COMP",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "CRVGUSD",
+      "baseAsset": "CRVG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "CRVUSD",
+      "baseAsset": "CRV",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "CTXGUSD",
+      "baseAsset": "CTXG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "CTXUSD",
+      "baseAsset": "CTX",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "CUBEGUSD",
+      "baseAsset": "CUBEG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "CUBEUSD",
+      "baseAsset": "CUBE",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "DAIGUSD",
+      "baseAsset": "DAIG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "DAIUSD",
+      "baseAsset": "DAI",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "DOGEBTC",
+      "baseAsset": "DOGE",
+      "quoteAsset": "BTC"
+    },
+    {
+      "symbol": "DOGEETH",
+      "baseAsset": "DOGE",
+      "quoteAsset": "ETH"
+    },
+    {
+      "symbol": "DOGEGUSD",
+      "baseAsset": "DOGEG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "DOGEGUSDPERP",
+      "baseAsset": "DOGEGUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "DOGEUSD",
+      "baseAsset": "DOGE",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "DOTGUSD",
+      "baseAsset": "DOTG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "DOTUSD",
+      "baseAsset": "DOT",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "EFILFIL",
+      "baseAsset": "EFIL",
+      "quoteAsset": "FIL"
+    },
+    {
+      "symbol": "ELONGUSD",
+      "baseAsset": "ELONG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "ELONUSD",
+      "baseAsset": "ELON",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "ENSGUSD",
+      "baseAsset": "ENSG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "ENSUSD",
+      "baseAsset": "ENS",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "ETHBTC",
+      "baseAsset": "ETH",
+      "quoteAsset": "BTC"
+    },
+    {
+      "symbol": "ETHEUR",
+      "baseAsset": "ETH",
+      "quoteAsset": "EUR"
+    },
+    {
+      "symbol": "ETHGBP",
+      "baseAsset": "ETH",
+      "quoteAsset": "GBP"
+    },
+    {
+      "symbol": "ETHGUSD",
+      "baseAsset": "ETHG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "ETHGUSDPERP",
+      "baseAsset": "ETHGUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "ETHSGD",
+      "baseAsset": "ETH",
+      "quoteAsset": "SGD"
+    },
+    {
+      "symbol": "ETHUSD",
+      "baseAsset": "ETH",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "ETHUSDT",
+      "baseAsset": "ETHU",
+      "quoteAsset": "SDT"
+    },
+    {
+      "symbol": "FETGUSD",
+      "baseAsset": "FETG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "FETUSD",
+      "baseAsset": "FET",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "FILGUSD",
+      "baseAsset": "FILG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "FILUSD",
+      "baseAsset": "FIL",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "FLOKIGUSD",
+      "baseAsset": "FLOKIG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "FLOKIGUSDPERP",
+      "baseAsset": "FLOKIGUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "FLOKIUSD",
+      "baseAsset": "FLOKI",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "FTMGUSD",
+      "baseAsset": "FTMG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "FTMUSD",
+      "baseAsset": "FTM",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "GALAGUSD",
+      "baseAsset": "GALAG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "GALAUSD",
+      "baseAsset": "GALA",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "GMTGUSD",
+      "baseAsset": "GMTG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "GMTUSD",
+      "baseAsset": "GMT",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "GOATGUSD",
+      "baseAsset": "GOATG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "GOATUSD",
+      "baseAsset": "GOAT",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "GRTGUSD",
+      "baseAsset": "GRTG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "GRTUSD",
+      "baseAsset": "GRT",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "GUSDGBP",
+      "baseAsset": "GUSD",
+      "quoteAsset": "GBP"
+    },
+    {
+      "symbol": "GUSDSGD",
+      "baseAsset": "GUSD",
+      "quoteAsset": "SGD"
+    },
+    {
+      "symbol": "GUSDUSD",
+      "baseAsset": "GUSD",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "HNTGUSD",
+      "baseAsset": "HNTG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "HNTUSD",
+      "baseAsset": "HNT",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "HYPEGUSDPERP",
+      "baseAsset": "HYPEGUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "IMXGUSD",
+      "baseAsset": "IMXG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "IMXUSD",
+      "baseAsset": "IMX",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "INJGUSD",
+      "baseAsset": "INJG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "INJGUSDPERP",
+      "baseAsset": "INJGUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "INJUSD",
+      "baseAsset": "INJ",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "IOTXGUSD",
+      "baseAsset": "IOTXG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "IOTXUSD",
+      "baseAsset": "IOTX",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "JITOSOLSOL",
+      "baseAsset": "JITOSOL",
+      "quoteAsset": "SOL"
+    },
+    {
+      "symbol": "JITOSOLUSD",
+      "baseAsset": "JITOSOL",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "JTOUSD",
+      "baseAsset": "JTO",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "KSL2GUSDPERP",
+      "baseAsset": "KSL2GUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "KT5GUSDPERP",
+      "baseAsset": "KT5GUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "LDOGUSD",
+      "baseAsset": "LDOG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "LDOUSD",
+      "baseAsset": "LDO",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "LINKBTC",
+      "baseAsset": "LINK",
+      "quoteAsset": "BTC"
+    },
+    {
+      "symbol": "LINKETH",
+      "baseAsset": "LINK",
+      "quoteAsset": "ETH"
+    },
+    {
+      "symbol": "LINKGUSD",
+      "baseAsset": "LINKG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "LINKGUSDPERP",
+      "baseAsset": "LINKGUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "LINKUSD",
+      "baseAsset": "LINK",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "LPTGUSD",
+      "baseAsset": "LPTG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "LPTUSD",
+      "baseAsset": "LPT",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "LRCGUSD",
+      "baseAsset": "LRCG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "LRCUSD",
+      "baseAsset": "LRC",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "LTCBTC",
+      "baseAsset": "LTC",
+      "quoteAsset": "BTC"
+    },
+    {
+      "symbol": "LTCETH",
+      "baseAsset": "LTC",
+      "quoteAsset": "ETH"
+    },
+    {
+      "symbol": "LTCGUSD",
+      "baseAsset": "LTCG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "LTCGUSDPERP",
+      "baseAsset": "LTCGUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "LTCUSD",
+      "baseAsset": "LTC",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "MANAGUSD",
+      "baseAsset": "MANAG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "MANAUSD",
+      "baseAsset": "MANA",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "MASKGUSD",
+      "baseAsset": "MASKG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "MASKUSD",
+      "baseAsset": "MASK",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "MATICGUSD",
+      "baseAsset": "MATICG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "MATICUSD",
+      "baseAsset": "MATIC",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "MEWGUSD",
+      "baseAsset": "MEWG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "MEWGUSDPERP",
+      "baseAsset": "MEWGUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "MEWUSD",
+      "baseAsset": "MEW",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "MKRGUSD",
+      "baseAsset": "MKRG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "MKRUSD",
+      "baseAsset": "MKR",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "MOODENGGUSD",
+      "baseAsset": "MOODENGG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "MOODENGUSD",
+      "baseAsset": "MOODENG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "OPGUSD",
+      "baseAsset": "OPG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "OPGUSDPERP",
+      "baseAsset": "OPGUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "OPUSD",
+      "baseAsset": "OP",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "PAXGGUSD",
+      "baseAsset": "PAXGG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "PAXGUSD",
+      "baseAsset": "PAXG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "PEPEGUSD",
+      "baseAsset": "PEPEG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "PEPEGUSDPERP",
+      "baseAsset": "PEPEGUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "PEPEUSD",
+      "baseAsset": "PEPE",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "PNUTGUSD",
+      "baseAsset": "PNUTG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "PNUTUSD",
+      "baseAsset": "PNUT",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "POLGUSDPERP",
+      "baseAsset": "POLGUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "POPCATGUSD",
+      "baseAsset": "POPCATG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "POPCATGUSDPERP",
+      "baseAsset": "POPCATGUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "POPCATUSD",
+      "baseAsset": "POPCAT",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "PYTHGUSD",
+      "baseAsset": "PYTHG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "PYTHUSD",
+      "baseAsset": "PYTH",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "QNTGUSD",
+      "baseAsset": "QNTG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "QNTUSD",
+      "baseAsset": "QNT",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "RLUSDUSD",
+      "baseAsset": "RLUSD",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "RNDRGUSD",
+      "baseAsset": "RNDRG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "RNDRUSD",
+      "baseAsset": "RNDR",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "SAMOGUSD",
+      "baseAsset": "SAMOG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "SAMOUSD",
+      "baseAsset": "SAMO",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "SANDGUSD",
+      "baseAsset": "SANDG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "SANDUSD",
+      "baseAsset": "SAND",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "SHIBGUSD",
+      "baseAsset": "SHIBG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "SHIBGUSDPERP",
+      "baseAsset": "SHIBGUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "SHIBUSD",
+      "baseAsset": "SHIB",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "SKLGUSD",
+      "baseAsset": "SKLG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "SKLUSD",
+      "baseAsset": "SKL",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "SOLBTC",
+      "baseAsset": "SOL",
+      "quoteAsset": "BTC"
+    },
+    {
+      "symbol": "SOLETH",
+      "baseAsset": "SOL",
+      "quoteAsset": "ETH"
+    },
+    {
+      "symbol": "SOLGUSD",
+      "baseAsset": "SOLG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "SOLGUSDPERP",
+      "baseAsset": "SOLGUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "SOLUSD",
+      "baseAsset": "SOL",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "STORJGUSD",
+      "baseAsset": "STORJG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "STORJUSD",
+      "baseAsset": "STORJ",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "SUSHIGUSD",
+      "baseAsset": "SUSHIG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "SUSHIUSD",
+      "baseAsset": "SUSHI",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "TRUMPGUSD",
+      "baseAsset": "TRUMPG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "TRUMPGUSDPERP",
+      "baseAsset": "TRUMPGUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "TRUMPUSD",
+      "baseAsset": "TRUMP",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "UMAGUSD",
+      "baseAsset": "UMAG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "UMAUSD",
+      "baseAsset": "UMA",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "UNIGUSD",
+      "baseAsset": "UNIG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "UNIGUSDPERP",
+      "baseAsset": "UNIGUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "UNIUSD",
+      "baseAsset": "UNI",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "USDCUSD",
+      "baseAsset": "USDC",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "USDTGUSD",
+      "baseAsset": "USDTG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "USDTUSD",
+      "baseAsset": "USDT",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "WIFGUSD",
+      "baseAsset": "WIFG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "WIFGUSDPERP",
+      "baseAsset": "WIFGUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "WIFUSD",
+      "baseAsset": "WIF",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "XRPGUSD",
+      "baseAsset": "XRPG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "XRPGUSDPERP",
+      "baseAsset": "XRPGUSDP",
+      "quoteAsset": "ERP"
+    },
+    {
+      "symbol": "XRPRLUSD",
+      "baseAsset": "XRPRL",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "XRPUSD",
+      "baseAsset": "XRP",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "XTZGUSD",
+      "baseAsset": "XTZG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "XTZUSD",
+      "baseAsset": "XTZ",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "YFIGUSD",
+      "baseAsset": "YFIG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "YFIUSD",
+      "baseAsset": "YFI",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "ZECGUSD",
+      "baseAsset": "ZECG",
+      "quoteAsset": "USD"
+    },
+    {
+      "symbol": "ZECUSD",
+      "baseAsset": "ZEC",
+      "quoteAsset": "USD"
+    }
+  ]
+}

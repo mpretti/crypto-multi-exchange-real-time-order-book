@@ -1,0 +1,3311 @@
+{
+  "exchange": "Binance",
+  "count": 472,
+  "lastUpdated": "2025-06-21T21:26:33.982Z",
+  "pairs": [
+    {
+      "symbol": "BTCUSDT",
+      "baseAsset": "BTC",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ETHUSDT",
+      "baseAsset": "ETH",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BCHUSDT",
+      "baseAsset": "BCH",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "XRPUSDT",
+      "baseAsset": "XRP",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "LTCUSDT",
+      "baseAsset": "LTC",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "TRXUSDT",
+      "baseAsset": "TRX",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ETCUSDT",
+      "baseAsset": "ETC",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "LINKUSDT",
+      "baseAsset": "LINK",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "XLMUSDT",
+      "baseAsset": "XLM",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ADAUSDT",
+      "baseAsset": "ADA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "XMRUSDT",
+      "baseAsset": "XMR",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "DASHUSDT",
+      "baseAsset": "DASH",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ZECUSDT",
+      "baseAsset": "ZEC",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "XTZUSDT",
+      "baseAsset": "XTZ",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BNBUSDT",
+      "baseAsset": "BNB",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ATOMUSDT",
+      "baseAsset": "ATOM",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ONTUSDT",
+      "baseAsset": "ONT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "IOTAUSDT",
+      "baseAsset": "IOTA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BATUSDT",
+      "baseAsset": "BAT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "VETUSDT",
+      "baseAsset": "VET",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "NEOUSDT",
+      "baseAsset": "NEO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "QTUMUSDT",
+      "baseAsset": "QTUM",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "IOSTUSDT",
+      "baseAsset": "IOST",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "THETAUSDT",
+      "baseAsset": "THETA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ALGOUSDT",
+      "baseAsset": "ALGO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ZILUSDT",
+      "baseAsset": "ZIL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "KNCUSDT",
+      "baseAsset": "KNC",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ZRXUSDT",
+      "baseAsset": "ZRX",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "COMPUSDT",
+      "baseAsset": "COMP",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "DOGEUSDT",
+      "baseAsset": "DOGE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SXPUSDT",
+      "baseAsset": "SXP",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "KAVAUSDT",
+      "baseAsset": "KAVA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BANDUSDT",
+      "baseAsset": "BAND",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "RLCUSDT",
+      "baseAsset": "RLC",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MKRUSDT",
+      "baseAsset": "MKR",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SNXUSDT",
+      "baseAsset": "SNX",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "DOTUSDT",
+      "baseAsset": "DOT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "DEFIUSDT",
+      "baseAsset": "DEFI",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "YFIUSDT",
+      "baseAsset": "YFI",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "CRVUSDT",
+      "baseAsset": "CRV",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "TRBUSDT",
+      "baseAsset": "TRB",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "RUNEUSDT",
+      "baseAsset": "RUNE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SUSHIUSDT",
+      "baseAsset": "SUSHI",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "EGLDUSDT",
+      "baseAsset": "EGLD",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SOLUSDT",
+      "baseAsset": "SOL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ICXUSDT",
+      "baseAsset": "ICX",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "STORJUSDT",
+      "baseAsset": "STORJ",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "UNIUSDT",
+      "baseAsset": "UNI",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "baseAsset": "AVAX",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ENJUSDT",
+      "baseAsset": "ENJ",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "FLMUSDT",
+      "baseAsset": "FLM",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "KSMUSDT",
+      "baseAsset": "KSM",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "NEARUSDT",
+      "baseAsset": "NEAR",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "AAVEUSDT",
+      "baseAsset": "AAVE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "FILUSDT",
+      "baseAsset": "FIL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "RSRUSDT",
+      "baseAsset": "RSR",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "LRCUSDT",
+      "baseAsset": "LRC",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BELUSDT",
+      "baseAsset": "BEL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "AXSUSDT",
+      "baseAsset": "AXS",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ALPHAUSDT",
+      "baseAsset": "ALPHA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ZENUSDT",
+      "baseAsset": "ZEN",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SKLUSDT",
+      "baseAsset": "SKL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "GRTUSDT",
+      "baseAsset": "GRT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "1INCHUSDT",
+      "baseAsset": "1INCH",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "CHZUSDT",
+      "baseAsset": "CHZ",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SANDUSDT",
+      "baseAsset": "SAND",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ANKRUSDT",
+      "baseAsset": "ANKR",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "RVNUSDT",
+      "baseAsset": "RVN",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SFPUSDT",
+      "baseAsset": "SFP",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "COTIUSDT",
+      "baseAsset": "COTI",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "CHRUSDT",
+      "baseAsset": "CHR",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MANAUSDT",
+      "baseAsset": "MANA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ALICEUSDT",
+      "baseAsset": "ALICE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "HBARUSDT",
+      "baseAsset": "HBAR",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ONEUSDT",
+      "baseAsset": "ONE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "DENTUSDT",
+      "baseAsset": "DENT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "CELRUSDT",
+      "baseAsset": "CELR",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "HOTUSDT",
+      "baseAsset": "HOT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MTLUSDT",
+      "baseAsset": "MTL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "OGNUSDT",
+      "baseAsset": "OGN",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "NKNUSDT",
+      "baseAsset": "NKN",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "1000SHIBUSDT",
+      "baseAsset": "1000SHIB",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BAKEUSDT",
+      "baseAsset": "BAKE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "GTCUSDT",
+      "baseAsset": "GTC",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BTCDOMUSDT",
+      "baseAsset": "BTCDOM",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "IOTXUSDT",
+      "baseAsset": "IOTX",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "C98USDT",
+      "baseAsset": "C98",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MASKUSDT",
+      "baseAsset": "MASK",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ATAUSDT",
+      "baseAsset": "ATA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "DYDXUSDT",
+      "baseAsset": "DYDX",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "1000XECUSDT",
+      "baseAsset": "1000XEC",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "GALAUSDT",
+      "baseAsset": "GALA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "CELOUSDT",
+      "baseAsset": "CELO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ARUSDT",
+      "baseAsset": "AR",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ARPAUSDT",
+      "baseAsset": "ARPA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "CTSIUSDT",
+      "baseAsset": "CTSI",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "LPTUSDT",
+      "baseAsset": "LPT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ENSUSDT",
+      "baseAsset": "ENS",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "PEOPLEUSDT",
+      "baseAsset": "PEOPLE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ROSEUSDT",
+      "baseAsset": "ROSE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "DUSKUSDT",
+      "baseAsset": "DUSK",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "FLOWUSDT",
+      "baseAsset": "FLOW",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "IMXUSDT",
+      "baseAsset": "IMX",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "API3USDT",
+      "baseAsset": "API3",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "GMTUSDT",
+      "baseAsset": "GMT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "APEUSDT",
+      "baseAsset": "APE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "WOOUSDT",
+      "baseAsset": "WOO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "JASMYUSDT",
+      "baseAsset": "JASMY",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "OPUSDT",
+      "baseAsset": "OP",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "INJUSDT",
+      "baseAsset": "INJ",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "STGUSDT",
+      "baseAsset": "STG",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SPELLUSDT",
+      "baseAsset": "SPELL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "1000LUNCUSDT",
+      "baseAsset": "1000LUNC",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "LUNA2USDT",
+      "baseAsset": "LUNA2",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "LDOUSDT",
+      "baseAsset": "LDO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ICPUSDT",
+      "baseAsset": "ICP",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "APTUSDT",
+      "baseAsset": "APT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "QNTUSDT",
+      "baseAsset": "QNT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "FETUSDT",
+      "baseAsset": "FET",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "FXSUSDT",
+      "baseAsset": "FXS",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "HOOKUSDT",
+      "baseAsset": "HOOK",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MAGICUSDT",
+      "baseAsset": "MAGIC",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "TUSDT",
+      "baseAsset": "T",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "HIGHUSDT",
+      "baseAsset": "HIGH",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MINAUSDT",
+      "baseAsset": "MINA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ASTRUSDT",
+      "baseAsset": "ASTR",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "PHBUSDT",
+      "baseAsset": "PHB",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "GMXUSDT",
+      "baseAsset": "GMX",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "CFXUSDT",
+      "baseAsset": "CFX",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "STXUSDT",
+      "baseAsset": "STX",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ACHUSDT",
+      "baseAsset": "ACH",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SSVUSDT",
+      "baseAsset": "SSV",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "CKBUSDT",
+      "baseAsset": "CKB",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "PERPUSDT",
+      "baseAsset": "PERP",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "TRUUSDT",
+      "baseAsset": "TRU",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "LQTYUSDT",
+      "baseAsset": "LQTY",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "USDCUSDT",
+      "baseAsset": "USDC",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "IDUSDT",
+      "baseAsset": "ID",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ARBUSDT",
+      "baseAsset": "ARB",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "JOEUSDT",
+      "baseAsset": "JOE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "TLMUSDT",
+      "baseAsset": "TLM",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "LEVERUSDT",
+      "baseAsset": "LEVER",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "RDNTUSDT",
+      "baseAsset": "RDNT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "HFTUSDT",
+      "baseAsset": "HFT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "XVSUSDT",
+      "baseAsset": "XVS",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ETHBTC",
+      "baseAsset": "ETH",
+      "quoteAsset": "BTC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BLURUSDT",
+      "baseAsset": "BLUR",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "EDUUSDT",
+      "baseAsset": "EDU",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SUIUSDT",
+      "baseAsset": "SUI",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "1000PEPEUSDT",
+      "baseAsset": "1000PEPE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "1000FLOKIUSDT",
+      "baseAsset": "1000FLOKI",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "UMAUSDT",
+      "baseAsset": "UMA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "NMRUSDT",
+      "baseAsset": "NMR",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MAVUSDT",
+      "baseAsset": "MAV",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "XVGUSDT",
+      "baseAsset": "XVG",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "WLDUSDT",
+      "baseAsset": "WLD",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "PENDLEUSDT",
+      "baseAsset": "PENDLE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ARKMUSDT",
+      "baseAsset": "ARKM",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "AGLDUSDT",
+      "baseAsset": "AGLD",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "YGGUSDT",
+      "baseAsset": "YGG",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "DODOXUSDT",
+      "baseAsset": "DODOX",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BNTUSDT",
+      "baseAsset": "BNT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "OXTUSDT",
+      "baseAsset": "OXT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SEIUSDT",
+      "baseAsset": "SEI",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "CYBERUSDT",
+      "baseAsset": "CYBER",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "HIFIUSDT",
+      "baseAsset": "HIFI",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ARKUSDT",
+      "baseAsset": "ARK",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BICOUSDT",
+      "baseAsset": "BICO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BIGTIMEUSDT",
+      "baseAsset": "BIGTIME",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "WAXPUSDT",
+      "baseAsset": "WAXP",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BSVUSDT",
+      "baseAsset": "BSV",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "RIFUSDT",
+      "baseAsset": "RIF",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "POLYXUSDT",
+      "baseAsset": "POLYX",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "GASUSDT",
+      "baseAsset": "GAS",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "POWRUSDT",
+      "baseAsset": "POWR",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "TIAUSDT",
+      "baseAsset": "TIA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "CAKEUSDT",
+      "baseAsset": "CAKE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MEMEUSDT",
+      "baseAsset": "MEME",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "TWTUSDT",
+      "baseAsset": "TWT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "TOKENUSDT",
+      "baseAsset": "TOKEN",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ORDIUSDT",
+      "baseAsset": "ORDI",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "STEEMUSDT",
+      "baseAsset": "STEEM",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ILVUSDT",
+      "baseAsset": "ILV",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "NTRNUSDT",
+      "baseAsset": "NTRN",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "KASUSDT",
+      "baseAsset": "KAS",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BEAMXUSDT",
+      "baseAsset": "BEAMX",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "1000BONKUSDT",
+      "baseAsset": "1000BONK",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "PYTHUSDT",
+      "baseAsset": "PYTH",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SUPERUSDT",
+      "baseAsset": "SUPER",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "USTCUSDT",
+      "baseAsset": "USTC",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ONGUSDT",
+      "baseAsset": "ONG",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ETHWUSDT",
+      "baseAsset": "ETHW",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "JTOUSDT",
+      "baseAsset": "JTO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "1000SATSUSDT",
+      "baseAsset": "1000SATS",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "AUCTIONUSDT",
+      "baseAsset": "AUCTION",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "1000RATSUSDT",
+      "baseAsset": "1000RATS",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ACEUSDT",
+      "baseAsset": "ACE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MOVRUSDT",
+      "baseAsset": "MOVR",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "NFPUSDT",
+      "baseAsset": "NFP",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BTCUSDC",
+      "baseAsset": "BTC",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ETHUSDC",
+      "baseAsset": "ETH",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BNBUSDC",
+      "baseAsset": "BNB",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SOLUSDC",
+      "baseAsset": "SOL",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "XRPUSDC",
+      "baseAsset": "XRP",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "AIUSDT",
+      "baseAsset": "AI",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "XAIUSDT",
+      "baseAsset": "XAI",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "DOGEUSDC",
+      "baseAsset": "DOGE",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "WIFUSDT",
+      "baseAsset": "WIF",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MANTAUSDT",
+      "baseAsset": "MANTA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ONDOUSDT",
+      "baseAsset": "ONDO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "LSKUSDT",
+      "baseAsset": "LSK",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ALTUSDT",
+      "baseAsset": "ALT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "JUPUSDT",
+      "baseAsset": "JUP",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ZETAUSDT",
+      "baseAsset": "ZETA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "RONINUSDT",
+      "baseAsset": "RONIN",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "DYMUSDT",
+      "baseAsset": "DYM",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SUIUSDC",
+      "baseAsset": "SUI",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "OMUSDT",
+      "baseAsset": "OM",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "LINKUSDC",
+      "baseAsset": "LINK",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "PIXELUSDT",
+      "baseAsset": "PIXEL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "STRKUSDT",
+      "baseAsset": "STRK",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ORDIUSDC",
+      "baseAsset": "ORDI",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "GLMUSDT",
+      "baseAsset": "GLM",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "PORTALUSDT",
+      "baseAsset": "PORTAL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "TONUSDT",
+      "baseAsset": "TON",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "AXLUSDT",
+      "baseAsset": "AXL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MYROUSDT",
+      "baseAsset": "MYRO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "1000PEPEUSDC",
+      "baseAsset": "1000PEPE",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "METISUSDT",
+      "baseAsset": "METIS",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "AEVOUSDT",
+      "baseAsset": "AEVO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "WLDUSDC",
+      "baseAsset": "WLD",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "VANRYUSDT",
+      "baseAsset": "VANRY",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BOMEUSDT",
+      "baseAsset": "BOME",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ETHFIUSDT",
+      "baseAsset": "ETHFI",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "AVAXUSDC",
+      "baseAsset": "AVAX",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "1000SHIBUSDC",
+      "baseAsset": "1000SHIB",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ENAUSDT",
+      "baseAsset": "ENA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "WUSDT",
+      "baseAsset": "W",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "WIFUSDC",
+      "baseAsset": "WIF",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BCHUSDC",
+      "baseAsset": "BCH",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "TNSRUSDT",
+      "baseAsset": "TNSR",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SAGAUSDT",
+      "baseAsset": "SAGA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "LTCUSDC",
+      "baseAsset": "LTC",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "NEARUSDC",
+      "baseAsset": "NEAR",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "TAOUSDT",
+      "baseAsset": "TAO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "OMNIUSDT",
+      "baseAsset": "OMNI",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ARBUSDC",
+      "baseAsset": "ARB",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "NEOUSDC",
+      "baseAsset": "NEO",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "FILUSDC",
+      "baseAsset": "FIL",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "TIAUSDC",
+      "baseAsset": "TIA",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BOMEUSDC",
+      "baseAsset": "BOME",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "REZUSDT",
+      "baseAsset": "REZ",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ENAUSDC",
+      "baseAsset": "ENA",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ETHFIUSDC",
+      "baseAsset": "ETHFI",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "1000BONKUSDC",
+      "baseAsset": "1000BONK",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BBUSDT",
+      "baseAsset": "BB",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "NOTUSDT",
+      "baseAsset": "NOT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "TURBOUSDT",
+      "baseAsset": "TURBO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "IOUSDT",
+      "baseAsset": "IO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ZKUSDT",
+      "baseAsset": "ZK",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MEWUSDT",
+      "baseAsset": "MEW",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "LISTAUSDT",
+      "baseAsset": "LISTA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ZROUSDT",
+      "baseAsset": "ZRO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "CRVUSDC",
+      "baseAsset": "CRV",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "RENDERUSDT",
+      "baseAsset": "RENDER",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BANANAUSDT",
+      "baseAsset": "BANANA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "RAREUSDT",
+      "baseAsset": "RARE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "GUSDT",
+      "baseAsset": "G",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SYNUSDT",
+      "baseAsset": "SYN",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SYSUSDT",
+      "baseAsset": "SYS",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "VOXELUSDT",
+      "baseAsset": "VOXEL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BRETTUSDT",
+      "baseAsset": "BRETT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "POPCATUSDT",
+      "baseAsset": "POPCAT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SUNUSDT",
+      "baseAsset": "SUN",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "DOGSUSDT",
+      "baseAsset": "DOGS",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MBOXUSDT",
+      "baseAsset": "MBOX",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "CHESSUSDT",
+      "baseAsset": "CHESS",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "FLUXUSDT",
+      "baseAsset": "FLUX",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BSWUSDT",
+      "baseAsset": "BSW",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "QUICKUSDT",
+      "baseAsset": "QUICK",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "NEIROETHUSDT",
+      "baseAsset": "NEIROETH",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "RPLUSDT",
+      "baseAsset": "RPL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "POLUSDT",
+      "baseAsset": "POL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "UXLINKUSDT",
+      "baseAsset": "UXLINK",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "1MBABYDOGEUSDT",
+      "baseAsset": "1MBABYDOGE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "NEIROUSDT",
+      "baseAsset": "NEIRO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "KDAUSDT",
+      "baseAsset": "KDA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "FIDAUSDT",
+      "baseAsset": "FIDA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "FIOUSDT",
+      "baseAsset": "FIO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "CATIUSDT",
+      "baseAsset": "CATI",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "GHSTUSDT",
+      "baseAsset": "GHST",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "LOKAUSDT",
+      "baseAsset": "LOKA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "HMSTRUSDT",
+      "baseAsset": "HMSTR",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "REIUSDT",
+      "baseAsset": "REI",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "COSUSDT",
+      "baseAsset": "COS",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "EIGENUSDT",
+      "baseAsset": "EIGEN",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "DIAUSDT",
+      "baseAsset": "DIA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "1000CATUSDT",
+      "baseAsset": "1000CAT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SCRUSDT",
+      "baseAsset": "SCR",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "GOATUSDT",
+      "baseAsset": "GOAT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MOODENGUSDT",
+      "baseAsset": "MOODENG",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SAFEUSDT",
+      "baseAsset": "SAFE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SANTOSUSDT",
+      "baseAsset": "SANTOS",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "PONKEUSDT",
+      "baseAsset": "PONKE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "COWUSDT",
+      "baseAsset": "COW",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "CETUSUSDT",
+      "baseAsset": "CETUS",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "1000000MOGUSDT",
+      "baseAsset": "1000000MOG",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "GRASSUSDT",
+      "baseAsset": "GRASS",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "DRIFTUSDT",
+      "baseAsset": "DRIFT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SWELLUSDT",
+      "baseAsset": "SWELL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ACTUSDT",
+      "baseAsset": "ACT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "PNUTUSDT",
+      "baseAsset": "PNUT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "HIPPOUSDT",
+      "baseAsset": "HIPPO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "1000XUSDT",
+      "baseAsset": "1000X",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "DEGENUSDT",
+      "baseAsset": "DEGEN",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BANUSDT",
+      "baseAsset": "BAN",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "AKTUSDT",
+      "baseAsset": "AKT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SLERFUSDT",
+      "baseAsset": "SLERF",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SCRTUSDT",
+      "baseAsset": "SCRT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "1000CHEEMSUSDT",
+      "baseAsset": "1000CHEEMS",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "1000WHYUSDT",
+      "baseAsset": "1000WHY",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "THEUSDT",
+      "baseAsset": "THE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MORPHOUSDT",
+      "baseAsset": "MORPHO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "CHILLGUYUSDT",
+      "baseAsset": "CHILLGUY",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "KAIAUSDT",
+      "baseAsset": "KAIA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "AEROUSDT",
+      "baseAsset": "AERO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ACXUSDT",
+      "baseAsset": "ACX",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ORCAUSDT",
+      "baseAsset": "ORCA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MOVEUSDT",
+      "baseAsset": "MOVE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "RAYSOLUSDT",
+      "baseAsset": "RAYSOL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "KOMAUSDT",
+      "baseAsset": "KOMA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "VIRTUALUSDT",
+      "baseAsset": "VIRTUAL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SPXUSDT",
+      "baseAsset": "SPX",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MEUSDT",
+      "baseAsset": "ME",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "AVAUSDT",
+      "baseAsset": "AVA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "DEGOUSDT",
+      "baseAsset": "DEGO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "VELODROMEUSDT",
+      "baseAsset": "VELODROME",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MOCAUSDT",
+      "baseAsset": "MOCA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "VANAUSDT",
+      "baseAsset": "VANA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "PENGUUSDT",
+      "baseAsset": "PENGU",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "LUMIAUSDT",
+      "baseAsset": "LUMIA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "USUALUSDT",
+      "baseAsset": "USUAL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "AIXBTUSDT",
+      "baseAsset": "AIXBT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "FARTCOINUSDT",
+      "baseAsset": "FARTCOIN",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "KMNOUSDT",
+      "baseAsset": "KMNO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "CGPTUSDT",
+      "baseAsset": "CGPT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "HIVEUSDT",
+      "baseAsset": "HIVE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "DEXEUSDT",
+      "baseAsset": "DEXE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "PHAUSDT",
+      "baseAsset": "PHA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "DFUSDT",
+      "baseAsset": "DF",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "GRIFFAINUSDT",
+      "baseAsset": "GRIFFAIN",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "AI16ZUSDT",
+      "baseAsset": "AI16Z",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ZEREBROUSDT",
+      "baseAsset": "ZEREBRO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BIOUSDT",
+      "baseAsset": "BIO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "COOKIEUSDT",
+      "baseAsset": "COOKIE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ALCHUSDT",
+      "baseAsset": "ALCH",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SWARMSUSDT",
+      "baseAsset": "SWARMS",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SONICUSDT",
+      "baseAsset": "SONIC",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "DUSDT",
+      "baseAsset": "D",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "PROMUSDT",
+      "baseAsset": "PROM",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SUSDT",
+      "baseAsset": "S",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SOLVUSDT",
+      "baseAsset": "SOLV",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ARCUSDT",
+      "baseAsset": "ARC",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "AVAAIUSDT",
+      "baseAsset": "AVAAI",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "TRUMPUSDT",
+      "baseAsset": "TRUMP",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MELANIAUSDT",
+      "baseAsset": "MELANIA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "VTHOUSDT",
+      "baseAsset": "VTHO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ANIMEUSDT",
+      "baseAsset": "ANIME",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "VINEUSDT",
+      "baseAsset": "VINE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "PIPPINUSDT",
+      "baseAsset": "PIPPIN",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "VVVUSDT",
+      "baseAsset": "VVV",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BERAUSDT",
+      "baseAsset": "BERA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "TSTUSDT",
+      "baseAsset": "TST",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "LAYERUSDT",
+      "baseAsset": "LAYER",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "HEIUSDT",
+      "baseAsset": "HEI",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "B3USDT",
+      "baseAsset": "B3",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "IPUSDT",
+      "baseAsset": "IP",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "GPSUSDT",
+      "baseAsset": "GPS",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SHELLUSDT",
+      "baseAsset": "SHELL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "KAITOUSDT",
+      "baseAsset": "KAITO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "KAITOUSDC",
+      "baseAsset": "KAITO",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "IPUSDC",
+      "baseAsset": "IP",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "TRUMPUSDC",
+      "baseAsset": "TRUMP",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ADAUSDC",
+      "baseAsset": "ADA",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "REDUSDT",
+      "baseAsset": "RED",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "PNUTUSDC",
+      "baseAsset": "PNUT",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "HBARUSDC",
+      "baseAsset": "HBAR",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "VICUSDT",
+      "baseAsset": "VIC",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "EPICUSDT",
+      "baseAsset": "EPIC",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BMTUSDT",
+      "baseAsset": "BMT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MUBARAKUSDT",
+      "baseAsset": "MUBARAK",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "FORMUSDT",
+      "baseAsset": "FORM",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BIDUSDT",
+      "baseAsset": "BID",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "TUTUSDT",
+      "baseAsset": "TUT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BROCCOLI714USDT",
+      "baseAsset": "BROCCOLI714",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BROCCOLIF3BUSDT",
+      "baseAsset": "BROCCOLIF3B",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SIRENUSDT",
+      "baseAsset": "SIREN",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BANANAS31USDT",
+      "baseAsset": "BANANAS31",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BRUSDT",
+      "baseAsset": "BR",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "PLUMEUSDT",
+      "baseAsset": "PLUME",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "NILUSDT",
+      "baseAsset": "NIL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "PARTIUSDT",
+      "baseAsset": "PARTI",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "JELLYJELLYUSDT",
+      "baseAsset": "JELLYJELLY",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MAVIAUSDT",
+      "baseAsset": "MAVIA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "PAXGUSDT",
+      "baseAsset": "PAXG",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "WALUSDT",
+      "baseAsset": "WAL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "FUNUSDT",
+      "baseAsset": "FUN",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MLNUSDT",
+      "baseAsset": "MLN",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "GUNUSDT",
+      "baseAsset": "GUN",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ATHUSDT",
+      "baseAsset": "ATH",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BABYUSDT",
+      "baseAsset": "BABY",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "FORTHUSDT",
+      "baseAsset": "FORTH",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "PROMPTUSDT",
+      "baseAsset": "PROMPT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "XCNUSDT",
+      "baseAsset": "XCN",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "STOUSDT",
+      "baseAsset": "STO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "FHEUSDT",
+      "baseAsset": "FHE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "KERNELUSDT",
+      "baseAsset": "KERNEL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "WCTUSDT",
+      "baseAsset": "WCT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "INITUSDT",
+      "baseAsset": "INIT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "AERGOUSDT",
+      "baseAsset": "AERGO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BANKUSDT",
+      "baseAsset": "BANK",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "EPTUSDT",
+      "baseAsset": "EPT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "DEEPUSDT",
+      "baseAsset": "DEEP",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "HYPERUSDT",
+      "baseAsset": "HYPER",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MEMEFIUSDT",
+      "baseAsset": "MEMEFI",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "FISUSDT",
+      "baseAsset": "FIS",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "JSTUSDT",
+      "baseAsset": "JST",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SIGNUSDT",
+      "baseAsset": "SIGN",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "PUNDIXUSDT",
+      "baseAsset": "PUNDIX",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "CTKUSDT",
+      "baseAsset": "CTK",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "AIOTUSDT",
+      "baseAsset": "AIOT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "DOLOUSDT",
+      "baseAsset": "DOLO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "HAEDALUSDT",
+      "baseAsset": "HAEDAL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SXTUSDT",
+      "baseAsset": "SXT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ASRUSDT",
+      "baseAsset": "ASR",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ALPINEUSDT",
+      "baseAsset": "ALPINE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "B2USDT",
+      "baseAsset": "B2",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MILKUSDT",
+      "baseAsset": "MILK",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SYRUPUSDT",
+      "baseAsset": "SYRUP",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "OBOLUSDT",
+      "baseAsset": "OBOL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "DOODUSDT",
+      "baseAsset": "DOOD",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "OGUSDT",
+      "baseAsset": "OG",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ZKJUSDT",
+      "baseAsset": "ZKJ",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SKYAIUSDT",
+      "baseAsset": "SKYAI",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "NXPCUSDT",
+      "baseAsset": "NXPC",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "CVCUSDT",
+      "baseAsset": "CVC",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "AGTUSDT",
+      "baseAsset": "AGT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "AWEUSDT",
+      "baseAsset": "AWE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BUSDT",
+      "baseAsset": "B",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SOONUSDT",
+      "baseAsset": "SOON",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "HUMAUSDT",
+      "baseAsset": "HUMA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "AUSDT",
+      "baseAsset": "A",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SOPHUSDT",
+      "baseAsset": "SOPH",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MERLUSDT",
+      "baseAsset": "MERL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "HYPEUSDT",
+      "baseAsset": "HYPE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "BDXNUSDT",
+      "baseAsset": "BDXN",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "PUFFERUSDT",
+      "baseAsset": "PUFFER",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "PORT3USDT",
+      "baseAsset": "PORT3",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "1000000BOBUSDT",
+      "baseAsset": "1000000BOB",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "LAUSDT",
+      "baseAsset": "LA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SKATEUSDT",
+      "baseAsset": "SKATE",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "HOMEUSDT",
+      "baseAsset": "HOME",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "RESOLVUSDT",
+      "baseAsset": "RESOLV",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "TAIKOUSDT",
+      "baseAsset": "TAIKO",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SQDUSDT",
+      "baseAsset": "SQD",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "PUMPBTCUSDT",
+      "baseAsset": "PUMPBTC",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "AAVEUSDC",
+      "baseAsset": "AAVE",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "UNIUSDC",
+      "baseAsset": "UNI",
+      "quoteAsset": "USDC",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SPKUSDT",
+      "baseAsset": "SPK",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MYXUSDT",
+      "baseAsset": "MYX",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "FUSDT",
+      "baseAsset": "F",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "NEWTUSDT",
+      "baseAsset": "NEWT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    }
+  ]
+}

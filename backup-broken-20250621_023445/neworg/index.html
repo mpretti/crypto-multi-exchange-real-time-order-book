@@ -1,0 +1,140 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Multi-Exchange Crypto Order Book</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/genai": "https://esm.sh/@google/genai@^0.7.0"
+        }
+      }
+    </script>
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <aside id="info-sidebar">
+        <div class="sidebar-header">
+            <h2>Market Information</h2>
+            <button id="refresh-sidebar-stats-btn" aria-label="Refresh Sidebar Stats">🔄 Refresh Stats</button>
+            <button id="close-sidebar-btn" aria-label="Close Information Sidebar">&times;</button>
+        </div>
+        <div class="sidebar-content">
+            <section id="trading-fees-section">
+                <h3>Trading Fees</h3>
+                <div id="fees-content">
+                    <p>Fetching fee information...</p>
+                </div>
+            </section>
+            <section id="funding-rates-section">
+                <h3>Funding Rates (<span id="funding-asset-symbol">Asset</span>)</h3>
+                <div id="funding-content">
+                     <p>Fetching funding rate information...</p>
+                </div>
+            </section>
+            <section id="volume-stats-section">
+                <h3>24h Volume Stats (<span id="volume-asset-symbol">Asset</span>)</h3>
+                <div id="volume-content">
+                     <p>Fetching volume information...</p>
+                </div>
+            </section>
+        </div>
+    </aside>
+
+    <div class="container" id="main-container">
+        <header>
+            <div class="header-top-row">
+                <h1>Multi-Exchange Order Book</h1>
+                <button id="toggle-sidebar-btn" aria-label="Toggle Information Sidebar">☰ Stats</button>
+            </div>
+            <div class="controls">
+                <div>
+                    <label for="asset-select">Asset:</label>
+                    <select id="asset-select">
+                        <option value="BTCUSDT">BTCUSDT</option>
+                        <option value="ETHUSDT">ETHUSDT</option>
+                        <option value="SOLUSDT">SOLUSDT</option>
+                        <option value="DOGEUSDT">DOGEUSDT</option>
+                        <option value="ADAUSDT">ADAUSDT</option>
+                        <option value="LINKUSDT">LINKUSDT</option>
+                        <option value="XRPUSDT">XRPUSDT</option>
+                    </select>
+                </div>
+                <div id="exchange-selector">
+                    <span>Exchanges:</span>
+                    <label><input type="checkbox" name="exchange" value="binance" checked> Binance</label>
+                    <label><input type="checkbox" name="exchange" value="bybit" checked> Bybit</label>
+                    <label><input type="checkbox" name="exchange" value="okx"> OKX</label>
+                    <label><input type="checkbox" name="exchange" value="kraken"> Kraken</label>
+                    <label><input type="checkbox" name="exchange" value="bitget"> Bitget</label>
+                    <label><input type="checkbox" name="exchange" value="uniswap_simulated"> Uniswap (Sim.)</label>
+                </div>
+                <div class="view-mode-selector">
+                    <span>View:</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="view-mode-toggle" checked>
+                        <span class="slider"></span>
+                    </label>
+                    <span id="view-mode-label">Aggregated</span>
+                </div>
+            </div>
+            <div id="connection-status-summary">
+                <!-- Connection statuses will be populated here by JS -->
+            </div>
+        </header>
+
+        <div class="spread-container">
+            <h2>Overall Spread: <span id="spread-value">-</span> (<span id="spread-percentage">-</span>)</h2>
+        </div>
+
+        <main class="order-book-container">
+            <div class="order-book-column" id="bids-column">
+                <h3 id="bids-title">BIDS (Aggregated)</h3>
+                <div class="order-book-header">
+                    <span class="total-header">Total</span>
+                    <span class="quantity-header">Quantity</span>
+                    <span class="price-header">Price (USDT)</span>
+                </div>
+                <ul id="bids-list" class="order-book-list"></ul>
+            </div>
+            <div class="order-book-column" id="asks-column">
+                <h3 id="asks-title">ASKS (Aggregated)</h3>
+                <div class="order-book-header">
+                     <span class="price-header">Price (USDT)</span>
+                    <span class="quantity-header">Quantity</span>
+                    <span class="total-header">Total</span>
+                </div>
+                <ul id="asks-list" class="order-book-list"></ul>
+            </div>
+        </main>
+
+        <div id="chart-section-container">
+            <div id="chart-timeframe-selector">
+                <button data-interval="1m">1m</button>
+                <button data-interval="5m" class="active">5m</button>
+                <button data-interval="15m">15m</button>
+                <button data-interval="1h">1h</button>
+                <button data-interval="4h">4h</button>
+                <button data-interval="1d">1d</button>
+            </div>
+            <div id="chart-container">
+                <!-- Lightweight Chart will be rendered here -->
+            </div>
+        </div>
+
+        <section id="text-summarizer-section">
+            <h2>Text Summarizer</h2>
+            <textarea id="text-to-summarize" placeholder="Paste text here to summarize..." aria-label="Text to summarize"></textarea>
+            <button id="summarize-btn">Summarize</button>
+            <div id="summary-output" aria-live="polite" role="status"></div>
+        </section>
+
+    </div>
+    <script type="module" src="index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>

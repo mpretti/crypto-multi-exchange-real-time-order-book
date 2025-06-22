@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Charts Dashboard</title>
+    <link rel="stylesheet" href="charts-dashboard.css">
+    <script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
+    <script>
+        // Debug LightweightCharts loading
+        window.addEventListener('load', function() {
+            console.log('Window loaded, checking LightweightCharts:', {
+                typeof: typeof LightweightCharts,
+                available: typeof LightweightCharts !== 'undefined',
+                hasCreateChart: typeof LightweightCharts !== 'undefined' ? typeof LightweightCharts.createChart : 'undefined'
+            });
+        });
+    </script>
+</head>
+<body>
+    <div class="app-container">
+        <header class="header">
+            <div class="header-top-row">
+                <h1>Real-Time Charts Dashboard</h1>
+                <nav class="navigation">
+                    <a href="index.html" class="nav-link">← Order Book</a>
+                    <a href="charts-dashboard.html" class="nav-link active">Charts</a>
+                    <a href="volume-dashboard.html" class="nav-link">Volume Dashboard</a>
+                    <a href="trading-pairs-explorer.html" class="nav-link">Trading Pairs →</a>
+                </nav>
+            </div>
+            <div class="controls">
+                <div class="asset-selector">
+                    <label for="asset-select">Asset:</label>
+                    <select id="asset-select">
+                        <option value="BTCUSDT">BTC/USDT</option>
+                        <option value="ETHUSDT">ETH/USDT</option>
+                        <option value="BNBUSDT">BNB/USDT</option>
+                        <option value="ADAUSDT">ADA/USDT</option>
+                        <option value="SOLUSDT">SOL/USDT</option>
+                        <option value="XRPUSDT">XRP/USDT</option>
+                        <option value="DOTUSDT">DOT/USDT</option>
+                        <option value="LINKUSDT">LINK/USDT</option>
+                        <option value="MATICUSDT">MATIC/USDT</option>
+                        <option value="LTCUSDT">LTC/USDT</option>
+                    </select>
+                </div>
+                <div class="exchange-selector">
+                    <label for="exchange-select">Primary Exchange:</label>
+                    <select id="exchange-select">
+                        <option value="binance" selected>Binance ✅</option>
+                        <option value="bybit">Bybit ✅</option>
+                        <option value="okx">OKX ✅</option>
+                        <option value="kraken" disabled>Kraken ❌ (CORS)</option>
+                        <option value="bitget" disabled>Bitget ❌ (API Issues)</option>
+                        <option value="coinbase" disabled>Coinbase ❌ (API Issues)</option>
+                        <option value="gemini" disabled>Gemini ❌ (No Candle API)</option>
+                        <option value="bitrue" disabled>Bitrue ❌ (CORS)</option>
+                    </select>
+                </div>
+                <div class="overlay-controls">
+                    <label class="overlay-toggle">
+                        <input type="checkbox" id="overlay-mode">
+                        <span>Overlay Mode</span>
+                    </label>
+                    <div class="overlay-exchanges" id="overlay-exchanges" style="display: none;">
+                        <label><input type="checkbox" value="binance" checked> Binance ✅</label>
+                        <label><input type="checkbox" value="bybit"> Bybit ✅</label>
+                        <label><input type="checkbox" value="okx"> OKX ✅</label>
+                        <label><input type="checkbox" value="kraken" disabled> Kraken ❌</label>
+                        <label><input type="checkbox" value="bitget" disabled> Bitget ❌</label>
+                        <label><input type="checkbox" value="coinbase" disabled> Coinbase ❌</label>
+                        <label><input type="checkbox" value="gemini" disabled> Gemini ❌</label>
+                        <label><input type="checkbox" value="bitrue" disabled> Bitrue ❌</label>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="status-notice">
+            <div class="notice-content">
+                <strong>📊 Exchange Status:</strong>
+                <span class="working">✅ Working: Binance, Bybit, OKX</span>
+                <span class="issues">❌ Issues: Kraken, Bitget, Coinbase, Gemini, Bitrue (CORS/API limitations)</span>
+            </div>
+        </div>
+
+        <main class="main-content">
+            <div class="charts-grid">
+                <!-- Chart 1 -->
+                <div class="chart-section">
+                    <div class="chart-header">
+                        <div class="chart-title-group">
+                            <h2 id="chart1-title">BTC/USDT - 1 Minute</h2>
+                            <div class="timeframe-selector">
+                                <select id="timeframe1-select" class="timeframe-select">
+                                    <option value="1m" selected>1 Minute</option>
+                                    <option value="3m">3 Minutes</option>
+                                    <option value="5m">5 Minutes</option>
+                                    <option value="15m">15 Minutes</option>
+                                    <option value="30m">30 Minutes</option>
+                                    <option value="1h">1 Hour</option>
+                                    <option value="2h">2 Hours</option>
+                                    <option value="4h">4 Hours</option>
+                                    <option value="6h">6 Hours</option>
+                                    <option value="8h">8 Hours</option>
+                                    <option value="12h">12 Hours</option>
+                                    <option value="1d">1 Day</option>
+                                    <option value="3d">3 Days</option>
+                                    <option value="1w">1 Week</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="chart-stats">
+                            <span class="price" id="price1">Loading...</span>
+                            <span class="change" id="change1">-</span>
+                        </div>
+                    </div>
+                    <div class="chart-container" id="chart1-container"></div>
+                    <div class="chart-info">
+                        <div class="info-item">
+                            <span class="label">Open:</span>
+                            <span class="value" id="open1">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">High:</span>
+                            <span class="value" id="high1">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Low:</span>
+                            <span class="value" id="low1">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Volume:</span>
+                            <span class="value" id="volume1">-</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Chart 2 -->
+                <div class="chart-section">
+                    <div class="chart-header">
+                        <div class="chart-title-group">
+                            <h2 id="chart2-title">BTC/USDT - 5 Minutes</h2>
+                            <div class="timeframe-selector">
+                                <select id="timeframe2-select" class="timeframe-select">
+                                    <option value="1m">1 Minute</option>
+                                    <option value="3m">3 Minutes</option>
+                                    <option value="5m" selected>5 Minutes</option>
+                                    <option value="15m">15 Minutes</option>
+                                    <option value="30m">30 Minutes</option>
+                                    <option value="1h">1 Hour</option>
+                                    <option value="2h">2 Hours</option>
+                                    <option value="4h">4 Hours</option>
+                                    <option value="6h">6 Hours</option>
+                                    <option value="8h">8 Hours</option>
+                                    <option value="12h">12 Hours</option>
+                                    <option value="1d">1 Day</option>
+                                    <option value="3d">3 Days</option>
+                                    <option value="1w">1 Week</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="chart-stats">
+                            <span class="price" id="price2">Loading...</span>
+                            <span class="change" id="change2">-</span>
+                        </div>
+                    </div>
+                    <div class="chart-container" id="chart2-container"></div>
+                    <div class="chart-info">
+                        <div class="info-item">
+                            <span class="label">Open:</span>
+                            <span class="value" id="open2">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">High:</span>
+                            <span class="value" id="high2">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Low:</span>
+                            <span class="value" id="low2">-</span>
+                        </div>
+                        <div class="info-item">
+                            <span class="label">Volume:</span>
+                            <span class="value" id="volume2">-</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Connection Status -->
+            <div class="status-bar">
+                <div class="status-item">
+                    <span class="status-label">Chart 1 WebSocket:</span>
+                    <span class="status-indicator" id="ws1-status">Connecting...</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Chart 2 WebSocket:</span>
+                    <span class="status-indicator" id="ws2-status">Connecting...</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Last Update:</span>
+                    <span class="status-indicator" id="last-update">-</span>
+                </div>
+            </div>
+        </main>
+    </div>
+
+    <script type="module" src="charts-dashboard.ts"></script>
+</body>
+</html> 

@@ -1,0 +1,419 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Real-Time Multi-Exchange Crypto Order Book</title>
+    <link rel="stylesheet" href="index.css">
+    <script src="https://unpkg.com/lightweight-charts/dist/lightweight-charts.standalone.production.js"></script>
+
+<link rel="stylesheet" href="/index.css">
+</head>
+<body>
+    <aside id="info-sidebar">
+        <div class="sidebar-header">
+            <h2>Market Information</h2>
+            <button id="refresh-sidebar-stats-btn" aria-label="Refresh Sidebar Stats">🔄 Refresh Stats</button>
+            <button id="close-sidebar-btn" aria-label="Close Information Sidebar">&times;</button>
+        </div>
+        <div class="sidebar-content">
+            <section id="trading-fees-section">
+                <h3>Trading Fees</h3>
+                <div id="fees-content">
+                    <p>Fetching fee information...</p>
+                </div>
+            </section>
+            <section id="funding-rates-section">
+                <h3>Funding Rates (<span id="funding-asset-symbol">Asset</span>)</h3>
+                <div id="funding-content">
+                     <p>Fetching funding rate information...</p>
+                </div>
+            </section>
+            <section id="volume-stats-section">
+                <h3>24h Volume Stats (<span id="volume-asset-symbol">Asset</span>)</h3>
+                <div id="volume-content">
+                     <p>Fetching volume information...</p>
+                </div>
+            </section>
+        </div>
+    </aside>
+
+    <div class="container" id="main-container">
+        <header>
+            <div class="header-top-row">
+                <h1>Multi-Exchange Order Book</h1>
+                <nav class="navigation">
+                    <a href="index.html" class="nav-link active">Order Book</a>
+                    <a href="charts-dashboard.html" class="nav-link">Charts</a>
+                    <a href="volume-dashboard.html" class="nav-link">Volume Dashboard</a>
+                    <a href="trading-pairs-explorer.html" class="nav-link">Trading Pairs →</a>
+                </nav>
+                <button id="toggle-sidebar-btn" aria-label="Toggle Information Sidebar">☰ Stats</button>
+            </div>
+            <div class="controls">
+                <div class="control-group asset-selector">
+                    <label for="asset-select">Asset:</label>
+                    <select id="asset-select">
+                        <option value="BTCUSDT">BTC/USDT</option>
+                        <option value="ETHUSDT">ETH/USDT</option>
+                        <option value="ADAUSDT">ADA/USDT</option>
+                        <option value="SOLUSDT">SOL/USDT</option>
+                        <option value="DOTUSDT">DOT/USDT</option>
+                        <option value="LINKUSDT">LINK/USDT</option>
+                    </select>
+                </div>
+                
+                <div class="control-group">
+                    <label class="modern-toggle">
+                        <input type="checkbox" id="view-mode-toggle">
+                        <span class="toggle-track">
+                            <span class="toggle-thumb"></span>
+                        </span>
+                        <span class="toggle-text" id="view-mode-label">Individual</span>
+                    </label>
+                </div>
+                
+                <div class="control-group">
+                    <label class="modern-toggle">
+                        <input type="checkbox" id="fee-adjusted-toggle" checked>
+                        <span class="toggle-track">
+                            <span class="toggle-thumb"></span>
+                        </span>
+                        <span class="toggle-text">Fee-Adjusted</span>
+                    </label>
+                </div>
+                
+                <div class="control-group">
+                    <label class="modern-toggle">
+                        <input type="checkbox" id="small-order-filter-toggle">
+                        <span class="toggle-track">
+                            <span class="toggle-thumb"></span>
+                        </span>
+                        <span class="toggle-text">Filter Small Orders</span>
+                    </label>
+                </div>
+                
+                <div class="control-group filter-settings" id="filter-settings" style="display: none;">
+                    <div class="filter-input-group">
+                        <label for="min-usd-input">Min USD:</label>
+                        <input type="number" id="min-usd-input" value="100" min="0" step="10" title="Minimum order value in USD">
+                    </div>
+                    <div class="filter-input-group">
+                        <label for="min-asset-input">Min Asset:</label>
+                        <input type="number" id="min-asset-input" value="0.001" min="0" step="0.001" title="Minimum order quantity in base asset">
+                    </div>
+                </div>
+                
+                <div class="control-group">
+                    <label class="modern-toggle">
+                        <input type="checkbox" id="logging-toggle" checked>
+                        <span class="toggle-track">
+                            <span class="toggle-thumb"></span>
+                        </span>
+                        <span class="toggle-text">Console Logs</span>
+                    </label>
+                    <button id="logging-settings-btn" class="settings-btn" title="Configure logging filters">⚙️</button>
+                </div>
+            </div>
+            <div id="connection-status-summary">
+                <!-- Connection statuses will be populated here by JS -->
+            </div>
+            <div id="exchange-legend" class="exchange-pills">
+                <div class="exchange-header">
+                    <h3>Exchanges</h3>
+                    <button id="toggle-exchanges-btn" class="toggle-exchanges-btn" aria-label="Toggle exchange selector">
+                        <span class="toggle-icon">▼</span>
+                    </button>
+                </div>
+                <div class="pills-container" id="pills-container">
+                    <!-- CEX Exchanges -->
+                    <div class="exchange-pill" data-exchange="binance" data-active="true">
+                        <input type="checkbox" name="exchange" value="binance" checked style="display: none;">
+                        <span class="pill-indicator"></span>
+                        <span class="pill-name">Binance</span>
+                        <span class="pill-status"></span>
+                    </div>
+                    
+                    <div class="exchange-pill" data-exchange="bybit" data-active="true">
+                        <input type="checkbox" name="exchange" value="bybit" checked style="display: none;">
+                        <span class="pill-indicator"></span>
+                        <span class="pill-name">Bybit</span>
+                        <span class="pill-status"></span>
+                    </div>
+                    
+                    <div class="exchange-pill" data-exchange="okx" data-active="false">
+                        <input type="checkbox" name="exchange" value="okx" style="display: none;">
+                        <span class="pill-indicator"></span>
+                        <span class="pill-name">OKX</span>
+                        <span class="pill-status"></span>
+                    </div>
+                    
+                    <div class="exchange-pill" data-exchange="kraken" data-active="false">
+                        <input type="checkbox" name="exchange" value="kraken" style="display: none;">
+                        <span class="pill-indicator"></span>
+                        <span class="pill-name">Kraken</span>
+                        <span class="pill-status"></span>
+                    </div>
+                    
+                    <div class="exchange-pill" data-exchange="bitget" data-active="false">
+                        <input type="checkbox" name="exchange" value="bitget" style="display: none;">
+                        <span class="pill-indicator"></span>
+                        <span class="pill-name">Bitget</span>
+                        <span class="pill-status"></span>
+                    </div>
+                    
+                    <div class="exchange-pill" data-exchange="coinbase" data-active="false">
+                        <input type="checkbox" name="exchange" value="coinbase" style="display: none;">
+                        <span class="pill-indicator"></span>
+                        <span class="pill-name">Coinbase Pro</span>
+                        <span class="pill-status"></span>
+                    </div>
+                    
+                    <div class="exchange-pill" data-exchange="gemini" data-active="false">
+                        <input type="checkbox" name="exchange" value="gemini" style="display: none;">
+                        <span class="pill-indicator"></span>
+                        <span class="pill-name">Gemini</span>
+                        <span class="pill-status"></span>
+                    </div>
+                    
+                    <div class="exchange-pill" data-exchange="bitrue" data-active="false">
+                        <input type="checkbox" name="exchange" value="bitrue" style="display: none;">
+                        <span class="pill-indicator"></span>
+                        <span class="pill-name">Bitrue</span>
+                        <span class="pill-status"></span>
+                    </div>
+                    
+                    <div class="exchange-pill" data-exchange="uniswap_simulated" data-active="false">
+                        <input type="checkbox" name="exchange" value="uniswap_simulated" style="display: none;">
+                        <span class="pill-indicator"></span>
+                        <span class="pill-name">Uniswap</span>
+                        <span class="pill-status"></span>
+                    </div>
+                    
+                    <!-- DEX Exchanges -->
+                    <div class="exchange-pill" data-exchange="hyperliquid" data-active="true">
+                        <input type="checkbox" name="exchange" value="hyperliquid" checked style="display: none;">
+                        <span class="pill-indicator"></span>
+                        <span class="pill-name">Hyperliquid</span>
+                        <span class="pill-status"></span>
+                    </div>
+                    
+                    <div class="exchange-pill" data-exchange="vertex" data-active="false">
+                        <input type="checkbox" name="exchange" value="vertex" style="display: none;">
+                        <span class="pill-indicator"></span>
+                        <span class="pill-name">Vertex</span>
+                        <span class="pill-status"></span>
+                    </div>
+                    
+                    <div class="exchange-pill" data-exchange="dydx" data-active="false">
+                        <input type="checkbox" name="exchange" value="dydx" style="display: none;">
+                        <span class="pill-indicator"></span>
+                        <span class="pill-name">dYdX</span>
+                        <span class="pill-status"></span>
+                    </div>
+                    
+                    <div class="exchange-pill" data-exchange="jupiter" data-active="false">
+                        <input type="checkbox" name="exchange" value="jupiter" style="display: none;">
+                        <span class="pill-indicator"></span>
+                        <span class="pill-name">Jupiter</span>
+                        <span class="pill-status"></span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <div class="spread-container">
+            <h2>Overall Spread: <span id="spread-value">-</span> (<span id="spread-percentage">-</span>)</h2>
+        </div>
+
+        <div class="fee-legend-container" id="fee-legend-container">
+            <h3>Fee-Adjusted Price Impact</h3>
+            <div class="fee-legend-content" id="fee-legend-content">
+                <!-- Fee legend will be populated by JavaScript -->
+            </div>
+        </div>
+
+        <main class="order-book-container">
+            <div class="order-book-column" id="bids-column">
+                <h3 id="bids-title">BIDS (Individual)</h3>
+                <div class="order-book-header">
+                    <span class="total-header">Total</span>
+                    <span class="quantity-header">Quantity</span>
+                    <span class="price-header">Price (USDT)</span>
+                </div>
+                <ul id="bids-list" class="order-book-list"></ul>
+            </div>
+            <div class="order-book-column" id="asks-column">
+                <h3 id="asks-title">ASKS (Individual)</h3>
+                <div class="order-book-header">
+                     <span class="price-header">Price (USDT)</span>
+                    <span class="quantity-header">Quantity</span>
+                    <span class="total-header">Total</span>
+                </div>
+                <ul id="asks-list" class="order-book-list"></ul>
+            </div>
+        </main>
+
+        <div id="chart-section-container">
+            <div id="chart-timeframe-selector">
+                <button data-interval="1m">1m</button>
+                <button data-interval="5m" class="active">5m</button>
+                <button data-interval="15m">15m</button>
+                <button data-interval="1h">1h</button>
+                <button data-interval="4h">4h</button>
+                <button data-interval="1d">1d</button>
+            </div>
+            <div id="chart-container">
+                <!-- Lightweight Chart will be rendered here -->
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Logging Settings Modal -->
+    <div id="logging-modal" class="modal" style="display: none;">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3>🔧 Console Logging Settings</h3>
+                <button id="close-logging-modal" class="close-btn">&times;</button>
+            </div>
+            <div class="modal-body">
+                <div class="logging-section">
+                    <h4>Log Levels</h4>
+                    <div class="logging-checkboxes">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="log-level-log" checked>
+                            <span class="checkmark"></span>
+                            <span class="log-level-info">Info (console.log)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="log-level-warn" checked>
+                            <span class="checkmark"></span>
+                            <span class="log-level-warning">Warnings (console.warn)</span>
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="log-level-error" checked>
+                            <span class="checkmark"></span>
+                            <span class="log-level-error">Errors (console.error)</span>
+                        </label>
+                    </div>
+                </div>
+
+                <div class="logging-section">
+                    <h4>Categories</h4>
+                    <div class="logging-checkboxes">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="log-category-websocket" checked>
+                            <span class="checkmark"></span>
+                            WebSocket connections
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="log-category-api" checked>
+                            <span class="checkmark"></span>
+                            API calls & data fetching
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="log-category-chart" checked>
+                            <span class="checkmark"></span>
+                            Chart operations
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="log-category-ui" checked>
+                            <span class="checkmark"></span>
+                            UI updates & DOM
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="log-category-volume" checked>
+                            <span class="checkmark"></span>
+                            Volume dashboard
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="log-category-general" checked>
+                            <span class="checkmark"></span>
+                            General messages
+                        </label>
+                    </div>
+                </div>
+
+                <div class="logging-section">
+                    <h4>Exchanges</h4>
+                    <div class="logging-checkboxes exchange-checkboxes">
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="log-exchange-binance" checked>
+                            <span class="checkmark"></span>
+                            Binance
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="log-exchange-bybit" checked>
+                            <span class="checkmark"></span>
+                            Bybit
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="log-exchange-okx" checked>
+                            <span class="checkmark"></span>
+                            OKX
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="log-exchange-kraken" checked>
+                            <span class="checkmark"></span>
+                            Kraken
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="log-exchange-bitget" checked>
+                            <span class="checkmark"></span>
+                            Bitget
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="log-exchange-coinbase" checked>
+                            <span class="checkmark"></span>
+                            Coinbase
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="log-exchange-gemini" checked>
+                            <span class="checkmark"></span>
+                            Gemini
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="log-exchange-bitrue" checked>
+                            <span class="checkmark"></span>
+                            Bitrue
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="log-exchange-uniswap" checked>
+                            <span class="checkmark"></span>
+                            Uniswap
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="log-exchange-hyperliquid" checked>
+                            <span class="checkmark"></span>
+                            Hyperliquid
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="log-exchange-dydx" checked>
+                            <span class="checkmark"></span>
+                            dYdX
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="log-exchange-jupiter" checked>
+                            <span class="checkmark"></span>
+                            Jupiter
+                        </label>
+                        <label class="checkbox-label">
+                            <input type="checkbox" id="log-exchange-vertex" checked>
+                            <span class="checkmark"></span>
+                            Vertex
+                        </label>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button id="logging-reset-btn" class="btn-secondary">Reset to Defaults</button>
+                <button id="logging-apply-btn" class="btn-primary">Apply Settings</button>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="index.tsx"></script>
+<script type="module" src="/index.tsx"></script>
+</body>
+</html>
