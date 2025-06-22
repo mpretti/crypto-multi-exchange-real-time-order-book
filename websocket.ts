@@ -137,57 +137,6 @@ export function connectToExchange(exchangeId: string, asset: string) {
     }
 
 
-    if (exchangeId === 'uniswap_simulated') {
-        console.log(`${config.name}: Simulating connection for ${asset}...`);
-        const simConnectionState: ExchangeConnectionState = {
-            ws: null, status: 'connecting', bids: new Map(), asks: new Map(), config,
-            retries: 0, snapshotReceived: true, currentSymbol: asset, auxDataFetched: undefined,
-        };
-        activeConnections.set(exchangeId, simConnectionState);
-        updateOverallConnectionStatus();
-
-        setTimeout(() => {
-            const currentSimConn = activeConnections.get(exchangeId);
-            if (!currentSimConn || currentSimConn.config.id !== 'uniswap_simulated' || currentSimConn.currentSymbol !== asset || currentSimConn.status === 'closing') {
-                console.warn(`${config.name}: Stale or closed simulated connection for ${asset}. Aborting data load.`);
-                return;
-            }
-
-            let basePrice = 2000;
-            const upperAsset = asset.toUpperCase();
-            if (upperAsset.startsWith('BTC')) basePrice = 60000;
-            else if (upperAsset.startsWith('SOL')) basePrice = 150;
-            else if (upperAsset.startsWith('DOGE')) basePrice = 0.15;
-            else if (upperAsset.startsWith('ADA')) basePrice = 0.5;
-            else if (upperAsset.startsWith('LINK')) basePrice = 15;
-            else if (upperAsset.startsWith('XRP')) basePrice = 0.5;
-
-            const assetDecimals = getDecimalPlaces(basePrice);
-            const simulatedSnapshot = {
-                type: 'snapshot',
-                bids: [
-                    [(basePrice * 0.999).toFixed(assetDecimals), (Math.random() * 5 + 1).toFixed(3)],
-                    [(basePrice * 0.998).toFixed(assetDecimals), (Math.random() * 10 + 2).toFixed(3)],
-                ],
-                asks: [
-                    [(basePrice * 1.001).toFixed(assetDecimals), (Math.random() * 5 + 1).toFixed(3)],
-                    [(basePrice * 1.002).toFixed(assetDecimals), (Math.random() * 10 + 2).toFixed(3)],
-                ]
-            };
-            const update = config.parseMessage(simulatedSnapshot, new Map(), new Map(), false);
-            if (update) {
-                currentSimConn.bids = applyDepthSlice(update.updatedBids, config.sliceDepth, true);
-                currentSimConn.asks = applyDepthSlice(update.updatedAsks, config.sliceDepth, false);
-                currentSimConn.snapshotReceived = true;
-            }
-            currentSimConn.status = 'connected';
-            console.log(`${config.name}: Simulated connection established for ${asset}.`);
-            fetchAuxiliaryDataForExchange(exchangeId, config.formatSymbol(asset));
-            aggregateAndRenderAll();
-        }, 500);
-        return;
-    }
-
     // Handle simulated exchanges (MEXC temporarily, Uniswap)
     if (exchangeId === 'uniswap_simulated' || (config as any).isSimulated) {
         console.log(`${config.name}: Simulating connection for ${asset}...`);
@@ -209,7 +158,8 @@ export function connectToExchange(exchangeId: string, asset: string) {
             if (exchangeId === 'mexc') {
                 // Use MEXC-specific simulation
                 simulatedSnapshot = generateMexcSnapshot(asset);
-            } else {
+                console.log(`${config.name}: Generated MEXC simulation data:`, simulatedSnapshot);
+            } else if (exchangeId === 'uniswap_simulated') {
                 // Use Uniswap simulation
                 let basePrice = 2000;
                 const upperAsset = asset.toUpperCase();
@@ -232,14 +182,21 @@ export function connectToExchange(exchangeId: string, asset: string) {
                         [(basePrice * 1.002).toFixed(assetDecimals), (Math.random() * 10 + 2).toFixed(3)],
                     ]
                 };
+                console.log(`${config.name}: Generated Uniswap simulation data:`, simulatedSnapshot);
             }
 
             const update = config.parseMessage(simulatedSnapshot, new Map(), new Map(), false);
+            console.log(`${config.name}: Parsed simulation update:`, update);
+            
             if (update) {
                 currentSimConn.bids = applyDepthSlice(update.updatedBids, config.sliceDepth, true);
                 currentSimConn.asks = applyDepthSlice(update.updatedAsks, config.sliceDepth, false);
                 currentSimConn.snapshotReceived = true;
+                console.log(`${config.name}: Applied simulation data - Bids:`, currentSimConn.bids.size, 'Asks:', currentSimConn.asks.size);
+            } else {
+                console.error(`${config.name}: Failed to parse simulation data!`);
             }
+            
             currentSimConn.status = 'connected';
             console.log(`${config.name}: Simulated connection established for ${asset}.`);
             fetchAuxiliaryDataForExchange(exchangeId, config.formatSymbol(asset));
