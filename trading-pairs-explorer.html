@@ -407,6 +407,47 @@
             margin-bottom: 2px;
         }
 
+        .trading-type-badge {
+            display: inline-block;
+            padding: 3px 8px;
+            border-radius: 10px;
+            font-size: 11px;
+            font-weight: 500;
+            margin-right: 4px;
+            margin-bottom: 2px;
+            text-transform: uppercase;
+        }
+
+        .trading-type-badge.spot {
+            background: #28a745;
+            color: white;
+        }
+
+        .trading-type-badge.perpetual {
+            background: #007bff;
+            color: white;
+        }
+
+        .trading-type-badge.futures {
+            background: #ffc107;
+            color: #212529;
+        }
+
+        .trading-type-badge.swap {
+            background: #17a2b8;
+            color: white;
+        }
+
+        .trading-type-badge.inverse {
+            background: #6f42c1;
+            color: white;
+        }
+
+        .trading-type-badge.linear {
+            background: #fd7e14;
+            color: white;
+        }
+
         .symbol-cell {
             font-weight: 600;
             color: #333;
@@ -628,6 +669,7 @@
                         <option value="volume">24h Volume</option>
                         <option value="baseAsset">Base Asset</option>
                         <option value="quoteAsset">Quote Asset</option>
+                        <option value="tradingType">Trading Type</option>
                     </select>
                 </div>
                 <div class="filter-group">
@@ -643,15 +685,18 @@
                     </div>
                 </div>
                 <div class="filter-group">
-                    <label for="baseFilter">Base Asset:</label>
-                    <div class="searchable-dropdown" id="baseDropdown">
-                        <div class="dropdown-input">
-                            <input type="text" id="baseFilter" placeholder="All Base Assets" readonly>
-                            <span class="dropdown-arrow">▼</span>
-                        </div>
-                        <div class="dropdown-options" id="baseOptions">
-                            <div class="dropdown-option" data-value="">All Base Assets</div>
-                        </div>
+                    <label for="baseFilter">Base Asset</label>
+                    <div class="dropdown" id="baseDropdown">
+                        <input type="text" id="baseFilter" placeholder="All Base Assets" readonly>
+                        <div class="dropdown-options" id="baseOptions"></div>
+                    </div>
+                </div>
+                
+                <!-- New Trading Type Filter -->
+                <div class="filter-group">
+                    <label style="margin-bottom: 10px; display: block; font-weight: 600; color: #555;">Trading Type</label>
+                    <div class="exchange-filters" id="tradingTypeFilters">
+                        <!-- Trading type filters will be populated here -->
                     </div>
                 </div>
             </div>
@@ -676,6 +721,7 @@
                             <th>Symbol</th>
                             <th>Base Asset</th>
                             <th>Quote Asset</th>
+                            <th>Trading Type</th>
                             <th>24h Volume</th>
                             <th>Available On</th>
                             <th>Exchange Count</th>
@@ -683,7 +729,7 @@
                     </thead>
                     <tbody id="pairsTableBody">
                         <tr>
-                            <td colspan="6" class="loading">Loading trading pairs data...</td>
+                            <td colspan="7" class="loading">Loading trading pairs data...</td>
                         </tr>
                     </tbody>
                 </table>
@@ -698,6 +744,7 @@
                 this.processedPairs = [];
                 this.filteredPairs = [];
                 this.selectedExchanges = new Set();
+                this.selectedTradingTypes = new Set();
                 this.volumeCache = new Map();
                 this.volumeUpdateInterval = null;
                 this.exchangeColors = {
@@ -750,6 +797,7 @@
                                 symbol: normalizedSymbol,
                                 baseAsset: this.extractBaseAsset(pair),
                                 quoteAsset: this.extractQuoteAsset(pair),
+                                tradingTypes: new Set(),
                                 exchanges: [],
                                 exchangeCount: 0,
                                 rawPairs: []
@@ -757,12 +805,15 @@
                         }
                         
                         const pairData = pairMap.get(normalizedSymbol);
+                        const tradingType = this.extractTradingType(pair);
+                        pairData.tradingTypes.add(tradingType);
                         pairData.exchanges.push({
                             id: exchangeId,
                             name: exchangeData.exchange,
-                            originalSymbol: pair.symbol
+                            originalSymbol: pair.symbol,
+                            tradingType: tradingType
                         });
-                        pairData.rawPairs.push({ ...pair, exchangeId, exchangeName: exchangeData.exchange });
+                        pairData.rawPairs.push({ ...pair, exchangeId, exchangeName: exchangeData.exchange, tradingType });
                         pairData.exchangeCount = pairData.exchanges.length;
                     }
                 }
@@ -770,8 +821,62 @@
                 this.processedPairs = Array.from(pairMap.values());
                 this.filteredPairs = [...this.processedPairs];
                 
+                // Debug: Log trading type distribution
+                const typeStats = {};
+                this.processedPairs.forEach(pair => {
+                    pair.tradingTypes.forEach(type => {
+                        typeStats[type] = (typeStats[type] || 0) + 1;
+                    });
+                });
+                console.log('Trading type distribution:', typeStats);
+                console.log('Total processed pairs:', this.processedPairs.length);
+                
                 // Initialize all exchanges as selected
                 this.selectedExchanges = new Set(Object.keys(this.allData));
+                
+                // Initialize all trading types as selected
+                const allTradingTypes = new Set();
+                this.processedPairs.forEach(pair => {
+                    pair.tradingTypes.forEach(type => allTradingTypes.add(type));
+                });
+                this.selectedTradingTypes = new Set(allTradingTypes);
+            }
+
+            extractTradingType(pair) {
+                // Extract trading type from various possible fields
+                const contractType = pair.contractType || pair.type || pair.instType || '';
+                const symbol = pair.symbol || '';
+                
+                // Normalize the contract type to standard categories
+                const type = contractType.toLowerCase();
+                
+                let result;
+                if (type.includes('perpetual') || type.includes('perp')) {
+                    result = 'perpetual';
+                } else if (type.includes('futures') || type.includes('future')) {
+                    result = 'futures';
+                } else if (type.includes('swap')) {
+                    result = 'swap';
+                } else if (type.includes('inverse')) {
+                    result = 'inverse';
+                } else if (type.includes('linear')) {
+                    result = 'linear';
+                } else if (symbol.includes('-') && (symbol.includes('25') || symbol.includes('26') || symbol.includes('24'))) {
+                    // Date-based futures contracts
+                    result = 'futures';
+                } else if (!contractType || contractType === 'SPOT' || type === 'spot') {
+                    result = 'spot';
+                } else {
+                    // Default to spot if no clear type is identified
+                    result = 'spot';
+                }
+                
+                // Debug logging for first few pairs
+                if (Math.random() < 0.01) { // Log ~1% of pairs for debugging
+                    console.log(`Trading type extraction: ${symbol} -> ${contractType} -> ${result}`);
+                }
+                
+                return result;
             }
 
             normalizeSymbol(symbol) {
@@ -832,6 +937,7 @@
                 this.updateStats();
                 this.updateTopPairs();
                 this.updateExchangeFilters();
+                this.updateTradingTypeFilters();
                 this.updateFilterOptions();
                 this.applyFilters();
             }
@@ -885,6 +991,76 @@
                             this.selectedExchanges.add(exchangeId);
                             chip.classList.add('active');
                         }
+                        this.applyFilters();
+                    });
+                });
+            }
+
+            updateTradingTypeFilters() {
+                // Calculate counts for each trading type
+                const typeCounts = {};
+                this.processedPairs.forEach(pair => {
+                    pair.tradingTypes.forEach(type => {
+                        typeCounts[type] = (typeCounts[type] || 0) + 1;
+                    });
+                });
+
+                // Create trading type chips
+                const container = document.getElementById('tradingTypeFilters');
+                const typeOrder = ['spot', 'perpetual', 'futures', 'swap', 'linear', 'inverse'];
+                const sortedTypes = Object.keys(typeCounts).sort((a, b) => {
+                    const aIndex = typeOrder.indexOf(a);
+                    const bIndex = typeOrder.indexOf(b);
+                    if (aIndex === -1 && bIndex === -1) return a.localeCompare(b);
+                    if (aIndex === -1) return 1;
+                    if (bIndex === -1) return -1;
+                    return aIndex - bIndex;
+                });
+
+                container.innerHTML = [
+                    `<div class="exchange-chip active" data-type="">All Types (${this.processedPairs.length})</div>`,
+                    ...sortedTypes.map(type => `
+                        <div class="exchange-chip active" data-type="${type}">
+                            ${type.charAt(0).toUpperCase() + type.slice(1)} (${typeCounts[type]})
+                        </div>
+                    `)
+                ].join('');
+
+                // Add click handlers
+                container.querySelectorAll('.exchange-chip').forEach(chip => {
+                    chip.addEventListener('click', () => {
+                        const typeId = chip.dataset.type;
+                        
+                        if (typeId === '') {
+                            // "All Types" clicked - toggle all
+                            if (this.selectedTradingTypes.size === sortedTypes.length) {
+                                // All selected, deselect all
+                                this.selectedTradingTypes.clear();
+                                container.querySelectorAll('.exchange-chip').forEach(c => c.classList.remove('active'));
+                            } else {
+                                // Not all selected, select all
+                                this.selectedTradingTypes = new Set(sortedTypes);
+                                container.querySelectorAll('.exchange-chip').forEach(c => c.classList.add('active'));
+                            }
+                        } else {
+                            // Individual type clicked
+                            if (this.selectedTradingTypes.has(typeId)) {
+                                this.selectedTradingTypes.delete(typeId);
+                                chip.classList.remove('active');
+                            } else {
+                                this.selectedTradingTypes.add(typeId);
+                                chip.classList.add('active');
+                            }
+                            
+                            // Update "All Types" chip state
+                            const allTypesChip = container.querySelector('[data-type=""]');
+                            if (this.selectedTradingTypes.size === sortedTypes.length) {
+                                allTypesChip.classList.add('active');
+                            } else {
+                                allTypesChip.classList.remove('active');
+                            }
+                        }
+                        
                         this.applyFilters();
                     });
                 });
@@ -1097,6 +1273,12 @@
                         return false;
                     }
 
+                    // Trading type filter - check if any of the pair's types are selected
+                    if (this.selectedTradingTypes.size > 0 && 
+                        !Array.from(pair.tradingTypes).some(type => this.selectedTradingTypes.has(type))) {
+                        return false;
+                    }
+
                     return true;
                 });
 
@@ -1115,6 +1297,10 @@
                             return a.baseAsset.localeCompare(b.baseAsset);
                         case 'quoteAsset':
                             return a.quoteAsset.localeCompare(b.quoteAsset);
+                        case 'tradingType':
+                            const aType = Array.from(a.tradingTypes)[0] || '';
+                            const bType = Array.from(b.tradingTypes)[0] || '';
+                            return aType.localeCompare(bType);
                         default:
                             return 0;
                     }
@@ -1130,7 +1316,7 @@
                 resultsCount.textContent = `${this.filteredPairs.length} pairs`;
 
                 if (this.filteredPairs.length === 0) {
-                    tbody.innerHTML = '<tr><td colspan="6" style="text-align: center; padding: 40px; color: #666;">No trading pairs match your filters</td></tr>';
+                    tbody.innerHTML = '<tr><td colspan="7" style="text-align: center; padding: 40px; color: #666;">No trading pairs match your filters</td></tr>';
                     return;
                 }
 
@@ -1139,6 +1325,9 @@
                         <td class="symbol-cell">${pair.symbol}</td>
                         <td>${pair.baseAsset}</td>
                         <td>${pair.quoteAsset}</td>
+                        <td>${Array.from(pair.tradingTypes).map(type => 
+                            `<span class="trading-type-badge ${type}">${type}</span>`
+                        ).join('')}</td>
                         <td class="volume-cell">
                             ${this.renderVolumeData(pair)}
                         </td>
