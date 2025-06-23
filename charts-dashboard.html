@@ -3,9 +3,102 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Advanced Real-Time Charts Dashboard</title>
-    <link rel="stylesheet" href="charts-dashboard.css">
+    <title>📊 Advanced Charts Dashboard</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/tailwindcss/2.2.19/tailwind.min.css" rel="stylesheet">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
     <script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .glass-effect {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        .metric-card {
+            transition: all 0.3s ease;
+        }
+        .metric-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+        }
+        .pulse-animation {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .chart-card {
+            background: rgba(255, 255, 255, 0.05);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 16px;
+            transition: all 0.3s ease;
+        }
+        .chart-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 12px 24px rgba(0,0,0,0.2);
+        }
+        .indicator-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #cbd5e0;
+            padding: 0.5rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+        }
+        .indicator-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+        }
+        .indicator-btn.active {
+            background: #3b82f6;
+            color: white;
+            border-color: #3b82f6;
+        }
+        .tool-btn {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            color: #cbd5e0;
+            padding: 0.75rem 1rem;
+            border-radius: 0.5rem;
+            transition: all 0.2s ease;
+            cursor: pointer;
+            font-size: 0.875rem;
+            font-weight: 500;
+        }
+        .tool-btn:hover {
+            background: rgba(255, 255, 255, 0.2);
+            color: white;
+            transform: translateY(-1px);
+        }
+        .status-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            margin-right: 0.5rem;
+        }
+        .status-working { background-color: #10b981; }
+        .status-issues { background-color: #ef4444; }
+        
+        /* Chart container styling */
+        .chart-container {
+            height: 400px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.2);
+        }
+        
+        /* Debug LightweightCharts loading */
+        .loading-chart {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            height: 400px;
+            color: #9ca3af;
+            font-size: 1.125rem;
+        }
+    </style>
     <script>
         // Debug LightweightCharts loading
         window.addEventListener('load', function() {
@@ -17,594 +110,537 @@
         });
     </script>
 </head>
-<body>
-    <div class="app-container">
-        <header class="header">
-            <div class="header-top-row">
-                <h1>🚀 Advanced Charts Dashboard</h1>
-                <nav class="navigation">
-                    <a href="index.html" class="nav-link">← Order Book</a>
-                    <a href="charts-dashboard.html" class="nav-link active">Charts</a>
-                    <a href="volume-dashboard.html" class="nav-link">Volume Dashboard</a>
-                    <a href="exchange-status.html" class="nav-link">Exchange Status</a>
-                    <a href="trading-pairs-explorer.html" class="nav-link">Trading Pairs →</a>
-                </nav>
-            </div>
-            
-            <!-- Enhanced Controls Panel -->
-            <div class="controls-panel">
-                <div class="controls-row">
-                    <div class="asset-selector">
-                        <label for="asset-select">Asset:</label>
-                        <select id="asset-select">
-                            <option value="BTCUSDT">🪙 BTC/USDT</option>
-                            <option value="ETHUSDT">⟠ ETH/USDT</option>
-                            <option value="BNBUSDT">🟡 BNB/USDT</option>
-                            <option value="ADAUSDT">🔵 ADA/USDT</option>
-                            <option value="SOLUSDT">🟣 SOL/USDT</option>
-                            <option value="XRPUSDT">💧 XRP/USDT</option>
-                            <option value="DOTUSDT">🔴 DOT/USDT</option>
-                            <option value="LINKUSDT">🔗 LINK/USDT</option>
-                            <option value="MATICUSDT">🟪 MATIC/USDT</option>
-                            <option value="LTCUSDT">🥈 LTC/USDT</option>
-                        </select>
-                    </div>
-                    
-                    <div class="exchange-selector">
-                        <label for="exchange-select">Primary Exchange:</label>
-                        <select id="exchange-select">
-                            <option value="binance" selected>🟡 Binance ✅</option>
-                            <option value="bybit">🟠 Bybit ✅</option>
-                            <option value="okx">🔵 OKX ✅</option>
-                            <option value="kraken" disabled>🟣 Kraken ❌ (CORS)</option>
-                            <option value="bitget" disabled>🟢 Bitget ❌ (API Issues)</option>
-                            <option value="coinbase" disabled>🔵 Coinbase ❌ (API Issues)</option>
-                            <option value="gemini" disabled>🔷 Gemini ❌ (No Candle API)</option>
-                            <option value="bitrue" disabled>🟤 Bitrue ❌ (CORS)</option>
-                        </select>
-                    </div>
-                    
-                    <div class="chart-mode-selector">
-                        <label for="chart-mode">Chart Mode:</label>
-                        <select id="chart-mode">
-                            <option value="dual" selected>📊 Dual Charts</option>
-                            <option value="single">📈 Single Chart</option>
-                            <option value="quad">📱 Quad View</option>
-                            <option value="comparison">⚖️ Multi-Exchange</option>
-                        </select>
-                    </div>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Header -->
+    <header class="glass-effect sticky top-0 z-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center py-4">
+                <div class="flex items-center space-x-4">
+                    <h1 class="text-2xl font-bold bg-gradient-to-r from-blue-400 to-purple-500 bg-clip-text text-transparent">
+                        📊 Advanced Charts Dashboard
+                    </h1>
+                    <div class="pulse-animation w-3 h-3 bg-green-400 rounded-full"></div>
                 </div>
                 
-                <div class="controls-row">
-                    <div class="overlay-controls">
-                        <label class="overlay-toggle">
-                            <input type="checkbox" id="overlay-mode">
-                            <span>📈 Overlay Mode</span>
-                        </label>
-                        <div class="overlay-exchanges" id="overlay-exchanges" style="display: none;">
-                            <label><input type="checkbox" value="binance" checked> 🟡 Binance ✅</label>
-                            <label><input type="checkbox" value="bybit"> 🟠 Bybit ✅</label>
-                            <label><input type="checkbox" value="okx"> 🔵 OKX ✅</label>
-                            <label><input type="checkbox" value="kraken" disabled> 🟣 Kraken ❌</label>
-                            <label><input type="checkbox" value="bitget" disabled> 🟢 Bitget ❌</label>
-                            <label><input type="checkbox" value="coinbase" disabled> 🔵 Coinbase ❌</label>
-                            <label><input type="checkbox" value="gemini" disabled> 🔷 Gemini ❌</label>
-                            <label><input type="checkbox" value="bitrue" disabled> 🟤 Bitrue ❌</label>
-                        </div>
-                    </div>
-                    
-                    <div class="analysis-tools">
-                        <button class="tool-btn" id="analysis-btn">📊 Analysis</button>
-                        <button class="tool-btn" id="alerts-btn">🔔 Alerts</button>
-                        <button class="tool-btn" id="export-btn">💾 Export</button>
-                        <button class="tool-btn" id="settings-btn">⚙️ Settings</button>
-                        <button id="fullscreen-btn" class="tool-btn" title="Fullscreen">⛶</button>
-                    </div>
-                </div>
-                <div id="preferences-status" class="preferences-status">💾</div>
-            </div>
-        </header>
+                <!-- Navigation -->
+                <nav class="hidden md:flex space-x-2">
+                    <a href="index.html" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors">
+                        📈 Order Book
+                    </a>
+                    <a href="charts-dashboard.html" class="px-4 py-2 rounded-lg bg-blue-600 text-white">
+                        📊 Charts
+                    </a>
+                    <a href="volume-dashboard.html" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors">
+                        📊 Volume
+                    </a>
+                    <a href="exchange-status.html" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors">
+                        🔄 Exchange Status
+                    </a>
+                    <a href="trading-pairs-explorer.html" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors">
+                        🔍 Trading Pairs
+                    </a>
+                    <a href="http://localhost:3001/" target="_blank" class="px-4 py-2 rounded-lg text-gray-300 hover:text-white hover:bg-gray-800 transition-colors">
+                        📊 Historical Data
+                    </a>
+                </nav>
 
-        <!-- Market Overview Strip -->
-        <div class="market-overview">
-            <div class="market-stats">
-                <div class="stat-item">
-                    <span class="stat-label">24h Volume:</span>
-                    <span class="stat-value" id="market-volume">Loading...</span>
+                <!-- Mobile menu button -->
+                <button class="md:hidden p-2 rounded-lg hover:bg-gray-800" onclick="toggleMobileMenu()">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Control Panel -->
+        <div class="glass-effect rounded-xl p-6 mb-8">
+            <h2 class="text-xl font-semibold mb-4 flex items-center">
+                <i class="fas fa-chart-line text-blue-400 mr-2"></i>
+                Chart Controls
+            </h2>
+            
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                <!-- Asset Selection -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Trading Pair</label>
+                    <select id="asset-select" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option value="BTCUSDT">🪙 BTC/USDT</option>
+                        <option value="ETHUSDT">⟠ ETH/USDT</option>
+                        <option value="BNBUSDT">🟡 BNB/USDT</option>
+                        <option value="ADAUSDT">🔵 ADA/USDT</option>
+                        <option value="SOLUSDT">🟣 SOL/USDT</option>
+                        <option value="XRPUSDT">💧 XRP/USDT</option>
+                        <option value="DOTUSDT">🔴 DOT/USDT</option>
+                        <option value="LINKUSDT">🔗 LINK/USDT</option>
+                        <option value="MATICUSDT">🟪 MATIC/USDT</option>
+                        <option value="LTCUSDT">🥈 LTC/USDT</option>
+                    </select>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-label">Market Cap:</span>
-                    <span class="stat-value" id="market-cap">Loading...</span>
+
+                <!-- Primary Exchange -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Primary Exchange</label>
+                    <select id="exchange-select" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option value="binance" selected>🟡 Binance ✅</option>
+                        <option value="bybit">🟠 Bybit ✅</option>
+                        <option value="okx">🔵 OKX ✅</option>
+                        <option value="kraken" disabled>🟣 Kraken ❌ (CORS)</option>
+                        <option value="bitget" disabled>🟢 Bitget ❌ (API Issues)</option>
+                        <option value="coinbase" disabled>🔵 Coinbase ❌ (API Issues)</option>
+                        <option value="gemini" disabled>🔷 Gemini ❌ (No Candle API)</option>
+                        <option value="bitrue" disabled>🟤 Bitrue ❌ (CORS)</option>
+                    </select>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-label">Fear & Greed:</span>
-                    <span class="stat-value" id="fear-greed">Loading...</span>
+
+                <!-- Chart Mode -->
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Chart Mode</label>
+                    <select id="chart-mode-select" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-white focus:ring-2 focus:ring-blue-500 focus:border-transparent">
+                        <option value="dual" selected>📊 Dual Charts</option>
+                        <option value="single">📈 Single Chart</option>
+                        <option value="quad">📱 Quad View</option>
+                        <option value="comparison">⚖️ Multi-Exchange</option>
+                    </select>
                 </div>
-                <div class="stat-item">
-                    <span class="stat-label">Dominance:</span>
-                    <span class="stat-value" id="btc-dominance">Loading...</span>
+
+                <!-- Analysis Tools -->
+                <div class="flex items-end">
+                    <button id="fullscreen-btn" class="w-full bg-purple-600 hover:bg-purple-700 text-white font-medium py-2 px-4 rounded-lg transition-colors">
+                        <i class="fas fa-expand mr-2"></i>
+                        Fullscreen
+                    </button>
+                </div>
+            </div>
+
+            <!-- Analysis Tools Row -->
+            <div class="flex flex-wrap gap-3">
+                <button class="tool-btn" id="analysis-btn">
+                    <i class="fas fa-chart-bar mr-2"></i>Analysis
+                </button>
+                <button class="tool-btn" id="alerts-btn">
+                    <i class="fas fa-bell mr-2"></i>Alerts
+                </button>
+                <button class="tool-btn" id="export-btn">
+                    <i class="fas fa-download mr-2"></i>Export
+                </button>
+                <button class="tool-btn" id="settings-btn">
+                    <i class="fas fa-cog mr-2"></i>Settings
+                </button>
+                <label class="tool-btn cursor-pointer">
+                    <input type="checkbox" id="overlay-mode" class="sr-only">
+                    <i class="fas fa-layer-group mr-2"></i>
+                    <span>Overlay Mode</span>
+                </label>
+            </div>
+            
+            <!-- Overlay Exchanges (Hidden by default) -->
+            <div id="overlay-exchanges" class="mt-4" style="display: none;">
+                <h3 class="text-sm font-semibold text-gray-300 mb-2">Select Exchanges for Overlay:</h3>
+                <div class="flex flex-wrap gap-2">
+                    <label class="flex items-center text-sm text-gray-300">
+                        <input type="checkbox" value="binance" checked class="mr-2"> 🟡 Binance ✅
+                    </label>
+                    <label class="flex items-center text-sm text-gray-300">
+                        <input type="checkbox" value="bybit" class="mr-2"> 🟠 Bybit ✅
+                    </label>
+                    <label class="flex items-center text-sm text-gray-300">
+                        <input type="checkbox" value="okx" class="mr-2"> 🔵 OKX ✅
+                    </label>
+                    <label class="flex items-center text-sm text-gray-400">
+                        <input type="checkbox" value="kraken" disabled class="mr-2"> 🟣 Kraken ❌
+                    </label>
+                    <label class="flex items-center text-sm text-gray-400">
+                        <input type="checkbox" value="bitget" disabled class="mr-2"> 🟢 Bitget ❌
+                    </label>
+                    <label class="flex items-center text-sm text-gray-400">
+                        <input type="checkbox" value="coinbase" disabled class="mr-2"> 🔵 Coinbase ❌
+                    </label>
+                    <label class="flex items-center text-sm text-gray-400">
+                        <input type="checkbox" value="gemini" disabled class="mr-2"> 🔷 Gemini ❌
+                    </label>
+                    <label class="flex items-center text-sm text-gray-400">
+                        <input type="checkbox" value="bitrue" disabled class="mr-2"> 🟤 Bitrue ❌
+                    </label>
                 </div>
             </div>
         </div>
 
-        <div class="status-notice">
-            <div class="notice-content">
-                <strong>📊 Exchange Status:</strong>
-                <span class="working">✅ Working: Binance, Bybit, OKX</span>
-                <span class="issues">❌ Issues: Kraken, Bitget, Coinbase, Gemini, Bitrue (CORS/API limitations)</span>
+        <!-- Market Overview -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- 24h Volume -->
+            <div class="metric-card glass-effect rounded-xl p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-400">24h Volume</p>
+                        <p class="text-2xl font-bold text-white" id="market-volume">Loading...</p>
+                        <p class="text-sm text-green-400">+12.5%</p>
+                    </div>
+                    <div class="p-3 bg-blue-600 rounded-lg">
+                        <i class="fas fa-chart-bar text-white text-xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market Cap -->
+            <div class="metric-card glass-effect rounded-xl p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-400">Market Cap</p>
+                        <p class="text-2xl font-bold text-white" id="market-cap">Loading...</p>
+                        <p class="text-sm text-blue-400">Total market</p>
+                    </div>
+                    <div class="p-3 bg-green-600 rounded-lg">
+                        <i class="fas fa-coins text-white text-xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Fear & Greed -->
+            <div class="metric-card glass-effect rounded-xl p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-400">Fear & Greed</p>
+                        <p class="text-2xl font-bold text-white" id="fear-greed">Loading...</p>
+                        <p class="text-sm text-yellow-400">Market sentiment</p>
+                    </div>
+                    <div class="p-3 bg-yellow-600 rounded-lg">
+                        <i class="fas fa-thermometer-half text-white text-xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- BTC Dominance -->
+            <div class="metric-card glass-effect rounded-xl p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-400">BTC Dominance</p>
+                        <p class="text-2xl font-bold text-white" id="btc-dominance">Loading...</p>
+                        <p class="text-sm text-purple-400">Market share</p>
+                    </div>
+                    <div class="p-3 bg-purple-600 rounded-lg">
+                        <i class="fab fa-bitcoin text-white text-xl"></i>
+                    </div>
+                </div>
             </div>
         </div>
 
-        <main class="main-content">
-            <!-- Side Panel for Tools -->
-            <aside class="side-panel" id="side-panel" style="display: none;">
-                <div class="panel-header">
-                    <h3 id="panel-title">Technical Analysis</h3>
-                    <button class="panel-close" id="panel-close">✕</button>
+        <!-- Exchange Status -->
+        <div class="glass-effect rounded-xl p-4 mb-8">
+            <div class="flex items-center justify-between">
+                <div class="flex items-center space-x-4">
+                    <i class="fas fa-server text-blue-400"></i>
+                    <span class="font-semibold">Exchange Status:</span>
                 </div>
-                <div class="panel-content" id="panel-content">
-                    <!-- Dynamic content will be loaded here -->
-                </div>
-            </aside>
-
-            <!-- Charts Container -->
-            <div class="charts-container" id="charts-container">
-                <div class="charts-grid" id="charts-grid">
-                    <!-- Chart 1 -->
-                    <div class="chart-section" id="chart1-section">
-                        <div class="chart-header">
-                            <div class="chart-title-group">
-                                <h2 id="chart1-title">BTC/USDT - 1 Minute</h2>
-                                <div class="timeframe-selector">
-                                    <select id="timeframe1-select" class="timeframe-select">
-                                        <option value="1m" selected>1m</option>
-                                        <option value="3m">3m</option>
-                                        <option value="5m">5m</option>
-                                        <option value="15m">15m</option>
-                                        <option value="30m">30m</option>
-                                        <option value="1h">1h</option>
-                                        <option value="2h">2h</option>
-                                        <option value="4h">4h</option>
-                                        <option value="6h">6h</option>
-                                        <option value="8h">8h</option>
-                                        <option value="12h">12h</option>
-                                        <option value="1d">1d</option>
-                                        <option value="3d">3d</option>
-                                        <option value="1w">1w</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="chart-controls">
-                                <div class="indicator-toggles">
-                                    <button class="indicator-btn" data-indicator="volume" data-chart="1">📊</button>
-                                    <button class="indicator-btn" data-indicator="ma" data-chart="1">📈</button>
-                                    <button class="indicator-btn" data-indicator="bollinger" data-chart="1">📊</button>
-                                    <button class="indicator-btn" data-indicator="rsi" data-chart="1">📊</button>
-                                    <button class="indicator-btn" data-indicator="macd" data-chart="1">📊</button>
-                                </div>
-                                <div class="chart-stats">
-                                    <span class="price" id="price1">Loading...</span>
-                                    <span class="change" id="change1">-</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chart-container" id="chart1-container"></div>
-                        <div class="chart-info">
-                            <div class="info-row">
-                                <div class="info-item">
-                                    <span class="label">Open:</span>
-                                    <span class="value" id="open1">-</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="label">High:</span>
-                                    <span class="value" id="high1">-</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="label">Low:</span>
-                                    <span class="value" id="low1">-</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="label">Volume:</span>
-                                    <span class="value" id="volume1">-</span>
-                                </div>
-                            </div>
-                            <div class="info-row">
-                                <div class="info-item">
-                                    <span class="label">RSI:</span>
-                                    <span class="value" id="rsi1">-</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="label">MACD:</span>
-                                    <span class="value" id="macd1">-</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="label">BB%:</span>
-                                    <span class="value" id="bb1">-</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="label">Volatility:</span>
-                                    <span class="value" id="volatility1">-</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Chart 2 -->
-                    <div class="chart-section" id="chart2-section">
-                        <div class="chart-header">
-                            <div class="chart-title-group">
-                                <h2 id="chart2-title">BTC/USDT - 5 Minutes</h2>
-                                <div class="timeframe-selector">
-                                    <select id="timeframe2-select" class="timeframe-select">
-                                        <option value="1m">1m</option>
-                                        <option value="3m">3m</option>
-                                        <option value="5m" selected>5m</option>
-                                        <option value="15m">15m</option>
-                                        <option value="30m">30m</option>
-                                        <option value="1h">1h</option>
-                                        <option value="2h">2h</option>
-                                        <option value="4h">4h</option>
-                                        <option value="6h">6h</option>
-                                        <option value="8h">8h</option>
-                                        <option value="12h">12h</option>
-                                        <option value="1d">1d</option>
-                                        <option value="3d">3d</option>
-                                        <option value="1w">1w</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="chart-controls">
-                                <div class="indicator-toggles">
-                                    <button class="indicator-btn" data-indicator="volume" data-chart="2">📊</button>
-                                    <button class="indicator-btn" data-indicator="ma" data-chart="2">📈</button>
-                                    <button class="indicator-btn" data-indicator="bollinger" data-chart="2">📊</button>
-                                    <button class="indicator-btn" data-indicator="rsi" data-chart="2">📊</button>
-                                    <button class="indicator-btn" data-indicator="macd" data-chart="2">📊</button>
-                                </div>
-                                <div class="chart-stats">
-                                    <span class="price" id="price2">Loading...</span>
-                                    <span class="change" id="change2">-</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chart-container" id="chart2-container"></div>
-                        <div class="chart-info">
-                            <div class="info-row">
-                                <div class="info-item">
-                                    <span class="label">Open:</span>
-                                    <span class="value" id="open2">-</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="label">High:</span>
-                                    <span class="value" id="high2">-</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="label">Low:</span>
-                                    <span class="value" id="low2">-</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="label">Volume:</span>
-                                    <span class="value" id="volume2">-</span>
-                                </div>
-                            </div>
-                            <div class="info-row">
-                                <div class="info-item">
-                                    <span class="label">RSI:</span>
-                                    <span class="value" id="rsi2">-</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="label">MACD:</span>
-                                    <span class="value" id="macd2">-</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="label">BB%:</span>
-                                    <span class="value" id="bb2">-</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="label">Volatility:</span>
-                                    <span class="value" id="volatility2">-</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Chart 3 & 4 (Hidden by default, shown in quad mode) -->
-                    <div class="chart-section" id="chart3-section" style="display: none;">
-                        <div class="chart-header">
-                            <div class="chart-title-group">
-                                <h2 id="chart3-title">BTC/USDT - 15 Minutes</h2>
-                                <div class="timeframe-selector">
-                                    <select id="timeframe3-select" class="timeframe-select">
-                                        <option value="1m">1m</option>
-                                        <option value="3m">3m</option>
-                                        <option value="5m">5m</option>
-                                        <option value="15m" selected>15m</option>
-                                        <option value="30m">30m</option>
-                                        <option value="1h">1h</option>
-                                        <option value="2h">2h</option>
-                                        <option value="4h">4h</option>
-                                        <option value="6h">6h</option>
-                                        <option value="8h">8h</option>
-                                        <option value="12h">12h</option>
-                                        <option value="1d">1d</option>
-                                        <option value="3d">3d</option>
-                                        <option value="1w">1w</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="chart-controls">
-                                <div class="indicator-toggles">
-                                    <button class="indicator-btn" data-indicator="volume" data-chart="3">📊</button>
-                                    <button class="indicator-btn" data-indicator="ma" data-chart="3">📈</button>
-                                    <button class="indicator-btn" data-indicator="bollinger" data-chart="3">📊</button>
-                                    <button class="indicator-btn" data-indicator="rsi" data-chart="3">📊</button>
-                                    <button class="indicator-btn" data-indicator="macd" data-chart="3">📊</button>
-                                </div>
-                                <div class="chart-stats">
-                                    <span class="price" id="price3">Loading...</span>
-                                    <span class="change" id="change3">-</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chart-container" id="chart3-container"></div>
-                        <div class="chart-info">
-                            <div class="info-row">
-                                <div class="info-item">
-                                    <span class="label">Open:</span>
-                                    <span class="value" id="open3">-</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="label">High:</span>
-                                    <span class="value" id="high3">-</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="label">Low:</span>
-                                    <span class="value" id="low3">-</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="label">Volume:</span>
-                                    <span class="value" id="volume3">-</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                    <div class="chart-section" id="chart4-section" style="display: none;">
-                        <div class="chart-header">
-                            <div class="chart-title-group">
-                                <h2 id="chart4-title">BTC/USDT - 1 Hour</h2>
-                                <div class="timeframe-selector">
-                                    <select id="timeframe4-select" class="timeframe-select">
-                                        <option value="1m">1m</option>
-                                        <option value="3m">3m</option>
-                                        <option value="5m">5m</option>
-                                        <option value="15m">15m</option>
-                                        <option value="30m">30m</option>
-                                        <option value="1h" selected>1h</option>
-                                        <option value="2h">2h</option>
-                                        <option value="4h">4h</option>
-                                        <option value="6h">6h</option>
-                                        <option value="8h">8h</option>
-                                        <option value="12h">12h</option>
-                                        <option value="1d">1d</option>
-                                        <option value="3d">3d</option>
-                                        <option value="1w">1w</option>
-                                    </select>
-                                </div>
-                            </div>
-                            <div class="chart-controls">
-                                <div class="indicator-toggles">
-                                    <button class="indicator-btn" data-indicator="volume" data-chart="4">📊</button>
-                                    <button class="indicator-btn" data-indicator="ma" data-chart="4">📈</button>
-                                    <button class="indicator-btn" data-indicator="bollinger" data-chart="4">📊</button>
-                                    <button class="indicator-btn" data-indicator="rsi" data-chart="4">📊</button>
-                                    <button class="indicator-btn" data-indicator="macd" data-chart="4">📊</button>
-                                </div>
-                                <div class="chart-stats">
-                                    <span class="price" id="price4">Loading...</span>
-                                    <span class="change" id="change4">-</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="chart-container" id="chart4-container"></div>
-                        <div class="chart-info">
-                            <div class="info-row">
-                                <div class="info-item">
-                                    <span class="label">Open:</span>
-                                    <span class="value" id="open4">-</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="label">High:</span>
-                                    <span class="value" id="high4">-</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="label">Low:</span>
-                                    <span class="value" id="low4">-</span>
-                                </div>
-                                <div class="info-item">
-                                    <span class="label">Volume:</span>
-                                    <span class="value" id="volume4">-</span>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="flex flex-wrap items-center gap-4 text-sm">
+                    <span class="flex items-center">
+                        <span class="status-indicator status-working"></span>
+                        Working: Binance, Bybit, OKX
+                    </span>
+                    <span class="flex items-center">
+                        <span class="status-indicator status-issues"></span>
+                        Issues: Kraken, Bitget, Coinbase, Gemini, Bitrue (CORS/API limitations)
+                    </span>
                 </div>
             </div>
+        </div>
 
-            <!-- Side Panel for Chart Controls -->
-            <div class="side-panel" id="side-panel">
-                <div class="side-panel-header">
-                    <h3>🎨 Chart Style</h3>
-                    <button class="close-btn" id="close-side-panel">✕</button>
-                </div>
-                <div class="side-panel-content">
-                    <!-- Chart Theme -->
-                    <div class="control-group">
-                        <label class="control-label">Theme</label>
-                        <select id="chart-theme-select" class="control-select">
-                            <option value="dark">Dark</option>
-                            <option value="light">Light</option>
+        <!-- Charts Container -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-6" id="charts-container">
+            <!-- Chart 1 -->
+            <div class="chart-card p-6" id="chart1-section">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center space-x-4">
+                        <h3 class="text-lg font-semibold text-white" id="chart1-title">BTC/USDT - 1 Minute</h3>
+                        <select id="timeframe1-select" class="bg-gray-800 border border-gray-600 rounded px-2 py-1 text-sm text-white focus:ring-2 focus:ring-blue-500">
+                            <option value="1m" selected>1m</option>
+                            <option value="3m">3m</option>
+                            <option value="5m">5m</option>
+                            <option value="15m">15m</option>
+                            <option value="30m">30m</option>
+                            <option value="1h">1h</option>
+                            <option value="2h">2h</option>
+                            <option value="4h">4h</option>
+                            <option value="6h">6h</option>
+                            <option value="8h">8h</option>
+                            <option value="12h">12h</option>
+                            <option value="1d">1d</option>
+                            <option value="3d">3d</option>
+                            <option value="1w">1w</option>
                         </select>
                     </div>
-
-                    <!-- Chart Display Options -->
-                    <div class="control-group">
-                        <label class="control-label">Display Options</label>
-                        <div class="control-checkboxes">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="crosshair-toggle" checked>
-                                <span>Crosshair</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="grid-toggle" checked>
-                                <span>Grid</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="price-scale-toggle" checked>
-                                <span>Price Scale</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="time-scale-toggle" checked>
-                                <span>Time Scale</span>
-                            </label>
+                    <div class="flex items-center space-x-2">
+                        <div class="flex space-x-1">
+                            <button class="indicator-btn" data-indicator="volume" data-chart="1" title="Volume">
+                                <i class="fas fa-chart-bar"></i>
+                            </button>
+                            <button class="indicator-btn" data-indicator="ma" data-chart="1" title="Moving Average">
+                                <i class="fas fa-chart-line"></i>
+                            </button>
+                            <button class="indicator-btn" data-indicator="bollinger" data-chart="1" title="Bollinger Bands">
+                                <i class="fas fa-water"></i>
+                            </button>
+                            <button class="indicator-btn" data-indicator="rsi" data-chart="1" title="RSI">
+                                <i class="fas fa-wave-square"></i>
+                            </button>
+                            <button class="indicator-btn" data-indicator="macd" data-chart="1" title="MACD">
+                                <i class="fas fa-signal"></i>
+                            </button>
                         </div>
-                    </div>
-
-                    <!-- Real-time Data Options -->
-                    <div class="control-group">
-                        <label class="control-label">Real-time Data</label>
-                        <div class="control-checkboxes">
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="auto-scale-toggle" checked>
-                                <span>Auto Scale</span>
-                            </label>
-                            <label class="checkbox-label">
-                                <input type="checkbox" id="live-updates-toggle" checked>
-                                <span>Live Updates</span>
-                            </label>
-                        </div>
-                    </div>
-
-                    <!-- Chart Actions -->
-                    <div class="control-group">
-                        <label class="control-label">Actions</label>
-                        <button class="control-btn" id="reset-zoom-btn">🔍 Reset Zoom</button>
-                        <button class="control-btn" id="screenshot-btn">📸 Screenshot</button>
-                    </div>
-
-                    <!-- Market Data -->
-                    <div class="control-group">
-                        <label class="control-label">Market Overview</label>
-                        <div class="market-stats">
-                            <div class="stat-item">
-                                <span class="stat-label">24h Volume:</span>
-                                <span class="stat-value" id="market-volume">Loading...</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-label">Market Cap:</span>
-                                <span class="stat-value" id="market-cap">Loading...</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-label">Fear & Greed:</span>
-                                <span class="stat-value" id="fear-greed">Loading...</span>
-                            </div>
-                            <div class="stat-item">
-                                <span class="stat-label">BTC Dominance:</span>
-                                <span class="stat-value" id="btc-dominance">Loading...</span>
-                            </div>
+                        <div class="text-right">
+                            <div class="text-lg font-bold text-white" id="price1">Loading...</div>
+                            <div class="text-sm" id="change1">-</div>
                         </div>
                     </div>
                 </div>
-            </div>
-        </main>
-
-        <!-- Connection Status -->
-        <footer class="status-bar">
-            <div class="status-item">
-                <span class="status-label">Chart 1 WebSocket:</span>
-                <span class="status-indicator" id="ws1-status">Connecting...</span>
-            </div>
-            <div class="status-item">
-                <span class="status-label">Chart 2 WebSocket:</span>
-                <span class="status-indicator" id="ws2-status">Connecting...</span>
-            </div>
-            <div class="status-item">
-                <span class="status-label">Chart 3 WebSocket:</span>
-                <span class="status-indicator" id="ws3-status">Disconnected</span>
-            </div>
-            <div class="status-item">
-                <span class="status-label">Chart 4 WebSocket:</span>
-                <span class="status-indicator" id="ws4-status">Disconnected</span>
-            </div>
-            <div class="status-item">
-                <span class="status-label">Data Quality:</span>
-                <span class="status-indicator" id="data-quality">Monitoring...</span>
-            </div>
-        </footer>
-
-        <!-- Alert Modal -->
-        <div class="modal" id="alert-modal" style="display: none;">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3>🔔 Price Alerts</h3>
-                    <button class="modal-close" id="alert-modal-close">✕</button>
-                </div>
-                <div class="modal-body">
-                    <div class="alert-form">
-                        <div class="form-group">
-                            <label>Alert Type:</label>
-                            <select id="alert-type">
-                                <option value="price">Price Alert</option>
-                                <option value="volume">Volume Alert</option>
-                                <option value="rsi">RSI Alert</option>
-                                <option value="macd">MACD Signal</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Condition:</label>
-                            <select id="alert-condition">
-                                <option value="above">Above</option>
-                                <option value="below">Below</option>
-                                <option value="crosses">Crosses</option>
-                            </select>
-                        </div>
-                        <div class="form-group">
-                            <label>Value:</label>
-                            <input type="number" id="alert-value" placeholder="Enter value">
-                        </div>
-                        <button class="btn btn-primary" id="add-alert">Add Alert</button>
+                <div class="chart-container" id="chart1-container">
+                    <div class="loading-chart">
+                        <i class="fas fa-spinner fa-spin mr-2"></i>
+                        Loading chart data...
                     </div>
-                    <div class="active-alerts">
-                        <h4>Active Alerts</h4>
-                        <div id="alerts-list">
-                            <!-- Dynamic alerts will be added here -->
+                </div>
+                <div class="grid grid-cols-4 gap-4 mt-4 text-sm">
+                    <div>
+                        <span class="text-gray-400">Open:</span>
+                        <span class="text-white ml-1" id="open1">-</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-400">High:</span>
+                        <span class="text-white ml-1" id="high1">-</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-400">Low:</span>
+                        <span class="text-white ml-1" id="low1">-</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-400">Volume:</span>
+                        <span class="text-white ml-1" id="volume1">-</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Chart 2 -->
+            <div class="chart-card p-6" id="chart2-section">
+                <div class="flex items-center justify-between mb-4">
+                    <div class="flex items-center space-x-4">
+                        <h3 class="text-lg font-semibold text-white" id="chart2-title">BTC/USDT - 5 Minutes</h3>
+                        <select id="timeframe2-select" class="bg-gray-800 border border-gray-600 rounded px-2 py-1 text-sm text-white focus:ring-2 focus:ring-blue-500">
+                            <option value="1m">1m</option>
+                            <option value="3m">3m</option>
+                            <option value="5m" selected>5m</option>
+                            <option value="15m">15m</option>
+                            <option value="30m">30m</option>
+                            <option value="1h">1h</option>
+                            <option value="2h">2h</option>
+                            <option value="4h">4h</option>
+                            <option value="6h">6h</option>
+                            <option value="8h">8h</option>
+                            <option value="12h">12h</option>
+                            <option value="1d">1d</option>
+                            <option value="3d">3d</option>
+                            <option value="1w">1w</option>
+                        </select>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="flex space-x-1">
+                            <button class="indicator-btn" data-indicator="volume" data-chart="2" title="Volume">
+                                <i class="fas fa-chart-bar"></i>
+                            </button>
+                            <button class="indicator-btn" data-indicator="ma" data-chart="2" title="Moving Average">
+                                <i class="fas fa-chart-line"></i>
+                            </button>
+                            <button class="indicator-btn" data-indicator="bollinger" data-chart="2" title="Bollinger Bands">
+                                <i class="fas fa-water"></i>
+                            </button>
+                            <button class="indicator-btn" data-indicator="rsi" data-chart="2" title="RSI">
+                                <i class="fas fa-wave-square"></i>
+                            </button>
+                            <button class="indicator-btn" data-indicator="macd" data-chart="2" title="MACD">
+                                <i class="fas fa-signal"></i>
+                            </button>
                         </div>
+                        <div class="text-right">
+                            <div class="text-lg font-bold text-white" id="price2">Loading...</div>
+                            <div class="text-sm" id="change2">-</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="chart-container" id="chart2-container">
+                    <div class="loading-chart">
+                        <i class="fas fa-spinner fa-spin mr-2"></i>
+                        Loading chart data...
+                    </div>
+                </div>
+                <div class="grid grid-cols-4 gap-4 mt-4 text-sm">
+                    <div>
+                        <span class="text-gray-400">Open:</span>
+                        <span class="text-white ml-1" id="open2">-</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-400">High:</span>
+                        <span class="text-white ml-1" id="high2">-</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-400">Low:</span>
+                        <span class="text-white ml-1" id="low2">-</span>
+                    </div>
+                    <div>
+                        <span class="text-gray-400">Volume:</span>
+                        <span class="text-white ml-1" id="volume2">-</span>
                     </div>
                 </div>
             </div>
         </div>
 
-        <!-- Analysis Modal -->
-        <div class="modal" id="analysis-modal" style="display: none;">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h3>📊 Technical Analysis</h3>
-                    <button class="modal-close" id="analysis-modal-close">✕</button>
+        <!-- Hidden Chart 3 & 4 containers (for quad mode) -->
+        <div class="chart-card p-6" id="chart3-section" style="display: none;">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-4">
+                    <h3 class="text-lg font-semibold text-white" id="chart3-title">BTC/USDT - 15 Minutes</h3>
+                    <select id="timeframe3-select" class="bg-gray-800 border border-gray-600 rounded px-2 py-1 text-sm text-white focus:ring-2 focus:ring-blue-500">
+                        <option value="1m">1m</option>
+                        <option value="3m">3m</option>
+                        <option value="5m">5m</option>
+                        <option value="15m" selected>15m</option>
+                        <option value="30m">30m</option>
+                        <option value="1h">1h</option>
+                        <option value="2h">2h</option>
+                        <option value="4h">4h</option>
+                        <option value="6h">6h</option>
+                        <option value="8h">8h</option>
+                        <option value="12h">12h</option>
+                        <option value="1d">1d</option>
+                        <option value="3d">3d</option>
+                        <option value="1w">1w</option>
+                    </select>
                 </div>
-                <div class="modal-body">
-                    <div class="analysis-tabs">
-                        <button class="tab-btn active" data-tab="indicators">Indicators</button>
-                        <button class="tab-btn" data-tab="patterns">Patterns</button>
-                        <button class="tab-btn" data-tab="signals">Signals</button>
-                    </div>
-                    <div class="tab-content" id="analysis-content">
-                        <!-- Dynamic analysis content will be loaded here -->
-                    </div>
+            </div>
+            <div class="chart-container" id="chart3-container">
+                <div class="loading-chart">
+                    <i class="fas fa-spinner fa-spin mr-2"></i>
+                    Loading chart data...
+                </div>
+            </div>
+        </div>
+
+        <div class="chart-card p-6" id="chart4-section" style="display: none;">
+            <div class="flex items-center justify-between mb-4">
+                <div class="flex items-center space-x-4">
+                    <h3 class="text-lg font-semibold text-white" id="chart4-title">BTC/USDT - 1 Hour</h3>
+                    <select id="timeframe4-select" class="bg-gray-800 border border-gray-600 rounded px-2 py-1 text-sm text-white focus:ring-2 focus:ring-blue-500">
+                        <option value="1m">1m</option>
+                        <option value="3m">3m</option>
+                        <option value="5m">5m</option>
+                        <option value="15m">15m</option>
+                        <option value="30m">30m</option>
+                        <option value="1h" selected>1h</option>
+                        <option value="2h">2h</option>
+                        <option value="4h">4h</option>
+                        <option value="6h">6h</option>
+                        <option value="8h">8h</option>
+                        <option value="12h">12h</option>
+                        <option value="1d">1d</option>
+                        <option value="3d">3d</option>
+                        <option value="1w">1w</option>
+                    </select>
+                </div>
+            </div>
+            <div class="chart-container" id="chart4-container">
+                <div class="loading-chart">
+                    <i class="fas fa-spinner fa-spin mr-2"></i>
+                    Loading chart data...
+                </div>
+            </div>
+        </div>
+
+        <!-- Side Panel for Tools -->
+        <div class="glass-effect rounded-xl p-6 mt-8" id="side-panel" style="display: none;">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-semibold text-white" id="panel-title">Technical Analysis</h3>
+                <button class="text-gray-400 hover:text-white" id="panel-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div id="panel-content">
+                <!-- Dynamic content will be loaded here -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Alert Modal -->
+    <div class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" id="alert-modal" style="display: none;">
+        <div class="glass-effect rounded-xl p-6 max-w-md w-full mx-4">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-semibold text-white">🔔 Price Alerts</h3>
+                <button class="text-gray-400 hover:text-white" id="alert-modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Alert Type:</label>
+                    <select id="alert-type" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-white">
+                        <option value="price">Price Alert</option>
+                        <option value="volume">Volume Alert</option>
+                        <option value="rsi">RSI Alert</option>
+                        <option value="macd">MACD Signal</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Condition:</label>
+                    <select id="alert-condition" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-white">
+                        <option value="above">Above</option>
+                        <option value="below">Below</option>
+                        <option value="crosses">Crosses</option>
+                    </select>
+                </div>
+                <div>
+                    <label class="block text-sm font-medium text-gray-300 mb-2">Value:</label>
+                    <input type="number" id="alert-value" placeholder="Enter value" class="w-full bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-white">
+                </div>
+                <button class="w-full bg-blue-600 hover:bg-blue-700 text-white font-medium py-2 px-4 rounded-lg transition-colors" id="add-alert">Add Alert</button>
+                <div id="alerts-list" class="mt-4">
+                    <!-- Dynamic alerts will be added here -->
                 </div>
             </div>
         </div>
     </div>
 
-    <script type="module" src="charts-dashboard.ts"></script>
+    <!-- Analysis Modal -->
+    <div class="modal fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50" id="analysis-modal" style="display: none;">
+        <div class="glass-effect rounded-xl p-6 max-w-2xl w-full mx-4">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-xl font-semibold text-white">📊 Technical Analysis</h3>
+                <button class="text-gray-400 hover:text-white" id="analysis-modal-close">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="space-y-4">
+                <div class="flex space-x-2 border-b border-gray-600">
+                    <button class="px-4 py-2 text-blue-400 border-b-2 border-blue-400 tab-btn active" data-tab="indicators">Indicators</button>
+                    <button class="px-4 py-2 text-gray-400 hover:text-white tab-btn" data-tab="patterns">Patterns</button>
+                    <button class="px-4 py-2 text-gray-400 hover:text-white tab-btn" data-tab="signals">Signals</button>
+                </div>
+                <div id="analysis-content">
+                    <!-- Dynamic analysis content will be loaded here -->
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load the original JavaScript functionality -->
+    <script src="charts-dashboard.ts"></script>
+    <script>
+        // Mobile menu toggle
+        function toggleMobileMenu() {
+            // Implementation for mobile menu
+            console.log('Mobile menu toggle');
+        }
+        
+        // Initialize dashboard
+        document.addEventListener('DOMContentLoaded', function() {
+            console.log('Charts dashboard loaded with new design');
+        });
+    </script>
 </body>
 </html> 

@@ -468,7 +468,7 @@ class ChartsDashboard {
     }
 
     private initializeDOM() {
-        // Get DOM elements
+        // Get DOM elements with null checks
         this.assetSelect = document.getElementById('asset-select') as HTMLSelectElement;
         this.exchangeSelect = document.getElementById('exchange-select') as HTMLSelectElement;
         this.chartModeSelect = document.getElementById('chart-mode-select') as HTMLSelectElement;
@@ -476,6 +476,8 @@ class ChartsDashboard {
         this.overlayExchangesDiv = document.getElementById('overlay-exchanges') as HTMLElement;
         this.timeframe1Select = document.getElementById('timeframe1-select') as HTMLSelectElement;
         this.timeframe2Select = document.getElementById('timeframe2-select') as HTMLSelectElement;
+        
+        // These might not exist in all layouts
         this.timeframe3Select = document.getElementById('timeframe3-select') as HTMLSelectElement;
         this.timeframe4Select = document.getElementById('timeframe4-select') as HTMLSelectElement;
         
@@ -487,7 +489,14 @@ class ChartsDashboard {
         this.sidePanel = document.getElementById('side-panel') as HTMLElement;
         this.alertModal = document.getElementById('alert-modal') as HTMLElement;
         this.analysisModal = document.getElementById('analysis-modal') as HTMLElement;
-        
+
+        // Validate critical elements
+        if (!this.assetSelect || !this.exchangeSelect || !this.timeframe1Select || !this.timeframe2Select) {
+            console.error('❌ Critical DOM elements missing. Chart dashboard cannot initialize.');
+            this.showLoadingError();
+            return;
+        }
+
         // Initialize chart instances
         this.chart1 = {
             chart: null,
@@ -521,37 +530,45 @@ class ChartsDashboard {
             historicalPrices: []
         };
         
-        this.chart3 = {
-            chart: null,
-            series: new Map(),
-            volumeSeries: new Map(),
-            indicatorSeries: new Map(),
-            container: document.getElementById('chart3-container')!,
-            websockets: new Map(),
-            lastCandles: new Map(),
-            openPrices: new Map(),
-            timeframe: '15m',
-            chartId: '3',
-            activeIndicators: new Set(),
-            technicalData: { rsi: 0, macd: { macd: 0, signal: 0, histogram: 0 }, bollinger: { upper: 0, middle: 0, lower: 0, percentage: 0 }, volatility: 0, ma20: 0, ma50: 0 },
-            historicalPrices: []
-        };
+        // Chart 3 and 4 are optional (for quad mode)
+        const chart3Container = document.getElementById('chart3-container');
+        const chart4Container = document.getElementById('chart4-container');
         
-        this.chart4 = {
-            chart: null,
-            series: new Map(),
-            volumeSeries: new Map(),
-            indicatorSeries: new Map(),
-            container: document.getElementById('chart4-container')!,
-            websockets: new Map(),
-            lastCandles: new Map(),
-            openPrices: new Map(),
-            timeframe: '1h',
-            chartId: '4',
-            activeIndicators: new Set(),
-            technicalData: { rsi: 0, macd: { macd: 0, signal: 0, histogram: 0 }, bollinger: { upper: 0, middle: 0, lower: 0, percentage: 0 }, volatility: 0, ma20: 0, ma50: 0 },
-            historicalPrices: []
-        };
+        if (chart3Container) {
+            this.chart3 = {
+                chart: null,
+                series: new Map(),
+                volumeSeries: new Map(),
+                indicatorSeries: new Map(),
+                container: chart3Container,
+                websockets: new Map(),
+                lastCandles: new Map(),
+                openPrices: new Map(),
+                timeframe: '15m',
+                chartId: '3',
+                activeIndicators: new Set(),
+                technicalData: { rsi: 0, macd: { macd: 0, signal: 0, histogram: 0 }, bollinger: { upper: 0, middle: 0, lower: 0, percentage: 0 }, volatility: 0, ma20: 0, ma50: 0 },
+                historicalPrices: []
+            };
+        }
+        
+        if (chart4Container) {
+            this.chart4 = {
+                chart: null,
+                series: new Map(),
+                volumeSeries: new Map(),
+                indicatorSeries: new Map(),
+                container: chart4Container,
+                websockets: new Map(),
+                lastCandles: new Map(),
+                openPrices: new Map(),
+                timeframe: '1h',
+                chartId: '4',
+                activeIndicators: new Set(),
+                technicalData: { rsi: 0, macd: { macd: 0, signal: 0, histogram: 0 }, bollinger: { upper: 0, middle: 0, lower: 0, percentage: 0 }, volatility: 0, ma20: 0, ma50: 0 },
+                historicalPrices: []
+            };
+        }
     }
 
     private setupEventListeners() {
@@ -583,46 +600,54 @@ class ChartsDashboard {
         });
 
         // Overlay mode toggle
-        this.overlayModeToggle.addEventListener('change', (e) => {
-            const target = e.target as HTMLInputElement;
-            this.overlayMode = target.checked;
-            this.overlayExchangesDiv.style.display = this.overlayMode ? 'block' : 'none';
-            this.updateTitles();
-            this.restartCharts();
-            this.savePreferencesDebounced(); // Save preferences
-        });
+        if (this.overlayModeToggle) {
+            this.overlayModeToggle.addEventListener('change', (e) => {
+                const target = e.target as HTMLInputElement;
+                this.overlayMode = target.checked;
+                if (this.overlayExchangesDiv) {
+                    this.overlayExchangesDiv.style.display = this.overlayMode ? 'block' : 'none';
+                }
+                this.updateTitles();
+                this.restartCharts();
+                this.savePreferencesDebounced(); // Save preferences
+            });
+        }
 
         // Overlay exchanges checkboxes (only allow working exchanges)
-        const overlayCheckboxes = this.overlayExchangesDiv.querySelectorAll('input[type="checkbox"]');
-        overlayCheckboxes.forEach(checkbox => {
-            checkbox.addEventListener('change', (e) => {
-                const target = e.target as HTMLInputElement;
-                const exchangeId = target.value;
-                const workingExchanges = ['binance', 'bybit', 'okx'];
-                
-                if (workingExchanges.includes(exchangeId)) {
-                    if (target.checked) {
-                        this.selectedOverlayExchanges.add(exchangeId);
+        if (this.overlayExchangesDiv) {
+            const overlayCheckboxes = this.overlayExchangesDiv.querySelectorAll('input[type="checkbox"]');
+            overlayCheckboxes.forEach(checkbox => {
+                checkbox.addEventListener('change', (e) => {
+                    const target = e.target as HTMLInputElement;
+                    const exchangeId = target.value;
+                    const workingExchanges = ['binance', 'bybit', 'okx'];
+                    
+                    if (workingExchanges.includes(exchangeId)) {
+                        if (target.checked) {
+                            this.selectedOverlayExchanges.add(exchangeId);
+                        } else {
+                            this.selectedOverlayExchanges.delete(exchangeId);
+                        }
+                        
+                        // Ensure at least one exchange is selected
+                        if (this.selectedOverlayExchanges.size === 0) {
+                            this.selectedOverlayExchanges.add('binance');
+                            if (this.overlayExchangesDiv) {
+                                const binanceCheckbox = this.overlayExchangesDiv.querySelector('input[value="binance"]') as HTMLInputElement;
+                                if (binanceCheckbox) binanceCheckbox.checked = true;
+                            }
+                        }
+                        
+                        if (this.overlayMode) {
+                            this.restartCharts();
+                        }
                     } else {
-                        this.selectedOverlayExchanges.delete(exchangeId);
+                        console.warn(`⚠️ Exchange ${exchangeId} is not working, ignoring selection`);
+                        target.checked = false; // Uncheck the box
                     }
-                    
-                    // Ensure at least one exchange is selected
-                    if (this.selectedOverlayExchanges.size === 0) {
-                        this.selectedOverlayExchanges.add('binance');
-                        const binanceCheckbox = this.overlayExchangesDiv.querySelector('input[value="binance"]') as HTMLInputElement;
-                        if (binanceCheckbox) binanceCheckbox.checked = true;
-                    }
-                    
-                    if (this.overlayMode) {
-                        this.restartCharts();
-                    }
-                } else {
-                    console.warn(`⚠️ Exchange ${exchangeId} is not working, ignoring selection`);
-                    target.checked = false; // Uncheck the box
-                }
+                });
             });
-        });
+        }
 
         // Timeframe selectors
         this.timeframe1Select.addEventListener('change', (e) => {
@@ -640,6 +665,27 @@ class ChartsDashboard {
             this.restartChart(this.chart2);
             this.savePreferencesDebounced(); // Save preferences
         });
+
+        // Add timeframe selectors for chart 3 and 4 (quad mode)
+        if (this.timeframe3Select) {
+            this.timeframe3Select.addEventListener('change', (e) => {
+                const target = e.target as HTMLSelectElement;
+                this.chart3.timeframe = target.value;
+                this.updateTitles();
+                this.restartChart(this.chart3);
+                this.savePreferencesDebounced(); // Save preferences
+            });
+        }
+
+        if (this.timeframe4Select) {
+            this.timeframe4Select.addEventListener('change', (e) => {
+                const target = e.target as HTMLSelectElement;
+                this.chart4.timeframe = target.value;
+                this.updateTitles();
+                this.restartChart(this.chart4);
+                this.savePreferencesDebounced(); // Save preferences
+            });
+        }
 
         // Window resize
         window.addEventListener('resize', () => this.handleResize());
@@ -692,31 +738,104 @@ class ChartsDashboard {
         
         // Side panel controls
         this.setupSidePanelControls();
+        
+        // Modal event handlers
+        this.setupModalHandlers();
+    }
+    
+    private setupModalHandlers() {
+        // Analysis button to open analysis modal
+        if (this.analysisBtn && this.analysisModal) {
+            this.analysisBtn.addEventListener('click', () => {
+                this.analysisModal.style.display = 'flex';
+            });
+        }
+        
+        // Alert button to open alert modal
+        if (this.alertsBtn && this.alertModal) {
+            this.alertsBtn.addEventListener('click', () => {
+                this.alertModal.style.display = 'flex';
+            });
+        }
+        
+        // Close analysis modal
+        const analysisModalClose = document.getElementById('analysis-modal-close');
+        if (analysisModalClose && this.analysisModal) {
+            analysisModalClose.addEventListener('click', () => {
+                this.analysisModal.style.display = 'none';
+            });
+        }
+        
+        // Close alert modal
+        const alertModalClose = document.getElementById('alert-modal-close');
+        if (alertModalClose && this.alertModal) {
+            alertModalClose.addEventListener('click', () => {
+                this.alertModal.style.display = 'none';
+            });
+        }
+        
+        // Close modals when clicking outside
+        if (this.analysisModal) {
+            this.analysisModal.addEventListener('click', (e) => {
+                if (e.target === this.analysisModal) {
+                    this.analysisModal.style.display = 'none';
+                }
+            });
+        }
+        
+        if (this.alertModal) {
+            this.alertModal.addEventListener('click', (e) => {
+                if (e.target === this.alertModal) {
+                    this.alertModal.style.display = 'none';
+                }
+            });
+        }
+        
+        // Add alert button
+        const addAlertBtn = document.getElementById('add-alert');
+        if (addAlertBtn) {
+            addAlertBtn.addEventListener('click', () => {
+                const typeSelect = document.getElementById('alert-type') as HTMLSelectElement;
+                const conditionSelect = document.getElementById('alert-condition') as HTMLSelectElement;
+                const valueInput = document.getElementById('alert-value') as HTMLInputElement;
+                
+                if (typeSelect && conditionSelect && valueInput && valueInput.value) {
+                    this.addAlert(
+                        typeSelect.value as Alert['type'],
+                        conditionSelect.value as Alert['condition'],
+                        parseFloat(valueInput.value)
+                    );
+                    valueInput.value = ''; // Clear input
+                }
+            });
+        }
     }
     
     private setupSidePanelControls() {
         const settingsBtn = document.getElementById('settings-btn');
         const sidePanel = document.getElementById('side-panel');
-        const closeSidePanelBtn = document.getElementById('close-side-panel');
+        const panelClose = document.getElementById('panel-close');
         
-        // Settings button to open side panel
+        // Settings button to show side panel
         if (settingsBtn && sidePanel) {
             settingsBtn.addEventListener('click', () => {
-                sidePanel.classList.add('open');
+                sidePanel.style.display = 'block';
                 this.sidePanelVisible = true;
                 this.savePreferencesDebounced();
             });
         }
         
-        // Close side panel button
-        if (closeSidePanelBtn && sidePanel) {
-            closeSidePanelBtn.addEventListener('click', () => {
-                sidePanel.classList.remove('open');
+        // Close side panel button  
+        if (panelClose && sidePanel) {
+            panelClose.addEventListener('click', () => {
+                sidePanel.style.display = 'none';
                 this.sidePanelVisible = false;
                 this.savePreferencesDebounced();
             });
         }
         
+        // Legacy side panel controls (commented out - elements don't exist in new design)
+        /*
         // Chart theme selector
         const themeSelect = document.getElementById('chart-theme-select') as HTMLSelectElement;
         if (themeSelect) {
@@ -766,6 +885,7 @@ class ChartsDashboard {
                 this.savePreferencesDebounced();
             });
         }
+        */
         
         // Auto scale toggle
         const autoScaleToggle = document.getElementById('auto-scale-toggle') as HTMLInputElement;
@@ -1005,6 +1125,16 @@ class ChartsDashboard {
         }
 
         try {
+            // Get timeframe configuration for proper time formatting
+            const timeframeConfig = this.timeframeConfigs[chartInstance.timeframe] || this.timeframeConfigs['1m'];
+            
+            // Configure time scale settings based on timeframe
+            const timeScaleOptions: any = {
+                borderColor: '#484848',
+                timeVisible: true,
+                secondsVisible: false,
+            };
+
             // Create chart with enhanced options
             const chart = LWC.createChart(chartInstance.container, {
                 width: containerWidth,
@@ -1031,10 +1161,29 @@ class ChartsDashboard {
                         bottom: 0.2,
                     },
                 },
-                timeScale: {
-                    borderColor: '#484848',
-                    timeVisible: true,
-                    secondsVisible: false,
+                timeScale: timeScaleOptions,
+                localization: {
+                    timeFormatter: (time: any) => {
+                        const date = new Date(time * 1000);
+                        
+                        // Format time based on timeframe
+                        if (['1d', '3d', '1w'].includes(chartInstance.timeframe)) {
+                            // For daily/weekly timeframes, show date only
+                            return date.toLocaleDateString('en-US', { 
+                                month: 'short', 
+                                day: 'numeric',
+                                year: 'numeric'
+                            });
+                        } else if (['1h', '2h', '4h', '6h', '8h', '12h'].includes(chartInstance.timeframe)) {
+                            // For hourly timeframes, show date and hour
+                            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + ' ' +
+                                   date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
+                        } else {
+                            // For minute timeframes, show date and time
+                            return date.toLocaleDateString('en-US', { month: 'short', day: 'numeric' }) + ' ' +
+                                   date.toLocaleTimeString('en-US', { hour: '2-digit', minute: '2-digit', hour12: false });
+                        }
+                    }
                 },
             });
 
@@ -1103,10 +1252,32 @@ class ChartsDashboard {
         chartInstance.lastCandles.clear();
         chartInstance.openPrices.clear();
         
-        // Update status
-        this.updateWebSocketStatus(chartInstance.chartId, 'Restarting');
+        // Clear indicator series
+        chartInstance.indicatorSeries.forEach((series, indicator) => {
+            try {
+                chartInstance.chart.removeSeries(series);
+            } catch (error) {
+                console.warn(`Error removing indicator series for ${indicator}:`, error);
+            }
+        });
+        chartInstance.indicatorSeries.clear();
         
-        // Start fresh
+        // Remove the existing chart completely
+        if (chartInstance.chart) {
+            try {
+                chartInstance.chart.remove();
+            } catch (error) {
+                console.warn(`Error removing chart:`, error);
+            }
+        }
+        
+        // Update status
+        this.updateWebSocketStatus(chartInstance.chartId, 'Recreating');
+        
+        // Recreate the chart with new timeframe settings
+        this.createChart(chartInstance);
+        
+        // Start fresh with the new chart
         await this.startChart(chartInstance);
     }
 
