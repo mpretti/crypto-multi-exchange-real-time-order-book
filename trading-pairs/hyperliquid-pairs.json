@@ -1,0 +1,56 @@
+{
+  "exchange": "Hyperliquid",
+  "count": 7,
+  "lastUpdated": "2025-01-26T12:00:00.000Z",
+  "pairs": [
+    {
+      "symbol": "BTCUSDT",
+      "baseAsset": "BTC",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ETHUSDT",
+      "baseAsset": "ETH",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "SOLUSDT",
+      "baseAsset": "SOL",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "AVAXUSDT",
+      "baseAsset": "AVAX",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "ADAUSDT",
+      "baseAsset": "ADA",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "DOTUSDT",
+      "baseAsset": "DOT",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    },
+    {
+      "symbol": "MATICUSDT",
+      "baseAsset": "MATIC",
+      "quoteAsset": "USDT",
+      "status": "TRADING",
+      "contractType": "PERPETUAL"
+    }
+  ]
+} 

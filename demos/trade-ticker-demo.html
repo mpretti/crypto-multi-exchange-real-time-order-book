@@ -1,0 +1,484 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🌊 Trade Ticker Demo - Marine Animal Classifications</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            background: linear-gradient(135deg, #0f0f23 0%, #1a1a2e 50%, #16213e 100%);
+            color: #e0e0e0;
+            margin: 0;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .demo-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .demo-header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(42, 52, 65, 0.3);
+            border-radius: 12px;
+            border: 1px solid #3a4552;
+        }
+        
+        .demo-header h1 {
+            color: #4fd1c7;
+            margin: 0 0 10px 0;
+            font-size: 28px;
+        }
+        
+        .demo-header p {
+            color: #b0bec5;
+            margin: 0;
+            font-size: 16px;
+        }
+        
+        .feature-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 15px;
+            margin: 20px 0;
+        }
+        
+        .feature-item {
+            background: rgba(42, 52, 65, 0.3);
+            padding: 15px;
+            border-radius: 8px;
+            border-left: 3px solid #4fd1c7;
+        }
+        
+        .feature-item h3 {
+            margin: 0 0 8px 0;
+            color: #4fd1c7;
+            font-size: 14px;
+        }
+        
+        .feature-item p {
+            margin: 0;
+            color: #b0bec5;
+            font-size: 12px;
+        }
+        
+        /* Include all the trade ticker CSS from index.css */
+        /* Trade Ticker Section */
+        #trade-ticker-section {
+            margin-top: 20px;
+            background: linear-gradient(135deg, #0f1419 0%, #1a252f 100%);
+            border-radius: 12px;
+            border: 1px solid #2a3441;
+            overflow: hidden;
+        }
+
+        .trade-ticker-header {
+            background: linear-gradient(135deg, #1e2a35 0%, #2a3441 100%);
+            padding: 15px 20px;
+            border-bottom: 1px solid #3a4552;
+        }
+
+        .trade-ticker-title {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .trade-ticker-title h3 {
+            margin: 0;
+            color: #4fd1c7;
+            font-size: 18px;
+            font-weight: 600;
+        }
+
+        .trade-ticker-controls {
+            display: flex;
+            gap: 8px;
+        }
+
+        .ticker-btn {
+            background: #2a3441;
+            border: 1px solid #3a4552;
+            color: #e0e0e0;
+            padding: 6px 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 12px;
+            transition: all 0.2s ease;
+            display: flex;
+            align-items: center;
+            gap: 4px;
+        }
+
+        .ticker-btn:hover {
+            background: #3a4552;
+            border-color: #4a5562;
+        }
+
+        .ticker-btn.active {
+            background: #00d4aa;
+            border-color: #00d4aa;
+            color: #0a0a0a;
+        }
+
+        .ticker-status {
+            font-weight: 600;
+        }
+
+        .ticker-filters {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 10px;
+        }
+
+        .filter-group {
+            display: flex;
+            flex-direction: column;
+            gap: 5px;
+        }
+
+        .filter-group label {
+            font-size: 12px;
+            color: #b0bec5;
+            font-weight: 500;
+        }
+
+        .filter-group select {
+            background: #1a252f;
+            border: 1px solid #3a4552;
+            color: #e0e0e0;
+            padding: 8px 12px;
+            border-radius: 6px;
+            font-size: 12px;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .filter-group select:hover {
+            border-color: #4fd1c7;
+        }
+
+        .filter-group select:focus {
+            outline: none;
+            border-color: #00d4aa;
+            box-shadow: 0 0 0 2px rgba(0, 212, 170, 0.2);
+        }
+
+        /* Marine Legend */
+        .marine-legend {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+            padding: 10px 20px;
+            background: rgba(15, 20, 25, 0.5);
+            border-bottom: 1px solid #2a3441;
+        }
+
+        .legend-item {
+            background: rgba(42, 52, 65, 0.6);
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 11px;
+            color: #b0bec5;
+            border: 1px solid transparent;
+            transition: all 0.2s ease;
+        }
+
+        .legend-item:hover {
+            background: rgba(79, 209, 199, 0.1);
+            border-color: #4fd1c7;
+            color: #4fd1c7;
+        }
+
+        /* Trade Ticker Container */
+        #trade-ticker-container {
+            max-height: 400px;
+            overflow-y: auto;
+            background: #0f1419;
+        }
+
+        #trade-ticker-list {
+            padding: 10px;
+        }
+
+        .trade-ticker-placeholder {
+            text-align: center;
+            padding: 40px 20px;
+            color: #666;
+        }
+
+        .placeholder-text {
+            font-size: 16px;
+            margin-bottom: 8px;
+            color: #4fd1c7;
+        }
+
+        .placeholder-subtext {
+            font-size: 12px;
+            color: #888;
+        }
+
+        /* Individual Trade Items */
+        .trade-item {
+            display: flex;
+            align-items: center;
+            padding: 8px 12px;
+            margin-bottom: 4px;
+            background: rgba(42, 52, 65, 0.3);
+            border-radius: 6px;
+            border-left: 3px solid transparent;
+            transition: all 0.3s ease;
+            animation: slideInRight 0.3s ease-out;
+        }
+
+        .trade-item:hover {
+            background: rgba(42, 52, 65, 0.6);
+            transform: translateX(2px);
+        }
+
+        .trade-item.buy {
+            border-left-color: #00d4aa;
+            background: rgba(0, 212, 170, 0.1);
+        }
+
+        .trade-item.sell {
+            border-left-color: #ff6b6b;
+            background: rgba(255, 107, 107, 0.1);
+        }
+
+        .trade-marine-icon {
+            font-size: 18px;
+            margin-right: 10px;
+            min-width: 24px;
+            text-align: center;
+        }
+
+        .trade-details {
+            flex: 1;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .trade-main-info {
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .trade-price {
+            font-weight: 600;
+            font-size: 14px;
+        }
+
+        .trade-price.buy {
+            color: #00d4aa;
+        }
+
+        .trade-price.sell {
+            color: #ff6b6b;
+        }
+
+        .trade-quantity {
+            font-size: 11px;
+            color: #888;
+        }
+
+        .trade-meta {
+            text-align: right;
+            display: flex;
+            flex-direction: column;
+            gap: 2px;
+        }
+
+        .trade-value {
+            font-weight: 500;
+            font-size: 12px;
+            color: #e0e0e0;
+        }
+
+        .trade-time {
+            font-size: 10px;
+            color: #666;
+        }
+
+        /* Animations */
+        @keyframes slideInRight {
+            from {
+                opacity: 0;
+                transform: translateX(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+        @keyframes pulseGlow {
+            0%, 100% {
+                box-shadow: 0 0 5px rgba(79, 209, 199, 0.3);
+            }
+            50% {
+                box-shadow: 0 0 15px rgba(79, 209, 199, 0.6);
+            }
+        }
+
+        .trade-item.fresh {
+            animation: slideInRight 0.3s ease-out, pulseGlow 1s ease-in-out;
+        }
+
+        /* Scrollbar Styling for Trade Ticker */
+        #trade-ticker-container::-webkit-scrollbar {
+            width: 6px;
+        }
+
+        #trade-ticker-container::-webkit-scrollbar-track {
+            background: #1a252f;
+        }
+
+        #trade-ticker-container::-webkit-scrollbar-thumb {
+            background: #3a4552;
+            border-radius: 3px;
+        }
+
+        #trade-ticker-container::-webkit-scrollbar-thumb:hover {
+            background: #4a5562;
+        }
+    </style>
+</head>
+<body>
+    <div class="demo-container">
+        <div class="demo-header">
+            <h1>🌊 Live Trade Ticker Demo</h1>
+            <p>Real-time Bitcoin trades classified by marine animals based on trade size</p>
+            
+            <div class="feature-list">
+                <div class="feature-item">
+                    <h3>🦐 Marine Classifications</h3>
+                    <p>Trade sizes from shrimp ($0-100) to mega whales ($50K+)</p>
+                </div>
+                <div class="feature-item">
+                    <h3>⚡ Smart Filtering</h3>
+                    <p>Rate limiting, size filtering, and buy/sell separation</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🎯 Real-time Data</h3>
+                    <p>Live Binance WebSocket feed with instant updates</p>
+                </div>
+                <div class="feature-item">
+                    <h3>🎨 Smooth Animations</h3>
+                    <p>Glow effects and sliding animations for new trades</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Trade Ticker Section -->
+        <div id="trade-ticker-section">
+            <div class="trade-ticker-header">
+                <div class="trade-ticker-title">
+                    <h3>🌊 Live Trade Flow</h3>
+                    <div class="trade-ticker-controls">
+                        <button id="trade-ticker-toggle" class="ticker-btn active" title="Toggle trade ticker">
+                            <span class="ticker-status">ON</span>
+                        </button>
+                        <button id="trade-ticker-settings" class="ticker-btn" title="Ticker settings">⚙️</button>
+                        <button id="trade-ticker-clear" class="ticker-btn" title="Clear ticker">🗑️</button>
+                    </div>
+                </div>
+                
+                <!-- Trade Ticker Filters -->
+                <div id="trade-ticker-filters" class="ticker-filters">
+                    <div class="filter-group">
+                        <label>🐋 Min Size:</label>
+                        <select id="min-trade-size">
+                            <option value="0">🦐 All Trades</option>
+                            <option value="100">🐠 $100+ (Small Fish)</option>
+                            <option value="1000" selected>🐟 $1K+ (Fish)</option>
+                            <option value="5000">🦈 $5K+ (Shark)</option>
+                            <option value="10000">🐋 $10K+ (Whale)</option>
+                            <option value="50000">🦣 $50K+ (Mega Whale)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>⚡ Rate Limit:</label>
+                        <select id="trade-rate-limit">
+                            <option value="0">🌊 All Trades</option>
+                            <option value="1000">💧 1 per second</option>
+                            <option value="2000" selected>⏳ 1 per 2s</option>
+                            <option value="5000">🐌 1 per 5s</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>🔤 Side:</label>
+                        <select id="trade-side-filter">
+                            <option value="all" selected>🔄 All</option>
+                            <option value="buy">🟢 Buys Only</option>
+                            <option value="sell">🔴 Sells Only</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>📊 Max Display:</label>
+                        <select id="max-trades-display">
+                            <option value="20">20 trades</option>
+                            <option value="50" selected>50 trades</option>
+                            <option value="100">100 trades</option>
+                            <option value="200">200 trades</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Marine Size Legend -->
+            <div id="marine-legend" class="marine-legend">
+                <div class="legend-item">🦐 Shrimp: $0-100</div>
+                <div class="legend-item">🐠 Small Fish: $100-1K</div>
+                <div class="legend-item">🐟 Fish: $1K-5K</div>
+                <div class="legend-item">🦈 Shark: $5K-10K</div>
+                <div class="legend-item">🐋 Whale: $10K-50K</div>
+                <div class="legend-item">🦣 Mega Whale: $50K+</div>
+            </div>
+            
+            <!-- Trade Ticker Container -->
+            <div id="trade-ticker-container">
+                <div id="trade-ticker-list">
+                    <!-- Live trades will be populated here -->
+                    <div class="trade-ticker-placeholder">
+                        <div class="placeholder-text">🌊 Connecting to trade stream...</div>
+                        <div class="placeholder-subtext">Trades will appear here once connected</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Minimal utils for demo -->
+    <script type="module">
+        // Simple logger for demo
+        export const logger = {
+            log: (msg) => console.log(`[TradeTicker] ${msg}`),
+            warn: (msg) => console.warn(`[TradeTicker] ${msg}`),
+            error: (msg, err) => console.error(`[TradeTicker] ${msg}`, err)
+        };
+    </script>
+    
+    <!-- Import and initialize trade ticker -->
+    <script type="module">
+        import { tradeTicker } from './trades.js';
+        
+        // Start the demo
+        setTimeout(() => {
+            tradeTicker.start();
+        }, 1000);
+    </script>
+</body>
+</html> 

@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Common Header Demo</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="common-header.js"></script>
+    <link rel="stylesheet" href="common-header-adjustments.css">
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+            margin: 0; padding: 0; background: #f8fafc;
+        }
+        .demo-container { max-width: 1200px; margin: 0 auto; padding: 2rem; }
+        .demo-section { background: white; border-radius: 8px; padding: 2rem; margin-bottom: 2rem; box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1); }
+        .demo-section h2 { margin-top: 0; color: #1f2937; }
+        .feature-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.5rem; margin-top: 1.5rem; }
+        .feature-card { background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 6px; padding: 1.5rem; }
+        .feature-card h3 { margin-top: 0; color: #374151; display: flex; align-items: center; gap: 0.5rem; }
+        .feature-card p { color: #6b7280; line-height: 1.6; }
+        .demo-actions { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.5rem; }
+        .demo-btn { background: #3b82f6; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer; font-size: 0.875rem; font-weight: 500; transition: background 0.2s; }
+        .demo-btn:hover { background: #2563eb; }
+        .demo-btn.secondary { background: #6b7280; }
+        .demo-btn.secondary:hover { background: #4b5563; }
+        .status-display { background: #ecfdf5; border: 1px solid #d1fae5; border-radius: 6px; padding: 1rem; margin-top: 1rem; }
+        .status-display h4 { margin: 0 0 0.5rem 0; color: #065f46; }
+        .status-item { display: flex; justify-content: space-between; margin-bottom: 0.25rem; font-size: 0.875rem; }
+        .status-label { color: #374151; }
+        .status-value { color: #059669; font-weight: 500; }
+    </style>
+</head>
+<body data-header='{"currentPage": "demo", "customActions": [{"icon": "cog", "label": "Settings", "onclick": "showSettings()", "title": "Demo Settings"}, {"icon": "refresh", "onclick": "refreshDemo()", "title": "Refresh Demo"}]}'>
+
+    <div class="demo-container">
+        <div class="demo-section">
+            <h2>🎯 Common Header Demo</h2>
+            <p>This page demonstrates the common header component that's now used across all pages in the Crypto Multi-Exchange Real-Time Order Book application.</p>
+            
+            <div class="feature-grid">
+                <div class="feature-card">
+                    <h3><i class="fas fa-navigation"></i> Unified Navigation</h3>
+                    <p>Consistent navigation menu across all pages with active page highlighting and responsive mobile menu.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fas fa-palette"></i> Modern Design</h3>
+                    <p>Beautiful gradient background with glass morphism effects and smooth animations.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fas fa-mobile-alt"></i> Responsive Layout</h3>
+                    <p>Fully responsive design that works perfectly on desktop, tablet, and mobile devices.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fas fa-heartbeat"></i> System Status</h3>
+                    <p>Real-time system status indicator showing connection count and online/offline state.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fas fa-puzzle-piece"></i> Custom Actions</h3>
+                    <p>Page-specific action buttons that can be configured per page for enhanced functionality.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <h3><i class="fas fa-code"></i> Easy Integration</h3>
+                    <p>Simple data attributes for configuration - just add to body tag and include the script.</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>🚀 Interactive Demo</h2>
+            <p>Try out the header functionality below:</p>
+            
+            <div class="demo-actions">
+                <button class="demo-btn" onclick="updateStatus()">
+                    <i class="fas fa-sync-alt"></i> Update Status
+                </button>
+                <button class="demo-btn" onclick="toggleConnections()">
+                    <i class="fas fa-wifi"></i> Toggle Connections
+                </button>
+                <button class="demo-btn secondary" onclick="testMobileMenu()">
+                    <i class="fas fa-bars"></i> Test Mobile Menu
+                </button>
+                <button class="demo-btn secondary" onclick="simulateError()">
+                    <i class="fas fa-exclamation-triangle"></i> Simulate Error
+                </button>
+            </div>
+            
+            <div class="status-display" id="statusDisplay">
+                <h4>Header Status</h4>
+                <div class="status-item">
+                    <span class="status-label">System Status:</span>
+                    <span class="status-value" id="systemStatus">Online</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Active Connections:</span>
+                    <span class="status-value" id="connectionCount">0</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Current Page:</span>
+                    <span class="status-value">Demo</span>
+                </div>
+                <div class="status-item">
+                    <span class="status-label">Last Update:</span>
+                    <span class="status-value" id="lastUpdate">--</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="demo-section">
+            <h2>📋 Implementation Guide</h2>
+            <p>To use the common header on any page, follow these simple steps:</p>
+            
+            <div style="background: #f8fafc; border: 1px solid #e5e7eb; border-radius: 6px; padding: 1.5rem; margin-top: 1rem;">
+                <h4 style="margin-top: 0;">1. Include Required Files</h4>
+                <pre style="background: #1f2937; color: #f9fafb; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css"&gt;
+&lt;script src="common-header.js"&gt;&lt;/script&gt;
+&lt;link rel="stylesheet" href="common-header-adjustments.css"&gt;</code></pre>
+                
+                <h4>2. Configure Body Tag</h4>
+                <pre style="background: #1f2937; color: #f9fafb; padding: 1rem; border-radius: 4px; overflow-x: auto;"><code>&lt;body data-header='{"currentPage": "your-page-id", "customActions": [...]}'&gt;</code></pre>
+                
+                <h4>3. That's It!</h4>
+                <p style="margin-bottom: 0;">The header will automatically initialize when the page loads.</p>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        let headerInstance;
+        let connectionCount = 0;
+        let isOnline = true;
+        
+        window.addEventListener('DOMContentLoaded', () => {
+            setTimeout(() => {
+                headerInstance = window.CommonHeader ? 
+                    document.querySelector('.crypto-header')?._headerInstance || 
+                    new CommonHeader({currentPage: 'demo'}) : null;
+                updateStatusDisplay();
+            }, 100);
+        });
+        
+        function updateStatus() {
+            connectionCount = Math.floor(Math.random() * 10) + 1;
+            if (headerInstance) {
+                headerInstance.setSystemStatus(isOnline, connectionCount);
+            }
+            updateStatusDisplay();
+        }
+        
+        function toggleConnections() {
+            isOnline = !isOnline;
+            if (headerInstance) {
+                headerInstance.setSystemStatus(isOnline, isOnline ? connectionCount : 0);
+            }
+            updateStatusDisplay();
+        }
+        
+        function testMobileMenu() {
+            const mobileNav = document.getElementById('mobile-nav');
+            if (mobileNav) {
+                mobileNav.classList.toggle('active');
+            }
+        }
+        
+        function simulateError() {
+            isOnline = false;
+            connectionCount = 0;
+            if (headerInstance) {
+                headerInstance.setSystemStatus(false, 0);
+            }
+            updateStatusDisplay();
+            
+            setTimeout(() => {
+                isOnline = true;
+                connectionCount = 5;
+                if (headerInstance) {
+                    headerInstance.setSystemStatus(true, 5);
+                }
+                updateStatusDisplay();
+            }, 3000);
+        }
+        
+        function updateStatusDisplay() {
+            document.getElementById('systemStatus').textContent = isOnline ? 'Online' : 'Offline';
+            document.getElementById('connectionCount').textContent = connectionCount;
+            document.getElementById('lastUpdate').textContent = new Date().toLocaleTimeString();
+        }
+        
+        function showSettings() {
+            alert('Settings panel would open here!\n\nThis is a custom action button configured for this demo page.');
+        }
+        
+        function refreshDemo() {
+            updateStatus();
+            alert('Demo refreshed!');
+        }
+        
+        setInterval(() => {
+            if (isOnline && Math.random() > 0.7) {
+                connectionCount = Math.max(1, connectionCount + Math.floor(Math.random() * 3) - 1);
+                if (headerInstance) {
+                    headerInstance.setSystemStatus(true, connectionCount);
+                }
+                updateStatusDisplay();
+            }
+        }, 5000);
+    </script>
+</body>
+</html>

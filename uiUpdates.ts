@@ -10,14 +10,13 @@ import {
     fundingAssetSymbolEl, volumeAssetSymbolEl, spreadContainerEl
 } from './dom';
 import {
-    selectedAsset, selectedExchanges, activeConnections,
+    selectedAsset, activeConnections, selectedExchanges,
     isAggregatedView, maxCumulativeTotal, maxIndividualQuantity,
     isSidebarOpen, setSidebarOpen,
-    setMaxCumulativeTotal, setMaxIndividualQuantity,
-    feeAdjustedPricing
+    setMaxCumulativeTotal, setMaxIndividualQuantity
 } from './state';
-import { SUPPORTED_EXCHANGES_WITH_DEX, SUPPORTED_EXCHANGES_ORDER_WITH_DEX, EXCHANGE_COLORS, EXCHANGE_TAGS } from './config';
-import { getDecimalPlaces } from './utils';
+import { SUPPORTED_EXCHANGES, SUPPORTED_EXCHANGES_ORDER, EXCHANGE_COLORS, EXCHANGE_TAGS, EXCHANGE_FEES } from './config';
+import { getDecimalPlaces, formatPrice, formatQuantity } from './utils';
 import type { OrderBookLevel, OrderBookEntry } from './types';
 
 // --- Sidebar Logic ---
@@ -46,11 +45,11 @@ export function updateSidebarContent() {
     let aggregatedUsdVolume = 0;
     let someDataIsLoading = false;
 
-    SUPPORTED_EXCHANGES_ORDER_WITH_DEX.forEach(exchangeId => {
+    SUPPORTED_EXCHANGES_ORDER.forEach(exchangeId => {
         const conn = activeConnections.get(exchangeId);
         if (selectedExchanges.has(exchangeId) && conn && (conn.status === 'connected' || conn.status === 'fetching_aux_data')) {
             activeExchangeCountForSidebar++;
-            const config = SUPPORTED_EXCHANGES_WITH_DEX[exchangeId];
+            const config = SUPPORTED_EXCHANGES[exchangeId];
             let feeText = 'N/A';
             let fundingText = 'N/A';
             let volumeText = 'N/A';
@@ -63,27 +62,12 @@ export function updateSidebarContent() {
                  someDataIsLoading = true;
             } else {
                 if (conn.feeInfo) {
-                    // Enhanced display for Hyperliquid with detailed fee structure
-                    if (config.id === 'hyperliquid' && conn.feeInfo.raw?.feeStructure) {
-                        const fs = conn.feeInfo.raw.feeStructure;
-                        feeText = `
-                            <div class="fee-detailed">
-                                <div><strong>Perps:</strong> Maker: ${fs.perps.baseMaker}%-${fs.perps.diamondMaker}%, Taker: ${fs.perps.baseTaker}%-${fs.perps.diamondTaker}%</div>
-                                <div><strong>Staking Discount:</strong> Up to ${fs.stakingTiers[fs.stakingTiers.length-1].discount*100}% (${fs.stakingTiers[fs.stakingTiers.length-1].minStake.toLocaleString()} HYPE)</div>
-                                <div><strong>Volume Discount:</strong> Up to ${(fs.volumeTiers[fs.volumeTiers.length-1].takerDiscount*100).toFixed(1)}% off</div>
-                                <div><strong>Maker Rebates:</strong> Earn up to ${Math.abs(fs.makerRebates[fs.makerRebates.length-1].rebate)*100}%</div>
-                                <div class="fee-note">💡 Fees go to community (HLP, assistance fund)</div>
-                            </div>
-                        `;
-                    } else {
-                        feeText = `Maker: ${conn.feeInfo.makerRate ?? '--'}, Taker: ${conn.feeInfo.takerRate ?? '--'}`;
-                    }
+                    feeText = `Maker: ${conn.feeInfo.makerRate ?? '--'}, Taker: ${conn.feeInfo.takerRate ?? '--'}`;
                 } else if (conn.feeInfo === null) feeText = 'Error loading fees';
 
                 if (conn.fundingRateInfo) {
                     const rate = typeof conn.fundingRateInfo.rate === 'number' ? `${conn.fundingRateInfo.rate.toFixed(4)}%` : (conn.fundingRateInfo.rate || '--');
                     fundingText = `Rate: ${rate} | Next: ${conn.fundingRateInfo.nextFundingTime || '--'}`;
-                     if (config.id === 'uniswap') fundingText = `${conn.fundingRateInfo.rate || 'N/A (Spot AMM)'}`;
                 } else if (conn.fundingRateInfo === null) fundingText = 'Error loading funding';
 
                 if (conn.volumeInfo) {
@@ -95,7 +79,7 @@ export function updateSidebarContent() {
                     volumeText = `${selectedAsset}: ${assetVol} | USD: ${usdVolDisplay}`;
                     if (typeof conn.volumeInfo.usdVolume === 'number') {
                         aggregatedUsdVolume += conn.volumeInfo.usdVolume;
-                    } else if (typeof conn.volumeInfo.usdVolume === 'string' && config.id !== 'uniswap') {
+                    } else if (typeof conn.volumeInfo.usdVolume === 'string') {
                         const parsedVol = parseFloat(conn.volumeInfo.usdVolume.replace(/[^0-9.-]+/g,""));
                         if (!isNaN(parsedVol)) aggregatedUsdVolume += parsedVol;
                     }
@@ -132,33 +116,54 @@ export function clearOrderBookDisplay() {
      if (spreadContainerEl) spreadContainerEl.classList.remove('crossed-market');
 }
 
-export function updateOrderBook(): void {
-    if (!selectedAsset) return;
-
-    const bidsList = document.getElementById('bids-list');
-    const asksList = document.getElementById('asks-list');
+export function updateOrderBookHeaders() {
+    const bidsHeader = document.querySelector('#bids-column .order-book-header');
+    const asksHeader = document.querySelector('#asks-column .order-book-header');
     
-    if (!bidsList || !asksList) return;
+    if (!bidsHeader || !asksHeader) return;
 
-    // This function will be called from index.tsx where orderBookData is available
-    // The fee adjustment will be handled in the calling context
+    // Add appropriate CSS class
+    bidsHeader.className = `order-book-header ${isAggregatedView ? 'aggregated' : 'individual'}`;
+    asksHeader.className = `order-book-header ${isAggregatedView ? 'aggregated' : 'individual'}`;
+
+    if (isAggregatedView) {
+        // Aggregated view headers
+        bidsHeader.innerHTML = `
+            <span class="total-header">Total</span>
+            <span class="quantity-header">Quantity</span>
+            <span class="price-header">Price (USDT)</span>
+        `;
+        
+        asksHeader.innerHTML = `
+            <span class="price-header">Price (USDT)</span>
+            <span class="quantity-header">Quantity</span>
+            <span class="total-header">Total</span>
+        `;
+    } else {
+        // Individual view headers (with exchange column)
+        bidsHeader.innerHTML = `
+            <span class="exchange-header">Exchange</span>
+            <span class="price-header">Price (USDT)</span>
+            <span class="quantity-header">Quantity</span>
+            <span class="total-header">Total</span>
+        `;
+        
+        asksHeader.innerHTML = `
+            <span class="exchange-header">Exchange</span>
+            <span class="price-header">Price (USDT)</span>
+            <span class="quantity-header">Quantity</span>
+            <span class="total-header">Total</span>
+        `;
+    }
 }
 
 export function updateOrderBookUI(bids: OrderBookLevel[], asks: OrderBookLevel[]) {
-    if (!bidsList || !asksList) {
-        console.error('Order book elements not found!');
-        return;
-    }
-    
-    // Find the crossing point to highlight crossed orders
-    const bestBid = bids.length > 0 ? bids[0].price : 0;
-    const bestAsk = asks.length > 0 ? asks[0].price : Infinity;
-    
-    renderLevels(bidsList, bids, 'bid', true, bestAsk);
-    renderLevels(asksList, asks, 'ask', false, bestBid);
+    updateOrderBookHeaders();
+    renderLevels(bidsList, bids, 'bid', true);
+    renderLevels(asksList, asks, 'ask', false);
 }
 
-export function renderLevels(listElement: HTMLUListElement, levels: OrderBookLevel[], type: 'bid' | 'ask', isBidsLayout: boolean, crossingPrice?: number) {
+export function renderLevels(listElement: HTMLUListElement, levels: OrderBookLevel[], type: 'bid' | 'ask', isBidsLayout: boolean) {
     listElement.innerHTML = '';
     const fragment = document.createDocumentFragment();
     const displayLevels = levels.slice(0, isAggregatedView ? 20 : 50);
@@ -166,65 +171,90 @@ export function renderLevels(listElement: HTMLUListElement, levels: OrderBookLev
     displayLevels.forEach(level => {
         const listItem = document.createElement('li');
         listItem.classList.add('order-book-row', `order-book-row-${type}`);
+        listItem.classList.add(isAggregatedView ? 'aggregated' : 'individual');
         listItem.setAttribute('role', 'row');
         
-        // Check if this order is crossed (arbitrage opportunity)
-        const isCrossed = crossingPrice !== undefined && (
-            (type === 'bid' && level.price >= crossingPrice) ||
-            (type === 'ask' && level.price <= crossingPrice)
-        );
-        
-        if (isCrossed) {
-            listItem.classList.add('crossed-order');
-            const profit = type === 'bid' 
-                ? level.price - (crossingPrice || 0)
-                : (crossingPrice || 0) - level.price;
-            const profitPercentage = ((profit / level.price) * 100).toFixed(2);
-            listItem.title = `🚀 ARBITRAGE OPPORTUNITY! Profit: ${profit.toFixed(getDecimalPlaces(level.price))} (${profitPercentage}%)`;
-            
- 
-        }
         let depthPercentage = isAggregatedView ? (level.total / maxCumulativeTotal) * 100 : (level.quantity / maxIndividualQuantity) * 100;
         const backgroundDiv = document.createElement('div');
         backgroundDiv.classList.add('depth-bar');
         backgroundDiv.style.width = `${Math.min(depthPercentage, 100)}%`;
-        const priceSpan = document.createElement('span');
-        priceSpan.classList.add('price'); priceSpan.setAttribute('role', 'cell');
+
+        // Exchange cell (only for individual view)
         if (!isAggregatedView && level.exchangeId) {
+            const exchangeSpan = document.createElement('span');
+            exchangeSpan.classList.add('exchange-cell');
+            
             const exchangeTagSpan = document.createElement('span');
             exchangeTagSpan.classList.add('exchange-tag');
             exchangeTagSpan.textContent = EXCHANGE_TAGS[level.exchangeId] || level.exchangeId.substring(0,3).toUpperCase();
-            exchangeTagSpan.style.backgroundColor = EXCHANGE_COLORS[level.exchangeId] || EXCHANGE_COLORS.default;
-            priceSpan.appendChild(exchangeTagSpan);
+            
+            const exchangeColor = EXCHANGE_COLORS[level.exchangeId] || EXCHANGE_COLORS.default;
+            exchangeTagSpan.style.backgroundColor = exchangeColor;
+            
+            // Determine if background is light or dark
+            if (isLightColor(exchangeColor)) {
+                exchangeTagSpan.classList.add('light-bg');
+            } else {
+                exchangeTagSpan.classList.add('dark-bg');
+            }
+            
+            exchangeSpan.appendChild(exchangeTagSpan);
+            listItem.appendChild(exchangeSpan);
         }
         
-        // Show price with fee adjustment indicator
-        const priceText = level.price.toFixed(getDecimalPlaces(level.price));
-        priceSpan.appendChild(document.createTextNode(priceText));
+        // Price cell
+        const priceSpan = document.createElement('span');
+        priceSpan.classList.add('price'); 
+        priceSpan.setAttribute('role', 'cell');
+        priceSpan.appendChild(document.createTextNode(formatPrice(level.price)));
         
-        // Add fee adjustment indicator if enabled
-        if (feeAdjustedPricing && level.exchangeId) {
-            const feeIndicator = document.createElement('span');
-            feeIndicator.textContent = '⚡';
-            feeIndicator.style.marginLeft = '2px';
-            feeIndicator.style.fontSize = '0.7em';
-            feeIndicator.style.opacity = '0.6';
-            feeIndicator.title = `Fee-adjusted price (${type === 'bid' ? 'what you receive' : 'what you pay'})`;
-            priceSpan.appendChild(feeIndicator);
-        }
-        
+        // Quantity cell
         const quantitySpan = document.createElement('span');
-        quantitySpan.classList.add('quantity'); quantitySpan.setAttribute('role', 'cell');
-        quantitySpan.textContent = level.quantity.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 4 });
+        quantitySpan.classList.add('quantity'); 
+        quantitySpan.setAttribute('role', 'cell');
+        quantitySpan.textContent = formatQuantity(level.quantity);
+        
+        // Total cell
         const totalSpan = document.createElement('span');
-        totalSpan.classList.add('total'); totalSpan.setAttribute('role', 'cell');
-        totalSpan.textContent = level.total.toLocaleString(undefined, { minimumFractionDigits: 0, maximumFractionDigits: 4 });
-        if (isBidsLayout) { listItem.appendChild(totalSpan); listItem.appendChild(quantitySpan); listItem.appendChild(priceSpan); }
-        else { listItem.appendChild(priceSpan); listItem.appendChild(quantitySpan); listItem.appendChild(totalSpan); }
+        totalSpan.classList.add('total'); 
+        totalSpan.setAttribute('role', 'cell');
+        totalSpan.textContent = formatQuantity(level.total);
+
+        // Append cells in correct order
+        if (isAggregatedView) {
+            if (isBidsLayout) { 
+                listItem.appendChild(totalSpan); 
+                listItem.appendChild(quantitySpan); 
+                listItem.appendChild(priceSpan); 
+            } else { 
+                listItem.appendChild(priceSpan); 
+                listItem.appendChild(quantitySpan); 
+                listItem.appendChild(totalSpan); 
+            }
+        } else {
+            // Individual view: Exchange | Price | Quantity | Total
+            listItem.appendChild(priceSpan);
+            listItem.appendChild(quantitySpan);
+            listItem.appendChild(totalSpan);
+        }
+
         listItem.appendChild(backgroundDiv);
         fragment.appendChild(listItem);
     });
     listElement.appendChild(fragment);
+}
+
+// Helper function to determine if a color is light or dark
+function isLightColor(color: string): boolean {
+    // Convert hex to RGB
+    const hex = color.replace('#', '');
+    const r = parseInt(hex.substr(0, 2), 16);
+    const g = parseInt(hex.substr(2, 2), 16);
+    const b = parseInt(hex.substr(4, 2), 16);
+    
+    // Calculate relative luminance
+    const luminance = (0.299 * r + 0.587 * g + 0.114 * b) / 255;
+    return luminance > 0.5;
 }
 
 export function updateSpread(bids: OrderBookEntry[], asks: OrderBookEntry[]) {
@@ -235,50 +265,12 @@ export function updateSpread(bids: OrderBookEntry[], asks: OrderBookEntry[]) {
         const bestAsk = asks[0].price;
         const spread = bestAsk - bestBid;
 
-        // Find which exchanges have the best bid and ask for arbitrage identification
-        let bestBidExchange = '';
-        let bestAskExchange = '';
-        
-        // In individual view, we can see exchange IDs directly
-        if (!isAggregatedView && bids[0].exchangeId && asks[0].exchangeId) {
-            bestBidExchange = bids[0].exchangeId;
-            bestAskExchange = asks[0].exchangeId;
-        } else {
-            // In aggregated view, find exchanges with best prices
-            activeConnections.forEach(conn => {
-                if (conn.status === 'connected' && (conn.config.id === 'uniswap' || !conn.config.needsSnapshotFlag || conn.snapshotReceived)) {
-                    if (conn.bids.size > 0) {
-                        const connBestBidPrice = Math.max(...Array.from(conn.bids.keys()).map(p => parseFloat(p)));
-                        if (Math.abs(connBestBidPrice - bestBid) < 0.01) {
-                            bestBidExchange = conn.config.name;
-                        }
-                    }
-                    if (conn.asks.size > 0) {
-                        const connBestAskPrice = Math.min(...Array.from(conn.asks.keys()).map(p => parseFloat(p)));
-                        if (Math.abs(connBestAskPrice - bestAsk) < 0.01) {
-                            bestAskExchange = conn.config.name;
-                        }
-                    }
-                }
-            });
-        }
-
-        // Check if market is crossed (bid >= ask) - this is an arbitrage opportunity!
         const isCrossed = bestBid > 0 && bestAsk > 0 && bestBid >= bestAsk;
 
         if (isCrossed) {
-            // 🚀 ARBITRAGE OPPORTUNITY! 💰
-            const profit = bestBid - bestAsk; // Profit per unit
-            const profitPercentage = (profit / bestBid) * 100;
-            
             spreadContainerEl.classList.add('crossed-market');
-            spreadValueEl.textContent = `🚀 +${profit.toFixed(getDecimalPlaces(bestAsk))} PROFIT!`;
-            
-            // Show which exchanges enable the arbitrage
-            const arbInfo = bestBidExchange && bestAskExchange && bestBidExchange !== bestAskExchange 
-                ? `💰 ${profitPercentage.toFixed(4)}% ARBI! (Buy: ${bestAskExchange} → Sell: ${bestBidExchange})`
-                : `💰 ${profitPercentage.toFixed(4)}% ARBI!`;
-            spreadPercentageEl.textContent = arbInfo;
+            spreadValueEl.textContent = spread.toFixed(getDecimalPlaces(bestAsk));
+            spreadPercentageEl.textContent = `(Crossed!)`;
         } else {
             spreadContainerEl.classList.remove('crossed-market');
             // Check for other invalid spread conditions (e.g. zero price, actual negative spread not from crossing)
@@ -300,125 +292,38 @@ export function updateSpread(bids: OrderBookEntry[], asks: OrderBookEntry[]) {
 
 
 export function updateOverallConnectionStatus() {
-    let connectedCount = 0;
-    let connectingCount = 0;
-    let errorCount = 0;
-    let totalSelected = 0;
-    
-    SUPPORTED_EXCHANGES_ORDER_WITH_DEX.forEach(exchangeId => {
-        const config = SUPPORTED_EXCHANGES_WITH_DEX[exchangeId];
-        const conn = activeConnections.get(exchangeId);
-        let pillStatus = 'disabled';
+    let summaryHtml = '';
+    SUPPORTED_EXCHANGES_ORDER.forEach(exchangeId => {
+        const config = SUPPORTED_EXCHANGES[exchangeId];
+        // Safety check: skip if exchange config doesn't exist
+        if (!config || !config.name) {
+            console.warn(`Exchange config missing for: ${exchangeId}`);
+            return;
+        }
         
+        const conn = activeConnections.get(exchangeId);
+        let statusText = 'N/A'; let statusClass = 'status-disabled';
         if (selectedExchanges.has(exchangeId)) {
-            totalSelected++;
-            pillStatus = 'disconnected';
-            
+            statusClass = 'status-disconnected';
             if (conn) {
-                if (conn.status === 'fetching_aux_data') {
-                    connectingCount++;
-                    pillStatus = 'connecting';
-                } else if(conn.config.needsSnapshotFlag && conn.status === 'connected' && !conn.snapshotReceived && conn.config.id !== 'uniswap') {
-                    connectingCount++;
-                    pillStatus = 'connecting';
+                statusText = conn.status.charAt(0).toUpperCase() + conn.status.slice(1);
+                 if (conn.status === 'fetching_aux_data') {
+                    statusText = "Syncing Stats..."; statusClass = 'status-connecting';
+                } else if(conn.config.needsSnapshotFlag && conn.status === 'connected' && !conn.snapshotReceived && conn.config.id !== 'uniswap_simulated') {
+                    statusText = "Snapshot..."; statusClass = 'status-connecting';
                 } else {
                     switch (conn.status) {
-                        case 'connected': 
-                            connectedCount++; 
-                            pillStatus = 'connected'; 
-                            break;
-                        case 'connecting': 
-                            connectingCount++; 
-                            pillStatus = 'connecting'; 
-                            break;
-                        case 'error': 
-                            errorCount++; 
-                            pillStatus = 'error'; 
-                            break;
-                        case 'closing': 
-                        case 'disconnected': 
-                            pillStatus = 'disconnected'; 
-                            break;
+                        case 'connected': statusClass = 'status-connected'; break;
+                        case 'connecting': statusClass = 'status-connecting'; break;
+                        case 'error': statusClass = 'status-error'; break;
+                        case 'closing': statusClass = 'status-disconnected'; statusText = 'Closing'; break;
+                        case 'disconnected': statusClass = 'status-disconnected'; break;
                     }
                 }
-            } else { 
-                connectingCount++; 
-                pillStatus = 'connecting'; 
-            }
-        }
-        
-        // Update pill status
-        const pill = document.querySelector(`.exchange-pill[data-exchange="${exchangeId}"]`) as HTMLDivElement;
-        if (pill) {
-            updatePillStatus(pill, pillStatus);
-        }
+            } else { statusText = 'Pending'; statusClass = 'status-connecting'; }
+        } else { statusText = 'Disabled'; statusClass = 'status-disabled'; }
+        summaryHtml += `<span class="connection-item ${statusClass}" title="${config.name} - ${statusText}">${config.name}: ${statusText}</span>`;
     });
-    
-    // Generate clean summary with essential info
-    let summaryHtml = `
-        <div class="connection-stat">
-            <span>Selected:</span>
-            <span class="stat-value">${totalSelected}</span>
-        </div>
-    `;
-    
-    if (connectedCount > 0) {
-        summaryHtml += `
-            <div class="connection-stat connected">
-                <span>🟢 Connected:</span>
-                <span class="stat-value">${connectedCount}</span>
-            </div>
-        `;
-    }
-    
-    if (connectingCount > 0) {
-        summaryHtml += `
-            <div class="connection-stat connecting">
-                <span>🟡 Connecting:</span>
-                <span class="stat-value">${connectingCount}</span>
-            </div>
-        `;
-    }
-    
-    if (errorCount > 0) {
-        summaryHtml += `
-            <div class="connection-stat error">
-                <span>🔴 Errors:</span>
-                <span class="stat-value">${errorCount}</span>
-            </div>
-        `;
-    }
-    
     connectionStatusSummaryEl.innerHTML = summaryHtml;
     updateSidebarContent(); // Update sidebar as connection status might affect its content
-}
-
-// Helper function for updating pill status
-function updatePillStatus(pill: HTMLDivElement, status: string) {
-    const statusElement = pill.querySelector('.pill-status') as HTMLSpanElement;
-    if (statusElement) {
-        // Remove all status classes
-        statusElement.classList.remove('connecting', 'connected', 'disconnected', 'error', 'disabled');
-        // Add the new status class
-        statusElement.classList.add(status);
-        
-        // Update status text
-        switch (status) {
-            case 'connecting':
-                statusElement.textContent = 'CONN';
-                break;
-            case 'connected':
-                statusElement.textContent = 'ON';
-                break;
-            case 'disconnected':
-                statusElement.textContent = 'OFF';
-                break;
-            case 'error':
-                statusElement.textContent = 'ERR';
-                break;
-            case 'disabled':
-                statusElement.textContent = '';
-                break;
-        }
-    }
 }

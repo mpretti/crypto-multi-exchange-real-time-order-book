@@ -1,0 +1,589 @@
+/* AI Trading Playground - Advanced Layout Manager Styles */
+
+/* Layout Controls */
+.layout-controls {
+    background: rgba(17, 24, 39, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(75, 85, 99, 0.3);
+    border-radius: 12px;
+    padding: 12px;
+    min-width: 200px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.layout-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #e2e8f0;
+    font-weight: 600;
+    font-size: 14px;
+    margin-bottom: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid rgba(75, 85, 99, 0.3);
+}
+
+.layout-options,
+.chart-options,
+.panel-toggles {
+    display: flex;
+    gap: 6px;
+    margin-bottom: 10px;
+}
+
+.layout-btn,
+.chart-btn,
+.panel-toggle {
+    width: 36px;
+    height: 36px;
+    background: rgba(55, 65, 81, 0.6);
+    border: 1px solid rgba(107, 114, 128, 0.3);
+    border-radius: 8px;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 14px;
+}
+
+.layout-btn:hover,
+.chart-btn:hover,
+.panel-toggle:hover {
+    background: rgba(75, 85, 99, 0.8);
+    color: #e2e8f0;
+    transform: translateY(-1px);
+}
+
+.layout-btn.active,
+.chart-btn.active,
+.panel-toggle.active {
+    background: linear-gradient(135deg, #8b5cf6, #3b82f6);
+    color: white;
+    border-color: rgba(139, 92, 246, 0.5);
+}
+
+/* Layout Modes */
+.layout-compact .dashboard-container {
+    gap: 10px;
+    padding: 10px;
+}
+
+.layout-compact .dashboard-row {
+    gap: 10px;
+}
+
+.layout-compact .chart-container {
+    height: 250px !important;
+}
+
+.layout-compact .time-panel.compact-mode .panel-content {
+    padding: 10px;
+}
+
+.layout-compact .time-panel.compact-mode .date-controls {
+    display: none;
+}
+
+.layout-compact .time-panel.compact-mode .speed-control {
+    margin-top: 10px;
+}
+
+.layout-overlay .dashboard-container {
+    padding-bottom: 220px; /* Space for overlay dock */
+}
+
+.layout-focus .dashboard-container {
+    padding: 5px;
+}
+
+.layout-focus .chart-container {
+    height: 600px !important;
+}
+
+/* Floating Chart */
+.floating-chart {
+    background: rgba(17, 24, 39, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(75, 85, 99, 0.3);
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+    overflow: hidden;
+    resize: both;
+    min-width: 300px;
+    min-height: 200px;
+    max-width: 90vw;
+    max-height: 90vh;
+}
+
+.floating-chart-header {
+    padding: 12px 16px;
+    background: rgba(31, 41, 55, 0.8);
+    border-bottom: 1px solid rgba(75, 85, 99, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    cursor: grab;
+}
+
+.floating-chart-header:active {
+    cursor: grabbing;
+}
+
+.chart-title {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #e2e8f0;
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.chart-controls {
+    display: flex;
+    gap: 4px;
+}
+
+.chart-minimize,
+.chart-maximize,
+.chart-close {
+    width: 24px;
+    height: 24px;
+    background: rgba(55, 65, 81, 0.6);
+    border: 1px solid rgba(107, 114, 128, 0.3);
+    border-radius: 4px;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+}
+
+.chart-minimize:hover {
+    background: rgba(245, 158, 11, 0.3);
+    color: #fbbf24;
+}
+
+.chart-maximize:hover {
+    background: rgba(16, 185, 129, 0.3);
+    color: #34d399;
+}
+
+.chart-close:hover {
+    background: rgba(239, 68, 68, 0.3);
+    color: #f87171;
+}
+
+.floating-chart-content {
+    padding: 16px;
+    height: calc(100% - 60px);
+}
+
+.floating-chart-content canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+.floating-chart-resize-handle {
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 20px;
+    height: 20px;
+    background: linear-gradient(-45deg, transparent 0%, transparent 40%, #8b5cf6 40%, #8b5cf6 60%, transparent 60%);
+    cursor: nw-resize;
+}
+
+/* Chart Overlay */
+.chart-overlay-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1020;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    backdrop-filter: blur(5px);
+}
+
+.overlay-chart {
+    background: rgba(17, 24, 39, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(75, 85, 99, 0.3);
+    border-radius: 16px;
+    width: 90%;
+    height: 80%;
+    max-width: 1200px;
+    max-height: 800px;
+    position: relative;
+    z-index: 1021;
+}
+
+.overlay-header {
+    padding: 20px 24px;
+    border-bottom: 1px solid rgba(75, 85, 99, 0.3);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.overlay-header h3 {
+    color: #e2e8f0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.overlay-close {
+    width: 32px;
+    height: 32px;
+    background: rgba(239, 68, 68, 0.2);
+    border: 1px solid rgba(239, 68, 68, 0.3);
+    border-radius: 8px;
+    color: #f87171;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.overlay-close:hover {
+    background: rgba(239, 68, 68, 0.3);
+    transform: scale(1.1);
+}
+
+.overlay-content {
+    padding: 24px;
+    height: calc(100% - 80px);
+}
+
+.overlay-content canvas {
+    width: 100% !important;
+    height: 100% !important;
+}
+
+/* Overlay Dock */
+.overlay-dock {
+    background: rgba(17, 24, 39, 0.95);
+    backdrop-filter: blur(20px);
+    border-top: 1px solid rgba(75, 85, 99, 0.3);
+    box-shadow: 0 -10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.dock-tabs {
+    display: flex;
+    background: rgba(31, 41, 55, 0.8);
+    border-bottom: 1px solid rgba(75, 85, 99, 0.3);
+}
+
+.dock-tab {
+    padding: 12px 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    border-right: 1px solid rgba(75, 85, 99, 0.3);
+    font-size: 14px;
+    font-weight: 500;
+}
+
+.dock-tab:hover {
+    background: rgba(75, 85, 99, 0.4);
+    color: #e2e8f0;
+}
+
+.dock-tab.active {
+    background: linear-gradient(135deg, rgba(139, 92, 246, 0.2), rgba(59, 130, 246, 0.2));
+    color: #e2e8f0;
+    border-bottom: 2px solid #8b5cf6;
+}
+
+.dock-content {
+    height: calc(100% - 48px);
+    overflow-y: auto;
+    position: relative;
+}
+
+.dock-panel {
+    display: none;
+    padding: 16px;
+    height: 100%;
+    overflow-y: auto;
+}
+
+.dock-panel.active {
+    display: block;
+}
+
+/* Minimal Time Controls */
+.minimal-time-controls {
+    background: rgba(17, 24, 39, 0.95);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(75, 85, 99, 0.3);
+    border-radius: 12px;
+    padding: 12px 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+}
+
+.minimal-playback {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.minimal-btn {
+    width: 36px;
+    height: 36px;
+    background: rgba(55, 65, 81, 0.6);
+    border: 1px solid rgba(107, 114, 128, 0.3);
+    border-radius: 8px;
+    color: #e2e8f0;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.minimal-btn:hover {
+    background: rgba(75, 85, 99, 0.8);
+    transform: translateY(-1px);
+}
+
+.minimal-speed {
+    background: rgba(31, 41, 55, 0.6);
+    border-radius: 6px;
+    padding: 6px 10px;
+    color: #94a3b8;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.minimal-date {
+    color: #e2e8f0;
+    font-size: 14px;
+    font-weight: 600;
+}
+
+/* Chart Float Button */
+.chart-float-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    width: 32px;
+    height: 32px;
+    background: rgba(17, 24, 39, 0.9);
+    border: 1px solid rgba(75, 85, 99, 0.3);
+    border-radius: 8px;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    z-index: 10;
+}
+
+.chart-float-btn:hover {
+    background: rgba(31, 41, 55, 0.9);
+    color: #e2e8f0;
+    transform: scale(1.1);
+}
+
+/* Mini Chart Controls */
+.mini-chart-controls {
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    display: flex;
+    gap: 4px;
+    z-index: 10;
+}
+
+.mini-chart-btn {
+    width: 24px;
+    height: 24px;
+    background: rgba(17, 24, 39, 0.9);
+    border: 1px solid rgba(75, 85, 99, 0.3);
+    border-radius: 4px;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 10px;
+}
+
+.mini-chart-btn:hover {
+    background: rgba(31, 41, 55, 0.9);
+    color: #e2e8f0;
+}
+
+/* Responsive Adjustments */
+@media (max-width: 1200px) {
+    .layout-controls {
+        right: 20px !important;
+        width: 180px;
+    }
+    
+    .floating-chart {
+        max-width: 95vw;
+        max-height: 80vh;
+    }
+    
+    .overlay-chart {
+        width: 95%;
+        height: 85%;
+    }
+}
+
+@media (max-width: 768px) {
+    .layout-controls {
+        bottom: 240px !important;
+        top: auto !important;
+        right: 10px !important;
+        left: 10px !important;
+        width: auto;
+    }
+    
+    .layout-options,
+    .chart-options,
+    .panel-toggles {
+        justify-content: center;
+    }
+    
+    .floating-chart {
+        width: 95vw !important;
+        height: 70vh !important;
+        top: 50px !important;
+        left: 2.5vw !important;
+        right: 2.5vw !important;
+    }
+    
+    .overlay-dock {
+        height: 250px !important;
+    }
+    
+    .dock-tab span {
+        display: none;
+    }
+    
+    .minimal-time-controls {
+        flex-direction: column;
+        gap: 8px;
+        padding: 8px 12px;
+    }
+    
+    .minimal-playback {
+        justify-content: center;
+    }
+}
+
+/* Panel Minimized States */
+.ai-coach-panel.minimized,
+.voice-control-panel.minimized,
+.market-simulator-panel.minimized,
+.learning-viz-panel.minimized {
+    height: 50px !important;
+    overflow: hidden;
+}
+
+.ai-coach-panel.minimized .coach-content,
+.voice-control-panel.minimized .voice-content,
+.market-simulator-panel.minimized .market-content,
+.learning-viz-panel.minimized .learning-viz-content {
+    display: none !important;
+}
+
+/* Compact Mode Adjustments */
+.layout-compact .bottom-row {
+    flex-wrap: wrap;
+}
+
+.layout-compact .time-panel {
+    min-width: 200px !important;
+    flex: 1;
+}
+
+.layout-compact .performance-panel {
+    min-width: 200px !important;
+    flex: 1;
+}
+
+.layout-compact .activity-panel {
+    min-width: 200px !important;
+    flex: 1;
+}
+
+/* Focus Mode */
+.layout-focus .ai-coach-panel,
+.layout-focus .voice-control-panel,
+.layout-focus .market-simulator-panel,
+.layout-focus .learning-viz-panel {
+    display: none !important;
+}
+
+.layout-focus .bottom-row {
+    display: none !important;
+}
+
+/* Overlay Mode */
+.layout-overlay .ai-coach-panel,
+.layout-overlay .voice-control-panel,
+.layout-overlay .market-simulator-panel,
+.layout-overlay .learning-viz-panel {
+    display: none !important;
+}
+
+/* Animation for layout transitions */
+.dashboard-container,
+.chart-container,
+.time-panel,
+.performance-panel,
+.activity-panel {
+    transition: all 0.3s ease;
+}
+
+/* Custom Scrollbars for Dock */
+.dock-content::-webkit-scrollbar,
+.dock-panel::-webkit-scrollbar {
+    width: 6px;
+}
+
+.dock-content::-webkit-scrollbar-track,
+.dock-panel::-webkit-scrollbar-track {
+    background: rgba(55, 65, 81, 0.3);
+    border-radius: 3px;
+}
+
+.dock-content::-webkit-scrollbar-thumb,
+.dock-panel::-webkit-scrollbar-thumb {
+    background: rgba(139, 92, 246, 0.6);
+    border-radius: 3px;
+}
+
+.dock-content::-webkit-scrollbar-thumb:hover,
+.dock-panel::-webkit-scrollbar-thumb:hover {
+    background: rgba(139, 92, 246, 0.8);
+} 

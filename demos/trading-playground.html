@@ -1,0 +1,448 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🤖 AI Trading Playground</title>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chartjs-adapter-date-fns/dist/chartjs-adapter-date-fns.bundle.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <script src="common-header.js"></script>
+    <link rel="stylesheet" href="common-header-adjustments.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/lodash.js/4.17.21/lodash.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link rel="stylesheet" href="trading-playground.css">
+    <link rel="stylesheet" href="trading-playground-tutorial.css">
+    <link rel="stylesheet" href="trading-playground-advanced.css">
+    <link rel="stylesheet" href="trading-playground-help.css">
+    <link rel="stylesheet" href="trading-playground-learning-viz.css">
+    <link rel="stylesheet" href="trading-playground-ai-coach.css">
+    <link rel="stylesheet" href="trading-playground-voice-control.css">
+    <link rel="stylesheet" href="trading-playground-layout-manager.css">
+    <link rel="stylesheet" href="trading-playground-responsive-grid.css">
+    <link rel="stylesheet" href="trading-playground-space-optimizer.css">
+    <!-- Removed problematic enhancement stylesheets -->
+</head>
+<body data-header='{"currentPage": "trading-playground"}'>
+    <!-- Main Container -->
+    <div class="playground-container">
+        <!-- Header -->
+        <header class="playground-header glass-effect">
+            <div class="header-content">
+                <div class="logo-section">
+                    <div class="logo-icon">🤖</div>
+                    <h1 class="logo-text">AI Trading Playground</h1>
+                    <div class="version-badge">v2.0</div>
+                </div>
+                
+                <div class="header-controls">
+                    <div class="status-indicator">
+                        <div class="status-dot status-active"></div>
+                        <span class="status-text">System Online</span>
+                    </div>
+                    
+                    <button class="auto-refresh-btn glass-effect" id="autoRefreshBtn">
+                        <i class="fas fa-sync-alt"></i>
+                        <span>Auto</span>
+                    </button>
+                    
+                    <button class="settings-btn glass-effect" id="settingsBtn">
+                        <i class="fas fa-cog"></i>
+                    </button>
+                </div>
+            </div>
+        </header>
+
+        <!-- Main Dashboard -->
+        <main class="dashboard-main">
+            <!-- Top Row -->
+            <div class="dashboard-row top-row">
+                <!-- Agent Control Panel -->
+                <section class="agent-panel glass-effect">
+                    <div class="panel-header">
+                        <h3 class="panel-title">
+                            <i class="fas fa-robot text-blue-400"></i>
+                            AI Trading Agent
+                        </h3>
+                        <div class="agent-status">
+                            <div class="status-dot status-ready"></div>
+                            <span>Ready</span>
+                        </div>
+                    </div>
+                    
+                    <div class="panel-content">
+                        <!-- Agent Selection -->
+                        <div class="control-group">
+                            <label class="control-label">Agent Type</label>
+                            <select class="agent-selector" id="agentTypeSelect">
+                                <option value="sma">Simple Moving Average</option>
+                                <option value="rsi">RSI Mean Reversion</option>
+                                <option value="ml">Deep Q-Learning</option>
+                                <option value="custom">Custom Strategy</option>
+                            </select>
+                        </div>
+                        
+                        <!-- Agent Configuration -->
+                        <div class="config-grid">
+                            <div class="config-item">
+                                <label class="control-label">Initial Capital</label>
+                                <div class="input-group">
+                                    <span class="input-prefix">$</span>
+                                    <input type="number" value="10000" id="initialCapital" class="capital-input">
+                                </div>
+                            </div>
+                            
+                            <div class="config-item">
+                                <label class="control-label">Risk Level</label>
+                                <div class="risk-slider-container">
+                                    <input type="range" min="1" max="10" value="5" id="riskSlider" class="risk-slider">
+                                    <div class="risk-labels">
+                                        <span class="risk-label-low">Conservative</span>
+                                        <span class="risk-value" id="riskValue">5</span>
+                                        <span class="risk-label-high">Aggressive</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Agent Brain Visualization -->
+                        <div class="agent-brain">
+                            <div class="brain-header">
+                                <i class="fas fa-brain text-purple-400"></i>
+                                <span>Neural Activity</span>
+                            </div>
+                            <div class="confidence-meter">
+                                <div class="confidence-bar">
+                                    <div class="confidence-fill" id="confidenceFill"></div>
+                                </div>
+                                <div class="confidence-text">
+                                    <span>Confidence: </span>
+                                    <span id="confidenceValue">--</span>%
+                                </div>
+                            </div>
+                        </div>
+                        
+                        <!-- Control Buttons -->
+                        <div class="action-buttons">
+                            <button class="btn btn-primary" id="trainAgentBtn">
+                                <i class="fas fa-graduation-cap"></i>
+                                Train Agent
+                            </button>
+                            <button class="btn btn-success" id="startTradingBtn">
+                                <i class="fas fa-play"></i>
+                                Start Trading
+                            </button>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Trading Chart -->
+                <section class="chart-panel glass-effect">
+                    <div class="panel-header">
+                        <h3 class="panel-title">
+                            <i class="fas fa-chart-line text-green-400"></i>
+                            Trading Chart
+                        </h3>
+                        <div class="chart-controls">
+                            <div class="timeframe-selector">
+                                <button class="timeframe-btn active" data-timeframe="1h">1H</button>
+                                <button class="timeframe-btn" data-timeframe="4h">4H</button>
+                                <button class="timeframe-btn" data-timeframe="1d">1D</button>
+                                <button class="timeframe-btn" data-timeframe="1w">1W</button>
+                            </div>
+                            <button class="chart-fullscreen-btn" id="chartFullscreenBtn">
+                                <i class="fas fa-expand"></i>
+                            </button>
+                        </div>
+                    </div>
+                    
+                    <div class="chart-container">
+                        <canvas id="tradingChart"></canvas>
+                        <div class="chart-overlay" id="chartOverlay">
+                            <div class="loading-spinner">
+                                <div class="spinner"></div>
+                                <span>Loading market data...</span>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Bottom Row -->
+            <div class="dashboard-row bottom-row">
+                <!-- Time Machine Controls -->
+                <section class="time-panel glass-effect">
+                    <div class="panel-header">
+                        <h3 class="panel-title">
+                            <i class="fas fa-clock text-purple-400"></i>
+                            Time Machine
+                        </h3>
+                        <div class="time-status">
+                            <span class="current-date" id="currentSimDate">2023-01-01</span>
+                        </div>
+                    </div>
+                    
+                    <div class="panel-content">
+                        <!-- Date Range Picker -->
+                        <div class="date-controls">
+                            <div class="date-group">
+                                <label class="control-label">Start Date</label>
+                                <input type="date" id="startDate" value="2023-01-01" class="date-input">
+                            </div>
+                            <div class="date-group">
+                                <label class="control-label">End Date</label>
+                                <input type="date" id="endDate" value="2023-12-31" class="date-input">
+                            </div>
+                        </div>
+                        
+                        <!-- Playback Controls -->
+                        <div class="playback-controls">
+                            <button class="control-btn" id="stepBackBtn">
+                                <i class="fas fa-step-backward"></i>
+                            </button>
+                            <button class="control-btn" id="pauseBtn">
+                                <i class="fas fa-pause"></i>
+                            </button>
+                            <button class="control-btn primary" id="playBtn">
+                                <i class="fas fa-play"></i>
+                            </button>
+                            <button class="control-btn" id="stepForwardBtn">
+                                <i class="fas fa-step-forward"></i>
+                            </button>
+                        </div>
+                        
+                        <!-- Speed Control -->
+                        <div class="speed-control">
+                            <label class="control-label">Simulation Speed</label>
+                            <div class="speed-slider-container">
+                                <span class="speed-label">1x</span>
+                                <input type="range" min="1" max="100" value="10" id="speedSlider" class="speed-slider">
+                                <span class="speed-label">100x</span>
+                            </div>
+                            <div class="speed-display">
+                                <span id="speedValue">10x</span> Speed
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Performance Metrics -->
+                <section class="performance-panel glass-effect">
+                    <div class="panel-header">
+                        <h3 class="panel-title">
+                            <i class="fas fa-chart-bar text-yellow-400"></i>
+                            Performance Analytics
+                        </h3>
+                        <button class="reset-btn" id="resetStatsBtn">
+                            <i class="fas fa-redo"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="panel-content">
+                        <div class="metrics-grid">
+                            <div class="metric-card">
+                                <div class="metric-label">Portfolio Value</div>
+                                <div class="metric-value positive" id="portfolioValue">$10,000</div>
+                                <div class="metric-change" id="portfolioChange">+0.00%</div>
+                            </div>
+                            
+                            <div class="metric-card">
+                                <div class="metric-label">Total Return</div>
+                                <div class="metric-value" id="totalReturn">+0.00%</div>
+                                <div class="metric-subtext">vs. Buy & Hold</div>
+                            </div>
+                            
+                            <div class="metric-card">
+                                <div class="metric-label">Total Trades</div>
+                                <div class="metric-value" id="totalTrades">0</div>
+                                <div class="metric-subtext">executed</div>
+                            </div>
+                            
+                            <div class="metric-card">
+                                <div class="metric-label">Win Rate</div>
+                                <div class="metric-value" id="winRate">--%</div>
+                                <div class="metric-subtext">of trades</div>
+                            </div>
+                            
+                            <div class="metric-card">
+                                <div class="metric-label">Sharpe Ratio</div>
+                                <div class="metric-value" id="sharpeRatio">--</div>
+                                <div class="metric-subtext">risk-adjusted</div>
+                            </div>
+                            
+                            <div class="metric-card">
+                                <div class="metric-label">Max Drawdown</div>
+                                <div class="metric-value negative" id="maxDrawdown">-0.00%</div>
+                                <div class="metric-subtext">peak-to-trough</div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Trading Activity Feed -->
+                <section class="activity-panel glass-effect">
+                    <div class="panel-header">
+                        <h3 class="panel-title">
+                            <i class="fas fa-list text-blue-400"></i>
+                            Trading Activity
+                        </h3>
+                        <button class="clear-btn" id="clearActivityBtn">
+                            <i class="fas fa-trash"></i>
+                        </button>
+                    </div>
+                    
+                    <div class="panel-content">
+                        <div class="activity-feed" id="activityFeed">
+                            <div class="activity-item welcome">
+                                <div class="activity-icon">
+                                    <i class="fas fa-robot"></i>
+                                </div>
+                                <div class="activity-content">
+                                    <div class="activity-text">Welcome to AI Trading Playground!</div>
+                                    <div class="activity-time">Select an agent and start trading</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+            </div>
+        </main>
+
+        <!-- Settings Modal -->
+        <div class="modal-overlay" id="settingsModal">
+            <div class="modal glass-effect">
+                <div class="modal-header">
+                    <h3>⚙️ Settings</h3>
+                    <button class="modal-close" id="closeSettingsBtn">
+                        <i class="fas fa-times"></i>
+                    </button>
+                </div>
+                <div class="modal-content">
+                    <div class="setting-group">
+                        <label class="setting-label">
+                            <i class="fas fa-palette"></i>
+                            Theme
+                        </label>
+                        <select class="setting-select" id="themeSelect">
+                            <option value="dark">Dark Mode</option>
+                            <option value="light">Light Mode</option>
+                            <option value="cyberpunk">Cyberpunk</option>
+                        </select>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label class="setting-label">
+                            <i class="fas fa-volume-up"></i>
+                            Sound Effects
+                        </label>
+                        <div class="setting-toggle">
+                            <input type="checkbox" id="soundToggle" checked>
+                            <label for="soundToggle" class="toggle-slider"></label>
+                        </div>
+                    </div>
+                    
+                    <div class="setting-group">
+                        <label class="setting-label">
+                            <i class="fas fa-bell"></i>
+                            Notifications
+                        </label>
+                        <div class="setting-toggle">
+                            <input type="checkbox" id="notificationToggle" checked>
+                            <label for="notificationToggle" class="toggle-slider"></label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Notification Container -->
+        <div class="notification-container" id="notificationContainer"></div>
+    </div>
+
+    <!-- Scripts -->
+    <script src="trading-playground.js"></script>
+    <script src="trading-playground-tutorial.js"></script>
+    <script src="trading-playground-advanced.js"></script>
+    <script src="trading-playground-help.js"></script>
+    <script src="trading-playground-learning-viz.js"></script>
+    <script src="trading-playground-ai-coach.js"></script>
+    <script src="trading-playground-voice-control.js"></script>
+    <script src="trading-playground-layout-manager.js"></script>
+    <script src="trading-playground-responsive-grid.js"></script>
+    <script src="trading-playground-market-simulator.js"></script>
+    <script src="trading-playground-space-optimizer.js"></script>
+    <!-- Removed problematic enhancement scripts -->
+    <script src="trading-playground-unified-panel-system.js"></script>
+    <script src="trading-playground-panel-consolidation.js"></script>
+    
+    <!-- Initialize Complete System -->
+    <script>
+        // Initialize all systems when playground is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('🤖 AI Trading Playground v3.0 - Ultimate Edition Initializing...');
+            
+            setTimeout(() => {
+                // Initialize core playground
+                if (window.tradingPlayground) {
+                    console.log('✅ Core Trading System ready');
+                    
+                    // Initialize layout managers first
+                    if (window.AdvancedLayoutManager) {
+                        window.layoutManager = new AdvancedLayoutManager();
+                        console.log('🎨 Advanced Layout Manager ready');
+                    }
+                    
+                    if (window.ResponsiveGridManager) {
+                        window.gridManager = new ResponsiveGridManager();
+                        console.log('📐 Responsive Grid Manager ready');
+                    }
+                    
+                    // Initialize tutorial system
+                    if (window.TutorialSystem) {
+                        window.tutorialSystem = new TutorialSystem(window.tradingPlayground);
+                        console.log('🎓 Tutorial System ready');
+                    }
+                    
+                    // Initialize advanced features
+                    if (window.AdvancedFeatures) {
+                        window.advancedFeatures = new AdvancedFeatures(window.tradingPlayground);
+                        console.log('🔧 Advanced Features ready');
+                    }
+                    
+                    // Initialize help system
+                    if (window.HelpSystem) {
+                        window.helpSystem = new HelpSystem(window.tradingPlayground);
+                        console.log('📚 Help System ready');
+                    }
+                    
+                    // Initialize live learning visualization
+                    if (window.LiveLearningVisualization) {
+                        window.learningViz = new LiveLearningVisualization(window.tradingPlayground);
+                        console.log('🧠 Live Learning Visualization ready');
+                    }
+                    
+                    // Initialize AI Coach
+                    if (window.AICoach) {
+                        window.aiCoach = new AICoach(window.tradingPlayground);
+                        console.log('🤖 AI Coach ready');
+                    }
+                    
+                    // Initialize Voice Control
+                    if (window.VoiceControl) {
+                        window.voiceControl = new VoiceControl(window.tradingPlayground);
+                        console.log('🎤 Voice Control ready');
+                    }
+                    
+                    // Chart Enhancement disabled - was causing UI issues
+                    
+                    console.log('🚀 AI Trading Playground v3.0 Ultimate Edition fully loaded!');
+                    console.log('🌟 Complete AI-powered learning ecosystem ready!');
+                    console.log('📖 Ready to transform you from zero to AI trading hero!');
+                    console.log('🎨 Advanced layout system with overlay modes active!');
+                    console.log('📱 Responsive grid system optimized for all devices!');
+                }
+            }, 1000);
+        });
+    </script>
+</body>
+</html> 

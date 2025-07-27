@@ -1,0 +1,89 @@
+/* Common Header Layout Adjustments */
+
+/* Ensure main content doesn't overlap with sticky header */
+body {
+    padding-top: 0 !important;
+}
+
+/* Adjust main containers to account for header */
+.container,
+.playground-container,
+.dashboard-main,
+.main-container {
+    margin-top: 0 !important;
+    padding-top: 1rem;
+}
+
+/* Hide original headers that conflict with common header */
+.header-top-row,
+.playground-header,
+.original-header {
+    display: none !important;
+}
+
+/* Adjust page-specific controls positioning */
+.page-controls {
+    background: linear-gradient(135deg, rgba(30, 41, 59, 0.9) 0%, rgba(51, 65, 85, 0.8) 100%);
+    backdrop-filter: blur(20px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 1rem;
+    margin: 1rem;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+}
+
+/* Ensure proper spacing for Tailwind-based pages */
+.bg-gray-50 {
+    padding-top: 0 !important;
+}
+
+/* Adjust historical data dashboard header */
+body[data-header] header:not(.crypto-header) {
+    display: none !important;
+}
+
+/* Fix z-index issues */
+.crypto-header {
+    z-index: 1000 !important;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .page-controls {
+        padding: 0.75rem;
+    }
+    
+    .page-controls .controls {
+        flex-direction: column;
+        gap: 0.5rem;
+    }
+}
+
+/* Trading playground specific adjustments */
+.playground-container .dashboard-main {
+    padding-top: 0.5rem;
+}
+
+/* Volume dashboard specific adjustments */
+.volume-dashboard-container {
+    margin-top: 0;
+    padding-top: 1rem;
+}
+
+/* Chart dashboard specific adjustments */
+.charts-container {
+    margin-top: 0;
+    padding-top: 1rem;
+}
+
+/* Exchange status specific adjustments */
+.exchange-status-container {
+    margin-top: 0;
+    padding-top: 1rem;
+}
+
+/* Trading pairs explorer specific adjustments */
+.pairs-explorer-container {
+    margin-top: 0;
+    padding-top: 1rem;
+}

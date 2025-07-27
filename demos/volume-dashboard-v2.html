@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Volume Analytics Dashboard - Crypto Multi-Exchange</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/3.9.1/chart.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.4/moment.min.js"></script>
+    <style>
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .glass-effect {
+            background: rgba(17, 24, 39, 0.7);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .pulse-animation {
+            animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+        }
+        .volume-bar {
+            background: linear-gradient(90deg, #3b82f6, #8b5cf6);
+            border-radius: 4px;
+            transition: width 0.5s ease-in-out;
+        }
+        .heatmap-cell {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 10px;
+            font-weight: bold;
+            color: white;
+            text-shadow: 1px 1px 2px rgba(0,0,0,0.8);
+            margin: 1px;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+        .heatmap-cell:hover {
+            transform: scale(1.1);
+            z-index: 10;
+        }
+        .whale-alert {
+            animation: slideIn 0.5s ease-out;
+        }
+        @keyframes slideIn {
+            from { transform: translateX(100%); opacity: 0; }
+            to { transform: translateX(0); opacity: 1; }
+        }
+        @keyframes pulse {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
+        }
+    </style>
+</head>
+<body class="bg-gray-900 text-white min-h-screen">
+    <!-- Header -->
+    <header class="bg-gray-800 border-b border-gray-700">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between items-center h-16">
+                <div class="flex items-center">
+                    <h1 class="text-xl font-bold text-white">📊 Volume Analytics Dashboard</h1>
+                </div>
+                
+                <nav class="hidden md:flex space-x-8">
+                    <a href="index.html" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">📈 Order Book</a>
+                    <a href="charts-dashboard.html" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">📊 Charts</a>
+                    <a href="volume-dashboard.html" class="bg-blue-600 text-white px-3 py-2 rounded-md text-sm font-medium">📊 Volume</a>
+                    <a href="trading-pairs-explorer.html" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">🔍 Trading Pairs</a>
+                    <a href="http://localhost:3001/" target="_blank" class="text-gray-300 hover:text-white px-3 py-2 rounded-md text-sm font-medium">📊 Historical Data</a>
+                </nav>
+                
+                <button onclick="toggleMobileMenu()" class="md:hidden text-gray-300 hover:text-white">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
+        </div>
+    </header>
+
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-8">
+        <!-- Control Panel -->
+        <div class="glass-effect rounded-xl p-6 mb-8">
+            <div class="flex flex-wrap items-center justify-between gap-4">
+                <div class="flex items-center space-x-4">
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-1">Symbol</label>
+                        <select id="symbolSelect" class="bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-white">
+                            <option value="BTCUSDT">BTC/USDT</option>
+                            <option value="ETHUSDT">ETH/USDT</option>
+                            <option value="SOLUSDT">SOL/USDT</option>
+                            <option value="ADAUSDT">ADA/USDT</option>
+                            <option value="DOTUSDT">DOT/USDT</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-1">Time Range</label>
+                        <select id="timeRange" class="bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-white">
+                            <option value="1h">1 Hour</option>
+                            <option value="4h">4 Hours</option>
+                            <option value="24h" selected>24 Hours</option>
+                            <option value="7d">7 Days</option>
+                        </select>
+                    </div>
+                    <div>
+                        <label class="block text-sm font-medium text-gray-400 mb-1">Analysis Mode</label>
+                        <select id="analysisMode" class="bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-white">
+                            <option value="realtime">Real-time</option>
+                            <option value="heatmap">Heatmap</option>
+                            <option value="flow">Flow Analysis</option>
+                            <option value="comparison">Cross-Exchange</option>
+                        </select>
+                    </div>
+                </div>
+                
+                <div class="flex space-x-3">
+                    <button id="autoRefreshBtn" onclick="toggleAutoRefresh()" class="bg-blue-600 hover:bg-blue-700 text-white px-4 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-sync-alt mr-2"></i>
+                        <span id="refreshText">Auto Refresh: ON</span>
+                    </button>
+                    <button onclick="refreshData()" class="bg-green-600 hover:bg-green-700 text-white px-4 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-refresh mr-2"></i>Refresh
+                    </button>
+                    <button onclick="resetChart()" class="bg-gray-600 hover:bg-gray-700 text-white px-4 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-undo mr-2"></i>Reset
+                    </button>
+                    <button onclick="exportData()" class="bg-purple-600 hover:bg-purple-700 text-white px-4 py-2 rounded-lg transition-colors">
+                        <i class="fas fa-download mr-2"></i>Export
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Key Metrics -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6 mb-8">
+            <!-- Total Volume -->
+            <div class="glass-effect rounded-xl p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-400">Total Volume (24h)</p>
+                        <p class="text-2xl font-bold text-white" id="totalVolume">$2.4B</p>
+                        <p class="text-sm text-green-400" id="volumeChange">+12.5%</p>
+                    </div>
+                    <div class="p-3 bg-blue-600 rounded-lg">
+                        <i class="fas fa-chart-bar text-white text-xl"></i>
+                    </div>
+                </div>
+                <div class="mt-4">
+                    <div class="volume-bar" id="volumeBar" style="width: 75%"></div>
+                </div>
+            </div>
+
+            <!-- Active Exchanges -->
+            <div class="glass-effect rounded-xl p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-400">Active Exchanges</p>
+                        <p class="text-2xl font-bold text-white" id="activeExchanges">8</p>
+                        <p class="text-sm text-blue-400">Real-time data</p>
+                    </div>
+                    <div class="p-3 bg-green-600 rounded-lg">
+                        <i class="fas fa-exchange-alt text-white text-xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Whale Alerts -->
+            <div class="glass-effect rounded-xl p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-400">Whale Alerts</p>
+                        <p class="text-2xl font-bold text-white" id="whaleAlerts">23</p>
+                        <p class="text-sm text-yellow-400">Large trades detected</p>
+                    </div>
+                    <div class="p-3 bg-yellow-600 rounded-lg">
+                        <i class="fas fa-fish text-white text-xl"></i>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Market Dominance -->
+            <div class="glass-effect rounded-xl p-6">
+                <div class="flex items-center justify-between">
+                    <div>
+                        <p class="text-sm font-medium text-gray-400">Market Dominance</p>
+                        <p class="text-2xl font-bold text-white" id="marketDominance">42.3%</p>
+                        <p class="text-sm text-purple-400" id="dominantExchange">Binance</p>
+                    </div>
+                    <div class="p-3 bg-purple-600 rounded-lg">
+                        <i class="fas fa-crown text-white text-xl"></i>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <!-- Volume Chart -->
+            <div class="glass-effect rounded-xl p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-semibold">Volume Trend</h3>
+                    <div class="flex space-x-2">
+                        <span class="text-sm text-gray-400">Real-time</span>
+                        <div class="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
+                    </div>
+                </div>
+                <div class="h-64">
+                    <canvas id="volumeChart"></canvas>
+                </div>
+            </div>
+
+            <!-- Exchange Comparison -->
+            <div class="glass-effect rounded-xl p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-semibold">Exchange Comparison</h3>
+                    <select id="comparisonMetric" class="bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-white text-sm">
+                        <option value="volume">Volume Share</option>
+                        <option value="trades">Trade Count</option>
+                        <option value="liquidity">Liquidity</option>
+                    </select>
+                </div>
+                <div class="h-64">
+                    <canvas id="comparisonChart"></canvas>
+                </div>
+            </div>
+        </div>
+
+        <!-- Volume Heatmap -->
+        <div class="glass-effect rounded-xl p-6 mb-8">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-semibold flex items-center">
+                    <i class="fas fa-fire text-orange-400 mr-2"></i>
+                    Volume Heatmap
+                </h3>
+                <select id="heatmapTimeframe" class="bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-white text-sm">
+                    <option value="24h">24 Hours</option>
+                    <option value="7d">7 Days</option>
+                    <option value="30d">30 Days</option>
+                </select>
+            </div>
+            <div id="volumeHeatmap" class="grid grid-cols-6 gap-1 h-32">
+                <!-- Heatmap cells will be generated here -->
+            </div>
+        </div>
+
+        <!-- Whale Watcher & Alerts -->
+        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 mb-8">
+            <!-- Whale Watcher -->
+            <div class="glass-effect rounded-xl p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-semibold flex items-center">
+                        <i class="fas fa-fish text-blue-400 mr-2"></i>
+                        Whale Watcher
+                    </h3>
+                    <select id="whaleThreshold" class="bg-gray-800 border border-gray-600 rounded-lg px-3 py-2 text-white text-sm">
+                        <option value="50">50+ BTC</option>
+                        <option value="100" selected>100+ BTC</option>
+                        <option value="500">500+ BTC</option>
+                        <option value="1000">1000+ BTC</option>
+                    </select>
+                </div>
+                <div id="whaleTradesContainer" class="space-y-3 max-h-80 overflow-y-auto">
+                    <!-- Whale trades will be populated here -->
+                </div>
+            </div>
+
+            <!-- Volume Alerts -->
+            <div class="glass-effect rounded-xl p-6">
+                <div class="flex items-center justify-between mb-4">
+                    <h3 class="text-lg font-semibold flex items-center">
+                        <i class="fas fa-bell text-yellow-400 mr-2"></i>
+                        Volume Alerts
+                    </h3>
+                    <button onclick="addAlert()" class="bg-blue-600 hover:bg-blue-700 text-white px-3 py-1 rounded-lg text-sm transition-colors">
+                        <i class="fas fa-plus mr-1"></i>Add Alert
+                    </button>
+                </div>
+                <div id="alertsContainer" class="space-y-3 max-h-80 overflow-y-auto">
+                    <!-- Alerts will be populated here -->
+                </div>
+            </div>
+        </div>
+
+        <!-- Flow Analysis -->
+        <div class="glass-effect rounded-xl p-6">
+            <div class="flex items-center justify-between mb-4">
+                <h3 class="text-lg font-semibold flex items-center">
+                    <i class="fas fa-water text-cyan-400 mr-2"></i>
+                    Volume Flow Analysis
+                </h3>
+                <div class="flex space-x-4">
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 bg-green-500 rounded-full"></div>
+                        <span class="text-sm text-gray-400">Buy Flow</span>
+                    </div>
+                    <div class="flex items-center space-x-2">
+                        <div class="w-3 h-3 bg-red-500 rounded-full"></div>
+                        <span class="text-sm text-gray-400">Sell Flow</span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+                <!-- Buy Pressure -->
+                <div class="text-center">
+                    <p class="text-sm text-gray-400 mb-2">Buy Pressure</p>
+                    <div class="relative w-24 h-24 mx-auto">
+                        <canvas id="buyPressureChart" width="96" height="96"></canvas>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span id="buyPressureValue" class="text-lg font-bold text-green-400">65%</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Flow Balance -->
+                <div class="text-center">
+                    <p class="text-sm text-gray-400 mb-2">Flow Balance</p>
+                    <div class="bg-gray-800 rounded-lg h-6 relative overflow-hidden">
+                        <div id="flowBalance" class="h-full bg-gradient-to-r from-red-500 to-green-500 transition-all duration-500" style="width: 30%; margin-left: 35%;"></div>
+                    </div>
+                    <p id="flowBalanceText" class="text-sm text-green-400 mt-2">Buy Dominant</p>
+                </div>
+
+                <!-- Sell Pressure -->
+                <div class="text-center">
+                    <p class="text-sm text-gray-400 mb-2">Sell Pressure</p>
+                    <div class="relative w-24 h-24 mx-auto">
+                        <canvas id="sellPressureChart" width="96" height="96"></canvas>
+                        <div class="absolute inset-0 flex items-center justify-center">
+                            <span id="sellPressureValue" class="text-lg font-bold text-red-400">35%</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Load the enhanced JavaScript -->
+    <script src="volume-dashboard-enhanced.js"></script>
+    <script>
+        // Integration code for connecting to main application's WebSocket data
+        
+        // Check if main app WebSocket connections are available
+        function detectMainAppConnections() {
+            const checkInterval = setInterval(() => {
+                if (typeof window.activeConnections !== 'undefined' && volumeDashboard) {
+                    console.log('🔗 Main application WebSocket connections detected');
+                    volumeDashboard.realTimeConnected = true;
+                    volumeDashboard.showNotification('Connected to main application data feed', 'success');
+                    clearInterval(checkInterval);
+                    
+                    // Start monitoring main app data
+                    startMainAppDataMonitoring();
+                }
+            }, 1000);
+            
+            // Stop checking after 10 seconds
+            setTimeout(() => clearInterval(checkInterval), 10000);
+        }
+        
+        function startMainAppDataMonitoring() {
+            // Enhanced integration with main application
+            setInterval(() => {
+                if (window.activeConnections && volumeDashboard && volumeDashboard.autoRefreshEnabled) {
+                    volumeDashboard.updateFromRealTimeData();
+                }
+            }, 1500); // Update every 1.5 seconds for smooth real-time feel
+        }
+
+        // Initialize integration when dashboard is ready
+        document.addEventListener('DOMContentLoaded', () => {
+            // Wait for volumeDashboard to be initialized
+            setTimeout(() => {
+                detectMainAppConnections();
+            }, 500);
+        });
+
+        // Listen for page visibility changes to optimize performance
+        document.addEventListener('visibilitychange', () => {
+            if (volumeDashboard) {
+                if (document.hidden) {
+                    volumeDashboard.autoRefreshEnabled = false;
+                    console.log('📊 Volume dashboard paused (page hidden)');
+                } else {
+                    volumeDashboard.autoRefreshEnabled = true;
+                    console.log('📊 Volume dashboard resumed (page visible)');
+                    volumeDashboard.showNotification('Dashboard resumed', 'info');
+                }
+            }
+        });
+
+        // Additional helper functions for better integration
+        function checkOrderBookConnection() {
+            // Check if we can access order book data from the main app
+            if (window.activeConnections) {
+                const connectedExchanges = Array.from(window.activeConnections.keys()).filter(
+                    exchangeId => window.activeConnections.get(exchangeId).status === 'connected'
+                );
+                
+                if (connectedExchanges.length > 0) {
+                    volumeDashboard.showNotification(
+                        `📡 Connected to ${connectedExchanges.length} exchange(s): ${connectedExchanges.join(', ')}`, 
+                        'success'
+                    );
+                    return true;
+                }
+            }
+            return false;
+        }
+
+        // Enhanced error handling
+        window.addEventListener('error', (event) => {
+            console.error('Volume Dashboard Error:', event.error);
+            if (volumeDashboard) {
+                volumeDashboard.showNotification('Dashboard error detected, attempting recovery...', 'warning');
+                // Attempt to reinitialize if there's a critical error
+                setTimeout(() => {
+                    if (volumeDashboard && !volumeDashboard.realTimeConnected) {
+                        volumeDashboard.connectToRealTimeData();
+                    }
+                }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>

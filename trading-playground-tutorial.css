@@ -1,0 +1,803 @@
+/* AI Trading Playground - Tutorial System Styles */
+
+/* Tutorial Button */
+.tutorial-btn {
+    padding: 10px 15px;
+    background: linear-gradient(45deg, #8b5cf6, #a78bfa);
+    border: 1px solid rgba(139, 92, 246, 0.3);
+    color: white;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 600;
+}
+
+.tutorial-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(139, 92, 246, 0.4);
+}
+
+/* User Progress Indicator */
+.user-progress {
+    padding: 10px 20px;
+    margin-left: 20px;
+    min-width: 200px;
+}
+
+.progress-content {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.user-level {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.level-badge {
+    background: linear-gradient(45deg, #f59e0b, #d97706);
+    color: white;
+    padding: 4px 10px;
+    border-radius: 12px;
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+}
+
+.xp-bar {
+    flex: 1;
+    height: 6px;
+    background: rgba(55, 65, 81, 0.6);
+    border-radius: 3px;
+    overflow: hidden;
+}
+
+.xp-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #f59e0b, #d97706);
+    border-radius: 3px;
+    transition: width 0.5s ease;
+}
+
+.xp-text {
+    font-size: 11px;
+    color: #94a3b8;
+    white-space: nowrap;
+}
+
+/* Learning Center Modal */
+.learning-center-modal {
+    max-width: 1200px;
+    width: 95%;
+    max-height: 90vh;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+}
+
+.learning-content {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+}
+
+/* Learning Tabs */
+.learning-tabs {
+    display: flex;
+    border-bottom: 1px solid rgba(75, 85, 99, 0.3);
+    margin-bottom: 20px;
+}
+
+.tab-btn {
+    padding: 15px 25px;
+    background: transparent;
+    border: none;
+    color: #94a3b8;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    font-weight: 500;
+    border-bottom: 2px solid transparent;
+}
+
+.tab-btn.active {
+    color: #60a5fa;
+    border-bottom-color: #3b82f6;
+}
+
+.tab-btn:hover {
+    color: #e2e8f0;
+    background: rgba(55, 65, 81, 0.3);
+}
+
+/* Tab Content */
+.tab-content {
+    display: none;
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+.tab-content.active {
+    display: block;
+}
+
+/* Lessons Tab */
+.lessons-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 30px;
+}
+
+.lesson-track {
+    background: rgba(17, 24, 39, 0.4);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.track-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-bottom: 20px;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.lessons-list {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+/* Lesson Cards */
+.lesson-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(31, 41, 55, 0.6);
+    border: 1px solid rgba(75, 85, 99, 0.3);
+    border-radius: 10px;
+    padding: 15px;
+    transition: all 0.3s ease;
+    cursor: pointer;
+}
+
+.lesson-card:hover {
+    border-color: rgba(59, 130, 246, 0.5);
+    transform: translateY(-2px);
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.lesson-card.completed {
+    border-color: rgba(16, 185, 129, 0.5);
+    background: rgba(16, 185, 129, 0.1);
+}
+
+.lesson-card.locked {
+    opacity: 0.5;
+    cursor: not-allowed;
+}
+
+.lesson-icon {
+    font-size: 24px;
+    min-width: 32px;
+    text-align: center;
+}
+
+.lesson-content {
+    flex: 1;
+}
+
+.lesson-title {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 5px;
+    color: #e2e8f0;
+}
+
+.lesson-description {
+    font-size: 14px;
+    color: #94a3b8;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.lesson-meta {
+    display: flex;
+    gap: 15px;
+    font-size: 12px;
+}
+
+.lesson-meta span {
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+
+.duration {
+    color: #a78bfa;
+}
+
+.xp-reward {
+    color: #f59e0b;
+}
+
+.skill-type {
+    padding: 2px 6px;
+    border-radius: 4px;
+    font-weight: 500;
+    text-transform: capitalize;
+}
+
+.skill-technical_analysis { background: rgba(59, 130, 246, 0.2); color: #60a5fa; }
+.skill-risk_management { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+.skill-strategy_development { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+.skill-market_psychology { background: rgba(168, 85, 247, 0.2); color: #a78bfa; }
+
+.start-lesson-btn {
+    padding: 8px 16px;
+    background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+    border: none;
+    color: white;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+    min-width: 80px;
+}
+
+.start-lesson-btn:hover:not(.disabled) {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+.start-lesson-btn.disabled {
+    background: rgba(107, 114, 128, 0.5);
+    cursor: not-allowed;
+}
+
+/* Challenges Tab */
+.challenges-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 20px;
+}
+
+.challenge-card {
+    background: rgba(17, 24, 39, 0.6);
+    border: 1px solid rgba(75, 85, 99, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.challenge-card:hover {
+    border-color: rgba(59, 130, 246, 0.5);
+    transform: translateY(-2px);
+}
+
+.challenge-card.completed {
+    border-color: rgba(245, 158, 11, 0.5);
+    background: rgba(245, 158, 11, 0.1);
+}
+
+.challenge-card.locked {
+    opacity: 0.6;
+}
+
+.challenge-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.challenge-difficulty {
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.difficulty-easy { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+.difficulty-medium { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+.difficulty-hard { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+.difficulty-expert { background: rgba(168, 85, 247, 0.2); color: #a78bfa; }
+
+.challenge-status {
+    font-size: 20px;
+}
+
+.challenge-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 10px;
+    color: #e2e8f0;
+}
+
+.challenge-description {
+    color: #94a3b8;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.challenge-progress {
+    margin-bottom: 15px;
+}
+
+.progress-bar {
+    height: 8px;
+    background: rgba(55, 65, 81, 0.6);
+    border-radius: 4px;
+    overflow: hidden;
+    margin-bottom: 8px;
+}
+
+.progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, #3b82f6, #1d4ed8);
+    border-radius: 4px;
+    transition: width 0.5s ease;
+}
+
+.progress-text {
+    font-size: 14px;
+    color: #94a3b8;
+    font-weight: 500;
+}
+
+.challenge-reward {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #f59e0b;
+    font-weight: 500;
+    margin-bottom: 15px;
+}
+
+.challenge-requirements {
+    font-size: 12px;
+    color: #6b7280;
+}
+
+.challenge-requirements ul {
+    margin: 5px 0 0 15px;
+    padding: 0;
+}
+
+.challenge-requirements li {
+    margin-bottom: 2px;
+}
+
+/* Strategies Tab */
+.strategies-library {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 20px;
+}
+
+.strategy-card {
+    background: rgba(17, 24, 39, 0.6);
+    border: 1px solid rgba(75, 85, 99, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    transition: all 0.3s ease;
+}
+
+.strategy-card:hover {
+    border-color: rgba(59, 130, 246, 0.5);
+    transform: translateY(-2px);
+}
+
+.strategy-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 10px;
+}
+
+.strategy-name {
+    font-size: 18px;
+    font-weight: 600;
+    color: #e2e8f0;
+}
+
+.strategy-complexity {
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    text-transform: uppercase;
+}
+
+.complexity-beginner { background: rgba(16, 185, 129, 0.2); color: #34d399; }
+.complexity-intermediate { background: rgba(245, 158, 11, 0.2); color: #fbbf24; }
+.complexity-advanced { background: rgba(239, 68, 68, 0.2); color: #f87171; }
+
+.strategy-category {
+    color: #a78bfa;
+    font-size: 14px;
+    font-weight: 500;
+    margin-bottom: 10px;
+}
+
+.strategy-description {
+    color: #94a3b8;
+    margin-bottom: 15px;
+    line-height: 1.5;
+}
+
+.strategy-metrics {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 15px;
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(31, 41, 55, 0.4);
+    border-radius: 8px;
+}
+
+.metric {
+    text-align: center;
+}
+
+.metric-label {
+    display: block;
+    font-size: 12px;
+    color: #6b7280;
+    margin-bottom: 4px;
+    text-transform: uppercase;
+}
+
+.metric-value {
+    font-size: 16px;
+    font-weight: 700;
+    color: #e2e8f0;
+}
+
+.strategy-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.btn-secondary, .btn-primary {
+    flex: 1;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 500;
+}
+
+.btn-secondary {
+    background: rgba(55, 65, 81, 0.8);
+    color: #e2e8f0;
+    border: 1px solid rgba(107, 114, 128, 0.3);
+}
+
+.btn-secondary:hover {
+    background: rgba(75, 85, 99, 0.8);
+}
+
+.btn-primary {
+    background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+    color: white;
+}
+
+.btn-primary:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(59, 130, 246, 0.4);
+}
+
+/* Achievements Tab */
+.achievements-showcase {
+    display: flex;
+    flex-direction: column;
+    gap: 30px;
+}
+
+.achievements-rarity-section {
+    background: rgba(17, 24, 39, 0.4);
+    border-radius: 12px;
+    padding: 20px;
+}
+
+.rarity-title {
+    font-size: 18px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+.rarity-common { color: #9ca3af; }
+.rarity-rare { color: #3b82f6; }
+.rarity-epic { color: #8b5cf6; }
+.rarity-legendary { color: #f59e0b; }
+
+.achievements-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 15px;
+}
+
+.achievement-card {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    background: rgba(31, 41, 55, 0.6);
+    border: 2px solid transparent;
+    border-radius: 10px;
+    padding: 15px;
+    transition: all 0.3s ease;
+}
+
+.achievement-card.earned {
+    border-color: currentColor;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+}
+
+.achievement-card.locked {
+    opacity: 0.4;
+    filter: grayscale(1);
+}
+
+.achievement-card.rarity-common.earned { border-color: #9ca3af; }
+.achievement-card.rarity-rare.earned { border-color: #3b82f6; }
+.achievement-card.rarity-epic.earned { border-color: #8b5cf6; }
+.achievement-card.rarity-legendary.earned { border-color: #f59e0b; }
+
+.achievement-icon {
+    font-size: 32px;
+    width: 48px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    background: rgba(55, 65, 81, 0.6);
+}
+
+.achievement-content {
+    flex: 1;
+}
+
+.achievement-name {
+    font-size: 16px;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-bottom: 5px;
+}
+
+.achievement-description {
+    font-size: 14px;
+    color: #94a3b8;
+    line-height: 1.4;
+    margin-bottom: 5px;
+}
+
+.earned-date {
+    font-size: 12px;
+    color: #10b981;
+    font-weight: 500;
+}
+
+/* Tutorial Overlay */
+.tutorial-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 10000;
+    display: none;
+    pointer-events: none;
+}
+
+.tutorial-overlay.active {
+    display: block;
+    pointer-events: auto;
+}
+
+.tutorial-spotlight {
+    position: absolute;
+    background: transparent;
+    border: 3px solid #3b82f6;
+    border-radius: 8px;
+    box-shadow: 
+        0 0 0 9999px rgba(0, 0, 0, 0.8),
+        0 0 20px rgba(59, 130, 246, 0.6),
+        inset 0 0 20px rgba(59, 130, 246, 0.2);
+    transition: all 0.5s ease;
+    pointer-events: none;
+}
+
+.tutorial-tooltip {
+    position: absolute;
+    background: rgba(17, 24, 39, 0.95);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(59, 130, 246, 0.3);
+    border-radius: 12px;
+    box-shadow: 
+        0 20px 40px rgba(0, 0, 0, 0.4),
+        0 0 20px rgba(59, 130, 246, 0.2);
+    max-width: 350px;
+    padding: 0;
+    pointer-events: auto;
+    transition: all 0.3s ease;
+}
+
+.tooltip-content {
+    padding: 20px;
+}
+
+.tooltip-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.step-indicator {
+    background: rgba(59, 130, 246, 0.2);
+    color: #60a5fa;
+    padding: 4px 8px;
+    border-radius: 6px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.skip-tutorial {
+    background: none;
+    border: none;
+    color: #6b7280;
+    cursor: pointer;
+    font-size: 12px;
+    text-decoration: underline;
+}
+
+.skip-tutorial:hover {
+    color: #9ca3af;
+}
+
+.tooltip-title {
+    font-size: 18px;
+    font-weight: 600;
+    color: #e2e8f0;
+    margin-bottom: 10px;
+}
+
+.tooltip-text {
+    color: #94a3b8;
+    line-height: 1.5;
+    margin-bottom: 20px;
+}
+
+.tooltip-actions {
+    display: flex;
+    gap: 10px;
+}
+
+.tooltip-actions button {
+    flex: 1;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-weight: 500;
+}
+
+.tooltip-actions .btn-secondary {
+    background: rgba(55, 65, 81, 0.8);
+    color: #e2e8f0;
+}
+
+.tooltip-actions .btn-primary {
+    background: linear-gradient(45deg, #3b82f6, #1d4ed8);
+    color: white;
+}
+
+.tooltip-arrow {
+    position: absolute;
+    width: 0;
+    height: 0;
+    border: 8px solid transparent;
+    border-top-color: rgba(17, 24, 39, 0.95);
+    bottom: -16px;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+/* Code Modal */
+.code-modal {
+    max-width: 800px;
+    width: 90%;
+    max-height: 80vh;
+}
+
+.code-content {
+    padding: 20px;
+    overflow-y: auto;
+}
+
+.code-content pre {
+    background: rgba(17, 24, 39, 0.8);
+    border-radius: 8px;
+    padding: 20px;
+    overflow-x: auto;
+    margin: 0;
+}
+
+.code-content code {
+    color: #e2e8f0;
+    font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+    font-size: 14px;
+    line-height: 1.5;
+}
+
+/* Responsive Design */
+@media (max-width: 1200px) {
+    .lessons-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .strategies-library {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 768px) {
+    .learning-center-modal {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+    }
+    
+    .learning-tabs {
+        overflow-x: auto;
+        white-space: nowrap;
+    }
+    
+    .tab-btn {
+        flex-shrink: 0;
+        padding: 10px 15px;
+    }
+    
+    .user-progress {
+        margin-left: 0;
+        min-width: auto;
+    }
+    
+    .tutorial-tooltip {
+        max-width: 90vw;
+        left: 5vw !important;
+        right: 5vw !important;
+    }
+    
+    .challenges-grid,
+    .achievements-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .strategy-metrics {
+        grid-template-columns: 1fr;
+        gap: 10px;
+    }
+} 

@@ -78,31 +78,7 @@ class BinanceCollector extends DataCollector {
       const endTime = Math.min(nextDate.getTime(), end.getTime());
       
       try {
-        await this.checkRateLimit('binance');
-        
-        const baseUrl = market === 'futures' ? this.futuresUrl : this.baseUrl;
-        const url = `${baseUrl}/aggTrades?symbol=${symbol}&startTime=${startTime}&endTime=${endTime}&limit=1000`;
-        
-        const response = await axios.get(url);
-        
-        if (response.data && response.data.length > 0) {
-          const transformedData = response.data.map(trade => ({
-            id: trade.a || trade.id,
-            price: parseFloat(trade.p),
-            quantity: parseFloat(trade.q),
-            firstTradeId: trade.f,
-            lastTradeId: trade.l,
-            timestamp: parseInt(trade.T),
-            isBuyerMaker: trade.m,
-            isBestMatch: trade.M || true
-          }));
-          
-          await this.saveData('binance', symbol, `trades-${market}`, 'raw', currentDate, transformedData);
-          console.log(`✅ Saved ${transformedData.length} ${market} trades for ${symbol} on ${currentDate.toISOString()}`);
-          this.stats.success++;
-        }
-        
-        await this.sleep(100);
+        await this.collectAllTradesInTimeRange(symbol, startTime, endTime, market, currentDate);
       } catch (error) {
         console.error(`❌ Error downloading ${symbol} ${market} trades for ${currentDate.toISOString()}:`, error.message);
         this.stats.errors++;
@@ -114,6 +90,90 @@ class BinanceCollector extends DataCollector {
       }
       
       currentDate = nextDate;
+    }
+  }
+
+  async collectAllTradesInTimeRange(symbol, startTime, endTime, market, currentDate) {
+    let allTrades = [];
+    let fromId = null;
+    let hasMoreTrades = true;
+    let requestCount = 0;
+    const maxRequests = 10; // Safety limit to prevent infinite loops
+    
+    while (hasMoreTrades && requestCount < maxRequests) {
+      await this.checkRateLimit('binance');
+      
+      const baseUrl = market === 'futures' ? this.futuresUrl : this.baseUrl;
+      let url;
+      
+      if (fromId) {
+        // Use fromId for pagination to ensure no gaps
+        url = `${baseUrl}/aggTrades?symbol=${symbol}&fromId=${fromId}&limit=1000`;
+      } else {
+        // First request uses time range
+        url = `${baseUrl}/aggTrades?symbol=${symbol}&startTime=${startTime}&endTime=${endTime}&limit=1000`;
+      }
+      
+      const response = await axios.get(url);
+      const trades = response.data || [];
+      
+      if (trades.length === 0) {
+        hasMoreTrades = false;
+        break;
+      }
+      
+      // Filter trades to ensure they're within our time range
+      const filteredTrades = trades.filter(trade => {
+        const tradeTime = parseInt(trade.T);
+        return tradeTime >= startTime && tradeTime < endTime;
+      });
+      
+      if (filteredTrades.length === 0) {
+        // No more trades in our time range
+        hasMoreTrades = false;
+        break;
+      }
+      
+      allTrades.push(...filteredTrades);
+      
+      // Check if we got the maximum number of trades (indicating more might be available)
+      if (trades.length < 1000) {
+        hasMoreTrades = false;
+      } else {
+        // Set fromId to the last trade ID + 1 for next request
+        const lastTrade = trades[trades.length - 1];
+        fromId = parseInt(lastTrade.a) + 1; // aggTradeId + 1
+        
+        // Additional safety check: if the last trade is beyond our time range, stop
+        if (parseInt(lastTrade.T) >= endTime) {
+          hasMoreTrades = false;
+        }
+      }
+      
+      requestCount++;
+      await this.sleep(100); // Small delay between requests
+    }
+    
+    if (allTrades.length > 0) {
+      const transformedData = allTrades.map(trade => ({
+        id: trade.a || trade.id,
+        price: parseFloat(trade.p),
+        quantity: parseFloat(trade.q),
+        firstTradeId: trade.f,
+        lastTradeId: trade.l,
+        timestamp: parseInt(trade.T),
+        isBuyerMaker: trade.m,
+        isBestMatch: trade.M || true
+      }));
+      
+      // Sort by timestamp to ensure chronological order
+      transformedData.sort((a, b) => a.timestamp - b.timestamp);
+      
+      await this.saveData('binance', symbol, `trades-${market}`, 'raw', currentDate, transformedData);
+      console.log(`✅ Saved ${transformedData.length} ${market} trades for ${symbol} on ${currentDate.toISOString()} (${requestCount} requests)`);
+      this.stats.success++;
+    } else {
+      console.log(`ℹ️ No ${market} trades found for ${symbol} on ${currentDate.toISOString()}`);
     }
   }
 

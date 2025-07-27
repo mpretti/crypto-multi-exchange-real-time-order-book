@@ -1,0 +1,347 @@
+/**
+ * Immediate Chart Style Fix
+ * Applies beautiful styling to match the page design
+ */
+
+(function() {
+    'use strict';
+    
+    function applyChartStyling() {
+        console.log('📈 Applying chart style enhancements...');
+        
+        // Fix chart panel styling
+        const chartPanel = document.querySelector('.chart-panel');
+        if (chartPanel) {
+            chartPanel.style.background = 'rgba(17, 24, 39, 0.95)';
+            chartPanel.style.backdropFilter = 'blur(20px)';
+            chartPanel.style.border = '1px solid rgba(75, 85, 99, 0.3)';
+            chartPanel.style.borderRadius = '16px';
+            chartPanel.style.boxShadow = '0 20px 40px rgba(0, 0, 0, 0.2)';
+            chartPanel.style.overflow = 'hidden';
+            chartPanel.style.transition = 'all 0.3s ease';
+        }
+        
+        // Fix chart header
+        const chartHeader = chartPanel?.querySelector('.panel-header');
+        if (chartHeader) {
+            chartHeader.style.background = 'rgba(31, 41, 55, 0.8)';
+            chartHeader.style.backdropFilter = 'blur(10px)';
+            chartHeader.style.borderBottom = '1px solid rgba(75, 85, 99, 0.3)';
+            chartHeader.style.padding = '16px 20px';
+        }
+        
+        // Fix chart title
+        const chartTitle = chartPanel?.querySelector('.panel-title');
+        if (chartTitle) {
+            chartTitle.style.display = 'flex';
+            chartTitle.style.alignItems = 'center';
+            chartTitle.style.gap = '10px';
+            chartTitle.style.color = '#e2e8f0';
+            chartTitle.style.fontWeight = '600';
+            chartTitle.style.fontSize = '16px';
+            
+            const icon = chartTitle.querySelector('i');
+            if (icon) {
+                icon.style.color = '#10b981';
+                icon.style.fontSize = '18px';
+            }
+        }
+        
+        // Fix timeframe buttons
+        const timeframeBtns = document.querySelectorAll('.timeframe-btn');
+        timeframeBtns.forEach(btn => {
+            btn.style.padding = '6px 12px';
+            btn.style.background = 'rgba(55, 65, 81, 0.6)';
+            btn.style.border = '1px solid rgba(107, 114, 128, 0.3)';
+            btn.style.borderRadius = '6px';
+            btn.style.color = '#94a3b8';
+            btn.style.cursor = 'pointer';
+            btn.style.transition = 'all 0.3s ease';
+            btn.style.fontSize = '12px';
+            btn.style.fontWeight = '600';
+            btn.style.minWidth = '40px';
+            btn.style.textAlign = 'center';
+            
+            // Active state
+            if (btn.classList.contains('active')) {
+                btn.style.background = 'linear-gradient(135deg, #10b981, #059669)';
+                btn.style.color = 'white';
+                btn.style.borderColor = 'rgba(16, 185, 129, 0.5)';
+                btn.style.boxShadow = '0 4px 12px rgba(16, 185, 129, 0.3)';
+            }
+            
+            // Hover effects
+            btn.addEventListener('mouseenter', () => {
+                if (!btn.classList.contains('active')) {
+                    btn.style.background = 'rgba(75, 85, 99, 0.8)';
+                    btn.style.color = '#e2e8f0';
+                    btn.style.transform = 'translateY(-1px)';
+                }
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                if (!btn.classList.contains('active')) {
+                    btn.style.background = 'rgba(55, 65, 81, 0.6)';
+                    btn.style.color = '#94a3b8';
+                    btn.style.transform = 'translateY(0)';
+                }
+            });
+        });
+        
+        // Fix timeframe selector container
+        const timeframeSelector = document.querySelector('.timeframe-selector');
+        if (timeframeSelector) {
+            timeframeSelector.style.display = 'flex';
+            timeframeSelector.style.gap = '4px';
+            timeframeSelector.style.background = 'rgba(17, 24, 39, 0.6)';
+            timeframeSelector.style.borderRadius = '8px';
+            timeframeSelector.style.padding = '4px';
+            timeframeSelector.style.border = '1px solid rgba(75, 85, 99, 0.3)';
+        }
+        
+        // Fix chart container
+        const chartContainer = document.querySelector('.chart-container');
+        if (chartContainer) {
+            chartContainer.style.position = 'relative';
+            chartContainer.style.background = 'rgba(31, 41, 55, 0.4)';
+            chartContainer.style.borderRadius = '12px';
+            chartContainer.style.margin = '16px';
+            chartContainer.style.padding = '16px';
+            chartContainer.style.border = '1px solid rgba(75, 85, 99, 0.2)';
+            chartContainer.style.overflow = 'hidden';
+            chartContainer.style.height = '450px';
+            chartContainer.style.minHeight = '350px';
+            
+            // Fix canvas if exists
+            const canvas = chartContainer.querySelector('canvas');
+            if (canvas) {
+                canvas.style.borderRadius = '8px';
+                canvas.style.background = 'rgba(17, 24, 39, 0.6)';
+                canvas.style.width = '100%';
+                canvas.style.height = '100%';
+            }
+        }
+        
+        // Fix fullscreen button
+        const fullscreenBtn = document.getElementById('chartFullscreenBtn');
+        if (fullscreenBtn) {
+            fullscreenBtn.style.width = '36px';
+            fullscreenBtn.style.height = '36px';
+            fullscreenBtn.style.background = 'rgba(55, 65, 81, 0.6)';
+            fullscreenBtn.style.border = '1px solid rgba(107, 114, 128, 0.3)';
+            fullscreenBtn.style.borderRadius = '8px';
+            fullscreenBtn.style.color = '#94a3b8';
+            fullscreenBtn.style.cursor = 'pointer';
+            fullscreenBtn.style.transition = 'all 0.3s ease';
+            fullscreenBtn.style.display = 'flex';
+            fullscreenBtn.style.alignItems = 'center';
+            fullscreenBtn.style.justifyContent = 'center';
+            fullscreenBtn.style.fontSize = '14px';
+            
+            fullscreenBtn.addEventListener('mouseenter', () => {
+                fullscreenBtn.style.background = 'rgba(75, 85, 99, 0.8)';
+                fullscreenBtn.style.color = '#e2e8f0';
+                fullscreenBtn.style.transform = 'scale(1.1)';
+            });
+            
+            fullscreenBtn.addEventListener('mouseleave', () => {
+                fullscreenBtn.style.background = 'rgba(55, 65, 81, 0.6)';
+                fullscreenBtn.style.color = '#94a3b8';
+                fullscreenBtn.style.transform = 'scale(1)';
+            });
+        }
+        
+        // Add chart info overlay
+        addChartInfoOverlay();
+        
+        // Add enhanced loading spinner
+        enhanceLoadingSpinner();
+        
+        console.log('✅ Chart styling enhanced successfully!');
+    }
+    
+    function addChartInfoOverlay() {
+        const chartContainer = document.querySelector('.chart-container');
+        if (!chartContainer || chartContainer.querySelector('.chart-info-overlay')) return;
+        
+        const infoOverlay = document.createElement('div');
+        infoOverlay.className = 'chart-info-overlay';
+        infoOverlay.style.cssText = `
+            position: absolute;
+            top: 16px;
+            left: 16px;
+            background: rgba(17, 24, 39, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(75, 85, 99, 0.3);
+            border-radius: 8px;
+            padding: 12px 16px;
+            z-index: 20;
+            min-width: 180px;
+        `;
+        
+        infoOverlay.innerHTML = `
+            <div style="color: #e2e8f0; font-weight: 600; font-size: 14px; margin-bottom: 4px;">
+                BTCUSDT
+            </div>
+            <div style="color: #10b981; font-weight: 700; font-size: 18px; margin-bottom: 2px;">
+                $42,350.00
+            </div>
+            <div style="color: #10b981; font-size: 12px; font-weight: 600;">
+                +2.45% (+$1,037.50)
+            </div>
+        `;
+        
+        chartContainer.appendChild(infoOverlay);
+        
+        // Animate price updates
+        setInterval(() => {
+            const priceElement = infoOverlay.children[1];
+            const changeElement = infoOverlay.children[2];
+            
+            const basePrice = 42350;
+            const variation = (Math.random() - 0.5) * 1000;
+            const newPrice = basePrice + variation;
+            const change = ((variation / basePrice) * 100);
+            const changeAmount = variation;
+            
+            priceElement.textContent = `$${newPrice.toFixed(2)}`;
+            changeElement.textContent = `${change >= 0 ? '+' : ''}${change.toFixed(2)}% (${change >= 0 ? '+' : ''}$${Math.abs(changeAmount).toFixed(2)})`;
+            changeElement.style.color = change >= 0 ? '#10b981' : '#ef4444';
+        }, 3000);
+    }
+    
+    function enhanceLoadingSpinner() {
+        const overlay = document.getElementById('chartOverlay');
+        if (!overlay) return;
+        
+        overlay.style.background = 'rgba(17, 24, 39, 0.8)';
+        overlay.style.backdropFilter = 'blur(10px)';
+        overlay.style.borderRadius = '12px';
+        
+        const spinner = overlay.querySelector('.spinner');
+        if (spinner) {
+            spinner.style.border = '3px solid rgba(139, 92, 246, 0.3)';
+            spinner.style.borderTop = '3px solid #8b5cf6';
+            spinner.style.width = '40px';
+            spinner.style.height = '40px';
+        }
+        
+        const loadingText = overlay.querySelector('span');
+        if (loadingText) {
+            loadingText.style.color = '#94a3b8';
+            loadingText.style.fontSize = '14px';
+            loadingText.style.fontWeight = '500';
+        }
+    }
+    
+    function addChartTools() {
+        const chartContainer = document.querySelector('.chart-container');
+        if (!chartContainer || chartContainer.querySelector('.chart-tools')) return;
+        
+        const toolsOverlay = document.createElement('div');
+        toolsOverlay.className = 'chart-tools';
+        toolsOverlay.style.cssText = `
+            position: absolute;
+            top: 16px;
+            right: 16px;
+            background: rgba(17, 24, 39, 0.9);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(75, 85, 99, 0.3);
+            border-radius: 8px;
+            padding: 6px;
+            display: flex;
+            gap: 4px;
+            z-index: 20;
+        `;
+        
+        const tools = [
+            { icon: 'fas fa-search-plus', title: 'Zoom' },
+            { icon: 'fas fa-crosshairs', title: 'Crosshair' },
+            { icon: 'fas fa-chart-line', title: 'Indicators' },
+            { icon: 'fas fa-cog', title: 'Settings' }
+        ];
+        
+        tools.forEach(tool => {
+            const btn = document.createElement('button');
+            btn.style.cssText = `
+                width: 28px;
+                height: 28px;
+                background: rgba(55, 65, 81, 0.6);
+                border: 1px solid rgba(107, 114, 128, 0.3);
+                border-radius: 4px;
+                color: #94a3b8;
+                cursor: pointer;
+                transition: all 0.3s ease;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                font-size: 11px;
+            `;
+            btn.innerHTML = `<i class="${tool.icon}"></i>`;
+            btn.title = tool.title;
+            
+            btn.addEventListener('mouseenter', () => {
+                btn.style.background = 'rgba(75, 85, 99, 0.8)';
+                btn.style.color = '#e2e8f0';
+                btn.style.transform = 'scale(1.1)';
+            });
+            
+            btn.addEventListener('mouseleave', () => {
+                btn.style.background = 'rgba(55, 65, 81, 0.6)';
+                btn.style.color = '#94a3b8';
+                btn.style.transform = 'scale(1)';
+            });
+            
+            toolsOverlay.appendChild(btn);
+        });
+        
+        chartContainer.appendChild(toolsOverlay);
+    }
+    
+    // Apply styling when DOM is ready
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', applyChartStyling);
+    } else {
+        applyChartStyling();
+    }
+    
+    // Also apply after a delay to catch dynamic content
+    setTimeout(() => {
+        applyChartStyling();
+        addChartTools();
+    }, 1000);
+    
+    // Show notification
+    setTimeout(() => {
+        const notification = document.createElement('div');
+        notification.style.cssText = `
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            z-index: 1050;
+            background: rgba(16, 185, 129, 0.2);
+            border: 1px solid rgba(16, 185, 129, 0.3);
+            border-radius: 8px;
+            color: #e2e8f0;
+            padding: 10px 12px;
+            backdrop-filter: blur(10px);
+            font-size: 12px;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            animation: slideIn 0.3s ease;
+        `;
+        notification.innerHTML = `
+            <i class="fas fa-check-circle"></i>
+            <span>Chart styling enhanced! 📈✨</span>
+        `;
+        
+        document.body.appendChild(notification);
+        
+        setTimeout(() => {
+            notification.remove();
+        }, 3000);
+    }, 1500);
+    
+})(); 

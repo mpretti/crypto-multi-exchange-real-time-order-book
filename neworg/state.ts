@@ -12,7 +12,7 @@ export const activeConnections = new Map<string, ExchangeConnectionState>();
 export let maxCumulativeTotal: number = 0;
 export let maxIndividualQuantity: number = 0;
 export let selectedExchanges: Set<string> = new Set(['binance', 'bybit']);
-export let isAggregatedView: boolean = true;
+export let isAggregatedView: boolean = false;
 export let isSidebarOpen: boolean = false;
 
 // Chart State

@@ -6,6 +6,15 @@
     <title>Real-Time Multi-Exchange Crypto Order Book</title>
     <link rel="stylesheet" href="index.css">
     <script src="https://unpkg.com/lightweight-charts@4.1.3/dist/lightweight-charts.standalone.production.js"></script>
+    <script src="https://unpkg.com/pako@2.1.0/dist/pako.min.js"></script>
+    <script type="importmap">
+      {
+        "imports": {
+          "@google/genai": "https://esm.sh/@google/genai@^0.7.0"
+        }
+      }
+    </script>
+<link rel="stylesheet" href="/index.css">
 </head>
 <body>
     <aside id="info-sidebar">
@@ -40,201 +49,89 @@
         <header>
             <div class="header-top-row">
                 <h1>Multi-Exchange Order Book</h1>
-                <nav class="navigation">
-                    <a href="index.html" class="nav-link active">Order Book</a>
-                    <a href="charts-dashboard.html" class="nav-link">Charts</a>
-                    <a href="volume-dashboard.html" class="nav-link">Volume Dashboard</a>
-                    <a href="exchange-status.html" class="nav-link">Exchange Status</a>
-                    <a href="trading-pairs-explorer.html" class="nav-link">Trading Pairs →</a>
-                </nav>
                 <button id="toggle-sidebar-btn" aria-label="Toggle Information Sidebar">☰ Stats</button>
             </div>
             <div class="controls">
-                <div class="control-group asset-selector">
+                <div>
                     <label for="asset-select">Asset:</label>
                     <select id="asset-select">
-                        <option value="BTCUSDT">BTC/USDT</option>
-                        <option value="ETHUSDT">ETH/USDT</option>
-                        <option value="ADAUSDT">ADA/USDT</option>
-                        <option value="SOLUSDT">SOL/USDT</option>
-                        <option value="DOTUSDT">DOT/USDT</option>
-                        <option value="LINKUSDT">LINK/USDT</option>
+                        <option value="BTCUSDT">BTCUSDT</option>
+                        <option value="ETHUSDT">ETHUSDT</option>
+                        <option value="SOLUSDT">SOLUSDT</option>
+                        <option value="DOGEUSDT">DOGEUSDT</option>
+                        <option value="ADAUSDT">ADAUSDT</option>
+                        <option value="LINKUSDT">LINKUSDT</option>
+                        <option value="XRPUSDT">XRPUSDT</option>
                     </select>
                 </div>
                 
-                <div class="control-group">
-                    <label class="modern-toggle">
-                        <input type="checkbox" id="view-mode-toggle">
-                        <span class="toggle-track">
-                            <span class="toggle-thumb"></span>
-                        </span>
-                        <span class="toggle-text" id="view-mode-label">Individual</span>
+                <div class="view-mode-selector">
+                    <span>View:</span>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="view-mode-toggle" checked>
+                        <span class="slider"></span>
                     </label>
+                    <span id="view-mode-label">Aggregated</span>
                 </div>
                 
                 <div class="control-group">
-                    <label class="modern-toggle">
+                    <label class="control-toggle">
                         <input type="checkbox" id="fee-adjusted-toggle" checked>
-                        <span class="toggle-track">
-                            <span class="toggle-thumb"></span>
-                        </span>
-                        <span class="toggle-text">Fee-Adjusted</span>
+                        <span class="control-slider"></span>
+                        <span class="control-label">Fee-Adjusted</span>
+                    </label>
+                    
+                    <label class="control-toggle">
+                        <input type="checkbox" id="filter-small-orders-toggle" checked>
+                        <span class="control-slider"></span>
+                        <span class="control-label">Filter Small Orders</span>
+                        <input type="number" id="small-order-threshold" value="10" min="1" max="1000" step="1" 
+                               title="Minimum order value in USD" class="threshold-input">
+                        <span class="threshold-label">$</span>
+                    </label>
+                    
+                    <label class="control-toggle">
+                        <input type="checkbox" id="top-of-book-toggle" checked>
+                        <span class="control-slider"></span>
+                        <span class="control-label">Top of Book</span>
+                    </label>
+                    
+                    <label class="control-toggle">
+                        <input type="checkbox" id="performance-monitor-toggle">
+                        <span class="control-slider"></span>
+                        <span class="control-label">Performance Monitor</span>
+                    </label>
+                    
+                    <label class="control-toggle">
+                        <input type="checkbox" id="market-intelligence-toggle">
+                        <span class="control-slider"></span>
+                        <span class="control-label">Market Intelligence</span>
                     </label>
                 </div>
-                
-                <div class="control-group">
-                    <label class="modern-toggle">
-                        <input type="checkbox" id="small-order-filter-toggle">
-                        <span class="toggle-track">
-                            <span class="toggle-thumb"></span>
-                        </span>
-                        <span class="toggle-text">Filter Small Orders</span>
-                    </label>
-                </div>
-                
-                <div class="control-group filter-settings" id="filter-settings" style="display: none;">
-                    <div class="filter-input-group">
-                        <label for="min-usd-input">Min USD:</label>
-                        <input type="number" id="min-usd-input" value="100" min="0" step="10" title="Minimum order value in USD">
-                    </div>
-                    <div class="filter-input-group">
-                        <label for="min-asset-input">Min Asset:</label>
-                        <input type="number" id="min-asset-input" value="0.001" min="0" step="0.001" title="Minimum order quantity in base asset">
-                    </div>
-                </div>
-                
-                <div class="control-group">
-                    <label class="modern-toggle">
-                        <input type="checkbox" id="logging-toggle" checked>
-                        <span class="toggle-track">
-                            <span class="toggle-thumb"></span>
-                        </span>
-                        <span class="toggle-text">Console Logs</span>
-                    </label>
-                    <button id="logging-settings-btn" class="settings-btn" title="Configure logging filters">⚙️</button>
-                </div>
             </div>
-            <div id="connection-status-summary" class="connection-summary">
-                <!-- Essential connection info will be populated here by JS -->
-            </div>
-            <div id="exchange-legend" class="exchange-pills">
-                <div class="exchange-header">
-                    <h3>Exchanges</h3>
-                    <button id="toggle-exchanges-btn" class="toggle-exchanges-btn" aria-label="Toggle exchange selector">
-                        <span class="toggle-icon">▼</span>
-                    </button>
-                </div>
-                <div class="pills-container" id="pills-container">
-                    <!-- CEX Exchanges -->
-                    <div class="exchange-pill" data-exchange="binance" data-active="true">
-                        <input type="checkbox" name="exchange" value="binance" checked style="display: none;">
-                        <span class="pill-indicator"></span>
-                        <span class="pill-name">Binance</span>
-                        <span class="pill-status"></span>
-                    </div>
-                    
-                    <div class="exchange-pill" data-exchange="bybit" data-active="true">
-                        <input type="checkbox" name="exchange" value="bybit" checked style="display: none;">
-                        <span class="pill-indicator"></span>
-                        <span class="pill-name">Bybit</span>
-                        <span class="pill-status"></span>
-                    </div>
-                    
-                    <div class="exchange-pill" data-exchange="okx" data-active="false">
-                        <input type="checkbox" name="exchange" value="okx" style="display: none;">
-                        <span class="pill-indicator"></span>
-                        <span class="pill-name">OKX</span>
-                        <span class="pill-status"></span>
-                    </div>
-                    
-                    <div class="exchange-pill" data-exchange="kraken" data-active="false">
-                        <input type="checkbox" name="exchange" value="kraken" style="display: none;">
-                        <span class="pill-indicator"></span>
-                        <span class="pill-name">Kraken</span>
-                        <span class="pill-status"></span>
-                    </div>
-                    
-                    <div class="exchange-pill" data-exchange="bitget" data-active="false">
-                        <input type="checkbox" name="exchange" value="bitget" style="display: none;">
-                        <span class="pill-indicator"></span>
-                        <span class="pill-name">Bitget</span>
-                        <span class="pill-status"></span>
-                    </div>
-                    
-                    <div class="exchange-pill" data-exchange="mexc" data-active="false">
-                        <input type="checkbox" name="exchange" value="mexc" style="display: none;">
-                        <span class="pill-indicator"></span>
-                        <span class="pill-name">MEXC Global</span>
-                        <span class="pill-status"></span>
-                    </div>
-                    
-                    <div class="exchange-pill" data-exchange="coinbase" data-active="false">
-                        <input type="checkbox" name="exchange" value="coinbase" style="display: none;">
-                        <span class="pill-indicator"></span>
-                        <span class="pill-name">Coinbase Pro</span>
-                        <span class="pill-status"></span>
-                    </div>
-                    
-                    <div class="exchange-pill" data-exchange="gemini" data-active="false">
-                        <input type="checkbox" name="exchange" value="gemini" style="display: none;">
-                        <span class="pill-indicator"></span>
-                        <span class="pill-name">Gemini</span>
-                        <span class="pill-status"></span>
-                    </div>
-                    
-                    <div class="exchange-pill" data-exchange="bitrue" data-active="false">
-                        <input type="checkbox" name="exchange" value="bitrue" style="display: none;">
-                        <span class="pill-indicator"></span>
-                        <span class="pill-name">Bitrue</span>
-                        <span class="pill-status"></span>
-                    </div>
-                    
-                    <div class="exchange-pill" data-exchange="uniswap_simulated" data-active="false">
-                        <input type="checkbox" name="exchange" value="uniswap_simulated" style="display: none;">
-                        <span class="pill-indicator"></span>
-                        <span class="pill-name">Uniswap</span>
-                        <span class="pill-status"></span>
-                    </div>
-                    
-                    <!-- DEX Exchanges -->
-                    <div class="exchange-pill" data-exchange="hyperliquid" data-active="true">
-                        <input type="checkbox" name="exchange" value="hyperliquid" checked style="display: none;">
-                        <span class="pill-indicator"></span>
-                        <span class="pill-name">Hyperliquid</span>
-                        <span class="pill-status"></span>
-                    </div>
-                    
-                    <div class="exchange-pill" data-exchange="vertex" data-active="false">
-                        <input type="checkbox" name="exchange" value="vertex" style="display: none;">
-                        <span class="pill-indicator"></span>
-                        <span class="pill-name">Vertex</span>
-                        <span class="pill-status"></span>
-                    </div>
-                    
-                    <div class="exchange-pill" data-exchange="dydx" data-active="false">
-                        <input type="checkbox" name="exchange" value="dydx" style="display: none;">
-                        <span class="pill-indicator"></span>
-                        <span class="pill-name">dYdX</span>
-                        <span class="pill-status"></span>
-                    </div>
-                    
-                    <div class="exchange-pill" data-exchange="jupiter" data-active="false">
-                        <input type="checkbox" name="exchange" value="jupiter" style="display: none;">
-                        <span class="pill-indicator"></span>
-                        <span class="pill-name">Jupiter</span>
-                        <span class="pill-status"></span>
-                    </div>
-                </div>
-            </div>
-            <div class="nav-links">
-                <a href="exchange-status.html" class="nav-link" title="Exchange Status Dashboard">
-                    📊 Status Dashboard
-                </a>
-                <a href="volume-dashboard.html" class="nav-link" title="Volume Analytics">
-                    📈 Volume Dashboard
-                </a>
+            <div id="connection-status-summary">
+                <!-- Connection statuses will be populated here by JS -->
             </div>
         </header>
+
+        <div class="exchange-controls-section">
+            <div class="section-header">
+                <div class="section-title">
+                    <span class="section-icon">⚡</span>
+                    <h2>Exchange Controls</h2>
+                    <span class="exchange-count" id="exchange-count">19 Exchanges</span>
+                </div>
+                <button id="toggle-exchange-grid" class="toggle-btn" aria-label="Toggle Exchange Grid">
+                    <span class="toggle-icon">▼</span>
+                    <span class="toggle-text">Collapse</span>
+                </button>
+            </div>
+            <div id="exchange-grid-container" class="exchange-grid-container">
+                <div id="exchange-grid" class="exchange-grid">
+                    <!-- Exchange cards will be populated here by JS -->
+                </div>
+            </div>
+        </div>
 
         <div class="spread-container">
             <h2>Overall Spread: <span id="spread-value">-</span> (<span id="spread-percentage">-</span>)</h2>
@@ -249,7 +146,7 @@
 
         <main class="order-book-container">
             <div class="order-book-column" id="bids-column">
-                <h3 id="bids-title">BIDS (Individual)</h3>
+                <h3 id="bids-title">BIDS (Aggregated)</h3>
                 <div class="order-book-header">
                     <span class="total-header">Total</span>
                     <span class="quantity-header">Quantity</span>
@@ -258,7 +155,7 @@
                 <ul id="bids-list" class="order-book-list"></ul>
             </div>
             <div class="order-book-column" id="asks-column">
-                <h3 id="asks-title">ASKS (Individual)</h3>
+                <h3 id="asks-title">ASKS (Aggregated)</h3>
                 <div class="order-book-header">
                      <span class="price-header">Price (USDT)</span>
                     <span class="quantity-header">Quantity</span>
@@ -269,540 +166,186 @@
         </main>
 
         <div id="chart-section-container">
-            <div id="chart-timeframe-selector">
-                <button data-interval="1m">1m</button>
-                <button data-interval="5m" class="active">5m</button>
-                <button data-interval="15m">15m</button>
-                <button data-interval="1h">1h</button>
-                <button data-interval="4h">4h</button>
-                <button data-interval="1d">1d</button>
+            <div id="chart-header">
+                <div id="chart-timeframe-selector">
+                    <button data-interval="1m">1m</button>
+                    <button data-interval="5m" class="active">5m</button>
+                    <button data-interval="15m">15m</button>
+                    <button data-interval="1h">1h</button>
+                    <button data-interval="4h">4h</button>
+                    <button data-interval="1d">1d</button>
+                </div>
+                <div id="chart-data-source">
+                    <span class="data-source-label">Data Source:</span>
+                    <span id="chart-data-source-value">Binance</span>
+                </div>
             </div>
             <div id="chart-container">
                 <!-- Lightweight Chart will be rendered here -->
             </div>
         </div>
 
-    </div>
-
-    <!-- Logging Settings Modal -->
-    <div id="logging-modal" class="modal" style="display: none;">
-        <div class="modal-content">
-            <div class="modal-header">
-                <h3>🔧 Console Logging Settings</h3>
-                <button id="close-logging-modal" class="close-btn">&times;</button>
+        <section id="ai-trading-section">
+            <div class="section-header">
+                <h2>🤖 AI Paper Trading</h2>
+                <div class="ai-status">
+                    <span class="status-dot" id="ai-status-dot"></span>
+                    <span id="ai-status-text">Initializing...</span>
+                </div>
             </div>
-            <div class="modal-body">
-                <div class="logging-section">
-                    <h4>Log Levels</h4>
-                    <div class="logging-checkboxes">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="log-level-log" checked>
-                            <span class="checkmark"></span>
-                            <span class="log-level-info">Info (console.log)</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="log-level-warn" checked>
-                            <span class="checkmark"></span>
-                            <span class="log-level-warning">Warnings (console.warn)</span>
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="log-level-error" checked>
-                            <span class="checkmark"></span>
-                            <span class="log-level-error">Errors (console.error)</span>
-                        </label>
+            
+            <div class="ai-trading-grid">
+                <div class="ai-portfolio-card">
+                    <h3>Portfolio</h3>
+                    <div class="portfolio-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Total Value</span>
+                            <span class="stat-value" id="ai-portfolio-value">$10,000.00</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">P&L</span>
+                            <span class="stat-value pnl" id="ai-portfolio-pnl">$0.00 (0.0%)</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Cash</span>
+                            <span class="stat-value" id="ai-cash">$10,000.00</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Open Positions</span>
+                            <span class="stat-value" id="ai-open-positions">0</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="logging-section">
-                    <h4>Categories</h4>
-                    <div class="logging-checkboxes">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="log-category-websocket" checked>
-                            <span class="checkmark"></span>
-                            WebSocket connections
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="log-category-api" checked>
-                            <span class="checkmark"></span>
-                            API calls & data fetching
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="log-category-chart" checked>
-                            <span class="checkmark"></span>
-                            Chart operations
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="log-category-ui" checked>
-                            <span class="checkmark"></span>
-                            UI updates & DOM
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="log-category-volume" checked>
-                            <span class="checkmark"></span>
-                            Volume dashboard
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="log-category-general" checked>
-                            <span class="checkmark"></span>
-                            General messages
-                        </label>
+                <div class="ai-performance-card">
+                    <h3>Performance</h3>
+                    <div class="performance-stats">
+                        <div class="stat-item">
+                            <span class="stat-label">Total Trades</span>
+                            <span class="stat-value" id="ai-total-trades">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Win Rate</span>
+                            <span class="stat-value" id="ai-win-rate">0.0%</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">AI Accuracy</span>
+                            <span class="stat-value" id="ai-accuracy">0.0%</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Profit Factor</span>
+                            <span class="stat-value" id="ai-profit-factor">0.00</span>
+                        </div>
                     </div>
                 </div>
 
-                <div class="logging-section">
-                    <h4>Exchanges</h4>
-                    <div class="logging-checkboxes exchange-checkboxes">
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="log-exchange-binance" checked>
-                            <span class="checkmark"></span>
-                            Binance
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="log-exchange-bybit" checked>
-                            <span class="checkmark"></span>
-                            Bybit
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="log-exchange-okx" checked>
-                            <span class="checkmark"></span>
-                            OKX
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="log-exchange-kraken" checked>
-                            <span class="checkmark"></span>
-                            Kraken
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="log-exchange-bitget" checked>
-                            <span class="checkmark"></span>
-                            Bitget
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="log-exchange-mexc" checked>
-                            <span class="checkmark"></span>
-                            MEXC
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="log-exchange-coinbase" checked>
-                            <span class="checkmark"></span>
-                            Coinbase
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="log-exchange-gemini" checked>
-                            <span class="checkmark"></span>
-                            Gemini
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="log-exchange-bitrue" checked>
-                            <span class="checkmark"></span>
-                            Bitrue
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="log-exchange-uniswap" checked>
-                            <span class="checkmark"></span>
-                            Uniswap
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="log-exchange-hyperliquid" checked>
-                            <span class="checkmark"></span>
-                            Hyperliquid
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="log-exchange-dydx" checked>
-                            <span class="checkmark"></span>
-                            dYdX
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="log-exchange-jupiter" checked>
-                            <span class="checkmark"></span>
-                            Jupiter
-                        </label>
-                        <label class="checkbox-label">
-                            <input type="checkbox" id="log-exchange-vertex" checked>
-                            <span class="checkmark"></span>
-                            Vertex
-                        </label>
+                <div class="ai-activity-card">
+                    <h3>Recent Activity</h3>
+                    <div id="ai-activity-log" class="activity-log">
+                        <div class="activity-item">
+                            <span class="activity-time">--:--:--</span>
+                            <span class="activity-text">AI trading bot ready to start...</span>
+                        </div>
                     </div>
                 </div>
             </div>
-            <div class="modal-footer">
-                <button id="logging-reset-btn" class="btn-secondary">Reset to Defaults</button>
-                <button id="logging-apply-btn" class="btn-primary">Apply Settings</button>
+
+            <div class="ai-controls">
+                <button id="start-ai-trading" class="ai-control-btn start">Start AI Trading</button>
+                <button id="stop-ai-trading" class="ai-control-btn stop" disabled>Stop Trading</button>
+                <button id="reset-ai-portfolio" class="ai-control-btn reset">Reset Portfolio</button>
+            </div>
+        </section>
+
+
+
+        <!-- Trade Ticker Section -->
+        <div id="trade-ticker-section">
+            <div class="trade-ticker-header">
+                <div class="trade-ticker-title">
+                    <h3>🌊 Live Trade Flow</h3>
+                    <div class="trade-ticker-controls">
+                        <button id="trade-ticker-toggle" class="ticker-btn active" title="Toggle trade ticker">
+                            <span class="ticker-status">ON</span>
+                        </button>
+                        <button id="trade-ticker-settings" class="ticker-btn" title="Ticker settings">⚙️</button>
+                        <button id="trade-ticker-clear" class="ticker-btn" title="Clear ticker">🗑️</button>
+                    </div>
+                </div>
+                
+                <!-- Trade Ticker Filters -->
+                <div id="trade-ticker-filters" class="ticker-filters">
+                    <div class="filter-group">
+                        <label>🐋 Min Size:</label>
+                        <select id="min-trade-size">
+                            <option value="0">🦐 All Trades</option>
+                            <option value="100">🐠 $100+ (Small Fish)</option>
+                            <option value="1000" selected>🐟 $1K+ (Fish)</option>
+                            <option value="5000">🦈 $5K+ (Shark)</option>
+                            <option value="10000">🐋 $10K+ (Whale)</option>
+                            <option value="50000">🦣 $50K+ (Mega Whale)</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>⚡ Rate Limit:</label>
+                        <select id="trade-rate-limit">
+                            <option value="0">🌊 All Trades</option>
+                            <option value="1000">💧 1 per second</option>
+                            <option value="2000" selected>⏳ 1 per 2s</option>
+                            <option value="5000">🐌 1 per 5s</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>🔤 Side:</label>
+                        <select id="trade-side-filter">
+                            <option value="all" selected>🔄 All</option>
+                            <option value="buy">🟢 Buys Only</option>
+                            <option value="sell">🔴 Sells Only</option>
+                        </select>
+                    </div>
+                    
+                    <div class="filter-group">
+                        <label>📊 Max Display:</label>
+                        <select id="max-trades-display">
+                            <option value="20">20 trades</option>
+                            <option value="50" selected>50 trades</option>
+                            <option value="100">100 trades</option>
+                            <option value="200">200 trades</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Marine Size Legend -->
+            <div id="marine-legend" class="marine-legend">
+                <div class="legend-item">🦐 Shrimp: $0-100</div>
+                <div class="legend-item">🐠 Small Fish: $100-1K</div>
+                <div class="legend-item">🐟 Fish: $1K-5K</div>
+                <div class="legend-item">🦈 Shark: $5K-10K</div>
+                <div class="legend-item">🐋 Whale: $10K-50K</div>
+                <div class="legend-item">🦣 Mega Whale: $50K+</div>
+            </div>
+            
+            <!-- Trade Ticker Container -->
+            <div id="trade-ticker-container">
+                <div id="trade-ticker-list">
+                    <!-- Live trades will be populated here -->
+                    <div class="trade-ticker-placeholder">
+                        <div class="placeholder-text">🌊 Connecting to trade stream...</div>
+                        <div class="placeholder-subtext">Trades will appear here once connected</div>
+                    </div>
+                </div>
             </div>
         </div>
+
     </div>
-
-    <script type="module" src="index.tsx"></script>
-<script type="module" src="/index.tsx"></script>
-
-<!-- 🚀 Enhanced Chart Features - Next Level Trading Charts -->
-<script>
-window.ChartEnhancements = {
-    init() {
-        console.log('🚀 Initializing Enhanced Chart Features...');
-        this.addEnhancedControls();
-        this.addKeyboardShortcuts();
-        this.addChartStats();
-        console.log('✅ Enhanced Chart Features Ready!');
-        this.showNotification('🎉 Enhanced chart features activated! Press "H" for help.');
-    },
-
-    addEnhancedControls() {
-        const chartContainer = document.getElementById('chart-container');
-        if (!chartContainer || document.getElementById('chart-enhancer')) return;
-
-        // Add enhanced control button
-        const enhancerBtn = document.createElement('button');
-        enhancerBtn.id = 'chart-enhancer';
-        enhancerBtn.innerHTML = '⚡';
-        enhancerBtn.title = 'Enhanced Chart Features';
-        enhancerBtn.style.cssText = `
-            position: absolute;
-            top: 10px;
-            right: 10px;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            background: linear-gradient(45deg, #4facfe, #00f2fe);
-            border: none;
-            color: white;
-            font-size: 20px;
-            cursor: pointer;
-            z-index: 1000;
-            box-shadow: 0 4px 12px rgba(79, 172, 254, 0.3);
-            transition: all 0.2s ease;
-        `;
-        
-        enhancerBtn.onmouseover = () => {
-            enhancerBtn.style.transform = 'scale(1.1)';
-            enhancerBtn.style.boxShadow = '0 6px 20px rgba(79, 172, 254, 0.5)';
-        };
-        
-        enhancerBtn.onmouseout = () => {
-            enhancerBtn.style.transform = 'scale(1)';
-            enhancerBtn.style.boxShadow = '0 4px 12px rgba(79, 172, 254, 0.3)';
-        };
-
-        enhancerBtn.onclick = () => this.showEnhancedMenu();
-
-        chartContainer.style.position = 'relative';
-        chartContainer.appendChild(enhancerBtn);
-    },
-
-    showEnhancedMenu() {
-        if (document.getElementById('enhanced-menu')) {
-            document.getElementById('enhanced-menu').remove();
-            return;
-        }
-
-        const menu = document.createElement('div');
-        menu.id = 'enhanced-menu';
-        menu.style.cssText = `
-            position: absolute;
-            top: 60px;
-            right: 10px;
-            background: rgba(20, 20, 30, 0.95);
-            border: 1px solid rgba(79, 172, 254, 0.3);
-            border-radius: 12px;
-            padding: 16px;
-            min-width: 250px;
-            z-index: 1001;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-            color: #e0e0e0;
-            font-family: -apple-system, BlinkMacSystemFont, sans-serif;
-        `;
-
-        menu.innerHTML = `
-            <div style="margin-bottom: 16px; padding-bottom: 12px; border-bottom: 1px solid rgba(255,255,255,0.1);">
-                <h4 style="margin: 0; color: #4facfe; font-size: 16px;">📊 Chart Pro</h4>
-            </div>
-            
-            <div style="margin-bottom: 12px;">
-                <label style="display: block; margin-bottom: 8px; font-size: 13px; color: #b0b0b0;">🎨 Theme:</label>
-                <select id="theme-selector" style="width: 100%; padding: 6px; border-radius: 6px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #e0e0e0;">
-                    <option value="dark">🌙 Dark</option>
-                    <option value="crypto">💎 Crypto</option>
-                    <option value="matrix">🔢 Matrix</option>
-                    <option value="neon">💫 Neon</option>
-                </select>
-            </div>
-            
-            <div style="margin-bottom: 12px;">
-                <label style="display: block; margin-bottom: 8px; font-size: 13px; color: #b0b0b0;">📈 Chart Mode:</label>
-                <select id="mode-selector" style="width: 100%; padding: 6px; border-radius: 6px; background: rgba(255,255,255,0.1); border: 1px solid rgba(255,255,255,0.2); color: #e0e0e0;">
-                    <option value="single">📈 Single Asset</option>
-                    <option value="comparison">📊 Multi-Exchange</option>
-                    <option value="depth">📚 Order Book</option>
-                    <option value="heatmap">🔥 Heatmap</option>
-                </select>
-            </div>
-            
-            <div style="margin-bottom: 16px;">
-                <label style="display: block; margin-bottom: 8px; font-size: 13px; color: #b0b0b0;">🔧 Quick Actions:</label>
-                <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 8px;">
-                    <button onclick="ChartEnhancements.resetZoom()" style="padding: 8px; border: none; border-radius: 6px; background: linear-gradient(45deg, #4facfe, #00f2fe); color: white; cursor: pointer; font-size: 12px;">🔍 Reset</button>
-                    <button onclick="ChartEnhancements.screenshot()" style="padding: 8px; border: none; border-radius: 6px; background: linear-gradient(45deg, #ff6b6b, #ff8e8e); color: white; cursor: pointer; font-size: 12px;">📸 Shot</button>
-                    <button onclick="ChartEnhancements.fullscreen()" style="padding: 8px; border: none; border-radius: 6px; background: linear-gradient(45deg, #26de81, #20bf6b); color: white; cursor: pointer; font-size: 12px;">⛶ Full</button>
-                    <button onclick="ChartEnhancements.showHelp()" style="padding: 8px; border: none; border-radius: 6px; background: linear-gradient(45deg, #a55eea, #8854d0); color: white; cursor: pointer; font-size: 12px;">❓ Help</button>
-                </div>
-            </div>
-            
-            <div style="font-size: 11px; color: #666; text-align: center;">
-                Press H for keyboard shortcuts
-            </div>
-        `;
-
-        document.getElementById('chart-container').appendChild(menu);
-
-        // Add event listeners
-        document.getElementById('theme-selector').onchange = (e) => this.applyTheme(e.target.value);
-        document.getElementById('mode-selector').onchange = (e) => this.switchMode(e.target.value);
-
-        // Close menu when clicking outside
-        setTimeout(() => {
-            document.addEventListener('click', (e) => {
-                if (!menu.contains(e.target) && e.target.id !== 'chart-enhancer') {
-                    menu.remove();
-                }
-            }, { once: true });
-        }, 100);
-    },
-
-    addKeyboardShortcuts() {
-        document.addEventListener('keydown', (e) => {
-            if (e.target.tagName === 'INPUT' || e.target.tagName === 'TEXTAREA') return;
-            
-            switch (e.key.toLowerCase()) {
-                case 'h':
-                    this.showHelp();
-                    break;
-                case 'r':
-                    this.resetZoom();
-                    break;
-                case 'f':
-                    this.fullscreen();
-                    break;
-                case 's':
-                    if (e.ctrlKey || e.metaKey) {
-                        e.preventDefault();
-                        this.screenshot();
-                    }
-                    break;
-            }
-        });
-    },
-
-    addChartStats() {
-        const chartContainer = document.getElementById('chart-container');
-        if (!chartContainer || document.getElementById('chart-stats')) return;
-
-        const stats = document.createElement('div');
-        stats.id = 'chart-stats';
-        stats.style.cssText = `
-            position: absolute;
-            top: 60px;
-            left: 10px;
-            background: rgba(0, 0, 0, 0.8);
-            border: 1px solid rgba(79, 172, 254, 0.3);
-            border-radius: 8px;
-            padding: 12px;
-            color: #e0e0e0;
-            font-size: 12px;
-            z-index: 100;
-            backdrop-filter: blur(5px);
-            min-width: 180px;
-        `;
-
-        stats.innerHTML = `
-            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                <span>Price:</span>
-                <span id="live-price" style="color: #4facfe; font-weight: 600;">$44,712.91</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                <span>24h:</span>
-                <span id="live-change" style="color: #ff4444;">-$287.09 (-0.64%)</span>
-            </div>
-            <div style="display: flex; justify-content: space-between; margin-bottom: 4px;">
-                <span>Volume:</span>
-                <span style="color: #26de81;">62.05K</span>
-            </div>
-            <div style="display: flex; justify-content: space-between;">
-                <span>Mode:</span>
-                <span id="current-mode" style="color: #a55eea;">Single</span>
-            </div>
-        `;
-
-        chartContainer.appendChild(stats);
-
-        // Start live updates
-        this.startLiveUpdates();
-    },
-
-    startLiveUpdates() {
-        setInterval(() => {
-            const priceEl = document.getElementById('live-price');
-            const changeEl = document.getElementById('live-change');
-            
-            if (priceEl && changeEl) {
-                // Simulate price movement
-                const basePrice = 44712.91;
-                const variation = (Math.random() - 0.5) * 100;
-                const newPrice = basePrice + variation;
-                const change = variation;
-                const changePercent = (change / basePrice) * 100;
-                
-                priceEl.textContent = `$${newPrice.toFixed(2)}`;
-                changeEl.textContent = `${change >= 0 ? '+' : ''}$${change.toFixed(2)} (${change >= 0 ? '+' : ''}${changePercent.toFixed(2)}%)`;
-                changeEl.style.color = change >= 0 ? '#26de81' : '#ff4444';
-            }
-        }, 2000);
-    },
-
-    applyTheme(theme) {
-        const container = document.getElementById('chart-section-container');
-        if (!container) return;
-
-        // Remove existing theme classes
-        container.classList.remove('theme-dark', 'theme-crypto', 'theme-matrix', 'theme-neon');
-        container.classList.add(`theme-${theme}`);
-
-        // Apply theme styles
-        const themes = {
-            dark: 'linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%)',
-            crypto: 'linear-gradient(135deg, #1a1a2e 0%, #16213e 100%)',
-            matrix: 'linear-gradient(135deg, #0d1b0d 0%, #1a3d1a 100%)',
-            neon: 'linear-gradient(135deg, #0a0a0a 0%, #2d1b69 100%)'
-        };
-
-        container.style.background = themes[theme] || themes.dark;
-        this.showNotification(`🎨 ${theme.charAt(0).toUpperCase() + theme.slice(1)} theme applied!`);
-    },
-
-    switchMode(mode) {
-        const modeEl = document.getElementById('current-mode');
-        if (modeEl) {
-            modeEl.textContent = mode.charAt(0).toUpperCase() + mode.slice(1);
-        }
-
-        const messages = {
-            single: '📈 Single asset mode activated',
-            comparison: '📊 Multi-exchange comparison activated',
-            depth: '📚 Order book depth activated',
-            heatmap: '🔥 Price heatmap activated'
-        };
-
-        this.showNotification(messages[mode] || 'Mode switched');
-    },
-
-    resetZoom() {
-        this.showNotification('🔍 Chart zoom reset');
-        console.log('Chart: Zoom reset');
-    },
-
-    screenshot() {
-        this.showNotification('📸 Screenshot captured!');
-        console.log('Chart: Screenshot taken');
-    },
-
-    fullscreen() {
-        const container = document.getElementById('chart-section-container');
-        if (!container) return;
-
-        if (container.style.position === 'fixed') {
-            // Exit fullscreen
-            container.style.cssText = '';
-            this.showNotification('📱 Exited fullscreen');
-        } else {
-            // Enter fullscreen
-            container.style.cssText = `
-                position: fixed !important;
-                top: 0 !important;
-                left: 0 !important;
-                width: 100vw !important;
-                height: 100vh !important;
-                z-index: 9999 !important;
-                background: #0a0a0a !important;
-            `;
-            this.showNotification('⛶ Entered fullscreen mode');
-        }
-    },
-
-    showHelp() {
-        const helpText = `🎯 Enhanced Chart Features:
-
-⌨️ Keyboard Shortcuts:
-• H - Show this help
-• R - Reset zoom
-• F - Toggle fullscreen  
-• Ctrl+S - Take screenshot
-
-🚀 Features:
-• Real-time price updates
-• Multiple themes
-• Chart modes
-• Live statistics
-• Fullscreen mode
-
-💡 Tips:
-• Click ⚡ button for quick menu
-• Hover over buttons for tooltips
-• All changes are instant!`;
-
-        alert(helpText);
-    },
-
-    showNotification(message) {
-        const notification = document.createElement('div');
-        notification.style.cssText = `
-            position: fixed;
-            top: 20px;
-            right: 20px;
-            background: rgba(79, 172, 254, 0.9);
-            color: white;
-            padding: 12px 16px;
-            border-radius: 8px;
-            font-size: 14px;
-            z-index: 10000;
-            backdrop-filter: blur(10px);
-            box-shadow: 0 4px 12px rgba(79, 172, 254, 0.3);
-            animation: slideIn 0.3s ease;
-        `;
-        
-        notification.textContent = message;
-        document.body.appendChild(notification);
-
-        // Auto-remove
-        setTimeout(() => {
-            notification.style.animation = 'slideOut 0.3s ease forwards';
-            setTimeout(() => notification.remove(), 300);
-        }, 3000);
-    }
-};
-
-// Add CSS animations
-const style = document.createElement('style');
-style.textContent = `
-    @keyframes slideIn {
-        from { transform: translateX(100%); opacity: 0; }
-        to { transform: translateX(0); opacity: 1; }
-    }
-    @keyframes slideOut {
-        from { transform: translateX(0); opacity: 1; }
-        to { transform: translateX(100%); opacity: 0; }
-    }
-`;
-document.head.appendChild(style);
-
-// Initialize when DOM is ready
-if (document.readyState === 'loading') {
-    document.addEventListener('DOMContentLoaded', () => {
-        setTimeout(() => ChartEnhancements.init(), 2000);
-    });
-} else {
-    setTimeout(() => ChartEnhancements.init(), 2000);
-}
-</script>
-
+    <script src="charts.ts" type="module"></script>
+    <script src="trades.ts" type="module"></script>
+    <script src="index.tsx" type="module"></script>
+    <script src="advanced-trading-features.js" type="module"></script>
+    <script src="performance-monitor.js" type="module"></script>
+    <script src="market-intelligence.js" type="module"></script>
 </body>
 </html>

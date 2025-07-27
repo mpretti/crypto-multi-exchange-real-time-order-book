@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Top of Book - Crypto Multi-Exchange</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #0a0a0a 0%, #1a1a1a 100%);
+            color: #ffffff;
+            min-height: 100vh;
+            overflow-x: hidden;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+            padding: 20px 0;
+            border-bottom: 2px solid #333;
+        }
+
+        .header h1 {
+            font-size: 2.5rem;
+            color: #4facfe;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(79, 172, 254, 0.3);
+        }
+
+        .header .subtitle {
+            font-size: 1.2rem;
+            color: #888;
+            margin-bottom: 20px;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 30px;
+            margin-bottom: 20px;
+            flex-wrap: wrap;
+        }
+
+        .control-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .control-group label {
+            font-weight: 500;
+            color: #ccc;
+        }
+
+        select {
+            padding: 8px 12px;
+            border: 2px solid #333;
+            border-radius: 8px;
+            background: #1a1a1a;
+            color: #fff;
+            font-size: 14px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        select:hover {
+            border-color: #4facfe;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #4facfe;
+            box-shadow: 0 0 0 3px rgba(79, 172, 254, 0.1);
+        }
+
+        .exchange-selector {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 10px;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            backdrop-filter: blur(10px);
+        }
+
+        .exchange-pill {
+            position: relative;
+            padding: 8px 16px;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            background: rgba(255, 255, 255, 0.1);
+            font-size: 14px;
+            font-weight: 500;
+            user-select: none;
+        }
+
+        .exchange-pill:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+        }
+
+        .exchange-pill[data-active="true"] {
+            border-color: #4facfe;
+            background: rgba(79, 172, 254, 0.2);
+            color: #4facfe;
+        }
+
+        .exchange-pill input {
+            display: none;
+        }
+
+        .pill-indicator {
+            display: inline-block;
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #666;
+            margin-right: 8px;
+            transition: all 0.3s ease;
+        }
+
+        .exchange-pill[data-active="true"] .pill-indicator {
+            background: #26de81;
+            box-shadow: 0 0 8px rgba(38, 222, 129, 0.5);
+        }
+
+        .top-book-container {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 30px;
+            margin-top: 30px;
+        }
+
+        .book-section {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 12px;
+            padding: 20px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .book-section h3 {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.5rem;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #333;
+        }
+
+        .bids-section h3 {
+            color: #26de81;
+        }
+
+        .asks-section h3 {
+            color: #ff4444;
+        }
+
+        .book-list {
+            list-style: none;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+
+        .book-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+            border-radius: 8px;
+            background: rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+            border-left: 4px solid transparent;
+        }
+
+        .book-item:hover {
+            background: rgba(255, 255, 255, 0.1);
+            transform: translateX(4px);
+        }
+
+        .bid-item {
+            border-left-color: #26de81;
+        }
+
+        .ask-item {
+            border-left-color: #ff4444;
+        }
+
+        .book-item .exchange {
+            font-weight: 600;
+            font-size: 0.9rem;
+            opacity: 0.8;
+            min-width: 80px;
+        }
+
+        .book-item .price {
+            font-weight: 700;
+            font-size: 1.1rem;
+            font-family: 'Courier New', monospace;
+        }
+
+        .bid-item .price {
+            color: #26de81;
+        }
+
+        .ask-item .price {
+            color: #ff4444;
+        }
+
+        .book-item .quantity {
+            font-size: 0.9rem;
+            opacity: 0.7;
+            font-family: 'Courier New', monospace;
+        }
+
+        .spread-info {
+            text-align: center;
+            margin: 20px 0;
+            padding: 15px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .spread-value {
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffa500;
+            font-family: 'Courier New', monospace;
+        }
+
+        .connection-status {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            padding: 10px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 8px;
+            backdrop-filter: blur(10px);
+        }
+
+        .status-indicator {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: #666;
+            transition: all 0.3s ease;
+        }
+
+        .status-indicator.connected {
+            background: #26de81;
+            box-shadow: 0 0 8px rgba(38, 222, 129, 0.5);
+        }
+
+        .status-indicator.connecting {
+            background: #ffa500;
+            animation: pulse 2s infinite;
+        }
+
+        .status-indicator.error {
+            background: #ff4444;
+        }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .no-data {
+            text-align: center;
+            padding: 40px;
+            color: #666;
+            font-style: italic;
+        }
+
+        .refresh-btn {
+            background: linear-gradient(135deg, #4facfe 0%, #00f2fe 100%);
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 8px;
+            cursor: pointer;
+            font-weight: 600;
+            transition: all 0.3s ease;
+        }
+
+        .refresh-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 12px rgba(79, 172, 254, 0.3);
+        }
+
+        @media (max-width: 768px) {
+            .top-book-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .controls {
+                flex-direction: column;
+                gap: 15px;
+            }
+            
+            .exchange-selector {
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>⚡ Top of Book</h1>
+            <p class="subtitle">Real-time best bid/ask across all exchanges - Ultra Fast View</p>
+        </div>
+
+        <div class="controls">
+            <div class="control-group">
+                <label for="asset-select">Asset:</label>
+                <select id="asset-select">
+                    <option value="BTCUSDT">BTC/USDT</option>
+                    <option value="ETHUSDT">ETH/USDT</option>
+                    <option value="ADAUSDT">ADA/USDT</option>
+                    <option value="SOLUSDT">SOL/USDT</option>
+                    <option value="DOTUSDT">DOT/USDT</option>
+                    <option value="LINKUSDT">LINK/USDT</option>
+                </select>
+            </div>
+            
+            <button class="refresh-btn" id="refresh-btn">🔄 Refresh</button>
+        </div>
+
+        <div class="connection-status" id="connection-status">
+            <div class="status-indicator" id="status-indicator"></div>
+            <span id="status-text">Initializing...</span>
+        </div>
+
+        <div class="exchange-selector" id="exchange-selector">
+            <div class="exchange-pill" data-exchange="binance" data-active="true">
+                <input type="checkbox" name="exchange" value="binance" checked>
+                <span class="pill-indicator"></span>
+                <span class="pill-name">Binance</span>
+            </div>
+            <div class="exchange-pill" data-exchange="bybit" data-active="true">
+                <input type="checkbox" name="exchange" value="bybit" checked>
+                <span class="pill-indicator"></span>
+                <span class="pill-name">Bybit</span>
+            </div>
+            <div class="exchange-pill" data-exchange="okx" data-active="true">
+                <input type="checkbox" name="exchange" value="okx" checked>
+                <span class="pill-indicator"></span>
+                <span class="pill-name">OKX</span>
+            </div>
+            <div class="exchange-pill" data-exchange="kraken" data-active="false">
+                <input type="checkbox" name="exchange" value="kraken">
+                <span class="pill-indicator"></span>
+                <span class="pill-name">Kraken</span>
+            </div>
+            <div class="exchange-pill" data-exchange="bitget" data-active="false">
+                <input type="checkbox" name="exchange" value="bitget">
+                <span class="pill-indicator"></span>
+                <span class="pill-name">Bitget</span>
+            </div>
+            <div class="exchange-pill" data-exchange="mexc" data-active="false">
+                <input type="checkbox" name="exchange" value="mexc">
+                <span class="pill-indicator"></span>
+                <span class="pill-name">MEXC</span>
+            </div>
+            <div class="exchange-pill" data-exchange="coinbase" data-active="false">
+                <input type="checkbox" name="exchange" value="coinbase">
+                <span class="pill-indicator"></span>
+                <span class="pill-name">Coinbase</span>
+            </div>
+            <div class="exchange-pill" data-exchange="gemini" data-active="false">
+                <input type="checkbox" name="exchange" value="gemini">
+                <span class="pill-indicator"></span>
+                <span class="pill-name">Gemini</span>
+            </div>
+            <div class="exchange-pill" data-exchange="kucoin" data-active="false">
+                <input type="checkbox" name="exchange" value="kucoin">
+                <span class="pill-indicator"></span>
+                <span class="pill-name">KuCoin</span>
+            </div>
+            <div class="exchange-pill" data-exchange="gateio" data-active="false">
+                <input type="checkbox" name="exchange" value="gateio">
+                <span class="pill-indicator"></span>
+                <span class="pill-name">Gate.io</span>
+            </div>
+            <div class="exchange-pill" data-exchange="cryptocom" data-active="false">
+                <input type="checkbox" name="exchange" value="cryptocom">
+                <span class="pill-indicator"></span>
+                <span class="pill-name">Crypto.com</span>
+            </div>
+            <div class="exchange-pill" data-exchange="woox" data-active="false">
+                <input type="checkbox" name="exchange" value="woox">
+                <span class="pill-indicator"></span>
+                <span class="pill-name">WOO X</span>
+            </div>
+            <div class="exchange-pill" data-exchange="bitfinex" data-active="false">
+                <input type="checkbox" name="exchange" value="bitfinex">
+                <span class="pill-indicator"></span>
+                <span class="pill-name">Bitfinex</span>
+            </div>
+            <div class="exchange-pill" data-exchange="htx" data-active="false">
+                <input type="checkbox" name="exchange" value="htx">
+                <span class="pill-indicator"></span>
+                <span class="pill-name">HTX</span>
+            </div>
+            <div class="exchange-pill" data-exchange="hyperliquid" data-active="false">
+                <input type="checkbox" name="exchange" value="hyperliquid">
+                <span class="pill-indicator"></span>
+                <span class="pill-name">Hyperliquid</span>
+            </div>
+        </div>
+
+        <div class="spread-info">
+            <div>Best Spread: <span class="spread-value" id="spread-value">-</span></div>
+        </div>
+
+        <div class="top-book-container">
+            <div class="book-section bids-section">
+                <h3>🟢 BIDS (Best Buy Prices)</h3>
+                <ul class="book-list" id="bids-list">
+                    <li class="no-data">Connecting to exchanges...</li>
+                </ul>
+            </div>
+
+            <div class="book-section asks-section">
+                <h3>🔴 ASKS (Best Sell Prices)</h3>
+                <ul class="book-list" id="asks-list">
+                    <li class="no-data">Connecting to exchanges...</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="top-of-book.js"></script>
+</body>
+</html> 

@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Exchange Status Dashboard - Crypto Multi-Exchange Order Book</title>
+    <link rel="stylesheet" href="exchange-status.css">
+    <link rel="icon" type="image/x-icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>📊</text></svg>">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="common-header.js"></script>
+    <link rel="stylesheet" href="common-header-adjustments.css">
+    <script src="common-header.js"></script>
+    <link rel="stylesheet" href="common-header-adjustments.css">
+</head>
+<body data-header='{"currentPage": "exchange-status"}'>
+    <div class="container mx-auto p-6">
+        <header class="dashboard-header mb-8">
+            <div class="header-content flex justify-between items-center">
+                <div class="header-left">
+                    <h1 class="text-4xl font-bold text-blue-400 mb-2">📊 Exchange Status Dashboard</h1>
+                    <p class="subtitle text-gray-300">Real-time monitoring and comprehensive testing for all exchange connections</p>
+                </div>
+                <div class="header-right">
+                    <div class="header-controls flex gap-4 mb-4">
+                        <button id="refresh-all-btn" class="control-btn primary bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg">
+                            🔄 Refresh All
+                        </button>
+                        <button id="test-all-apis-btn" class="control-btn bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg">
+                            🧪 Test All APIs
+                        </button>
+                        <button id="test-all-websockets-btn" class="control-btn bg-purple-600 hover:bg-purple-700 px-4 py-2 rounded-lg">
+                            🔌 Test All WebSockets
+                        </button>
+                        <button id="export-data-btn" class="control-btn bg-gray-600 hover:bg-gray-700 px-4 py-2 rounded-lg">
+                            📤 Export Data
+                        </button>
+                        <nav class="navigation flex gap-2">
+                            <a href="index.html" class="nav-link bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded text-sm">← Order Book</a>
+                            <a href="charts-dashboard.html" class="nav-link bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded text-sm">Charts</a>
+                            <a href="volume-dashboard.html" class="nav-link bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded text-sm">Volume Dashboard</a>
+                            <a href="exchange-status.html" class="nav-link active bg-blue-600 px-3 py-1 rounded text-sm">Exchange Status</a>
+                            <a href="trading-pairs-explorer.html" class="nav-link bg-gray-700 hover:bg-gray-600 px-3 py-1 rounded text-sm">Trading Pairs →</a>
+                        </nav>
+                    </div>
+                    <div class="auto-refresh-control flex items-center gap-2">
+                        <label class="toggle-switch relative inline-block w-12 h-6">
+                            <input type="checkbox" id="auto-refresh-toggle" checked class="sr-only">
+                            <span class="slider absolute cursor-pointer top-0 left-0 right-0 bottom-0 bg-gray-600 rounded-full transition-all duration-300"></span>
+                        </label>
+                        <span class="text-sm">Auto-refresh (60s)</span>
+                    </div>
+                </div>
+            </div>
+        </header>
+
+        <!-- Enhanced Dashboard Stats -->
+        <div class="dashboard-stats grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-8">
+            <div class="stat-card bg-gray-800 p-4 rounded-lg border border-gray-700">
+                <div class="stat-icon text-2xl mb-2">🟢</div>
+                <div class="stat-content">
+                    <div class="stat-value text-2xl font-bold text-green-400" id="connected-count">0</div>
+                    <div class="stat-label text-gray-400 text-sm">Connected</div>
+                </div>
+            </div>
+            <div class="stat-card bg-gray-800 p-4 rounded-lg border border-gray-700">
+                <div class="stat-icon text-2xl mb-2">🟡</div>
+                <div class="stat-content">
+                    <div class="stat-value text-2xl font-bold text-yellow-400" id="connecting-count">0</div>
+                    <div class="stat-label text-gray-400 text-sm">Connecting</div>
+                </div>
+            </div>
+            <div class="stat-card bg-gray-800 p-4 rounded-lg border border-gray-700">
+                <div class="stat-icon text-2xl mb-2">🔴</div>
+                <div class="stat-content">
+                    <div class="stat-value text-2xl font-bold text-red-400" id="error-count">0</div>
+                    <div class="stat-label text-gray-400 text-sm">Errors</div>
+                </div>
+            </div>
+            <div class="stat-card bg-gray-800 p-4 rounded-lg border border-gray-700">
+                <div class="stat-icon text-2xl mb-2">📊</div>
+                <div class="stat-content">
+                    <div class="stat-value text-2xl font-bold text-blue-400" id="total-messages">0</div>
+                    <div class="stat-label text-gray-400 text-sm">Total Messages</div>
+                </div>
+            </div>
+            <div class="stat-card bg-gray-800 p-4 rounded-lg border border-gray-700">
+                <div class="stat-icon text-2xl mb-2">⚡</div>
+                <div class="stat-content">
+                    <div class="stat-value text-2xl font-bold text-purple-400" id="avg-latency">0ms</div>
+                    <div class="stat-label text-gray-400 text-sm">Avg Latency</div>
+                </div>
+            </div>
+            <div class="stat-card bg-gray-800 p-4 rounded-lg border border-gray-700">
+                <div class="stat-icon text-2xl mb-2">🔄</div>
+                <div class="stat-content">
+                    <div class="stat-value text-2xl font-bold text-orange-400" id="total-retries">0</div>
+                    <div class="stat-label text-gray-400 text-sm">Total Retries</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Rate Limiting & Performance Monitor -->
+        <div class="rate-limiting-monitor bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+            <h3 class="text-xl font-bold mb-4 text-yellow-400">⚠️ Rate Limiting & Performance Monitor</h3>
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+                <div class="rate-limit-card bg-gray-700 p-4 rounded-lg">
+                    <h4 class="font-semibold text-red-400 mb-2">🚨 Rate Limited Exchanges</h4>
+                    <div id="rate-limited-exchanges" class="text-sm text-gray-300">None detected</div>
+                </div>
+                <div class="performance-card bg-gray-700 p-4 rounded-lg">
+                    <h4 class="font-semibold text-orange-400 mb-2">⏱️ Slow Responses (>2s)</h4>
+                    <div id="slow-exchanges" class="text-sm text-gray-300">None detected</div>
+                </div>
+                <div class="health-card bg-gray-700 p-4 rounded-lg">
+                    <h4 class="font-semibold text-green-400 mb-2">💚 Overall Health Score</h4>
+                    <div id="health-score" class="text-2xl font-bold text-green-400">100%</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Enhanced Filters -->
+        <div class="dashboard-filters bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+            <div class="grid grid-cols-1 md:grid-cols-4 gap-4">
+                <div class="filter-group">
+                    <label class="block text-sm font-medium mb-2">Filter by Status:</label>
+                    <select id="status-filter" class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2">
+                        <option value="all">All Exchanges</option>
+                        <option value="connected">Connected Only</option>
+                        <option value="connecting">Connecting Only</option>
+                        <option value="error">Errors Only</option>
+                        <option value="disabled">Disabled Only</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="block text-sm font-medium mb-2">Exchange Type:</label>
+                    <select id="type-filter" class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2">
+                        <option value="all">All Types</option>
+                        <option value="cex">CEX Only</option>
+                        <option value="dex">DEX Only</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="block text-sm font-medium mb-2">Sort by:</label>
+                    <select id="sort-filter" class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2">
+                        <option value="name">Name</option>
+                        <option value="status">Status</option>
+                        <option value="uptime">Uptime</option>
+                        <option value="messages">Message Count</option>
+                        <option value="latency">Latency</option>
+                        <option value="errors">Error Count</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <label class="block text-sm font-medium mb-2">Test Symbol:</label>
+                    <select id="test-symbol-filter" class="w-full bg-gray-700 border border-gray-600 rounded px-3 py-2">
+                        <option value="BTCUSDT">BTC/USDT</option>
+                        <option value="ETHUSDT">ETH/USDT</option>
+                        <option value="SOLUSDT">SOL/USDT</option>
+                        <option value="ADAUSDT">ADA/USDT</option>
+                    </select>
+                </div>
+            </div>
+        </div>
+
+        <!-- Exchange Cards Grid -->
+        <div class="exchanges-grid grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mb-8" id="exchanges-grid">
+            <!-- Exchange cards will be populated here -->
+        </div>
+
+        <!-- Comprehensive Testing Panel -->
+        <div class="testing-panel bg-gray-800 p-6 rounded-lg border border-gray-700 mb-8">
+            <h3 class="text-xl font-bold mb-4 text-blue-400">🧪 Comprehensive Exchange Testing</h3>
+            
+            <!-- Test Results Summary -->
+            <div class="test-results-summary grid grid-cols-1 md:grid-cols-4 gap-4 mb-6">
+                <div class="test-result-card bg-gray-700 p-4 rounded-lg">
+                    <h4 class="font-semibold text-blue-400 mb-2">📡 API Endpoints</h4>
+                    <div id="api-test-results" class="text-sm">
+                        <div class="flex justify-between"><span>Tested:</span><span id="api-tested">0</span></div>
+                        <div class="flex justify-between"><span>Passed:</span><span id="api-passed" class="text-green-400">0</span></div>
+                        <div class="flex justify-between"><span>Failed:</span><span id="api-failed" class="text-red-400">0</span></div>
+                    </div>
+                </div>
+                
+                <div class="test-result-card bg-gray-700 p-4 rounded-lg">
+                    <h4 class="font-semibold text-purple-400 mb-2">🔌 WebSocket Streams</h4>
+                    <div id="ws-test-results" class="text-sm">
+                        <div class="flex justify-between"><span>Tested:</span><span id="ws-tested">0</span></div>
+                        <div class="flex justify-between"><span>Connected:</span><span id="ws-connected" class="text-green-400">0</span></div>
+                        <div class="flex justify-between"><span>Failed:</span><span id="ws-failed" class="text-red-400">0</span></div>
+                    </div>
+                </div>
+                
+                <div class="test-result-card bg-gray-700 p-4 rounded-lg">
+                    <h4 class="font-semibold text-green-400 mb-2">📈 Order Book Data</h4>
+                    <div id="orderbook-test-results" class="text-sm">
+                        <div class="flex justify-between"><span>Tested:</span><span id="orderbook-tested">0</span></div>
+                        <div class="flex justify-between"><span>Valid:</span><span id="orderbook-valid" class="text-green-400">0</span></div>
+                        <div class="flex justify-between"><span>Invalid:</span><span id="orderbook-invalid" class="text-red-400">0</span></div>
+                    </div>
+                </div>
+                
+                <div class="test-result-card bg-gray-700 p-4 rounded-lg">
+                    <h4 class="font-semibold text-orange-400 mb-2">📊 Historical Data</h4>
+                    <div id="historical-test-results" class="text-sm">
+                        <div class="flex justify-between"><span>Tested:</span><span id="historical-tested">0</span></div>
+                        <div class="flex justify-between"><span>Available:</span><span id="historical-available" class="text-green-400">0</span></div>
+                        <div class="flex justify-between"><span>Unavailable:</span><span id="historical-unavailable" class="text-red-400">0</span></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Individual Test Controls -->
+            <div class="test-controls grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+                <button id="test-symbols-btn" class="test-btn bg-blue-600 hover:bg-blue-700 px-4 py-2 rounded-lg">
+                    📋 Test Symbol Lists
+                </button>
+                <button id="test-orderbooks-btn" class="test-btn bg-green-600 hover:bg-green-700 px-4 py-2 rounded-lg">
+                    📈 Test Order Books
+                </button>
+                <button id="test-historical-btn" class="test-btn bg-orange-600 hover:bg-orange-700 px-4 py-2 rounded-lg">
+                    📊 Test Historical Data
+                </button>
+                <button id="test-rate-limits-btn" class="test-btn bg-red-600 hover:bg-red-700 px-4 py-2 rounded-lg">
+                    ⚠️ Test Rate Limits
+                </button>
+            </div>
+        </div>
+
+        <!-- Real-time Activity Log -->
+        <div class="dashboard-logs bg-gray-800 p-6 rounded-lg border border-gray-700">
+            <div class="logs-header flex justify-between items-center mb-4">
+                <h3 class="text-xl font-bold text-blue-400">📝 Real-time Activity Log</h3>
+                <div class="logs-controls flex gap-2">
+                    <button id="clear-logs-btn" class="control-btn small bg-gray-600 hover:bg-gray-700 px-3 py-1 rounded text-sm">Clear</button>
+                    <button id="pause-logs-btn" class="control-btn small bg-yellow-600 hover:bg-yellow-700 px-3 py-1 rounded text-sm">Pause</button>
+                    <select id="log-level-filter" class="bg-gray-700 border border-gray-600 rounded px-2 py-1 text-sm">
+                        <option value="all">All Levels</option>
+                        <option value="success">Success</option>
+                        <option value="info">Info</option>
+                        <option value="debug">Debug</option>
+                        <option value="warn">Warnings</option>
+                        <option value="error">Errors</option>
+                    </select>
+                </div>
+            </div>
+            <div class="logs-container bg-gray-900 border border-gray-700 rounded p-4 h-64 overflow-y-auto font-mono text-sm" id="logs-container">
+                <!-- Real-time logs will appear here -->
+            </div>
+        </div>
+    </div>
+
+    <script type="module" src="exchange-status.js"></script>
+</body>
+</html> 
