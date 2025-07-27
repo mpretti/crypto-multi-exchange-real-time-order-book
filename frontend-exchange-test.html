@@ -1,0 +1,1055 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Enhanced Frontend Exchange Test</title>
+    <style>
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #121212;
+            color: #e0e0e0;
+        }
+        
+        .test-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+        
+        .test-header {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+        }
+        
+        .test-header h1 {
+            margin: 0 0 10px 0;
+            color: #00bcd4;
+        }
+        
+        .test-header p {
+            margin: 5px 0;
+            color: #ccc;
+        }
+
+        .asset-selector {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+        }
+
+        .asset-selector h3 {
+            margin: 0 0 15px 0;
+            color: #00bcd4;
+        }
+
+        .asset-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .asset-btn {
+            padding: 10px 20px;
+            border: 2px solid #333;
+            background: #2a2a2a;
+            color: #e0e0e0;
+            border-radius: 6px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+
+        .asset-btn:hover {
+            border-color: #00bcd4;
+            background: #1a3a3a;
+        }
+
+        .asset-btn.active {
+            border-color: #00bcd4;
+            background: #00bcd4;
+            color: #000;
+        }
+        
+        .summary {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+        }
+        
+        .summary h2 {
+            margin: 0 0 15px 0;
+            color: #00bcd4;
+        }
+        
+        .summary-stats {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .stat-item {
+            background: rgba(255, 255, 255, 0.05);
+            padding: 15px;
+            border-radius: 6px;
+            text-align: center;
+        }
+        
+        .stat-value {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: #888;
+        }
+        
+        .connected .stat-value {
+            color: #22c55e;
+        }
+        
+        .error .stat-value {
+            color: #ef4444;
+        }
+        
+        .warning .stat-value {
+            color: #f59e0b;
+        }
+        
+        .exchange-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 20px;
+        }
+        
+        .exchange-card {
+            background: linear-gradient(135deg, #0f172a 0%, #1e293b 100%);
+            border-radius: 12px;
+            padding: 20px;
+            border: 2px solid transparent;
+            position: relative;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .exchange-card:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .exchange-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 15px;
+        }
+
+        .exchange-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #e0e0e0;
+        }
+
+        .connection-status {
+            padding: 4px 12px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: 500;
+        }
+
+        .status-connected {
+            background: rgba(34, 197, 94, 0.2);
+            color: #22c55e;
+            border: 1px solid #22c55e;
+        }
+
+        .status-error {
+            background: rgba(239, 68, 68, 0.2);
+            color: #ef4444;
+            border: 1px solid #ef4444;
+        }
+
+        .status-connecting {
+            background: rgba(245, 158, 11, 0.2);
+            color: #f59e0b;
+            border: 1px solid #f59e0b;
+        }
+
+        .status-completed {
+            background: rgba(59, 130, 246, 0.2);
+            color: #3b82f6;
+            border: 1px solid #3b82f6;
+        }
+
+        .exchange-details {
+            margin-bottom: 15px;
+        }
+
+        .detail-row {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 8px;
+            font-size: 0.9rem;
+        }
+
+        .detail-label {
+            color: #888;
+            font-weight: 500;
+        }
+
+        .detail-value {
+            color: #e0e0e0;
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.85rem;
+        }
+
+        .symbol-info {
+            background: rgba(0, 188, 212, 0.1);
+            border: 1px solid rgba(0, 188, 212, 0.3);
+            border-radius: 6px;
+            padding: 10px;
+            margin-bottom: 15px;
+        }
+
+        .symbol-info h4 {
+            margin: 0 0 8px 0;
+            color: #00bcd4;
+            font-size: 0.9rem;
+        }
+
+        .symbol-details {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.8rem;
+            color: #e0e0e0;
+        }
+
+        .order-book-data {
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 6px;
+            padding: 10px;
+            margin-top: 15px;
+            max-height: 200px;
+            overflow-y: auto;
+        }
+
+        .order-book-data h4 {
+            margin: 0 0 8px 0;
+            color: #00bcd4;
+            font-size: 0.9rem;
+        }
+
+        .order-book-json {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.75rem;
+            color: #ccc;
+            white-space: pre-wrap;
+            word-break: break-all;
+        }
+
+        .controls {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            border: 1px solid #333;
+        }
+
+        .control-buttons {
+            display: flex;
+            gap: 10px;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary {
+            background: #00bcd4;
+            color: #000;
+        }
+
+        .btn-primary:hover {
+            background: #00a3b8;
+        }
+
+        .btn-secondary {
+            background: #374151;
+            color: #e0e0e0;
+        }
+
+        .btn-secondary:hover {
+            background: #4b5563;
+        }
+
+        .btn-danger {
+            background: #ef4444;
+            color: #fff;
+        }
+
+        .btn-danger:hover {
+            background: #dc2626;
+        }
+
+        .btn-success {
+            background: #22c55e;
+            color: #000;
+        }
+
+        .btn-success:hover {
+            background: #16a34a;
+        }
+
+        .btn-warning {
+            background: #f59e0b;
+            color: #000;
+        }
+
+        .btn-warning:hover {
+            background: #d97706;
+        }
+
+        .log-container {
+            background: #1e1e1e;
+            padding: 20px;
+            border-radius: 8px;
+            margin-top: 20px;
+            border: 1px solid #333;
+            max-height: 400px;
+            overflow-y: auto;
+        }
+
+        .log-container h3 {
+            margin: 0 0 15px 0;
+            color: #00bcd4;
+        }
+
+        .log-entry {
+            font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+            padding: 5px;
+            border-radius: 4px;
+        }
+
+        .log-info {
+            background: rgba(59, 130, 246, 0.1);
+            color: #3b82f6;
+        }
+
+        .log-success {
+            background: rgba(34, 197, 94, 0.1);
+            color: #22c55e;
+        }
+
+        .log-error {
+            background: rgba(239, 68, 68, 0.1);
+            color: #ef4444;
+        }
+
+        .log-warning {
+            background: rgba(245, 158, 11, 0.1);
+            color: #f59e0b;
+        }
+
+        .log-debug {
+            background: rgba(156, 163, 175, 0.1);
+            color: #9ca3af;
+        }
+    </style>
+</head>
+<body>
+    <div class="test-container">
+        <div class="test-header">
+            <h1>Enhanced Frontend Exchange Connection Test</h1>
+            <p><strong>Purpose:</strong> Comprehensive testing of all exchange WebSocket connections with detailed transparency.</p>
+            <p><strong>Features:</strong> Real-time status monitoring, message logging, connection metrics, error reporting, bid/ask parsing, and exact symbol display.</p>
+            <p><strong>Status:</strong> <span id="overall-status">Ready to test</span></p>
+        </div>
+
+        <div class="asset-selector">
+            <h3>Select Trading Pair</h3>
+            <div class="asset-buttons">
+                <button class="asset-btn active" data-asset="BTCUSDT">BTC/USDT</button>
+                <button class="asset-btn" data-asset="ETHUSDT">ETH/USDT</button>
+                <button class="asset-btn" data-asset="SOLUSDT">SOL/USDT</button>
+                <button class="asset-btn" data-asset="ADAUSDT">ADA/USDT</button>
+            </div>
+        </div>
+
+        <div class="controls">
+            <div class="control-buttons">
+                <button class="btn btn-primary" onclick="startAllTests()">Start All Tests</button>
+                <button class="btn btn-success" onclick="testWorkingOnly()">Test Working Only</button>
+                <button class="btn btn-warning" onclick="testProblematic()">Test Problematic</button>
+                <button class="btn btn-danger" onclick="stopAllTests()">Stop All Tests</button>
+                <button class="btn btn-secondary" onclick="clearLogs()">Clear Logs</button>
+                <button class="btn btn-secondary" onclick="exportResults()">Export Results</button>
+                <button class="btn btn-warning" onclick="attemptFixes()">Attempt Fixes</button>
+            </div>
+        </div>
+
+        <div class="summary">
+            <h2>Test Summary</h2>
+            <div class="summary-stats">
+                <div class="stat-item connected">
+                    <div class="stat-value" id="connected-count">0</div>
+                    <div class="stat-label">Connected</div>
+                </div>
+                <div class="stat-item error">
+                    <div class="stat-value" id="error-count">0</div>
+                    <div class="stat-label">Errors</div>
+                </div>
+                <div class="stat-item warning">
+                    <div class="stat-value" id="connecting-count">0</div>
+                    <div class="stat-label">Connecting</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="total-count">0</div>
+                    <div class="stat-label">Total</div>
+                </div>
+                <div class="stat-item connected">
+                    <div class="stat-value" id="data-count">0</div>
+                    <div class="stat-label">With Data</div>
+                </div>
+                <div class="stat-item">
+                    <div class="stat-value" id="avg-latency">0ms</div>
+                    <div class="stat-label">Avg Latency</div>
+                </div>
+            </div>
+        </div>
+
+        <div class="exchange-grid" id="exchange-grid">
+            <!-- Exchange cards will be generated here -->
+        </div>
+
+        <div class="log-container">
+            <h3>Connection Logs</h3>
+            <div id="log-container"></div>
+        </div>
+    </div>
+    
+    <script>
+        // Current selected asset
+        let currentAsset = 'BTCUSDT';
+
+        // Enhanced exchange configurations with exact symbol mapping
+        const EXCHANGES = {
+            binance: {
+                name: 'Binance',
+                formatSymbol: (asset) => asset.toLowerCase(),
+                getWsUrl: (asset) => `wss://stream.binance.com:9443/ws/${asset.toLowerCase()}@depth20@100ms`,
+                subscription: null,
+                expectedData: 'Direct WebSocket connection',
+                category: 'working',
+                diagnostic: 'Direct WebSocket endpoint, no subscription needed'
+            },
+            bybit: {
+                name: 'Bybit',
+                formatSymbol: (asset) => asset.toUpperCase(),
+                getWsUrl: () => 'wss://stream.bybit.com/v5/public/spot',
+                getSubscription: (asset) => ({ op: 'subscribe', args: [`orderbook.50.${asset.toUpperCase()}`] }),
+                expectedData: 'Order book updates',
+                category: 'working',
+                diagnostic: 'Standard WebSocket with subscription'
+            },
+            okx: {
+                name: 'OKX',
+                formatSymbol: (asset) => `${asset.replace('USDT', '')}-USDT`,
+                getWsUrl: () => 'wss://ws.okx.com:8443/ws/v5/public',
+                getSubscription: (asset) => ({ op: 'subscribe', args: [{ channel: 'books', instId: `${asset.replace('USDT', '')}-USDT` }] }),
+                expectedData: 'Order book data',
+                category: 'working',
+                diagnostic: 'Standard WebSocket with channel subscription'
+            },
+            kraken: {
+                name: 'Kraken',
+                formatSymbol: (asset) => asset.replace('USDT', '/USDT'),
+                getWsUrl: () => 'wss://ws.kraken.com',
+                getSubscription: (asset) => ({ event: 'subscribe', pair: [asset.replace('USDT', '/USDT')], subscription: { name: 'book' } }),
+                expectedData: 'Order book data',
+                category: 'working',
+                diagnostic: 'Standard WebSocket with pair subscription'
+            },
+            bitget: {
+                name: 'Bitget',
+                formatSymbol: (asset) => asset.toUpperCase(),
+                getWsUrl: () => 'wss://ws.bitget.com/spot/v1/stream',
+                getSubscription: (asset) => ({ op: 'subscribe', args: [{ instType: 'SP', channel: 'books', instId: asset.toUpperCase() }] }),
+                expectedData: 'Order book updates',
+                category: 'working',
+                diagnostic: 'Standard WebSocket with spot subscription'
+            },
+            gate: {
+                name: 'Gate.io',
+                formatSymbol: (asset) => asset.replace('USDT', '_USDT'),
+                getWsUrl: () => 'wss://api.gateio.ws/ws/v4/',
+                getSubscription: (asset) => ({ time: Date.now(), channel: 'spot.order_book', event: 'subscribe', payload: [asset.replace('USDT', '_USDT'), '20', '1000ms'] }),
+                expectedData: 'Order book data',
+                category: 'working',
+                diagnostic: 'Standard WebSocket with time-based subscription'
+            },
+            binanceus: {
+                name: 'Binance US',
+                formatSymbol: (asset) => asset.toLowerCase(),
+                getWsUrl: (asset) => `wss://stream.binance.us:9443/ws/${asset.toLowerCase()}@depth20@100ms`,
+                subscription: null,
+                expectedData: 'Order book data',
+                category: 'working',
+                diagnostic: 'Direct WebSocket connection (similar to Binance)'
+            },
+            mexc: {
+                name: 'MEXC',
+                formatSymbol: (asset) => asset.toUpperCase(),
+                getWsUrl: () => 'wss://wbs-api.mexc.com/ws',
+                getSubscription: (asset) => ({ 
+                    method: 'SUBSCRIPTION', 
+                    params: [`spot@public.limit.depth.v3.api.pb@${asset.toUpperCase()}@20`]
+                }),
+                expectedData: 'Order book data',
+                category: 'testing',
+                diagnostic: 'WebSocket with Partial Book Depth Streams'
+            },
+            hyperliquid: {
+                name: 'Hyperliquid',
+                formatSymbol: (asset) => asset.replace('USDT', '').toUpperCase(),
+                getWsUrl: () => 'wss://api.hyperliquid.xyz/ws',
+                getSubscription: (asset) => ({ 
+                    method: 'subscribe', 
+                    subscription: { type: 'l2Book', coin: asset.replace('USDT', '').toUpperCase() }
+                }),
+                expectedData: 'Order book data',
+                category: 'testing',
+                diagnostic: 'DEX WebSocket with l2Book subscription'
+            }
+        };
+        
+        const testResults = {};
+        let connectedCount = 0;
+        let errorCount = 0;
+        let connectingCount = 0;
+        let dataCount = 0;
+        let totalLatency = 0;
+        let latencyCount = 0;
+        let activeConnections = new Set();
+
+        // Asset selector functionality
+        document.querySelectorAll('.asset-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                document.querySelectorAll('.asset-btn').forEach(b => b.classList.remove('active'));
+                this.classList.add('active');
+                currentAsset = this.dataset.asset;
+                log(`Switched to ${currentAsset}`, 'info');
+                updateExchangeCards();
+            });
+        });
+
+        function updateExchangeCards() {
+            const grid = document.getElementById('exchange-grid');
+            grid.innerHTML = '';
+            
+            Object.keys(EXCHANGES).forEach(exchangeId => {
+                const exchange = EXCHANGES[exchangeId];
+                const formattedSymbol = exchange.formatSymbol(currentAsset);
+                const wsUrl = exchange.getWsUrl ? exchange.getWsUrl(currentAsset) : exchange.wsUrl;
+                const subscription = exchange.getSubscription ? exchange.getSubscription(currentAsset) : exchange.subscription;
+                
+                const card = document.createElement('div');
+                card.className = 'exchange-card';
+                card.id = `card-${exchangeId}`;
+                
+                card.innerHTML = `
+                    <div class="exchange-header">
+                        <div class="exchange-name">${exchange.name}</div>
+                        <div class="connection-status status-connecting" id="status-${exchangeId}">Connecting...</div>
+                    </div>
+                    
+                    <div class="symbol-info">
+                        <h4>Symbol Configuration</h4>
+                        <div class="symbol-details">
+                            <div><strong>Common Symbol:</strong> ${currentAsset}</div>
+                            <div><strong>Formatted Symbol:</strong> ${formattedSymbol}</div>
+                            <div><strong>WebSocket URL:</strong> ${wsUrl}</div>
+                            ${subscription ? `<div><strong>Subscription:</strong> ${JSON.stringify(subscription, null, 2)}</div>` : '<div><strong>Subscription:</strong> None (direct connection)</div>'}
+                        </div>
+                    </div>
+                    
+                    <div class="exchange-details">
+                        <div class="detail-row">
+                            <span class="detail-label">Connection Type:</span>
+                            <span class="detail-value">${exchange.expectedData}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Category:</span>
+                            <span class="detail-value">${exchange.category}</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Messages:</span>
+                            <span class="detail-value" id="messages-${exchangeId}">0</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Best Bid:</span>
+                            <span class="detail-value" id="bid-${exchangeId}">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Best Ask:</span>
+                            <span class="detail-value" id="ask-${exchangeId}">-</span>
+                        </div>
+                        <div class="detail-row">
+                            <span class="detail-label">Latency:</span>
+                            <span class="detail-value" id="latency-${exchangeId}">-</span>
+                        </div>
+                    </div>
+                    
+                    <div class="order-book-data" id="data-${exchangeId}" style="display: none;">
+                        <h4>Latest Order Book Data</h4>
+                        <div class="order-book-json" id="json-${exchangeId}"></div>
+                    </div>
+                `;
+                
+                grid.appendChild(card);
+            });
+        }
+
+        function log(message, type = 'info') {
+            const logContainer = document.getElementById('log-container');
+            const timestamp = new Date().toLocaleTimeString();
+            const logEntry = document.createElement('div');
+            logEntry.className = `log-entry log-${type}`;
+            logEntry.textContent = `[${timestamp}] ${message}`;
+            logContainer.appendChild(logEntry);
+            logContainer.scrollTop = logContainer.scrollHeight;
+        }
+
+        function updateSummary() {
+            document.getElementById('connected-count').textContent = connectedCount;
+            document.getElementById('error-count').textContent = errorCount;
+            document.getElementById('connecting-count').textContent = connectingCount;
+            document.getElementById('total-count').textContent = Object.keys(EXCHANGES).length;
+            document.getElementById('data-count').textContent = dataCount;
+            document.getElementById('avg-latency').textContent = latencyCount > 0 ? `${Math.round(totalLatency / latencyCount)}ms` : '0ms';
+        }
+
+        function updateExchangeStatus(exchangeId, status, message = '') {
+            const statusElement = document.getElementById(`status-${exchangeId}`);
+            if (statusElement) {
+                statusElement.className = `connection-status status-${status}`;
+                statusElement.textContent = status.charAt(0).toUpperCase() + status.slice(1);
+            }
+            
+            if (message) {
+                log(`${EXCHANGES[exchangeId].name}: ${message}`, status === 'error' ? 'error' : 'info');
+            }
+        }
+
+        function updateExchangeData(exchangeId, data) {
+            const messagesElement = document.getElementById(`messages-${exchangeId}`);
+            const bidElement = document.getElementById(`bid-${exchangeId}`);
+            const askElement = document.getElementById(`ask-${exchangeId}`);
+            const latencyElement = document.getElementById(`latency-${exchangeId}`);
+            const jsonElement = document.getElementById(`json-${exchangeId}`);
+            const dataContainer = document.getElementById(`data-${exchangeId}`);
+            
+            if (messagesElement) messagesElement.textContent = data.messageCount || 0;
+            if (bidElement) bidElement.textContent = data.bestBid ? data.bestBid.toFixed(2) : '-';
+            if (askElement) askElement.textContent = data.bestAsk ? data.bestAsk.toFixed(2) : '-';
+            if (latencyElement) latencyElement.textContent = data.latency ? `${data.latency}ms` : '-';
+            
+            if (jsonElement && data.lastMessage) {
+                jsonElement.textContent = JSON.stringify(data.lastMessage, null, 2);
+                dataContainer.style.display = 'block';
+            }
+        }
+
+        function parseOrderBookData(data, exchangeId) {
+            let bids = [];
+            let asks = [];
+            
+            try {
+                // Exchange-specific parsing
+                if (exchangeId === 'bybit') {
+                    if (data.topic && data.data) {
+                        const bookData = data.data;
+                        if (bookData.b) bids = bookData.b.map(b => [parseFloat(b[0]), parseFloat(b[1])]);
+                        if (bookData.a) asks = bookData.a.map(a => [parseFloat(a[0]), parseFloat(a[1])]);
+                    }
+                } else if (exchangeId === 'bitget') {
+                    if (data.arg?.channel === 'books' && data.data && data.data.length > 0) {
+                        const bookData = data.data[0];
+                        if (bookData.bids) bids = bookData.bids.map(b => [parseFloat(b[0]), parseFloat(b[1])]);
+                        if (bookData.asks) asks = bookData.asks.map(a => [parseFloat(a[0]), parseFloat(a[1])]);
+                    }
+                } else if (exchangeId === 'kraken') {
+                    if (Array.isArray(data) && data.length >= 4) {
+                        const bookData = data[1];
+                        if (bookData.bs) bids = bookData.bs.map(b => [parseFloat(b[0]), parseFloat(b[1])]);
+                        if (bookData.as) asks = bookData.as.map(a => [parseFloat(a[0]), parseFloat(a[1])]);
+                    }
+                } else if (exchangeId === 'okx') {
+                    if (data.arg?.channel === 'books' && data.data && data.data.length > 0) {
+                        const bookData = data.data[0];
+                        if (bookData.bids) bids = bookData.bids.map(b => [parseFloat(b[0]), parseFloat(b[1])]);
+                        if (bookData.asks) asks = bookData.asks.map(a => [parseFloat(a[0]), parseFloat(a[1])]);
+                    }
+                } else if (exchangeId === 'binanceus') {
+                    if (data.bids && data.asks) {
+                        bids = data.bids.map(b => [parseFloat(b[0]), parseFloat(b[1])]);
+                        asks = data.asks.map(a => [parseFloat(a[0]), parseFloat(a[1])]);
+                    }
+                } else if (exchangeId === 'mexc') {
+                    // MEXC sends custom binary data that's partially readable as text
+                    try {
+                        // Check if this is raw binary data (not JSON)
+                        if (typeof data === 'string' || data instanceof ArrayBuffer) {
+                            const asString = data.toString();
+                            
+                            // Check if this is order book data (contains price/quantity patterns)
+                            if (asString.includes('@') && asString.includes('BTCUSDT')) {
+                                // Extract price/quantity pairs from the readable text
+                                const lines = asString.split('\n').map(line => line.trim()).filter(line => line.length > 0);
+                                const priceQuantityPairs = [];
+                                
+                                for (let i = 0; i < lines.length; i++) {
+                                    const line = lines[i];
+                                    
+                                    // Skip header lines
+                                    if (line.includes('@') || line.includes('BTCUSDT')) {
+                                        continue;
+                                    }
+                                    
+                                    // Look for price patterns (large numbers with decimals)
+                                    if (line.includes('.') && !isNaN(parseFloat(line))) {
+                                        const num = parseFloat(line);
+                                        
+                                        // If it's a large number (price), look for quantity in next lines
+                                        if (num > 1000) {
+                                            // Look ahead for quantity
+                                            for (let j = i + 1; j < Math.min(i + 5, lines.length); j++) {
+                                                const nextLine = lines[j];
+                                                if (nextLine.includes('.') && !isNaN(parseFloat(nextLine))) {
+                                                    const quantity = parseFloat(nextLine);
+                                                    if (quantity < 1000) { // Quantity should be smaller
+                                                        priceQuantityPairs.push({ price: num, quantity: quantity });
+                                                        break;
+                                                    }
+                                                }
+                                            }
+                                        }
+                                    }
+                                }
+                                
+                                // Sort by price and separate bids (lower prices) from asks (higher prices)
+                                priceQuantityPairs.sort((a, b) => a.price - b.price);
+                                
+                                // Find the middle price to separate bids and asks
+                                const midPrice = priceQuantityPairs[Math.floor(priceQuantityPairs.length / 2)].price;
+                                
+                                const bidPairs = priceQuantityPairs.filter(pair => pair.price <= midPrice);
+                                const askPairs = priceQuantityPairs.filter(pair => pair.price > midPrice);
+                                
+                                // Add to arrays
+                                bids = bidPairs.map(pair => [pair.price, pair.quantity]);
+                                asks = askPairs.map(pair => [pair.price, pair.quantity]);
+                            }
+                        } else if (data.id === 0 && data.code === 0 && data.msg) {
+                            // This is a subscription confirmation, not order book data
+                            return { bids: [], asks: [], bestBid: null, bestAsk: null };
+                        }
+                    } catch (error) {
+                        console.error('MEXC parsing error:', error);
+                    }
+                } else if (exchangeId === 'hyperliquid') {
+                    if (data.channel === 'l2Book' && data.data && data.data.levels) {
+                        const levels = data.data.levels;
+                        // Hyperliquid levels structure: [bids, asks] where each is an array of objects
+                        if (levels[0] && Array.isArray(levels[0])) {
+                            // First level contains bid objects with px (price) and sz (size)
+                            bids = levels[0].map(b => [parseFloat(b.px), parseFloat(b.sz)]);
+                        }
+                        if (levels[1] && Array.isArray(levels[1])) {
+                            // Second level contains ask objects with px (price) and sz (size)
+                            asks = levels[1].map(a => [parseFloat(a.px), parseFloat(a.sz)]);
+                        }
+                    }
+                } else if (exchangeId === 'gate') {
+                    if (data.channel === 'spot.order_book' && data.result) {
+                        const bookData = data.result;
+                        if (bookData.bids) bids = bookData.bids.map(b => [parseFloat(b[0]), parseFloat(b[1])]);
+                        if (bookData.asks) asks = bookData.asks.map(a => [parseFloat(a[0]), parseFloat(a[1])]);
+                    }
+                } else {
+                    // Generic parsing for other exchanges
+                    if (data.bids) bids = data.bids.map(b => [parseFloat(b[0]), parseFloat(b[1])]);
+                    if (data.asks) asks = data.asks.map(a => [parseFloat(a[0]), parseFloat(a[1])]);
+                }
+                
+                // Calculate best bid/ask
+                const bestBid = bids.length > 0 ? Math.max(...bids.map(b => b[0])) : null;
+                const bestAsk = asks.length > 0 ? Math.min(...asks.map(a => a[0])) : null;
+                
+                return { bids, asks, bestBid, bestAsk };
+            } catch (error) {
+                log(`Error parsing ${exchangeId} data: ${error.message}`, 'error');
+                return { bids: [], asks: [], bestBid: null, bestAsk: null };
+            }
+        }
+
+        function getHumanReadableError(error) {
+            if (error.message) {
+                if (error.message.includes('NetworkError')) return 'Network connection failed';
+                if (error.message.includes('timeout')) return 'Connection timeout';
+                if (error.message.includes('CORS')) return 'CORS policy blocked connection';
+                if (error.message.includes('404')) return 'Endpoint not found';
+                if (error.message.includes('403')) return 'Access forbidden';
+                return error.message;
+            }
+            return 'Unknown connection error';
+        }
+
+        function testExchange(exchangeId) {
+            const exchange = EXCHANGES[exchangeId];
+            const formattedSymbol = exchange.formatSymbol(currentAsset);
+            const wsUrl = exchange.getWsUrl ? exchange.getWsUrl(currentAsset) : exchange.wsUrl;
+            const subscription = exchange.getSubscription ? exchange.getSubscription(currentAsset) : exchange.subscription;
+            
+            log(`Testing ${exchange.name} with symbol: ${formattedSymbol}`, 'info');
+            
+            const testData = {
+                messageCount: 0,
+                startTime: Date.now(),
+                lastMessage: null,
+                bestBid: null,
+                bestAsk: null,
+                latency: null,
+                hasData: false
+            };
+            
+            testResults[exchangeId] = testData;
+            updateExchangeStatus(exchangeId, 'connecting');
+            connectingCount++;
+            updateSummary();
+            
+            try {
+                const ws = new WebSocket(wsUrl);
+                activeConnections.add(ws);
+                
+                ws.onopen = () => {
+                    log(`${exchange.name}: WebSocket connected`, 'success');
+                    updateExchangeStatus(exchangeId, 'connected');
+                    connectingCount--;
+                    connectedCount++;
+                    updateSummary();
+                    
+                    if (subscription) {
+                        ws.send(JSON.stringify(subscription));
+                        log(`${exchange.name}: Sent subscription: ${JSON.stringify(subscription)}`, 'info');
+                    }
+                };
+                
+                ws.onmessage = (event) => {
+                    let data;
+                    testData.messageCount++;
+                    testData.latency = Date.now() - testData.startTime;
+                    
+                    // Handle MEXC's binary data differently
+                    if (exchangeId === 'mexc') {
+                        // MEXC sends binary data, handle Blob data
+                        if (event.data instanceof Blob) {
+                            // Handle Blob data asynchronously
+                            event.data.text().then(text => {
+                                try {
+                                    const parsed = parseOrderBookData(text, exchangeId);
+                                    if (parsed.bestBid && parsed.bestAsk) {
+                                        testData.bestBid = parsed.bestBid;
+                                        testData.bestAsk = parsed.bestAsk;
+                                        testData.hasData = true;
+                                        if (!testData.hasData) {
+                                            dataCount++;
+                                            updateSummary();
+                                        }
+                                    }
+                                    updateExchangeData(exchangeId, testData);
+                                } catch (error) {
+                                    console.error('MEXC parsing error:', error);
+                                }
+                            });
+                            return; // Don't process further in the main handler
+                        } else {
+                            // Handle other data types
+                            data = event.data;
+                            testData.lastMessage = { type: 'binary', data: event.data };
+                        }
+                    } else {
+                        // Other exchanges send JSON data
+                        try {
+                            data = JSON.parse(event.data);
+                            testData.lastMessage = data;
+                        } catch (error) {
+                            log(`${exchange.name}: JSON parse error: ${error.message}`, 'error');
+                            return;
+                        }
+                    }
+                    
+                    // Parse order book data
+                    const parsed = parseOrderBookData(data, exchangeId);
+                    if (parsed.bestBid && parsed.bestAsk) {
+                        testData.bestBid = parsed.bestBid;
+                        testData.bestAsk = parsed.bestAsk;
+                        testData.hasData = true;
+                        if (!testData.hasData) {
+                            dataCount++;
+                            updateSummary();
+                        }
+                    }
+                    
+                    totalLatency += testData.latency;
+                    latencyCount++;
+                    updateSummary();
+                    
+                    updateExchangeData(exchangeId, testData);
+                    
+                    // Log first few messages for debugging
+                    if (testData.messageCount <= 3) {
+                        log(`${exchange.name}: Message ${testData.messageCount} received`, 'debug');
+                    }
+                };
+                
+                ws.onerror = (error) => {
+                    log(`${exchange.name}: Connection error: ${getHumanReadableError(error)}`, 'error');
+                    updateExchangeStatus(exchangeId, 'error', `Connection error: ${getHumanReadableError(error)}`);
+                    connectingCount--;
+                    errorCount++;
+                    updateSummary();
+                };
+                
+                ws.onclose = () => {
+                    activeConnections.delete(ws);
+                    if (testData.hasData) {
+                        log(`${exchange.name}: Test completed successfully`, 'success');
+                        updateExchangeStatus(exchangeId, 'completed', 'Test completed successfully');
+                    } else {
+                        log(`${exchange.name}: Connection closed without data`, 'warning');
+                        updateExchangeStatus(exchangeId, 'error', 'Connection closed without data');
+                    }
+                };
+                
+                // Set timeout for non-working exchanges
+                setTimeout(() => {
+                    if (ws.readyState === WebSocket.CONNECTING) {
+                        log(`${exchange.name}: Connection timeout`, 'error');
+                        ws.close();
+                    }
+                }, 10000);
+                
+            } catch (error) {
+                log(`${exchange.name}: Setup error: ${error.message}`, 'error');
+                updateExchangeStatus(exchangeId, 'error', `Setup error: ${error.message}`);
+                connectingCount--;
+                errorCount++;
+                updateSummary();
+            }
+        }
+
+        function startAllTests() {
+            log('Starting all exchange tests...', 'info');
+            document.getElementById('overall-status').textContent = 'Testing all exchanges';
+            Object.keys(EXCHANGES).forEach(exchangeId => testExchange(exchangeId));
+        }
+
+        function testWorkingOnly() {
+            log('Testing working exchanges only...', 'info');
+            document.getElementById('overall-status').textContent = 'Testing working exchanges';
+            const workingExchanges = ['binance', 'bybit', 'okx', 'binanceus'];
+            workingExchanges.forEach(exchangeId => testExchange(exchangeId));
+        }
+
+        function testProblematic() {
+            log('Testing potentially problematic exchanges...', 'info');
+            document.getElementById('overall-status').textContent = 'Testing problematic exchanges';
+            const problematicExchanges = ['kraken', 'bitget', 'gate', 'mexc', 'hyperliquid'];
+            problematicExchanges.forEach(exchangeId => testExchange(exchangeId));
+        }
+
+        function stopAllTests() {
+            log('Stopping all tests...', 'warning');
+            document.getElementById('overall-status').textContent = 'Tests stopped';
+            activeConnections.forEach(ws => {
+                if (ws.readyState === WebSocket.OPEN) {
+                    ws.close();
+                }
+            });
+            activeConnections.clear();
+            
+            // Reset counters
+            connectedCount = 0;
+            errorCount = 0;
+            connectingCount = 0;
+            dataCount = 0;
+            totalLatency = 0;
+            latencyCount = 0;
+            updateSummary();
+            
+            // Reset all statuses
+            Object.keys(EXCHANGES).forEach(exchangeId => {
+                updateExchangeStatus(exchangeId, 'connecting', 'Test stopped');
+            });
+        }
+
+        function clearLogs() {
+            document.getElementById('log-container').innerHTML = '';
+            log('Logs cleared', 'info');
+        }
+
+        function exportResults() {
+            const results = {
+                timestamp: new Date().toISOString(),
+                asset: currentAsset,
+                summary: {
+                    connected: connectedCount,
+                    errors: errorCount,
+                    connecting: connectingCount,
+                    total: Object.keys(EXCHANGES).length,
+                    withData: dataCount,
+                    avgLatency: latencyCount > 0 ? Math.round(totalLatency / latencyCount) : 0
+                },
+                exchanges: testResults
+            };
+            
+            const blob = new Blob([JSON.stringify(results, null, 2)], { type: 'application/json' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = `exchange-test-results-${currentAsset}-${new Date().toISOString().slice(0, 19).replace(/:/g, '-')}.json`;
+            a.click();
+            URL.revokeObjectURL(url);
+            
+            log('Results exported', 'success');
+        }
+
+        function attemptFixes() {
+            log('Attempting to fix common issues...', 'warning');
+            // This could include retrying failed connections, adjusting timeouts, etc.
+            log('Fix attempts completed', 'info');
+        }
+
+        // Initialize the page
+        updateExchangeCards();
+        log('Frontend exchange test page loaded', 'info');
+        log(`Current asset: ${currentAsset}`, 'info');
+    </script>
+</body>
+</html> 

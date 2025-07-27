@@ -3,123 +3,34 @@
  * SPDX-License-Identifier: Apache-2.0
  */
 
-import { SUPPORTED_EXCHANGES_WITH_DEX } from './config';
-import { activeConnections, selectedExchanges, klineWebSocket, setKlineWebSocket, currentChartInterval } from './state';
+import { SUPPORTED_EXCHANGES } from './config';
+import { activeConnections, selectedExchanges, selectedAsset, klineWebSocket, setKlineWebSocket, currentChartInterval } from './state';
 import { applyDepthSlice, getDecimalPlaces } from './utils';
 import { updateOverallConnectionStatus, updateSidebarContent, clearOrderBookDisplay } from './uiUpdates';
-import { aggregateAndRenderAll } from './index'; // index.tsx exports this
 import type { ExchangeConnectionState } from './types';
-
-// Enhanced tracking for status dashboard
-export const exchangeStats = new Map();
-
-function initializeExchangeStats(exchangeId: string) {
-    if (!exchangeStats.has(exchangeId)) {
-        exchangeStats.set(exchangeId, {
-            connectionTime: null,
-            lastMessageTime: null,
-            lastMessageContent: null,
-            messageCount: 0,
-            errorCount: 0,
-            retryCount: 0,
-            latencyHistory: [],
-            dataRateHistory: [],
-            lastError: null,
-            lastErrorTime: null,
-            pingLatency: 0,
-            reconnectAttempts: 0
-        });
-    }
-}
-
-function updateExchangeStats(exchangeId: string, update: any) {
-    const stats = exchangeStats.get(exchangeId);
-    if (stats) {
-        Object.assign(stats, update);
-        
-        // Broadcast to status dashboard if available
-        try {
-            if (window.parent && window.parent !== window) {
-                window.parent.postMessage({
-                    type: 'exchange-stats-update',
-                    exchangeId,
-                    stats: { ...stats }
-                }, '*');
-            }
-        } catch (e) {
-            // Ignore if can't access parent
-        }
-    }
-}
 import { updateChartForAssetAndInterval } from './charts';
 
-// Generate simulated Jupiter swap data
-function generateJupiterSnapshot(asset: string) {
-    let basePrice = 2000;
-    const upperAsset = asset.toUpperCase();
-    if (upperAsset.startsWith('BTC')) basePrice = 103000;
-    else if (upperAsset.startsWith('ETH')) basePrice = 3800;
-    else if (upperAsset.startsWith('SOL')) basePrice = 220;
-    else if (upperAsset.startsWith('DOGE')) basePrice = 0.32;
-    else if (upperAsset.startsWith('ADA')) basePrice = 1.05;
-    else if (upperAsset.startsWith('LINK')) basePrice = 22;
-    else if (upperAsset.startsWith('XRP')) basePrice = 2.15;
+// Import pako for gzip decompression (HTX/Huobi uses compressed WebSocket messages)
+// @ts-ignore - pako is loaded via CDN
+declare const pako: any;
 
-    const assetDecimals = getDecimalPlaces(basePrice);
-    
-    // Simulate Jupiter swap rates with wider spreads (typical for DEX aggregator)
-    const bidSpread = 0.003; // 0.3% spread
-    const askSpread = 0.003;
-    
-    return {
-        type: 'jupiter_snapshot',
-        bids: [
-            [(basePrice * (1 - bidSpread)).toFixed(assetDecimals), (Math.random() * 2 + 0.5).toFixed(3)],
-            [(basePrice * (1 - bidSpread * 1.5)).toFixed(assetDecimals), (Math.random() * 3 + 1).toFixed(3)],
-            [(basePrice * (1 - bidSpread * 2)).toFixed(assetDecimals), (Math.random() * 5 + 2).toFixed(3)],
-        ],
-        asks: [
-            [(basePrice * (1 + askSpread)).toFixed(assetDecimals), (Math.random() * 2 + 0.5).toFixed(3)],
-            [(basePrice * (1 + askSpread * 1.5)).toFixed(assetDecimals), (Math.random() * 3 + 1).toFixed(3)],
-            [(basePrice * (1 + askSpread * 2)).toFixed(assetDecimals), (Math.random() * 5 + 2).toFixed(3)],
-        ]
-    };
+// We'll use a dynamic import to avoid circular dependency
+let aggregateAndRenderAll: (() => void) | null = null;
+
+// Initialize the function reference
+export function setAggregateAndRenderAll(fn: () => void) {
+    aggregateAndRenderAll = fn;
 }
 
-// Generate simulated MEXC order book data
-function generateMexcSnapshot(asset: string) {
-    let basePrice = 2000;
-    const upperAsset = asset.toUpperCase();
-    if (upperAsset.startsWith('BTC')) basePrice = 103000;
-    else if (upperAsset.startsWith('ETH')) basePrice = 3800;
-    else if (upperAsset.startsWith('SOL')) basePrice = 220;
-    else if (upperAsset.startsWith('DOGE')) basePrice = 0.32;
-    else if (upperAsset.startsWith('ADA')) basePrice = 1.05;
-    else if (upperAsset.startsWith('LINK')) basePrice = 22;
-    else if (upperAsset.startsWith('XRP')) basePrice = 2.15;
-
-    const assetDecimals = getDecimalPlaces(basePrice);
-    
-    // Simulate MEXC order book with tighter spreads (typical for CEX)
-    const bidSpread = 0.0015; // 0.15% spread
-    const askSpread = 0.0015;
-    
-    return {
-        type: 'mexc_snapshot',
-        bids: [
-            [(basePrice * (1 - bidSpread)).toFixed(assetDecimals), (Math.random() * 10 + 2).toFixed(3)],
-            [(basePrice * (1 - bidSpread * 1.2)).toFixed(assetDecimals), (Math.random() * 15 + 5).toFixed(3)],
-            [(basePrice * (1 - bidSpread * 1.5)).toFixed(assetDecimals), (Math.random() * 20 + 8).toFixed(3)],
-            [(basePrice * (1 - bidSpread * 2)).toFixed(assetDecimals), (Math.random() * 25 + 10).toFixed(3)],
-        ],
-        asks: [
-            [(basePrice * (1 + askSpread)).toFixed(assetDecimals), (Math.random() * 10 + 2).toFixed(3)],
-            [(basePrice * (1 + askSpread * 1.2)).toFixed(assetDecimals), (Math.random() * 15 + 5).toFixed(3)],
-            [(basePrice * (1 + askSpread * 1.5)).toFixed(assetDecimals), (Math.random() * 20 + 8).toFixed(3)],
-            [(basePrice * (1 + askSpread * 2)).toFixed(assetDecimals), (Math.random() * 25 + 10).toFixed(3)],
-        ]
-    };
+// Helper function that safely calls aggregateAndRenderAll
+function safeAggregateAndRenderAll() {
+    if (aggregateAndRenderAll) {
+        aggregateAndRenderAll();
+    } else {
+        console.warn('aggregateAndRenderAll not yet available');
+    }
 }
+
 
 export async function fetchAuxiliaryDataForExchange(exchangeId: string, formattedSymbol: string) {
     const conn = activeConnections.get(exchangeId);
@@ -140,7 +51,7 @@ export async function fetchAuxiliaryDataForExchange(exchangeId: string, formatte
     } finally {
         conn.auxDataFetched = true;
         if (conn.status === 'fetching_aux_data') { // Only revert if still in this state
-            conn.status = conn.ws || config.id === 'uniswap' ? 'connected' : 'disconnected';
+            conn.status = conn.ws || config.id === 'uniswap_simulated' ? 'connected' : 'disconnected';
         }
         updateSidebarContent();
         updateOverallConnectionStatus();
@@ -149,14 +60,11 @@ export async function fetchAuxiliaryDataForExchange(exchangeId: string, formatte
 
 
 export function connectToExchange(exchangeId: string, asset: string) {
-    const config = SUPPORTED_EXCHANGES_WITH_DEX[exchangeId];
+    const config = SUPPORTED_EXCHANGES[exchangeId];
     if (!config) {
         console.error(`Unsupported exchange: ${exchangeId}`);
         return;
     }
-
-    // Initialize stats tracking
-    initializeExchangeStats(exchangeId);
 
     let connectionState = activeConnections.get(exchangeId);
     if (connectionState?.ws && connectionState.status !== 'disconnected' && connectionState.status !== 'error') {
@@ -182,79 +90,8 @@ export function connectToExchange(exchangeId: string, asset: string) {
     }
 
 
-    // Handle simulated exchanges (MEXC temporarily, Uniswap)
-    if (exchangeId === 'uniswap' || (config as any).isSimulated) {
-        console.log(`${config.name}: Simulating connection for ${asset}...`);
-        const simConnectionState: ExchangeConnectionState = {
-            ws: null, status: 'connecting', bids: new Map(), asks: new Map(), config,
-            retries: 0, snapshotReceived: true, currentSymbol: asset, auxDataFetched: undefined,
-        };
-        activeConnections.set(exchangeId, simConnectionState);
-        updateOverallConnectionStatus();
-
-        setTimeout(() => {
-            const currentSimConn = activeConnections.get(exchangeId);
-            if (!currentSimConn || currentSimConn.currentSymbol !== asset || currentSimConn.status === 'closing') {
-                console.warn(`${config.name}: Stale or closed simulated connection for ${asset}. Aborting data load.`);
-                return;
-            }
-
-            let simulatedSnapshot;
-            if (exchangeId === 'mexc') {
-                // Use MEXC-specific simulation
-                simulatedSnapshot = generateMexcSnapshot(asset);
-                console.log(`${config.name}: Generated MEXC simulation data:`, simulatedSnapshot);
-            } else if (exchangeId === 'uniswap') {
-                // Use Uniswap simulation
-                let basePrice = 2000;
-                const upperAsset = asset.toUpperCase();
-                if (upperAsset.startsWith('BTC')) basePrice = 60000;
-                else if (upperAsset.startsWith('SOL')) basePrice = 150;
-                else if (upperAsset.startsWith('DOGE')) basePrice = 0.15;
-                else if (upperAsset.startsWith('ADA')) basePrice = 0.5;
-                else if (upperAsset.startsWith('LINK')) basePrice = 15;
-                else if (upperAsset.startsWith('XRP')) basePrice = 0.5;
-
-                const assetDecimals = getDecimalPlaces(basePrice);
-                simulatedSnapshot = {
-                    type: 'snapshot',
-                    bids: [
-                        [(basePrice * 0.999).toFixed(assetDecimals), (Math.random() * 5 + 1).toFixed(3)],
-                        [(basePrice * 0.998).toFixed(assetDecimals), (Math.random() * 10 + 2).toFixed(3)],
-                    ],
-                    asks: [
-                        [(basePrice * 1.001).toFixed(assetDecimals), (Math.random() * 5 + 1).toFixed(3)],
-                        [(basePrice * 1.002).toFixed(assetDecimals), (Math.random() * 10 + 2).toFixed(3)],
-                    ]
-                };
-                console.log(`${config.name}: Generated Uniswap simulation data:`, simulatedSnapshot);
-            }
-
-            const update = config.parseMessage(simulatedSnapshot, new Map(), new Map(), false);
-            console.log(`${config.name}: Parsed simulation update:`, update);
-            
-            if (update) {
-                currentSimConn.bids = applyDepthSlice(update.updatedBids, config.sliceDepth, true);
-                currentSimConn.asks = applyDepthSlice(update.updatedAsks, config.sliceDepth, false);
-                currentSimConn.snapshotReceived = true;
-                console.log(`${config.name}: Applied simulation data - Bids:`, currentSimConn.bids.size, 'Asks:', currentSimConn.asks.size);
-            } else {
-                console.error(`${config.name}: Failed to parse simulation data!`);
-            }
-            
-            currentSimConn.status = 'connected';
-            console.log(`${config.name}: Simulated connection established for ${asset}.`);
-            
-            // Update stats
-            updateExchangeStats(exchangeId, {
-                connectionTime: Date.now(),
-                lastMessageTime: Date.now(),
-                lastMessageContent: 'Simulated connection established'
-            });
-            
-            fetchAuxiliaryDataForExchange(exchangeId, config.formatSymbol(asset));
-            aggregateAndRenderAll();
-        }, 500);
+    if (exchangeId === 'uniswap_simulated') {
+        console.error('❌ SIMULATION DATA BLOCKED: uniswap_simulated is not allowed');
         return;
     }
 
@@ -264,87 +101,10 @@ export function connectToExchange(exchangeId: string, asset: string) {
         updateOverallConnectionStatus(); // Update status for Kraken to show error or disabled
         return;
     }
-
-    // Handle snapshot-only exchanges (like Jupiter)
-    if ((config as any).isSnapshotOnly) {
-        console.log(`${config.name}: Setting up snapshot-only connection for ${asset}...`);
-        const snapshotConnectionState: ExchangeConnectionState = {
-            ws: null, status: 'connecting', bids: new Map(), asks: new Map(), config,
-            retries: 0, snapshotReceived: true, currentSymbol: asset, auxDataFetched: undefined,
-        };
-        activeConnections.set(exchangeId, snapshotConnectionState);
-        updateOverallConnectionStatus();
-
-        // Start periodic snapshots
-        const snapshotInterval = (config as any).snapshotInterval || 30000; // Default 30 seconds
-        const fetchSnapshot = async () => {
-            const currentConn = activeConnections.get(exchangeId);
-            if (!currentConn || currentConn.currentSymbol !== asset || !selectedExchanges.has(exchangeId)) {
-                console.log(`${config.name}: Snapshot fetch cancelled - connection state changed`);
-                return;
-            }
-
-            try {
-                console.log(`${config.name}: Fetching snapshot for ${asset}...`);
-                // Simulate Jupiter swap data - in real implementation, you'd call Jupiter API
-                const simulatedData = generateJupiterSnapshot(asset);
-                const update = config.parseMessage(simulatedData, new Map(), new Map(), false);
-                
-                if (update) {
-                    currentConn.bids = applyDepthSlice(update.updatedBids, config.sliceDepth, true);
-                    currentConn.asks = applyDepthSlice(update.updatedAsks, config.sliceDepth, false);
-                    currentConn.snapshotReceived = true;
-                    
-                    // Update status to connected on first successful snapshot
-                    if (currentConn.status === 'connecting') {
-                        currentConn.status = 'connected';
-                        console.log(`${config.name}: Snapshot connection established for ${asset}.`);
-                        updateOverallConnectionStatus();
-                        
-                        // Fetch auxiliary data after successful connection
-                        setTimeout(() => {
-                            fetchAuxiliaryDataForExchange(exchangeId, formattedSymbol);
-                        }, 100);
-                    }
-                    
-                    // Trigger UI update
-                    aggregateAndRenderAll();
-                } else {
-                    console.warn(`${config.name}: Failed to parse snapshot data for ${asset}`);
-                }
-            } catch (error) {
-                console.error(`${config.name}: Error fetching snapshot for ${asset}:`, error);
-                currentConn.status = 'error';
-                updateOverallConnectionStatus();
-            }
-        };
-
-        // Initial snapshot with slight delay to ensure UI is ready
-        setTimeout(() => {
-            fetchSnapshot();
-        }, 500);
-        
-        // Set up periodic snapshots
-        const intervalId = setInterval(() => {
-            // Check if still selected before fetching
-            if (selectedExchanges.has(exchangeId)) {
-                fetchSnapshot();
-            } else {
-                console.log(`${config.name}: Clearing interval - exchange no longer selected`);
-                clearInterval(intervalId);
-            }
-        }, snapshotInterval);
-        
-        snapshotConnectionState.pingIntervalId = intervalId; // Reuse this field for cleanup
-        
-        return;
-    }
-
     const wsUrl = config.getWebSocketUrl(formattedSymbol);
-    if (!wsUrl) {
-        console.error(`${config.name}: No WebSocket URL provided for ${asset}`);
-        return;
-    }
+    
+    // All exchanges now use WebSocket - no REST polling needed
+    
     const newWs = new WebSocket(wsUrl);
 
     const newConnectionState: ExchangeConnectionState = {
@@ -386,14 +146,84 @@ export function connectToExchange(exchangeId: string, asset: string) {
         }
     };
 
-    newWs.onmessage = async (event) => {
+    newWs.onmessage = (event) => {
         const currentConn = activeConnections.get(exchangeId);
         if (!currentConn || currentConn.ws !== newWs) {
             console.warn(`${config.name}: Stale WebSocket onmessage for ${asset}. WS mismatch. Ignoring.`); return;
         }
         try {
             const messageData = event.data;
-            let parsedJson;
+            
+            // Handle blob messages (compressed data, e.g., HTX/Huobi)
+            if (messageData instanceof Blob) {
+                if (config.id === 'huobi') {
+                    messageData.arrayBuffer().then(buffer => {
+                        try {
+                            // Decompress gzip data
+                            const uint8Array = new Uint8Array(buffer);
+                            const decompressed = pako.inflate(uint8Array, { to: 'string' });
+                            const parsedJson = JSON.parse(decompressed);
+                            
+                            // Handle ping/pong for HTX
+                            if (parsedJson.ping) {
+                                newWs.send(JSON.stringify({ pong: parsedJson.ping }));
+                                return;
+                            }
+                            
+                            const update = config.parseMessage(
+                                parsedJson, new Map(currentConn.bids), new Map(currentConn.asks), currentConn.snapshotReceived
+                            );
+                            if (update) {
+                                currentConn.bids = applyDepthSlice(update.updatedBids, config.sliceDepth, true);
+                                currentConn.asks = applyDepthSlice(update.updatedAsks, config.sliceDepth, false);
+                                if (update.lastUpdateId) currentConn.lastUpdateId = update.lastUpdateId;
+                                if (config.needsSnapshotFlag && update.isSnapshot) currentConn.snapshotReceived = true;
+                                if (!config.needsSnapshotFlag || currentConn.snapshotReceived) safeAggregateAndRenderAll();
+                            }
+                        } catch (error) {
+                            console.error(`${config.name}: Error processing blob message:`, error);
+                        }
+                    });
+                } else if (config.id === 'mexc') {
+                    // MEXC sends custom binary format, handle Blob data
+                    try {
+                        if (messageData instanceof Blob) {
+                            // Handle Blob data asynchronously
+                            messageData.text().then(text => {
+                                try {
+                                    const update = config.parseMessage(text, new Map(currentConn.bids), new Map(currentConn.asks), currentConn.snapshotReceived);
+                                    if (update) {
+                                        currentConn.bids = applyDepthSlice(update.updatedBids, config.sliceDepth, true);
+                                        currentConn.asks = applyDepthSlice(update.updatedAsks, config.sliceDepth, false);
+                                        if (update.lastUpdateId) currentConn.lastUpdateId = update.lastUpdateId;
+                                        if (config.needsSnapshotFlag && update.isSnapshot) currentConn.snapshotReceived = true;
+                                        if (!config.needsSnapshotFlag || currentConn.snapshotReceived) safeAggregateAndRenderAll();
+                                    }
+                                } catch (error) {
+                                    console.error(`${config.name}: Error processing MEXC text data:`, error);
+                                }
+                            }).catch(error => {
+                                console.error(`${config.name}: Error converting MEXC Blob to text:`, error);
+                            });
+                        } else {
+                            // Handle other data types
+                            const update = config.parseMessage(messageData, new Map(currentConn.bids), new Map(currentConn.asks), currentConn.snapshotReceived);
+                            if (update) {
+                                currentConn.bids = applyDepthSlice(update.updatedBids, config.sliceDepth, true);
+                                currentConn.asks = applyDepthSlice(update.updatedAsks, config.sliceDepth, false);
+                                if (update.lastUpdateId) currentConn.lastUpdateId = update.lastUpdateId;
+                                if (config.needsSnapshotFlag && update.isSnapshot) currentConn.snapshotReceived = true;
+                                if (!config.needsSnapshotFlag || currentConn.snapshotReceived) safeAggregateAndRenderAll();
+                            }
+                        }
+                    } catch (error) {
+                        console.error(`${config.name}: Error processing MEXC data:`, error);
+                    }
+                } else {
+                    console.warn(`${config.name}: Received blob message but not configured for compression/protobuf`);
+                }
+                return;
+            }
             
             if (typeof messageData === 'string') {
                 const lowerCaseMsg = messageData.toLowerCase();
@@ -402,64 +232,40 @@ export function connectToExchange(exchangeId: string, asset: string) {
                 }
                 if (lowerCaseMsg === 'pong' && (config.id === 'bybit' || config.id === 'okx')) return;
 
+                let parsedJson;
                 try { parsedJson = JSON.parse(messageData); } catch (e) {
                     console.error(`${config.name}: Error parsing string message to JSON:`, messageData, e); return;
                 }
-            } else if (messageData instanceof Blob) {
-                // Handle Blob data (e.g., compressed data from Bitrue)
+                 if (config.id === 'bybit' && parsedJson.op === 'pong') return;
+
+                const update = config.parseMessage(
+                    parsedJson, new Map(currentConn.bids), new Map(currentConn.asks), currentConn.snapshotReceived
+                );
+                if (update) {
+                    currentConn.bids = applyDepthSlice(update.updatedBids, config.sliceDepth, true);
+                    currentConn.asks = applyDepthSlice(update.updatedAsks, config.sliceDepth, false);
+                    if (update.lastUpdateId) currentConn.lastUpdateId = update.lastUpdateId;
+                    if (update.checksum && config.id === 'kraken') currentConn.krakenBookChecksum = update.checksum;
+                    if (config.needsSnapshotFlag && update.isSnapshot) currentConn.snapshotReceived = true;
+
+                    if (!config.needsSnapshotFlag || currentConn.snapshotReceived) safeAggregateAndRenderAll();
+                }
+            } else if (config.id === 'mexc' && (messageData instanceof ArrayBuffer || (typeof Buffer !== 'undefined' && messageData instanceof Buffer))) {
+                // MEXC sends binary data that might not be a Blob
                 try {
-                    const arrayBuffer = await messageData.arrayBuffer();
-                    const uint8Array = new Uint8Array(arrayBuffer);
-                    
-                    // Check for gzip magic number (1f 8b)
-                    if (uint8Array[0] === 0x1f && uint8Array[1] === 0x8b) {
-                        // It's gzip compressed, decompress it
-                        const decompressedStream = new DecompressionStream('gzip');
-                        const decompressedResponse = new Response(new ReadableStream({
-                            start(controller) {
-                                controller.enqueue(uint8Array);
-                                controller.close();
-                            }
-                        }).pipeThrough(decompressedStream));
-                        const textData = await decompressedResponse.text();
-                        parsedJson = JSON.parse(textData);
-                    } else {
-                        // Not compressed, try as text
-                        const textData = await messageData.text();
-                        parsedJson = JSON.parse(textData);
+                    const update = config.parseMessage(messageData, new Map(currentConn.bids), new Map(currentConn.asks), currentConn.snapshotReceived);
+                    if (update) {
+                        currentConn.bids = applyDepthSlice(update.updatedBids, config.sliceDepth, true);
+                        currentConn.asks = applyDepthSlice(update.updatedAsks, config.sliceDepth, false);
+                        if (update.lastUpdateId) currentConn.lastUpdateId = update.lastUpdateId;
+                        if (config.needsSnapshotFlag && update.isSnapshot) currentConn.snapshotReceived = true;
+                        if (!config.needsSnapshotFlag || currentConn.snapshotReceived) safeAggregateAndRenderAll();
                     }
-                } catch (e) {
-                    console.error(`${config.name}: Error parsing Blob message:`, e); return;
+                } catch (error) {
+                    console.error(`${config.name}: Error processing MEXC binary data:`, error);
                 }
-            } else if (typeof messageData === 'object' && messageData !== null) {
-                // Handle cases where WebSocket already provides parsed objects
-                parsedJson = messageData;
-            } else {
-                console.warn(`${config.name}: Received unsupported message type:`, typeof messageData, messageData);
-                return;
-            }
-            
-            if (config.id === 'bybit' && parsedJson.op === 'pong') return;
-            
-            // Handle Bitrue ping/pong (JSON format)
-            if (config.id === 'bitrue' && parsedJson.ping) {
-                if (newWs.readyState === WebSocket.OPEN) {
-                    newWs.send(JSON.stringify({ pong: parsedJson.ping }));
-                }
-                return;
-            }
-
-            const update = config.parseMessage(
-                parsedJson, new Map(currentConn.bids), new Map(currentConn.asks), currentConn.snapshotReceived
-            );
-            if (update) {
-                currentConn.bids = applyDepthSlice(update.updatedBids, config.sliceDepth, true);
-                currentConn.asks = applyDepthSlice(update.updatedAsks, config.sliceDepth, false);
-                if (update.lastUpdateId) currentConn.lastUpdateId = update.lastUpdateId;
-                if (update.checksum && config.id === 'kraken') currentConn.krakenBookChecksum = update.checksum;
-                if (config.needsSnapshotFlag && update.isSnapshot) currentConn.snapshotReceived = true;
-
-                if (!config.needsSnapshotFlag || currentConn.snapshotReceived) aggregateAndRenderAll();
+            } else { 
+                console.warn(`${config.name}: Received non-string/non-blob message type:`, typeof messageData, messageData); 
             }
         } catch (error) { console.error(`${config.name}: Critical error processing message for ${asset}:`, error, event.data); }
     };
@@ -550,7 +356,7 @@ export function disconnectFromExchange(exchangeId: string) {
         // Or, if this is a permanent disconnect (e.g. user unchecks), then we can remove:
         // if (!selectedExchanges.has(exchangeId)) activeConnections.delete(exchangeId);
 
-        aggregateAndRenderAll(); // Update UI to reflect cleared books
+        safeAggregateAndRenderAll(); // Update UI to reflect cleared books
     }
     updateOverallConnectionStatus();
 }

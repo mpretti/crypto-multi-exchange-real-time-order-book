@@ -22,3 +22,39 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Historical data files (large and generated)
+historical-data/data/
+historical-data/historical-data/
+*.json.gz
+*.json.gz.sha256
+
+# Database files
+*.db
+*.sqlite
+*.sqlite3
+
+# Environment files
+.env
+.env.local
+.env.production
+
+# Temporary and test files
+*.tmp
+*.temp
+test-*.js
+test-*.html
+quick-test-*.js
+improved-*.js
+space-fix.js
+backup-*/
+
+# Generated files
+paper-trading.db
+trading-playground-*.css.disabled
+trading-playground-*.js.disabled
+
+# OS generated files
+Thumbs.db
+ehthumbs.db
+Desktop.ini
