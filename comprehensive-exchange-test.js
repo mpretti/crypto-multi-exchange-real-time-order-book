@@ -6,6 +6,7 @@
  */
 
 import WebSocket from 'ws';
+import pako from 'pako';
 
 const exchanges = [
     {
@@ -175,6 +176,32 @@ const exchanges = [
                 description: 'All Mids (includes top of book)'
             }
         }
+    },
+    {
+        name: 'HTX (Huobi)',
+        id: 'huobi',
+        feeds: {
+            orderbook: {
+                url: 'wss://api.huobi.pro/ws',
+                subscribe: { sub: 'market.ethusdt.depth.step0', id: 'test-ob' },
+                description: 'Order Book (Spot)'
+            },
+            topOfBook: {
+                url: 'wss://api.huobi.pro/ws',
+                subscribe: { sub: 'market.ethusdt.bbo', id: 'test-bbo' },
+                description: 'Best Bid/Offer'
+            },
+            kline: {
+                url: 'wss://api.huobi.pro/ws',
+                subscribe: { sub: 'market.ethusdt.kline.1min', id: 'test-kline' },
+                description: 'Kline (1min)'
+            },
+            ticker: {
+                url: 'wss://api.huobi.pro/ws',
+                subscribe: { sub: 'market.ethusdt.detail', id: 'test-ticker' },
+                description: '24hr Ticker Detail'
+            }
+        }
     }
 ];
 
@@ -212,22 +239,32 @@ async function testFeed(exchange, feedName, feedConfig, testDuration = 5000) {
         ws.on('message', (data) => {
             messageCount++;
             try {
-                const parsed = JSON.parse(data.toString());
+                let parsed;
+                if (exchange.id === 'huobi' && data instanceof Buffer) {
+                    const decompressed = pako.inflate(data, { to: 'string' });
+                    parsed = JSON.parse(decompressed);
+                    if (parsed.ping) {
+                        ws.send(JSON.stringify({ pong: parsed.ping }));
+                        return;
+                    }
+                } else {
+                    parsed = JSON.parse(data.toString());
+                }
                 lastMessage = parsed;
 
                 // Check for relevant data based on feed type
                 if (feedName === 'orderbook') {
-                    hasRelevantData = !!(parsed.b || parsed.bids || parsed.a || parsed.asks || 
+                    hasRelevantData = !!(parsed.b || parsed.bids || parsed.a || parsed.asks || (parsed.tick && (parsed.tick.bids || parsed.tick.asks)) ||
                                        (parsed.data && (parsed.data.b || parsed.data.bids || parsed.data.a || parsed.data.asks)) ||
                                        (parsed.data && parsed.data.levels));
                 } else if (feedName === 'topOfBook') {
-                    hasRelevantData = !!(parsed.B || parsed.A || parsed.bestBid || parsed.bestAsk ||
+                    hasRelevantData = !!(parsed.B || parsed.A || parsed.bestBid || parsed.bestAsk || (parsed.tick && (parsed.tick.bid || parsed.tick.ask)) ||
                                        (parsed.data && (parsed.data.bidPrice || parsed.data.askPrice)));
                 } else if (feedName === 'kline') {
-                    hasRelevantData = !!(parsed.k || parsed.data || parsed.candle ||
+                    hasRelevantData = !!(parsed.k || parsed.data || parsed.candle || (parsed.tick && parsed.tick.id) ||
                                        (Array.isArray(parsed.data) && parsed.data.length > 0));
                 } else if (feedName === 'ticker') {
-                    hasRelevantData = !!(parsed.c || parsed.lastPrice || parsed.price ||
+                    hasRelevantData = !!(parsed.c || parsed.lastPrice || parsed.price || (parsed.tick && parsed.tick.close) ||
                                        (parsed.data && (parsed.data.lastPrice || parsed.data.close)));
                 }
 

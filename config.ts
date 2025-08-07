@@ -423,9 +423,40 @@ export const SUPPORTED_EXCHANGES: Record<string, ExchangeConfig> = {
             return null;
         },
     },
+    huobi: {
+        id: 'huobi',
+        name: 'HTX (Huobi)',
+        formatSymbol: (commonSymbol) => commonSymbol.toLowerCase(),
+        getWebSocketUrl: () => 'wss://api.huobi.pro/ws',
+        getSubscribeMessage: (formattedSymbol) => ({
+            sub: `market.${formattedSymbol}.depth.step0`,
+            id: `id-${formattedSymbol}-${Date.now()}`
+        }),
+        getUnsubscribeMessage: (formattedSymbol) => ({
+            unsub: `market.${formattedSymbol}.depth.step0`,
+            id: `id-${formattedSymbol}-${Date.now()}`
+        }),
+        needsSnapshotFlag: false,
+        sliceDepth: 20,
+        parseMessage: (data) => {
+            if (data.ch && data.ch.includes('depth.step0') && data.tick) {
+                const { tick } = data;
+                const newBids = new Map<string, number>();
+                tick.bids.forEach((bid: [number, number]) => newBids.set(bid[0].toString(), bid[1]));
+                const newAsks = new Map<string, number>();
+                tick.asks.forEach((ask: [number, number]) => newAsks.set(ask[0].toString(), ask[1]));
+                return { updatedBids: newBids, updatedAsks: newAsks, isSnapshot: true };
+            }
+            if (data.subbed) {
+                console.log(`Huobi: Subscribed to ${data.subbed}`);
+                return null;
+            }
+            return null;
+        },
+    },
 };
 
-export const SUPPORTED_EXCHANGES_ORDER = ['binance', 'bybit', 'okx', 'kraken', 'bitget', 'gate', 'binanceus', 'mexc', 'hyperliquid'];
+export const SUPPORTED_EXCHANGES_ORDER = ['binance', 'bybit', 'okx', 'kraken', 'bitget', 'gate', 'binanceus', 'mexc', 'hyperliquid', 'huobi'];
 
 export const EXCHANGE_COLORS: Record<string, string> = {
     binance: '#F0B90B',        // Binance Yellow
@@ -437,6 +468,7 @@ export const EXCHANGE_COLORS: Record<string, string> = {
     binanceus: '#F0B90B',      // Binance US Yellow (same as Binance)
     mexc: '#FF007A',           // MEXC Pink
     hyperliquid: '#06b6d4',    // Hyperliquid Cyan
+    huobi: '#0099FF',          // HTX (Huobi) Blue
 
     default: '#777777'         // Default Grey
 };
@@ -451,6 +483,7 @@ export const EXCHANGE_TAGS: Record<string, string> = {
     binanceus: 'BUS',
     mexc: 'MEX',
     hyperliquid: 'HYP',
+    huobi: 'HTX',
 
     default: '???'
 };
@@ -466,4 +499,5 @@ export const EXCHANGE_FEES: Record<string, FeeInfo> = {
     binanceus: { maker: 0.001, taker: 0.001, funding: 0.0001 }, // 0.1%/0.1%
     mexc: { maker: 0.001, taker: 0.001, funding: 0.0001 },    // 0.1%/0.1%
     hyperliquid: { maker: 0.0002, taker: 0.0005, funding: 0.0001 }, // 0.02%/0.05% (very competitive DEX fees)
+    huobi: { maker: 0.002, taker: 0.002, funding: 0.0001 },    // 0.2%/0.2%
 };
